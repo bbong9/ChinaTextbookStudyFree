@@ -52,6 +52,7 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
               type="button"
               role="radio"
               aria-checked={selected}
+              aria-label={opt.mode === "system" ? "跟随系统" : opt.mode === "light" ? "浅色模式" : "深色模式"}
               disabled={forcedDark}
               onClick={() => {
                 playSfx("tap");
@@ -65,7 +66,7 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
                   : "text-ink-softer hover:text-ink-light",
                 forcedDark && "opacity-50 cursor-not-allowed",
               )}
-              title={forcedDark ? "当前装备了暗色主题，界面保持暗色" : undefined}
+              title={forcedDark ? "当前装备了暗色主题，界面保持暗色" : opt.mode === "system" ? "跟随系统" : opt.mode === "light" ? "浅色模式" : "深色模式"}
             >
               <Icon className="w-4 h-4" />
               {!compact && <span>{opt.label}</span>}

@@ -877,9 +877,8 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
   function handleRequestExit() {
     playSfx("tap");
     haptic("light");
-    // 零进度（一题都没答过）直接退出，不弹确认（web-lesson-16）
+    // 尚未判分时直接退出；已保存的讲解阶段与草稿仍可续学。
     if (attemptedRef.current.size === 0 && solved.length === 0) {
-      clearLessonSession();
       router.push(`/book/${lesson.bookId}/`);
       return;
     }
@@ -888,10 +887,9 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
   }
 
   function handleConfirmExit() {
-    // 用户主动确认退出 → 放弃本次进度
+    // 普通退出只离开页面；持久化会话留给下次续学，重开由开始面板负责。
     playSfx("tap");
-    haptic("medium");
-    clearLessonSession();
+    haptic("light");
     router.push(`/book/${lesson.bookId}/`);
   }
 
@@ -1060,9 +1058,9 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
       {exitConfirmMounted && (
       <Modal open={showExitConfirm} onClose={() => setShowExitConfirm(false)}>
         <div className="flex flex-col items-center text-center">
-          <Mascot mood="sad" size={96} />
-          <h2 className="text-2xl font-extrabold text-ink mt-3">你确定要退出吗？</h2>
-          <p className="text-ink-light mt-2 mb-5">退出就会失去本节课的全部进度。</p>
+          <Mascot mood="happy" size={96} />
+          <h2 className="text-2xl font-extrabold text-ink mt-3">先休息一下？</h2>
+          <p className="text-ink-light mt-2 mb-5">进度已保存在这个浏览器，下次回来接着学。</p>
           <div className="flex flex-col gap-3 w-full">
             <button
               onClick={() => {
@@ -1076,9 +1074,9 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
             </button>
             <button
               onClick={handleConfirmExit}
-              className="btn-chunky-danger w-full"
+              className="btn-chunky-ghost w-full"
             >
-              退出
+              保存并退出
             </button>
           </div>
         </div>
