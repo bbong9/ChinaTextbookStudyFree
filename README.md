@@ -1,8 +1,12 @@
-# ChinaStudyFree · 小学全科 AI 学习平台
+# 聪聪学堂 · ChinaStudyFree
+
+**学习，从好奇心开始。** 小学全科，免费、开源。
 
 **在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
 
-> **UX修复进展（2026-10-06）**：[PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 已提供续学恢复、儿童点数、一页结算、布局与题库修正，本地题目增加到6842道。尚未合并或生产部署；本分支启动需按 [补充资源安装](docs/ux-content-install.md) 安装新音频。验收与剩余项见 [UX修复状态](docs/ux-repair-status.md) 和 [issue #12](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/issues/12)。
+![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/screenshots/web/hero.jpg)
+
+> **UX修复进展（2026-10-15）**：[PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 已提供续学恢复、儿童点数、一页结算、布局与题库修正，本地题目增加到6842道；本轮补充保存退出、外观控件名称与新版产品展示。尚未合并或生产部署；本分支启动需按 [补充资源安装](docs/ux-content-install.md) 安装新音频。验收与剩余项见 [UX修复状态](docs/ux-repair-status.md) 和 [issue #12](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/issues/12)。
 >
 > **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
@@ -33,29 +37,59 @@
 
 ---
 
-## 📸 功能预览
+## 产品演示
 
-### Web 端
+### 38 秒，认识聪聪学堂
 
-<table>
+点数、尝试、听读，再走进课本之外的世界。使用真实 Web 界面素材制作，配以简洁排版、柔和转场与原创配乐。
+
+[![播放 38 秒产品短片，1080p](docs/demo/poster.jpg)](docs/demo/congcong-demo.mp4)
+
+**[观看完整短片 · 1080p MP4](docs/demo/congcong-demo.mp4)** · [中文字幕](docs/demo/congcong-demo.zh-CN.vtt) · [全部截图与可播放画廊](docs/web-showcase.html) · [素材来源与重制方法](docs/demo/README.md)
+
+<details>
+<summary>展开轻量动图预览</summary>
+
+![点数与答题反馈的轻量动图预览；完整短片见上方 MP4](docs/demo/preview.gif)
+
+</details>
+
+> **画面版本 · 2026-10-15：**本节 Web 截图和短片来自 `codex/ux-quality-repairs` 的本地生产构建，使用演示浏览器中的真实操作与新建学习记录。短片由实际界面状态剪辑合成，非连续录屏；设备边框、文字和配乐属于演示包装。此分支尚未合并或上线，画面不代表当前线上版本，也不代表儿童或真机验收。画廊 HTML 下载后本地打开可播放和放大；GitHub 页面可直接查看截图和 MP4。
+
+### Web · 从第一步开始
+
+<table width="100%">
   <tr>
-    <td align="center"><img src="docs/screenshots/screen-0.png" width="200" /><br/><b>年级选择</b></td>
-    <td align="center"><img src="docs/screenshots/screen-1.png" width="400" /><br/><b>学科总览</b></td>
-    <td align="center"><img src="docs/screenshots/screen-3.png" width="400" /><br/><b>学习路径</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/screen-2.png" width="200" /><br/><b>单元答题</b></td>
-    <td align="center"><img src="docs/screenshots/screen-6.png" width="400" /><br/><b>课文听读</b></td>
-    <td align="center"><img src="docs/screenshots/screen-7.png" width="400" /><br/><b>课外故事</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/screen-4.png" width="400" /><br/><b>错题回顾</b></td>
-    <td align="center"><img src="docs/screenshots/screen-5.png" width="400" /><br/><b>个人中心</b></td>
-    <td></td>
+    <td align="center"><img src="docs/screenshots/web/01-onboarding.jpg" width="220" alt="手机端年级选择，继续按钮完整可见" /><br/><b>找到自己的起点</b><br/>选择年级，开始探索</td>
+    <td align="center"><img src="docs/screenshots/web/04-counting.jpg" width="220" alt="点击三个苹果，完成互动点数" /><br/><b>亲手数一数</b><br/>先动手，再理解</td>
+    <td align="center"><img src="docs/screenshots/web/05-feedback.jpg" width="220" alt="答对后显示 10 XP 与具体解析" /><br/><b>看懂每一次反馈</b><br/>知道答案，也知道为什么</td>
   </tr>
 </table>
 
-### iOS 端
+### Web · 在更大的屏幕上，展开好奇心
+
+<table width="100%">
+  <tr>
+    <td width="50%"><img src="docs/screenshots/web/02-subjects.jpg" width="520" alt="桌面端学科总览" /><br/><b>全科学习，从容选择</b></td>
+    <td width="50%"><img src="docs/screenshots/web/03-learning-path.jpg" width="520" alt="按教材单元展开的数学学习路径" /><br/><b>沿着教材，一步一步前进</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/06-reading.jpg" width="520" alt="课本原页与咏鹅逐句听读" /><br/><b>课本原页，逐句听读</b></td>
+    <td><img src="docs/screenshots/web/08-story-reader.jpg" width="520" alt="门口的小伞的插画和分句故事阅读" /><br/><b>在故事里，发现新世界</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/09-wardrobe.jpg" width="520" alt="聪聪衣橱的大幅预览与商品卡片" /><br/><b>给聪聪，换一种模样</b></td>
+    <td><img src="docs/screenshots/web/10-review.jpg" width="520" alt="错题本空状态鼓励尝试并提供巩固入口" /><br/><b>每一次尝试，都在进步</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/07-stories.jpg" width="520" alt="聪聪的故事时间与分级故事列表" /><br/><b>选一个故事，一起读</b></td>
+    <td><img src="docs/screenshots/web/11-profile.jpg" width="520" alt="个人中心、本周报告和成就入口" /><br/><b>留下属于自己的学习足迹</b></td>
+  </tr>
+</table>
+
+### iOS 原生界面 · 历史素材
+
+以下保留原有 iOS 截图，与上方新采集的 Web 画面分别标示；本轮未重新运行 iOS 构建。
 
 <table>
   <tr>
@@ -85,8 +119,8 @@
 | **课文听读** | 语文/英语课文逐句朗读，支持跟读练习，展示课本原页 |
 | **跟读录音** | 浏览器内录音与回放，不上传录音；需要 HTTPS 和麦克风授权，暂无语音识别评分 |
 | **课外故事** | 每单元 2 篇 AI 分级故事 + 阅读理解题 + 儿童插画配图 |
-| **全站 TTS** | 题目、选项、讲解、故事文本均可朗读；Web 使用 65,694 个兼容 MP3 音频，保留原 Opus 资源 |
-| **首次讲解** | 进入课程自动尝试播放，听完才解锁下一步；按钮边框光环跟随真实播放进度，不显示秒数 |
+| **全站 TTS** | 题目、选项、讲解、故事文本均可朗读；Web 使用兼容 MP3 音频，保留原 Opus 资源 |
+| **讲解与练习** | 修复预览中，数学第一课直接互动点数；其他讲解可跳过，练习时随时查手册。线上既有版本仍使用首次听完后解锁的讲解流程 |
 | **学习进度** | 当前浏览器保存完成情况、正确率与阅读星级；暂无云端账号和跨设备同步 |
 | **连击系统** | 连续答对触发连击动画与语音激励 |
 | **错题与学习报告** | 错题复习、每日目标、本周报告与家长每日学习时间限制 |
@@ -102,7 +136,7 @@
 | 英语 | 人教版 PEP | 三至六年级 | 96 篇 |
 | 科学 | 教科版 | 一至六年级 | — |
 
-**当前资源规模**：44 册教材、2,166 个课节、6,545 道单元练习、779 篇课文、284 篇故事和 1,226 道故事阅读题（语文 936 道、英语 290 道）。这是资源覆盖统计，不代表所有题目已通过教师逐题审核。
+**已发布基础资源规模**：44 册教材、2,166 个课节、6,545 道单元练习、779 篇课文、284 篇故事和 1,226 道故事阅读题（语文 936 道、英语 290 道）。修复分支的本地题库增加到6,842题，尚待发布。这是资源覆盖统计，不代表所有题目已通过教师逐题审核。
 
 ---
 

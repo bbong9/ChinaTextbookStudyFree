@@ -1,0 +1,247 @@
+{
+  "capture_date": "2026-10-15",
+  "application_base_commit": "acde104e22321d4e0f84764fc62fd158a324a05f",
+  "branch": "codex/ux-quality-repairs",
+  "source": "Local production export; new demo records; real UI captures, editorial composition, not a continuous screen recording",
+  "css_viewports": {
+    "desktop": [
+      1280,
+      720
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "pixel_note": "Some browser captures exclude page edges; exact image dimensions are listed below. No UI content is altered.",
+  "release_state": "unmerged; not deployed",
+  "ios": "historical images retained separately; not recaptured",
+  "media": {
+    "seconds": 38,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "score": "original local synthesis, no samples or paid generation APIs"
+  },
+  "files": [
+    {
+      "path": "docs/demo/congcong-demo.mp4",
+      "bytes": 3587627,
+      "sha256": "c60bfd53880532270b05ff9039e0147d85df1b02293cba404b676955aa8a98ce"
+    },
+    {
+      "path": "docs/demo/congcong-demo.zh-CN.vtt",
+      "bytes": 621,
+      "sha256": "861d3323a13f2beabb596665544b126513bd7352a873e90f80f439c2fc832a4b"
+    },
+    {
+      "path": "docs/demo/poster.jpg",
+      "bytes": 161416,
+      "sha256": "ff348f44a03c0fa136a1334f4614839c5e8f0763906ac83c4ebc5c63efa157d1",
+      "pixels": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "path": "docs/demo/preview.gif",
+      "bytes": 442195,
+      "sha256": "ee73f15d9c661322bb2a45ca1818bbd5d4d7b9e66806a845a82895cd0c0aa9e3",
+      "pixels": [
+        640,
+        360
+      ]
+    },
+    {
+      "path": "docs/demo/source/answer-selected.jpg",
+      "bytes": 20758,
+      "sha256": "c83e005066f56f35140dd4cd0c1bc2de1043b0e133de812328c758d8e45af991",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/demo/source/counting-1.jpg",
+      "bytes": 16468,
+      "sha256": "4e433c8ab7874d0c84f0c5c6d4e61ee34ed5c5dfec44753d37e7c83d9bfc118e",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/demo/source/counting-2.jpg",
+      "bytes": 16650,
+      "sha256": "78f1ade1e069c582374c1af4a7da51e9eb01e1c2454fa5f5085adaf879a87334",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/demo/source/onboarding-selected.jpg",
+      "bytes": 26502,
+      "sha256": "f16bfe765e545dd117af09ccf8c867b8e0ae355656dd607d14f7ccdeb98154a0",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/demo/source/practice.jpg",
+      "bytes": 18862,
+      "sha256": "04ca7da8e2acf36febf6c3858be8b748cafd2325298af02d9cf703a7e5da3569",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/demo/source/reading-playing.jpg",
+      "bytes": 41445,
+      "sha256": "96dfad51fe0b74cae83c2ef0f745b27df2192775268a201127db263b22eb8780",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/01-onboarding.jpg",
+      "bytes": 24038,
+      "sha256": "68e4ab39cb31d33cf355adf47a308ac5a284e449b066b5ace90fbf5b3c69886b",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/02-subjects-mobile.jpg",
+      "bytes": 32774,
+      "sha256": "84ce0d05d6587c0e34c5248c36e22a33e8d486ba2cd045cf33ed2a6aac919cfb",
+      "pixels": [
+        375,
+        812
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/02-subjects.jpg",
+      "bytes": 64079,
+      "sha256": "16d3a1654987ff092d2596d5339db265b49cb4f69a313be89a45dd5d4c6d224c",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/03-learning-path.jpg",
+      "bytes": 37323,
+      "sha256": "fdb878130e70b3bcfb2c2431ba7b4408cbfa5f4fc360b0266c1d2aba68984fb7",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/04-counting-start.jpg",
+      "bytes": 16524,
+      "sha256": "bb12522a4ef7d693483375d74a470345a4e90c4f194cc3bdeeb4a2aa04a2d50f",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/04-counting.jpg",
+      "bytes": 19023,
+      "sha256": "5bcf60261e25d9cffd40842e28ef401faa7cb557a05e0abecc326bc79fb8a353",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/05-feedback.jpg",
+      "bytes": 32743,
+      "sha256": "07ed559f9023462b9eaca812b57760cd30fb68e827ca284eed9822dad59ce7a9",
+      "pixels": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/06-reading-mobile.jpg",
+      "bytes": 29132,
+      "sha256": "bba3ab927fe058fe42335db92660a241b424137a089ed9e3efb90076a6259947",
+      "pixels": [
+        375,
+        812
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/06-reading.jpg",
+      "bytes": 41906,
+      "sha256": "ef75f5e4aba7e975ca3a0928cb70ea372edcbd2813f4ab8cac273fafb21cb684",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/07-stories.jpg",
+      "bytes": 102089,
+      "sha256": "82342821f5033427cf0f97ded9ab36b98aee35cb636bb3c6f45fe44f2aa29132",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/08-story-reader.jpg",
+      "bytes": 105756,
+      "sha256": "bf643f4c446962d57042845a4c6f89eac57735edd0ee1aee27662e723f3d46f2",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/09-wardrobe.jpg",
+      "bytes": 59271,
+      "sha256": "2d9487e0ab05b8ea7da894bdd2eeab507f9fb19c9e6f40b729ddcad4e932cb50",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/10-review.jpg",
+      "bytes": 35480,
+      "sha256": "e98088a67fafd4a24e30cc54b3da2c51d22c0c5771c763de427a85828b6fece9",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/11-profile.jpg",
+      "bytes": 33654,
+      "sha256": "46101f8e9d8718e77afaa2cb067d847d89313898a8df33e0222363104b9ae3e6",
+      "pixels": [
+        1265,
+        712
+      ]
+    },
+    {
+      "path": "docs/screenshots/web/hero.jpg",
+      "bytes": 241338,
+      "sha256": "e57577609f0f5d0624b0c853f0a1d0797b9573541d450df704b3312823f1ad6c",
+      "pixels": [
+        1920,
+        1080
+      ]
+    }
+  ]
+}
