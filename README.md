@@ -43,9 +43,9 @@
 
 点数、尝试、听读，再走进课本之外的世界。使用真实 Web 界面素材制作，配以简洁排版、柔和转场与原创配乐。
 
-[![播放 38 秒产品短片，1080p](docs/demo/poster.jpg)](docs/demo/congcong-demo.mp4)
+[![下载 38 秒产品短片，1080p](docs/demo/poster.jpg)](docs/demo/congcong-demo.mp4?raw=1)
 
-**[观看完整短片 · 1080p MP4](docs/demo/congcong-demo.mp4)** · [中文字幕](docs/demo/congcong-demo.zh-CN.vtt) · [全部截图与可播放画廊](docs/web-showcase.html) · [素材来源与重制方法](docs/demo/README.md)
+**[下载完整短片 · 1080p MP4](docs/demo/congcong-demo.mp4?raw=1)** · [中文字幕](docs/demo/congcong-demo.zh-CN.vtt) · [全部截图与本地播放画廊](docs/web-showcase.html) · [素材来源与重制方法](docs/demo/README.md)
 
 <details>
 <summary>展开轻量动图预览</summary>
@@ -54,7 +54,7 @@
 
 </details>
 
-> **画面版本 · 2026-10-15：**本节 Web 截图和短片来自 `codex/ux-quality-repairs` 的本地生产构建，使用演示浏览器中的真实操作与新建学习记录。短片由实际界面状态剪辑合成，非连续录屏；设备边框、文字和配乐属于演示包装。此分支尚未合并或上线，画面不代表当前线上版本，也不代表儿童或真机验收。画廊 HTML 下载后本地打开可播放和放大；GitHub 页面可直接查看截图和 MP4。
+> **画面版本 · 2026-10-15：**本节 Web 截图和短片来自 `codex/ux-quality-repairs` 的本地生产构建，使用演示浏览器中的真实操作与新建学习记录。短片由实际界面状态剪辑合成，非连续录屏；设备边框、文字和配乐属于演示包装。此分支尚未合并或上线，画面不代表当前线上版本，也不代表儿童或真机验收。GitHub 可查看截图和轻量动图，MP4 点击封面下载；运行 `python3 scripts/media/preview_showcase.py` 后，可在本地画廊完整播放、跳转章节和放大截图。
 
 ### Web · 从第一步开始
 

@@ -5,7 +5,7 @@
 ## 使用
 
 - `congcong-demo.mp4`：1920×1080、30 fps、H.264/yuv420p、AAC，启用 faststart。仓库保存成片，不依赖另行发布的媒体链接。
-- `poster.jpg`：点击观看的封面；`preview.gif` 是 9 秒轻量预览，完整影片以 MP4 为准。
+- `poster.jpg`：README 点击下载的封面；`preview.gif` 是 9 秒轻量预览，完整影片以 MP4 为准。GitHub 当前不直接展示仓库内的 MP4，README 因此使用直接下载入口，本地画廊负责完整播放。
 - `congcong-demo.zh-CN.vtt`：中文说明字幕；画廊使用原生视频控件，默认不自动播放。
 - `../web-showcase.html`：视频播放器、章节跳转及可点击放大的截图。从仓库根目录运行 `python3 scripts/media/preview_showcase.py`，访问 `http://127.0.0.1:3037/web-showcase.html`。本地服务支持视频字节范围，保证原生播放器可跳转章节；直接打开 HTML 也可查看图片。GitHub 不会执行仓库 HTML 中的脚本，README 因此直接提供图片和 MP4 链接。
 
