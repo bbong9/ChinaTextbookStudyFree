@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-15",
+  "format": "static product posters and intact browser screenshots",
+  "branch": "codex/ux-quality-repairs",
+  "screenshot_base_commit": "acde104e22321d4e0f84764fc62fd158a324a05f",
+  "release_state": "unmerged; not deployed",
+  "css_viewports": {
+    "desktop": [
+      1280,
+      720
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "notes": [
+    "Poster typography and framing are editorial; UI content is not altered.",
+    "Original capture pixels are listed individually; some exclude page edges.",
+    "Mobile images are browser simulations; iOS images remain separately labeled historical material."
+  ],
+  "files": [
+    {
+      "path": "docs/posters/explore.png",
+      "bytes": 725977,
+      "pixels": [
+        2400,
+        1500
+      ],
+      "sha256": "66e00eb15dd734dab2d52f3a1f0db95dc7af5abc95a73f4199c886aa9807b0ee"
+    },
+    {
+      "path": "docs/posters/hero.png",
+      "bytes": 425603,
+      "pixels": [
+        2400,
+        1500
+      ],
+      "sha256": "6c4bf8a5e36a1e180decf5d0426bc1d251c63dbce531025699118e6399d18060"
+    },
+    {
+      "path": "docs/posters/learning.png",
+      "bytes": 530056,
+      "pixels": [
+        2400,
+        1600
+      ],
+      "sha256": "9b60c072c18a5ede573887e1591e9f4b261c1c901787676e13ef81ea71b428b0"
+    },
+    {
+      "path": "docs/posters/reading.png",
+      "bytes": 488318,
+      "pixels": [
+        2400,
+        1500
+      ],
+      "sha256": "acf809a1ef73003c999f32c9acb2a85434aadfa09aac8a47ca3439923974ed73"
+    },
+    {
+      "path": "docs/screenshots/web/01-onboarding.jpg",
+      "bytes": 24038,
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "68e4ab39cb31d33cf355adf47a308ac5a284e449b066b5ace90fbf5b3c69886b"
+    },
+    {
+      "path": "docs/screenshots/web/02-subjects-mobile.jpg",
+      "bytes": 32774,
+      "pixels": [
+        375,
+        812
+      ],
+      "sha256": "84ce0d05d6587c0e34c5248c36e22a33e8d486ba2cd045cf33ed2a6aac919cfb"
+    },
+    {
+      "path": "docs/screenshots/web/02-subjects.jpg",
+      "bytes": 64079,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "16d3a1654987ff092d2596d5339db265b49cb4f69a313be89a45dd5d4c6d224c"
+    },
+    {
+      "path": "docs/screenshots/web/03-learning-path.jpg",
+      "bytes": 37323,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "fdb878130e70b3bcfb2c2431ba7b4408cbfa5f4fc360b0266c1d2aba68984fb7"
+    },
+    {
+      "path": "docs/screenshots/web/04-counting-start.jpg",
+      "bytes": 16524,
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "bb12522a4ef7d693483375d74a470345a4e90c4f194cc3bdeeb4a2aa04a2d50f"
+    },
+    {
+      "path": "docs/screenshots/web/04-counting.jpg",
+      "bytes": 19023,
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "5bcf60261e25d9cffd40842e28ef401faa7cb557a05e0abecc326bc79fb8a353"
+    },
+    {
+      "path": "docs/screenshots/web/05-feedback.jpg",
+      "bytes": 32743,
+      "pixels": [
+        390,
+        844
+      ],
+      "sha256": "07ed559f9023462b9eaca812b57760cd30fb68e827ca284eed9822dad59ce7a9"
+    },
+    {
+      "path": "docs/screenshots/web/06-reading-mobile.jpg",
+      "bytes": 29132,
+      "pixels": [
+        375,
+        812
+      ],
+      "sha256": "bba3ab927fe058fe42335db92660a241b424137a089ed9e3efb90076a6259947"
+    },
+    {
+      "path": "docs/screenshots/web/06-reading.jpg",
+      "bytes": 41906,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "ef75f5e4aba7e975ca3a0928cb70ea372edcbd2813f4ab8cac273fafb21cb684"
+    },
+    {
+      "path": "docs/screenshots/web/07-stories.jpg",
+      "bytes": 102089,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "82342821f5033427cf0f97ded9ab36b98aee35cb636bb3c6f45fe44f2aa29132"
+    },
+    {
+      "path": "docs/screenshots/web/08-story-reader.jpg",
+      "bytes": 105756,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "bf643f4c446962d57042845a4c6f89eac57735edd0ee1aee27662e723f3d46f2"
+    },
+    {
+      "path": "docs/screenshots/web/09-wardrobe.jpg",
+      "bytes": 59271,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "2d9487e0ab05b8ea7da894bdd2eeab507f9fb19c9e6f40b729ddcad4e932cb50"
+    },
+    {
+      "path": "docs/screenshots/web/10-review.jpg",
+      "bytes": 35480,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "e98088a67fafd4a24e30cc54b3da2c51d22c0c5771c763de427a85828b6fece9"
+    },
+    {
+      "path": "docs/screenshots/web/11-profile.jpg",
+      "bytes": 33654,
+      "pixels": [
+        1265,
+        712
+      ],
+      "sha256": "46101f8e9d8718e77afaa2cb067d847d89313898a8df33e0222363104b9ae3e6"
+    }
+  ]
+}

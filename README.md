@@ -4,13 +4,18 @@
 
 **在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
 
-![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/screenshots/web/hero.jpg)
+![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/posters/hero.png)
+
+<details>
+<summary>版本与资源说明</summary>
 
 > **UX修复进展（2026-10-15）**：[PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 已提供续学恢复、儿童点数、一页结算、布局与题库修正，本地题目增加到6842道；本轮补充保存退出、外观控件名称与新版产品展示。尚未合并或生产部署；本分支启动需按 [补充资源安装](docs/ux-content-install.md) 安装新音频。验收与剩余项见 [UX修复状态](docs/ux-repair-status.md) 和 [issue #12](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/issues/12)。
 >
 > **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
 > **完整资源包：[v1.2.0-assets](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/tag/v1.2.0-assets)**。包含新版 188 篇语文阅读、936 道配套题及既有四科资源；无需先安装旧版本。Release 中的 `web-source.zip` 是资源包发布时的源码快照，早于当前线上语音兼容和界面修复。详见 [安装与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/release-install.md)。
+
+</details>
 
 > **一个免费、开源、纯公益的小学全科学习平台**
 >
@@ -37,24 +42,20 @@
 
 ---
 
-## 产品演示
+## 产品一览
 
-### 38 秒，认识聪聪学堂
+![从选择年级到互动点数与答题反馈的学习流程海报](docs/posters/learning.png)
 
-点数、尝试、听读，再走进课本之外的世界。使用真实 Web 界面素材制作，配以简洁排版、柔和转场与原创配乐。
+![课本原页与手机逐句听读的功能海报](docs/posters/reading.png)
 
-[![下载 38 秒产品短片，1080p](docs/demo/poster.jpg)](docs/demo/congcong-demo.mp4?raw=1)
+![故事阅读与聪聪衣橱的功能海报](docs/posters/explore.png)
 
-**[下载完整短片 · 1080p MP4](docs/demo/congcong-demo.mp4?raw=1)** · [中文字幕](docs/demo/congcong-demo.zh-CN.vtt) · [全部截图与本地播放画廊](docs/web-showcase.html) · [素材来源与重制方法](docs/demo/README.md)
+**[完整海报与截图画廊](docs/web-showcase.html)** · [原尺寸 PNG](docs/posters) · [素材与重制说明](docs/showcase/README.md)
+
+> **画面版本 · 2026-10-15：**来自未上线的 `codex/ux-quality-repairs` 本地生产构建。海报保留真实界面，仅设计画面外的排版和展示边框；手机画面为浏览器视口模拟。iOS 历史截图另行标记。
 
 <details>
-<summary>展开轻量动图预览</summary>
-
-![点数与答题反馈的轻量动图预览；完整短片见上方 MP4](docs/demo/preview.gif)
-
-</details>
-
-> **画面版本 · 2026-10-15：**本节 Web 截图和短片来自 `codex/ux-quality-repairs` 的本地生产构建，使用演示浏览器中的真实操作与新建学习记录。短片由实际界面状态剪辑合成，非连续录屏；设备边框、文字和配乐属于演示包装。此分支尚未合并或上线，画面不代表当前线上版本，也不代表儿童或真机验收。GitHub 可查看截图和轻量动图，MP4 点击封面下载；运行 `python3 scripts/media/preview_showcase.py` 后，可在本地画廊完整播放、跳转章节和放大截图。
+<summary>查看未经包装的 Web 原始截图</summary>
 
 ### Web · 从第一步开始
 
@@ -86,6 +87,8 @@
     <td><img src="docs/screenshots/web/11-profile.jpg" width="520" alt="个人中心、本周报告和成就入口" /><br/><b>留下属于自己的学习足迹</b></td>
   </tr>
 </table>
+
+</details>
 
 ### iOS 原生界面 · 历史素材
 

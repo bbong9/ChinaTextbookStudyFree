@@ -1,85 +1,32 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>从好奇心开始 · 聪聪学堂</title>
-  <style>
-    :root{--paper:#f6f7f2;--ink:#162b24;--muted:#637466;--line:#dce3d7;--green:#507b24}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:var(--green);text-underline-offset:5px}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid #508124;outline-offset:5px}
-    .wrap{max-width:1220px;margin:auto;padding:0 36px}header{display:flex;justify-content:space-between;align-items:center;padding-top:30px;padding-bottom:30px;font-size:14px}.brand{font-weight:750;letter-spacing:.06em}nav{display:flex;gap:24px}
-    .eyebrow{font-size:12px;letter-spacing:.18em;font-weight:650;color:var(--muted)}h1{font-size:clamp(42px,6.4vw,78px);letter-spacing:-.05em;line-height:1.18;font-weight:650;margin:22px 0}h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.04em;line-height:1.3;margin:12px 0 18px}h3{font-size:18px;margin:20px 0 8px}.lede{font-size:20px;color:var(--muted);max-width:660px}.hero{padding-top:62px}.hero>img{width:100%;border-radius:24px;margin:35px 0 0;display:block}.note{font-size:13px;color:var(--muted);border-left:2px solid #9ab982;padding:4px 0 4px 20px;max-width:900px;margin:26px 0 0}
-    section{padding-top:104px}.film{background:#102119;padding:76px 0 58px;color:#f4f6ef;margin-top:100px}.film .eyebrow,.film p{color:#b2c7b3}.film video{display:block;width:100%;border-radius:20px;margin:32px 0 20px;box-shadow:0 25px 70px #0004}.chapters{display:flex;flex-wrap:wrap;gap:8px}.chapters button{background:transparent;border:1px solid #45604a;border-radius:20px;color:#d8e5d4;padding:7px 16px;min-height:44px}.film a{color:#b6de8e}.links{font-size:14px;margin-top:22px}
-    .phones{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px}.phone{margin:0;padding:28px;background:#edf0e7;border-radius:22px;text-align:center}.phone img{width:auto;max-width:100%;height:440px;object-fit:contain;border-radius:18px;box-shadow:0 14px 35px #20301a18}.phone p,.card p{margin:0;color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 28px;margin-top:36px}.card{margin:0}.shot{border:0;padding:0;background:white;display:block;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px #162b240a}.shot img{display:block;width:100%;aspect-ratio:1265/712;object-fit:contain}.phone .shot{background:transparent;box-shadow:none;overflow:visible}
-    .provenance{border-top:1px solid var(--line);margin-top:90px;padding:42px 0 58px;color:var(--muted);font-size:14px}.provenance p{max-width:860px}.provenance strong{color:var(--ink)}footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:26px 0 38px;font-size:12px;color:var(--muted)}
-    dialog{border:1px solid #ffffff30;background:#101813;color:white;border-radius:18px;padding:22px;max-width:min(96vw,1500px);max-height:95vh}dialog::backdrop{background:#061109d9}dialog img{display:block;max-width:100%;max-height:78vh;object-fit:contain;margin:auto}dialog .bar{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-bottom:16px}dialog button{border:1px solid #69826d;border-radius:12px;padding:8px 18px;background:none;color:white;min-height:44px}dialog p{margin:0}
-    @media(max-width:720px){.wrap{padding-left:22px;padding-right:22px}header{font-size:12px}nav{gap:15px}.hero{padding-top:28px}.lede{font-size:17px}.hero>img{border-radius:14px}.phones{gap:14px;grid-template-columns:1fr}.phone{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;text-align:left;padding:20px}.phone img{height:auto;max-height:340px;width:100%}.phone h3{margin-top:0}.grid{grid-template-columns:1fr;gap:32px}.film{margin-top:64px;padding-top:48px}section{padding-top:65px}.film video{border-radius:10px}.chapters{gap:7px}.chapters button{font-size:12px;padding:6px 10px}footer{display:block}footer span{display:block;margin:8px 0}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
-</head>
-<body>
-<header class="wrap"><div class="brand">聪聪学堂 / CHINASTUDYFREE</div><nav aria-label="页面导航"><a href="#film">短片</a><a href="#screens">界面</a><a href="#version">版本</a></nav></header>
-<main>
-  <div class="wrap hero">
-    <div class="eyebrow">A LITTLE CURIOSITY. A NEW BEGINNING.</div>
-    <h1>学习，<br>从好奇心开始。</h1>
-    <p class="lede">从三个苹果，到课本之外的世界。<br>和聪聪一起，把今天的好奇变成小小的进步。</p>
-    <img src="screenshots/web/hero.jpg" width="1920" height="1080" alt="互动点数与即时答题反馈的双屏主视觉">
-    <p class="note">本地 Web 修复分支预览 · 2026-10-15。尚未合并或部署。画面取自真实演示操作，不代表当前线上版本或儿童、真机验收。</p>
-  </div>
-  <section class="film" id="film"><div class="wrap">
-    <div class="eyebrow">THE PRODUCT FILM / 00:38</div>
-    <h2>38 秒，认识聪聪学堂。</h2>
-    <p>简洁的镜头，真实的界面。点一下、试一试，再读懂一点点。</p>
-    <video controls playsinline preload="metadata" poster="demo/poster.jpg" aria-label="聪聪学堂产品演示，38秒，1080p">
-      <source src="demo/congcong-demo.mp4" type="video/mp4">
-      <track kind="captions" src="demo/congcong-demo.zh-CN.vtt" srclang="zh-CN" label="中文说明" default>
-      浏览器不支持视频播放，请<a href="demo/congcong-demo.mp4">下载 MP4</a>。
-    </video>
-    <div class="chapters" aria-label="选择视频章节">
-      <button data-seek="0">00:00 好奇心</button><button data-seek="4.5">00:04 亲手点数</button><button data-seek="10.5">00:10 即时反馈</button><button data-seek="16">00:16 课文听读</button><button data-seek="21.5">00:21 故事世界</button><button data-seek="27">00:27 聪聪衣橱</button><button data-seek="32.5">00:32 每个孩子</button>
-    </div>
-    <p class="links"><a href="demo/congcong-demo.mp4" download>下载 1080p MP4</a> · <a href="demo/congcong-demo.zh-CN.vtt" download>下载中文字幕</a> · <a href="demo/README.md">素材与重制说明</a></p>
-  </div></section>
-  <section class="wrap" id="screens">
-    <div class="eyebrow">START SMALL</div><h2>第一步，简单一点。</h2><p class="lede">找到自己的起点，亲手探索，再看懂每一次反馈。</p>
-    <div class="phones">
-      <figure class="phone"><button class="shot" data-title="选择年级 · 手机视口" aria-label="放大年级选择截图"><img src="screenshots/web/01-onboarding.jpg" width="390" height="844" alt="年级选择" loading="lazy"></button><figcaption><h3>找到自己的起点</h3><p>年级选择清楚，继续按钮完整可见。</p></figcaption></figure>
-      <figure class="phone"><button class="shot" data-title="互动点数 · 手机视口" aria-label="放大互动点数截图"><img src="screenshots/web/04-counting.jpg" width="390" height="844" alt="已数完三个苹果的互动课程" loading="lazy"></button><figcaption><h3>先动手，再理解</h3><p>点一下苹果，一个一个数。</p></figcaption></figure>
-      <figure class="phone"><button class="shot" data-title="即时反馈 · 手机视口" aria-label="放大答题反馈截图"><img src="screenshots/web/05-feedback.jpg" width="390" height="844" alt="答案检查后给出解析和10XP反馈" loading="lazy"></button><figcaption><h3>知道为什么</h3><p>答案之外，也有具体的解释。</p></figcaption></figure>
-    </div>
-  </section>
-  <section class="wrap">
-    <div class="eyebrow">ROOM TO EXPLORE</div><h2>让好奇心，有更多去处。</h2><p class="lede">课内练习、课文听读、课外故事与聪聪衣橱。</p>
-    <div class="grid">
-      <figure class="card"><button class="shot" data-title="学科总览" aria-label="放大学科总览截图"><img src="screenshots/web/02-subjects.jpg" alt="桌面学科卡片" loading="lazy"></button><figcaption><h3>从容选择</h3><p>按年级和教材，找到今天的小课。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="教材学习路径" aria-label="放大学习路径截图"><img src="screenshots/web/03-learning-path.jpg" alt="按教材单元展开的学习路径" loading="lazy"></button><figcaption><h3>一步一步前进</h3><p>教材章节与课程节点放在同一条路径上。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="课文逐句听读" aria-label="放大课文听读截图"><img src="screenshots/web/06-reading.jpg" alt="咏鹅的课本原页与逐句听读" loading="lazy"></button><figcaption><h3>课本原页，逐句听读</h3><p>把熟悉的课文，再认真读一遍。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="课外故事阅读" aria-label="放大故事阅读截图"><img src="screenshots/web/08-story-reader.jpg" alt="门口的小伞故事阅读" loading="lazy"></button><figcaption><h3>在故事里，发现新世界</h3><p>读完以后，再说说自己的想法。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="聪聪衣橱" aria-label="放大聪聪衣橱截图"><img src="screenshots/web/09-wardrobe.jpg" alt="聪聪衣橱与装扮商品" loading="lazy"></button><figcaption><h3>换一种模样</h3><p>用学习获得的宝石，给聪聪换装。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="错题本空状态" aria-label="放大错题本截图"><img src="screenshots/web/10-review.jpg" alt="鼓励尝试的错题本空状态" loading="lazy"></button><figcaption><h3>每一次尝试，都在进步</h3><p>没有错题时，也能去巩固一节小课。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="聪聪的故事时间" aria-label="放大故事列表截图"><img src="screenshots/web/07-stories.jpg" alt="故事列表及插画封面" loading="lazy"></button><figcaption><h3>选一个故事，一起读</h3><p>在听与读之间，继续探索。</p></figcaption></figure>
-      <figure class="card"><button class="shot" data-title="个人中心与本周报告" aria-label="放大个人中心截图"><img src="screenshots/web/11-profile.jpg" alt="使用新建演示记录的个人中心" loading="lazy"></button><figcaption><h3>留下学习足迹</h3><p>当前浏览器中的记录，不展示虚构成绩。</p></figcaption></figure>
-    </div>
-  </section>
-  <div class="wrap" id="version"><div class="provenance">
-    <strong>关于这些画面</strong>
-    <p>采集日期：2026-10-15。版本：<code>codex/ux-quality-repairs</code> 的本地生产导出。桌面默认视口 1280×720，手机 CSS 视口 390×844；受截图服务的页面边界裁切影响，部分图像像素尺寸略小，原始尺寸记入素材清单。手机画面属于浏览器模拟，未声称为真机拍摄。</p>
-    <p>短片使用实际浏览器界面状态剪辑合成，非连续录屏；只对界面外的背景、边框、标题与镜头转场进行设计。配乐由本地代码合成，不使用第三方音乐、声音克隆或付费内容生成 API。原始截图、源状态、字幕和渲染脚本均随仓库保留。iOS 历史素材在 README 中另行标记。</p>
-    <p>公开资源、合并、上线，以及教师、儿童与真机验收仍需分别完成。<a href="ux-repair-status.md">查看修复状态</a> · <a href="demo/capture-manifest.json">查看素材清单</a></p>
-  </div><footer><span>聪聪学堂 · 每个孩子，都值得好的开始。</span><span>免费 / 开源 / 公益</span></footer></div>
-</main>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>产品海报与截图 · 聪聪学堂</title>
+<style>
+:root{--paper:#f5f5f7;--ink:#1d1d1f;--muted:#6e6e73;--line:#e4e4e8}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-underline-offset:4px}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #527c39;outline-offset:5px}.wrap{max-width:1256px;margin:auto;padding:0 36px}header{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:88px;font-size:13px}.brand{font-weight:650;letter-spacing:.04em}nav{display:flex;gap:28px}nav a{text-decoration:none;color:var(--muted)}.intro{padding-top:62px;padding-bottom:36px}.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--muted);font-weight:650}h1{font-size:clamp(36px,5.5vw,64px);line-height:1.2;letter-spacing:-.045em;font-weight:650;margin:18px 0}h2{font-size:clamp(30px,4vw,48px);line-height:1.3;letter-spacing:-.035em;font-weight:650;margin:12px 0 16px}h3{font-size:19px;line-height:1.4;font-weight:600;margin:20px 0 7px}.lede{color:var(--muted);font-size:18px;margin:0}.poster{margin:0 0 72px}.image-button{display:block;border:0;padding:0;background:var(--paper);width:100%;border-radius:20px;overflow:hidden;line-height:0}.image-button img{display:block;width:100%;height:auto}.poster figcaption{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px;color:var(--muted);padding-top:16px}.poster figcaption strong{font-weight:500;color:var(--ink)}.poster figcaption a{font-size:12px}.section{padding-top:70px}.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:38px 0 70px}.phone{margin:0;background:var(--paper);border-radius:22px;padding:30px;text-align:center}.phone .image-button{background:transparent;border-radius:16px}.phone img{width:auto;max-width:100%;height:440px;object-fit:contain;margin:auto;border-radius:16px}.phone p,.card p{font-size:14px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 28px}.card{margin:0}.card .image-button{border:1px solid var(--line);border-radius:16px}.card img{aspect-ratio:1265/712;object-fit:contain}.about{margin-top:96px;border-top:1px solid var(--line);padding:36px 0 52px;font-size:13px;color:var(--muted)}.about p{max-width:850px}.about strong{color:var(--ink)}footer{padding:24px 0 34px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}dialog{border:0;background:#fff;color:var(--ink);border-radius:18px;padding:20px;max-width:min(96vw,1700px);max-height:95vh;box-shadow:0 24px 100px #0004}dialog::backdrop{background:#0d0e11cc}dialog .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:16px;font-size:14px}dialog p{margin:0}dialog button{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:7px 16px;min-height:44px}dialog img{display:block;max-width:100%;max-height:80vh;object-fit:contain;margin:auto}
+@media(max-width:720px){.wrap{padding-left:22px;padding-right:22px}header{min-height:74px;font-size:12px;gap:10px}nav{gap:16px}.brand{letter-spacing:0}.intro{padding-top:34px;padding-bottom:28px}.lede{font-size:16px}.poster{margin-bottom:40px}.poster .image-button{border-radius:12px}.poster figcaption{font-size:11px;padding-top:11px}.poster figcaption a{font-size:11px}.section{padding-top:34px}.phones{grid-template-columns:1fr;gap:16px;margin-bottom:50px}.phone{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px;text-align:left;align-items:center}.phone img{width:100%;height:auto;max-height:350px}.phone h3{margin-top:0;font-size:18px}.phone p{font-size:13px}.grid{grid-template-columns:1fr;gap:32px}.about{margin-top:60px}footer{display:block}footer span{display:block;margin:8px 0}}
+</style></head><body>
+<header class="wrap"><span class="brand">聪聪学堂 / CHINASTUDYFREE</span><nav aria-label="页面导航"><a href="#posters">海报</a><a href="#screens">界面</a><a href="#about">关于</a></nav></header>
+<main class="wrap"><div class="intro"><div class="eyebrow">THE PRODUCT COLLECTION</div><h1>好奇心，自有天地。</h1><p class="lede">聪聪学堂。小学全科，免费开源。</p></div><section id="posters" aria-label="产品海报">
+<figure class="poster"><button class="image-button" data-title="品牌主视觉" aria-label="放大品牌主视觉海报"><img src="posters/hero.png" width="2400" height="1500" alt="互动点数与即时反馈的品牌主海报" ></button><figcaption><strong>01 / 品牌主视觉</strong><a href="posters/hero.png" download>原尺寸 PNG · 2400 × 1500</a></figcaption></figure>
+<figure class="poster"><button class="image-button" data-title="学习流程" aria-label="放大学习流程海报"><img src="posters/learning.png" width="2400" height="1600" alt="从年级选择到互动点数和即时反馈" loading=lazy></button><figcaption><strong>02 / 学习流程</strong><a href="posters/learning.png" download>原尺寸 PNG · 2400 × 1600</a></figcaption></figure>
+<figure class="poster"><button class="image-button" data-title="课文听读" aria-label="放大课文听读海报"><img src="posters/reading.png" width="2400" height="1500" alt="课本原页与逐句听读的双屏海报" loading=lazy></button><figcaption><strong>03 / 课文听读</strong><a href="posters/reading.png" download>原尺寸 PNG · 2400 × 1500</a></figcaption></figure>
+<figure class="poster"><button class="image-button" data-title="故事与衣橱" aria-label="放大故事与衣橱海报"><img src="posters/explore.png" width="2400" height="1500" alt="课外阅读与聪聪衣橱的双画面海报" loading=lazy></button><figcaption><strong>04 / 故事与衣橱</strong><a href="posters/explore.png" download>原尺寸 PNG · 2400 × 1500</a></figcaption></figure>
+</section><section class="section" id="screens"><div class="eyebrow">THE REAL INTERFACE</div><h2>真实界面，细节可见。</h2><p class="lede">保留原始截图。点击，查看大图。</p><div class="phones">
+<figure class="phone"><button class="image-button" data-title="找到自己的起点 · 手机视口" aria-label="放大找到自己的起点截图"><img src="screenshots/web/01-onboarding.jpg" width="390" height="844" alt="找到自己的起点" loading="lazy"></button><figcaption><h3>找到自己的起点</h3><p>选择年级，开始探索</p></figcaption></figure>
+<figure class="phone"><button class="image-button" data-title="先动手，再理解 · 手机视口" aria-label="放大先动手，再理解截图"><img src="screenshots/web/04-counting.jpg" width="390" height="844" alt="先动手，再理解" loading="lazy"></button><figcaption><h3>先动手，再理解</h3><p>点一下苹果，一个一个数</p></figcaption></figure>
+<figure class="phone"><button class="image-button" data-title="知道为什么 · 手机视口" aria-label="放大知道为什么截图"><img src="screenshots/web/05-feedback.jpg" width="390" height="844" alt="知道为什么" loading="lazy"></button><figcaption><h3>知道为什么</h3><p>答案之外，也有具体的解释</p></figcaption></figure>
+</div><div class="grid">
+<figure class="card"><button class="image-button" data-title="从容选择" aria-label="放大从容选择截图"><img src="screenshots/web/02-subjects.jpg" alt="从容选择" loading="lazy"></button><figcaption><h3>从容选择</h3><p>按年级与教材找到今天的小课</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="一步一步前进" aria-label="放大一步一步前进截图"><img src="screenshots/web/03-learning-path.jpg" alt="一步一步前进" loading="lazy"></button><figcaption><h3>一步一步前进</h3><p>教材章节与课程节点清晰展开</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="课本原页，逐句听读" aria-label="放大课本原页，逐句听读截图"><img src="screenshots/web/06-reading.jpg" alt="课本原页，逐句听读" loading="lazy"></button><figcaption><h3>课本原页，逐句听读</h3><p>把熟悉的课文再认真读一遍</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="在故事里发现" aria-label="放大在故事里发现截图"><img src="screenshots/web/08-story-reader.jpg" alt="在故事里发现" loading="lazy"></button><figcaption><h3>在故事里发现</h3><p>插画与分句阅读放在一起</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="给聪聪换一种模样" aria-label="放大给聪聪换一种模样截图"><img src="screenshots/web/09-wardrobe.jpg" alt="给聪聪换一种模样" loading="lazy"></button><figcaption><h3>给聪聪换一种模样</h3><p>用学习获得的宝石换装</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="每一次尝试，都在进步" aria-label="放大每一次尝试，都在进步截图"><img src="screenshots/web/10-review.jpg" alt="每一次尝试，都在进步" loading="lazy"></button><figcaption><h3>每一次尝试，都在进步</h3><p>没有错题时，也能去巩固一节小课</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="选一个故事，一起读" aria-label="放大选一个故事，一起读截图"><img src="screenshots/web/07-stories.jpg" alt="选一个故事，一起读" loading="lazy"></button><figcaption><h3>选一个故事，一起读</h3><p>从课内延伸到课外</p></figcaption></figure>
+<figure class="card"><button class="image-button" data-title="留下学习足迹" aria-label="放大留下学习足迹截图"><img src="screenshots/web/11-profile.jpg" alt="留下学习足迹" loading="lazy"></button><figcaption><h3>留下学习足迹</h3><p>展示新建演示记录，不虚构成绩</p></figcaption></figure>
+</div></section><section class="about" id="about"><strong>关于这些画面</strong><p>2026-10-15采集，来自未上线的<code>codex/ux-quality-repairs</code>本地生产构建。海报只设计界面外的标题、留白与通用展示边框；不改变题目、分数或界面布局。手机画面为浏览器视口模拟，不是真机拍摄。</p><p>桌面CSS视口为1280×720，手机为390×844。部分截图输出裁去页面边缘，精确像素与SHA256记入素材清单。iOS历史截图在README中另行标记。线上与人工验收仍需分别完成。</p><p><a href="showcase/README.md">素材与重制说明</a> · <a href="showcase/capture-manifest.json">素材清单</a> · <a href="ux-repair-status.md">修复状态</a></p></section></main><footer class="wrap"><span>聪聪学堂 · 每个孩子，都值得好的开始。</span><span>免费 / 开源 / 公益</span></footer>
 <dialog aria-labelledby="zoom-title"><div class="bar"><p id="zoom-title"></p><button id="close">关闭 · Esc</button></div><img alt=""></dialog>
 <script>
-  const video=document.querySelector('video');
-  document.querySelectorAll('[data-seek]').forEach(button=>button.addEventListener('click',()=>{video.currentTime=Number(button.dataset.seek);video.play().catch(()=>{});}));
-  const dialog=document.querySelector('dialog');
-  let opener;
-  document.querySelectorAll('.shot').forEach(button=>button.addEventListener('click',()=>{opener=button;const source=button.querySelector('img');dialog.querySelector('img').src=source.src;dialog.querySelector('img').alt=source.alt;document.querySelector('#zoom-title').textContent=button.dataset.title;dialog.showModal();}));
-  document.querySelector('#close').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('close',()=>opener?.focus());
-</script>
-</body>
-</html>
+const dialog=document.querySelector('dialog');let opener;
+document.querySelectorAll('.image-button').forEach(button=>button.addEventListener('click',()=>{opener=button;const source=button.querySelector('img');dialog.querySelector('img').src=source.src;dialog.querySelector('img').alt=source.alt;document.querySelector('#zoom-title').textContent=button.dataset.title;dialog.showModal();}));
+document.querySelector('#close').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>opener?.focus());
+</script></body></html>
