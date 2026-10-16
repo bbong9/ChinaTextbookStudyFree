@@ -1,10 +1,6 @@
-# 聪聪学堂 · ChinaStudyFree
-
-**学习，从好奇心开始。** 小学全科，免费、开源。
+![聪聪学堂 · 学习，从好奇心开始。小学全科，免费开源。](docs/banner.svg)
 
 **在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
-
-![聪聪学堂：互动点数与即时答题反馈](docs/posters/hero.png)
 
 <details>
 <summary>版本与资源说明</summary>
@@ -41,6 +37,8 @@
 ---
 
 ## 产品一览
+
+![聪聪学堂：互动点数与即时答题反馈](docs/posters/hero.png)
 
 ![从选择年级到互动点数与答题反馈的学习流程海报](docs/posters/learning.png)
 

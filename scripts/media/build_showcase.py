@@ -8,6 +8,7 @@ import argparse
 import functools
 import hashlib
 import json
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
@@ -143,11 +144,15 @@ def explore():
 
 
 def write_manifest():
-    files = sorted([*POSTERS.glob("*.png"), *SHOTS.glob("*.jpg")])
+    files = sorted([ROOT / "docs/banner.svg", *POSTERS.glob("*.png"), *SHOTS.glob("*.jpg")])
     records = []
     for path in files:
-        with Image.open(path) as image:
-            pixels = [image.width, image.height]
+        if path.suffix == ".svg":
+            svg = ET.fromstring(path.read_text())
+            pixels = [int(svg.attrib["width"]), int(svg.attrib["height"])]
+        else:
+            with Image.open(path) as image:
+                pixels = [image.width, image.height]
         records.append({"path": str(path.relative_to(ROOT)), "bytes": path.stat().st_size,
                         "pixels": pixels, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
     data = {"date": "2026-10-15", "format": "static product posters and intact browser screenshots",
