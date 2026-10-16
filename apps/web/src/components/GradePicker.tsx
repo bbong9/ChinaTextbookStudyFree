@@ -48,7 +48,7 @@ export function GradePicker() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-bg flex flex-col">
+    <main aria-label="选择年级" className="fixed inset-0 z-50 bg-bg flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-start pt-6 sm:pt-12 px-5 overflow-y-auto pb-6">
         {/* 顶部 mascot + 气泡 */}
         <motion.div
@@ -72,6 +72,7 @@ export function GradePicker() {
               <motion.button
                 key={opt.grade}
                 type="button"
+                aria-pressed={selected}
                 initial={{ opacity: 0, x: 12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
@@ -151,6 +152,6 @@ export function GradePicker() {
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

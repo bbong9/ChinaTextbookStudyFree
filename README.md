@@ -1,16 +1,10 @@
-# 聪聪学堂 · ChinaStudyFree
-
-**学习，从好奇心开始。** 小学全科，免费、开源。
+![聪聪学堂 · 学习，从好奇心开始。小学全科，免费开源。](docs/banner.svg)
 
 **在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
-
-![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/posters/hero.png)
 
 <details>
 <summary>版本与资源说明</summary>
 
-> **UX修复进展（2026-10-15）**：[PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 已提供续学恢复、儿童点数、一页结算、布局与题库修正，本地题目增加到6842道；本轮补充保存退出、外观控件名称与新版产品展示。尚未合并或生产部署；本分支启动需按 [补充资源安装](docs/ux-content-install.md) 安装新音频。验收与剩余项见 [UX修复状态](docs/ux-repair-status.md) 和 [issue #12](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/issues/12)。
->
 > **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
 > **完整资源包：[v1.2.0-assets](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/tag/v1.2.0-assets)**。包含新版 188 篇语文阅读、936 道配套题及既有四科资源；无需先安装旧版本。Release 中的 `web-source.zip` 是资源包发布时的源码快照，早于当前线上语音兼容和界面修复。详见 [安装与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/release-install.md)。
@@ -44,18 +38,30 @@
 
 ## 产品一览
 
-![从选择年级到互动点数与答题反馈的学习流程海报](docs/posters/learning.png)
+![聪聪与苹果、书本的品牌主视觉](docs/visuals/hero.png)
 
-![课本原页与手机逐句听读的功能海报](docs/posters/reading.png)
+### 动手练习，即时反馈
 
-![故事阅读与聪聪衣橱的功能海报](docs/posters/explore.png)
+![iPhone 展示互动点数与答题反馈](docs/visuals/feature-learning.png)
 
-**[完整海报与截图画廊](docs/web-showcase.html)** · [原尺寸 PNG](docs/posters) · [素材与重制说明](docs/showcase/README.md)
+通过互动点数和多种题型理解知识，答题后查看解析，随时继续未完成的课程。
 
-> **画面版本 · 2026-10-15：**来自未上线的 `codex/ux-quality-repairs` 本地生产构建。海报保留真实界面，仅设计画面外的排版和展示边框；手机画面为浏览器视口模拟。iOS 历史截图另行标记。
+### 课本原页，逐句听读
+
+![平板与 iPhone 展示课本原页、全文朗读和跟读](docs/visuals/feature-reading.png)
+
+对照课本原页听读，支持全文朗读和跟读练习。
+
+### 故事阅读与聪聪衣橱
+
+![笔记本和平板展示故事阅读、阅读理解与聪聪衣橱](docs/visuals/feature-explore.png)
+
+从分级故事到阅读理解，再用学习获得的宝石为聪聪解锁装扮。
+
+**[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/visuals) · [素材与重制说明](docs/showcase/README.md)
 
 <details>
-<summary>查看未经包装的 Web 原始截图</summary>
+<summary>查看 Web 界面截图</summary>
 
 ### Web · 从第一步开始
 
@@ -122,8 +128,8 @@
 | **课文听读** | 语文/英语课文逐句朗读，支持跟读练习，展示课本原页 |
 | **跟读录音** | 浏览器内录音与回放，不上传录音；需要 HTTPS 和麦克风授权，暂无语音识别评分 |
 | **课外故事** | 每单元 2 篇 AI 分级故事 + 阅读理解题 + 儿童插画配图 |
-| **全站 TTS** | 题目、选项、讲解、故事文本均可朗读；Web 使用兼容 MP3 音频，保留原 Opus 资源 |
-| **讲解与练习** | 修复预览中，数学第一课直接互动点数；其他讲解可跳过，练习时随时查手册。线上既有版本仍使用首次听完后解锁的讲解流程 |
+| **全站 TTS** | 题目、选项、讲解、故事文本均可朗读；Web 使用 65,694 个兼容 MP3 音频，保留原 Opus 资源 |
+| **首次讲解** | 进入课程自动尝试播放，听完才解锁下一步；按钮边框光环跟随真实播放进度，不显示秒数 |
 | **学习进度** | 当前浏览器保存完成情况、正确率与阅读星级；暂无云端账号和跨设备同步 |
 | **连击系统** | 连续答对触发连击动画与语音激励 |
 | **错题与学习报告** | 错题复习、每日目标、本周报告与家长每日学习时间限制 |
@@ -139,7 +145,7 @@
 | 英语 | 人教版 PEP | 三至六年级 | 96 篇 |
 | 科学 | 教科版 | 一至六年级 | — |
 
-**已发布基础资源规模**：44 册教材、2,166 个课节、6,545 道单元练习、779 篇课文、284 篇故事和 1,226 道故事阅读题（语文 936 道、英语 290 道）。修复分支的本地题库增加到6,842题，尚待发布。这是资源覆盖统计，不代表所有题目已通过教师逐题审核。
+**当前资源规模**：44 册教材、2,166 个课节、6,545 道单元练习、779 篇课文、284 篇故事和 1,226 道故事阅读题（语文 936 道、英语 290 道）。这是资源覆盖统计，不代表所有题目已通过教师逐题审核。
 
 ---
 
@@ -422,6 +428,8 @@ ChinaStudyFree/
 ## 📜 许可协议
 
 本项目采用 **MIT License** 开源发布，详见 [LICENSE](LICENSE)。
+
+Copyright (c) 2026 wangzhang wu
 
 ---
 

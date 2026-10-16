@@ -63,21 +63,21 @@ export function InnerHeader({
           <ArrowLeft className="w-5 h-5" />
         </SoundLink>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5 leading-none">
+          <div className="flex items-start gap-1.5 leading-snug">
             {badge}
-            <span
+            <h1
               className={cn(
-                "text-sm lg:text-base font-extrabold text-ink truncate",
+                "text-base lg:text-lg font-extrabold text-ink break-words min-w-0",
                 flatOnDesktop && "lg:text-2xl",
               )}
             >
               {title}
-            </span>
+            </h1>
           </div>
           {subtitle && (
             <div
               className={cn(
-                "text-[10px] lg:text-[11px] text-ink-light mt-1 leading-none truncate",
+                "text-xs lg:text-sm text-ink-light mt-1 leading-relaxed",
                 flatOnDesktop && "lg:text-sm lg:mt-1.5",
               )}
             >
@@ -88,7 +88,7 @@ export function InnerHeader({
         {right ? (
           <div className="shrink-0">{right}</div>
         ) : (
-          <div className={cn("w-10 shrink-0", flatOnDesktop && "lg:hidden")} />
+          null
         )}
       </div>
       {bottom}

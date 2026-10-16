@@ -72,12 +72,12 @@ export function ContinueLearningCard() {
               继续学习
             </div>
             <div className="mt-0.5 flex items-center gap-1.5 min-w-0">
-              <span className="text-base lg:text-2xl font-extrabold text-ink truncate">
-                聪聪帮你记住了进度
+              <span className="text-base lg:text-2xl font-extrabold text-ink break-words">
+                上次的课程还没做完呢
               </span>
               <Sparkle className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-gold shrink-0" />
             </div>
-            <div className="text-xs lg:text-base text-ink-light mt-1 truncate">
+            <div className="text-xs lg:text-base text-ink-light mt-1 leading-relaxed">
               已答 {activeLesson.correctCount + activeLesson.mistakeCount} 题 · 连击 ×{activeLesson.combo}
             </div>
           </div>
@@ -91,18 +91,6 @@ export function ContinueLearningCard() {
           </motion.div>
         </div>
 
-        {/* 用实际已答对题数表达本课进度 */}
-        <motion.div
-          className="mt-4 h-1.5 rounded-full bg-primary/15 overflow-hidden"
-          aria-hidden
-        >
-          <motion.div
-            className="h-full bg-primary rounded-full"
-            initial={{ width: "0%" }}
-            animate={{ width: `${Math.min(100, (activeLesson.solvedIds?.length ?? activeLesson.index) / Math.max(1, activeLesson.totalQuestions ?? ((activeLesson.solvedIds?.length ?? activeLesson.index) + (activeLesson.queueIds?.length ?? 0))) * 100)}%` }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          />
-        </motion.div>
       </Link>
     </motion.div>
   );
@@ -196,7 +184,7 @@ export function CurrentBookBadge({
         }}
         aria-haspopup="dialog"
         aria-label={`当前教材：${book.subjectName ?? ""}${book.textbookName}，点击切换`}
-        className="inline-flex items-center gap-1.5 h-11 px-3 rounded-full bg-white border-2 border-bg-softer hover:border-primary/50 transition-colors select-none min-w-0"
+        className="inline-flex items-center gap-1.5 min-h-11 px-3 rounded-xl bg-white border-2 border-bg-softer hover:border-primary/50 transition-colors select-none min-w-0"
         style={{ boxShadow: "0 2px 0 0 var(--shadow-card-color)" }}
       >
         <span
@@ -206,7 +194,7 @@ export function CurrentBookBadge({
         >
           {cur.glyph}
         </span>
-        <span className="text-xs font-extrabold text-ink truncate max-w-[150px]">
+        <span className="text-xs font-extrabold text-ink break-words max-w-[150px]">
           {book.subjectName ?? ""}
           {book.textbookName}
         </span>
@@ -246,7 +234,7 @@ export function CurrentBookBadge({
                   {s.glyph}
                 </span>
                 <span className="flex-1 min-w-0">
-                  <span className="block text-sm font-extrabold text-ink truncate">
+                  <span className="block text-sm font-extrabold text-ink break-words">
                     {b.subjectName ?? ""}
                     {b.textbookName}
                   </span>
@@ -266,14 +254,14 @@ export function CurrentBookBadge({
           <button
             type="button"
             onClick={changeGrade}
-            className="text-sm font-extrabold text-secondary hover:underline"
+            className="min-h-11 px-2 text-sm font-extrabold text-secondary hover:underline"
           >
             换个年级
           </button>
           <SoundLink
             href={`/grade/${book.grade}/`}
             onClick={() => setOpen(false)}
-            className="text-sm font-extrabold text-ink-light hover:text-ink"
+            className="min-h-11 px-2 text-sm font-extrabold text-ink-light hover:text-ink"
           >
             看年级主页 →
           </SoundLink>

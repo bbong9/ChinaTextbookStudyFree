@@ -12,14 +12,10 @@ import Link from "next/link";
 import {
   BookOpen,
   Home as HomeIcon,
-  HomeFill,
   Trophy,
-  TrophyFill,
   Bookmark,
-  BookmarkFill,
-  Gem,
+  ShoppingBag,
   User,
-  UserFill,
   type IconProps,
 } from "@/components/icons";
 import { playSfx } from "@/lib/sfx";
@@ -34,8 +30,6 @@ interface NavItem {
   href: string;
   label: string;
   Icon: ComponentType<IconProps>;
-  /** 激活态的粗填充变体（web-shell-19），视觉重量对齐 iOS */
-  IconActive: ComponentType<IconProps>;
   /** 命中前缀判断 active */
   matchPrefix: string;
   /** 激活态主色 */
@@ -49,46 +43,41 @@ const NAV_ITEMS: NavItem[] = [
     href: "/",
     label: "学习",
     Icon: HomeIcon,
-    IconActive: HomeFill,
     matchPrefix: "/",
-    activeColor: "text-primary",
+    activeColor: "text-primary-dark",
     activeBg: "bg-primary/10",
   },
   {
     href: "/league/",
     label: "排行榜",
     Icon: Trophy,
-    IconActive: TrophyFill,
     matchPrefix: "/league",
-    activeColor: "text-gold",
-    activeBg: "bg-gold/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/review/",
     label: "错题本",
     Icon: Bookmark,
-    IconActive: BookmarkFill,
     matchPrefix: "/review",
-    activeColor: "text-warning",
-    activeBg: "bg-warning/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/shop/",
     label: "商店",
-    Icon: Gem,
-    IconActive: Gem,
+    Icon: ShoppingBag,
     matchPrefix: "/shop",
-    activeColor: "text-secondary",
-    activeBg: "bg-secondary/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/profile/",
     label: "我的",
     Icon: User,
-    IconActive: UserFill,
     matchPrefix: "/profile",
-    activeColor: "text-secondary-dark",
-    activeBg: "bg-secondary/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
 ];
 
@@ -141,9 +130,10 @@ export function BottomNav() {
 
   // 沉浸式路径（课程 / 跳级 / 复习 runner / 阅读器）隐藏底部导航，
   // 否则固定底栏会盖住这些页面底部的「检查 / 继续」按钮。
-  if (!hydrated || selectedGrade == null || isImmersivePath(pathname)) return null;
+  if (!hydrated || (pathname === "/" && selectedGrade == null) || isImmersivePath(pathname)) return null;
 
-  const navItems = NAV_ITEMS.map(item => item.matchPrefix === "/league" && completed < 10 ? { ...item, href: `/reading/chinese-g${selectedGrade ?? 1}up/`, label: "听读", Icon: BookOpen, IconActive: BookOpen, matchPrefix: "/reading" } : item);
+  const navItems = NAV_ITEMS.map(item => item.matchPrefix === "/league" && completed < 10
+    ? { ...item, href: `/reading/chinese-g${selectedGrade ?? 1}up/`, label: "听读", Icon: BookOpen, matchPrefix: "/reading" } : item);
 
   function getBadge(item: NavItem): { count?: number; dot?: boolean } | null {
     if (item.matchPrefix === "/review" && reviewBadge > 0) return { count: reviewBadge };
@@ -174,8 +164,8 @@ export function BottomNav() {
     >
       <div className="grid grid-cols-5 max-w-md mx-auto h-14">
         {navItems.map(item => {
-          const active = isActive(pathname, item);
-          const Icon = active ? item.IconActive : item.Icon;
+          const active = isActive(pathname, item) && !(item.label === "学习" && completed < 10 && pathname.startsWith("/reading"));
+          const Icon = item.Icon;
           const badge = getBadge(item);
           return (
             <Link
@@ -201,7 +191,7 @@ export function BottomNav() {
                 }`}
               >
                 <Icon
-                  className={`w-5 h-5 ${
+                  className={`w-[22px] h-[22px] ${
                     active ? item.activeColor : "text-ink-softer"
                   }`}
                 />
@@ -220,7 +210,7 @@ export function BottomNav() {
                 ) : null}
               </div>
               <span
-                className={`text-[9px] font-extrabold leading-none ${
+                className={`text-[11px] font-bold leading-none ${
                   active ? item.activeColor : "text-ink-softer"
                 }`}
               >
