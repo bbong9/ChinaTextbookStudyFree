@@ -62,7 +62,7 @@ export function ProfileClient() {
     <main className="min-h-screen bg-bg-soft lg:bg-transparent relative">
       {/* Header —— 移动端白底 sticky；桌面端简化为 标题 + compact HUD */}
       <div className="bg-white border-b border-bg-softer sticky top-0 z-10 lg:bg-transparent lg:border-0 lg:static lg:mb-2">
-        <div className="max-w-2xl lg:max-w-4xl mx-auto flex items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
+        <div className="max-w-2xl lg:max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
           <SoundLink
             href="/"
             aria-label="返回"
@@ -74,26 +74,27 @@ export function ProfileClient() {
             <div className="text-base font-extrabold text-ink truncate">我的主页</div>
           </div>
           <div className="hidden lg:block flex-1" />
-          <div className="shrink-0">
+          <div className="w-full min-[480px]:w-auto shrink-0 flex justify-end">
             <StatsBar compact />
           </div>
         </div>
       </div>
 
       <div className="max-w-2xl lg:max-w-4xl mx-auto px-4 py-8">
-        {/* 📋 每日任务（移动端专属入口；桌面端在首页右栏 RightRail 展示同一组件） */}
-        <div className="lg:hidden mb-6">
+        {/* 📋 本页未使用右栏，因此所有尺寸均提供每日任务入口 */}
+        <div className="mb-6">
           <DailyQuestsPanel />
         </div>
 
         {/* 顶部：聪聪 + 问候 + 每日目标环 */}
-        <div className="flex items-center gap-6 mb-8">
+        <div className="grid grid-cols-[96px_minmax(0,1fr)] items-center gap-4 mb-8 sm:flex sm:gap-6">
           <motion.div
+            className="row-span-2"
             initial={{ x: -40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ type: "spring", damping: 18 }}
           >
-            <Mascot mood="wave" size={120} />
+            <Mascot mood="wave" size={96} />
           </motion.div>
           <div className="flex-1">
             <div className="text-sm text-ink-light">欢迎回来</div>
@@ -102,7 +103,7 @@ export function ProfileClient() {
               {hydrated && streak > 0 ? `已连续学习 ${streak} 天` : "开始你的学习之旅"}
             </div>
           </div>
-          <DailyGoalRing size={100} />
+          <div className="col-start-2 sm:ml-auto shrink-0"><DailyGoalRing size={100} /></div>
         </div>
 
         {/* 统计卡片网格 */}
@@ -146,7 +147,7 @@ export function ProfileClient() {
             <Gem className="w-6 h-6" />
           </div>
           <div className="flex-1">
-            <div className="text-base font-extrabold text-ink">美妆商店</div>
+            <div className="text-base font-extrabold text-ink">聪聪衣橱</div>
             <div className="text-sm text-ink-light">
               累计获得 <span className="font-extrabold text-secondary-dark">{hydrated ? lifetimeGems : 0}</span> 颗宝石 · 去给聪聪换装吧
             </div>

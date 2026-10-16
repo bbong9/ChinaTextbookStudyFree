@@ -87,7 +87,7 @@ export default async function GradePage({ params }: { params: Promise<{ grade: s
     <main className="min-h-screen flex flex-col items-center px-4 pt-4 pb-8 lg:pt-2 lg:px-0">
       {/* 页头：移动端带 compact StatsBar；lg+ 由右栏 RightRail 常驻 HUD，不再重复 */}
       <div className="w-full max-w-3xl lg:max-w-none">
-        <div className="lg:hidden flex justify-end mb-4">
+        <div className="shell-page-toolbar flex justify-end mb-4">
           <StatsBar compact />
         </div>
         <div className="flex items-end justify-between gap-3 mb-5 lg:mb-8">

@@ -40,6 +40,7 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
     <div>
       <div
         className="grid grid-cols-3 gap-1 p-1 rounded-2xl border-2 border-bg-softer bg-bg-soft"
+        data-theme-compact={compact ? "true" : undefined}
         role="radiogroup"
         aria-label="外观模式"
       >
@@ -52,6 +53,7 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
               type="button"
               role="radio"
               aria-checked={selected}
+              aria-label={opt.mode === "system" ? "跟随系统" : opt.mode === "light" ? "浅色模式" : "深色模式"}
               disabled={forcedDark}
               onClick={() => {
                 playSfx("tap");
@@ -59,13 +61,13 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
                 setThemeMode(opt.mode);
               }}
               className={cn(
-                "flex items-center justify-center gap-1 h-9 rounded-xl text-xs font-extrabold transition-colors select-none",
+                "flex items-center justify-center gap-1 min-h-11 rounded-xl text-xs font-extrabold transition-colors select-none",
                 selected
                   ? "bg-white text-ink shadow-sm border-2 border-bg-softer"
                   : "text-ink-softer hover:text-ink-light",
                 forcedDark && "opacity-50 cursor-not-allowed",
               )}
-              title={forcedDark ? "当前装备了暗色主题，界面保持暗色" : undefined}
+              title={forcedDark ? "当前装备了暗色主题，界面保持暗色" : opt.label}
             >
               <Icon className="w-4 h-4" />
               {!compact && <span>{opt.label}</span>}

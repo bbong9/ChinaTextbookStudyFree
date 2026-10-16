@@ -11,14 +11,10 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
   Home as HomeIcon,
-  HomeFill,
   Trophy,
-  TrophyFill,
   Bookmark,
-  BookmarkFill,
-  Gem,
+  ShoppingBag,
   User,
-  UserFill,
   type IconProps,
 } from "@/components/icons";
 import { playSfx } from "@/lib/sfx";
@@ -33,8 +29,6 @@ interface NavItem {
   href: string;
   label: string;
   Icon: ComponentType<IconProps>;
-  /** 激活态的粗填充变体（web-shell-19），视觉重量对齐 iOS */
-  IconActive: ComponentType<IconProps>;
   /** 命中前缀判断 active */
   matchPrefix: string;
   /** 激活态主色 */
@@ -48,46 +42,41 @@ const NAV_ITEMS: NavItem[] = [
     href: "/",
     label: "学习",
     Icon: HomeIcon,
-    IconActive: HomeFill,
     matchPrefix: "/",
-    activeColor: "text-primary",
+    activeColor: "text-primary-dark",
     activeBg: "bg-primary/10",
   },
   {
     href: "/league/",
     label: "排行榜",
     Icon: Trophy,
-    IconActive: TrophyFill,
     matchPrefix: "/league",
-    activeColor: "text-gold",
-    activeBg: "bg-gold/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/review/",
     label: "错题本",
     Icon: Bookmark,
-    IconActive: BookmarkFill,
     matchPrefix: "/review",
-    activeColor: "text-warning",
-    activeBg: "bg-warning/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/shop/",
     label: "商店",
-    Icon: Gem,
-    IconActive: Gem,
+    Icon: ShoppingBag,
     matchPrefix: "/shop",
-    activeColor: "text-secondary",
-    activeBg: "bg-secondary/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
   {
     href: "/profile/",
     label: "我的",
     Icon: User,
-    IconActive: UserFill,
     matchPrefix: "/profile",
-    activeColor: "text-secondary-dark",
-    activeBg: "bg-secondary/15",
+    activeColor: "text-primary-dark",
+    activeBg: "bg-primary/10",
   },
 ];
 
@@ -170,7 +159,7 @@ export function BottomNav() {
       <div className="grid grid-cols-5 max-w-md mx-auto h-14">
         {NAV_ITEMS.map(item => {
           const active = isActive(pathname, item);
-          const Icon = active ? item.IconActive : item.Icon;
+          const Icon = item.Icon;
           const badge = getBadge(item);
           return (
             <Link
@@ -196,7 +185,7 @@ export function BottomNav() {
                 }`}
               >
                 <Icon
-                  className={`w-5 h-5 ${
+                  className={`w-[22px] h-[22px] ${
                     active ? item.activeColor : "text-ink-softer"
                   }`}
                 />
@@ -215,7 +204,7 @@ export function BottomNav() {
                 ) : null}
               </div>
               <span
-                className={`text-[9px] font-extrabold leading-none ${
+                className={`text-[11px] font-bold leading-none ${
                   active ? item.activeColor : "text-ink-softer"
                 }`}
               >

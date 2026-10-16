@@ -85,7 +85,7 @@ export function ReviewClient() {
     <AppShell centerMaxWidth={840}>
     <main className="min-h-screen bg-bg-soft lg:bg-transparent relative">
       {/* Header —— 仅移动端：白底 sticky（lg+ HUD 由右栏 RightRail 常驻，不再重复） */}
-      <div className="bg-white border-b border-bg-softer sticky top-0 z-10 lg:hidden">
+      <div className="shell-page-toolbar bg-white border-b border-bg-softer sticky top-0 z-10">
         <div className="max-w-2xl lg:max-w-4xl mx-auto flex items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
           <SoundLink
             href="/"

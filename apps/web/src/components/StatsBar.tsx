@@ -32,9 +32,10 @@ import { useProgressTicker, formatMsCountdown } from "@/lib/useProgressTicker";
 interface StatsBarProps {
   /** 紧凑模式：移动端 / 内页用，只显示 心 + 连击 + 宝石，省掉 XP & 音频开关 */
   compact?: boolean;
+  placement?: "page" | "rail";
 }
 
-export function StatsBar({ compact = false }: StatsBarProps = {}) {
+export function StatsBar({ compact = false, placement = "page" }: StatsBarProps = {}) {
   useSyncMute();
   const now = useProgressTicker();
   const toast = useToast();
@@ -70,7 +71,7 @@ export function StatsBar({ compact = false }: StatsBarProps = {}) {
 
   return (
     <>
-      <div className="flex items-center gap-1.5">
+      <div className="stats-bar flex items-center gap-2" data-placement={placement} role="group" aria-label="学习状态">
         {/* 红心胶囊 */}
         <motion.button
           type="button"
@@ -82,15 +83,16 @@ export function StatsBar({ compact = false }: StatsBarProps = {}) {
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           whileTap={{ scale: 0.95 }}
-          className={`h-8 px-2.5 inline-flex items-center gap-1 rounded-full border-2 font-extrabold text-sm select-none tabular-nums transition-colors ${
+          className={`min-h-11 px-3 inline-flex items-center gap-1.5 rounded-xl border font-bold text-sm select-none tabular-nums transition-colors ${
             dHearts > 0
               ? "border-danger/40 text-danger bg-danger/10"
               : "border-bg-softer text-ink-softer bg-bg-soft"
           }`}
           aria-label="红心"
+          title={`红心：${dHearts} / ${MAX_HEARTS}`}
         >
-          <Heart className="w-4 h-4" />
-          <span>{dHearts}</span>
+          <Heart className="w-[18px] h-[18px]" />
+          <span className="text-ink">{dHearts}</span>
         </motion.button>
 
         {/* 连续天数 —— 可点开连胜详情弹层 */}
@@ -105,15 +107,16 @@ export function StatsBar({ compact = false }: StatsBarProps = {}) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`h-8 px-2.5 inline-flex items-center gap-1 rounded-full border-2 font-extrabold text-sm select-none tabular-nums transition-colors ${
+          className={`min-h-11 px-3 inline-flex items-center gap-1.5 rounded-xl border font-bold text-sm select-none tabular-nums transition-colors ${
             streakActive
               ? "border-fox text-fox bg-fox/10"
               : "border-bg-softer text-ink-softer bg-bg-soft"
           }`}
           aria-label="连胜详情"
+          title={`连续学习 ${dStreak} 天`}
         >
-          <Flame className="w-4 h-4" />
-          <span>{dStreak}</span>
+          <Flame className="w-[18px] h-[18px]" />
+          <span className="text-ink">{dStreak}</span>
         </motion.button>
 
         {/* XP —— compact 模式隐藏 */}

@@ -68,7 +68,7 @@ export function DailyGoalRing({ size = 120 }: DailyGoalRingProps) {
             height: size - stroke * 2 + 4,
             background: achieved
               ? "linear-gradient(180deg, #FFFBEB 0%, #FFF6D6 100%)"
-              : "linear-gradient(180deg, #FFFFFF 0%, #F4F4F5 100%)",
+              : "linear-gradient(180deg, var(--app-card, #FFFFFF) 0%, var(--app-bg-soft, #F4F4F5) 100%)",
             boxShadow: "inset 0 2px 4px rgba(0,0,0,0.04)",
           }}
         />
@@ -93,7 +93,7 @@ export function DailyGoalRing({ size = 120 }: DailyGoalRingProps) {
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            stroke="#EDEDED"
+            stroke="var(--app-border, #EDEDED)"
             strokeWidth={stroke}
             fill="none"
           />

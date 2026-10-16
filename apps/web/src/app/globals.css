@@ -5,6 +5,58 @@
 /* KaTeX */
 @import "katex/dist/katex.min.css";
 
+/* The shell reserves readable space for content before showing a third column. */
+.app-shell { min-height: 100vh; width: 100%; }
+.app-shell main { min-height: 0; }
+.shell-sidebar, .shell-rail { display: none; min-width: 0; }
+.shell-content { max-width: var(--center-max, 640px); }
+@media (min-width: 768px) {
+  .app-shell { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 24px; max-width: 1440px; margin-inline: auto; padding: 24px; }
+  .shell-sidebar { display: block; position: sticky; top: 24px; align-self: start; height: calc(100dvh - 48px); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .shell-sidebar [data-theme-compact="true"] { grid-template-columns: 1fr; }
+}
+@media (min-width: 1024px) {
+  .app-shell { grid-template-columns: 200px minmax(0, 1fr); gap: 32px; }
+}
+@media (min-width: 1280px) {
+  .app-shell[data-has-rail="true"] { grid-template-columns: 200px minmax(0, 1fr) 288px; }
+  .shell-rail { display: block; position: sticky; top: 24px; align-self: start; }
+  .app-shell[data-has-rail="true"] .stats-bar[data-placement="page"],
+  .app-shell[data-has-rail="true"] .shell-page-toolbar { display: none; }
+}
+
+/* The wardrobe reacts to its content width, including tablet and sidebar layouts. */
+.shop-container { container: wardrobe / inline-size; }
+.shop-workspace { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.shop-preview { position: relative; min-width: 0; scroll-margin-top: 24px; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 128px), 1fr)); gap: 16px; }
+.shop-preview-stage { height: 224px; }
+.shop-tab { display: flex; min-width: 0; min-height: 48px; align-items: center; justify-content: center; gap: 6px; padding: 8px; }
+.shop-tab span { white-space: nowrap; }
+@container wardrobe (min-width: 600px) {
+  .shop-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
+}
+@container wardrobe (min-width: 520px) and (max-width: 759px) {
+  .shop-preview-card { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; }
+}
+@container wardrobe (min-width: 760px) {
+  .shop-workspace { grid-template-columns: 264px minmax(0, 1fr); gap: 28px; }
+  .shop-preview { position: sticky; top: 24px; }
+  .shop-preview-stage { height: 264px; }
+}
+
+@media (max-width: 479px) {
+  .book-toolbar { flex-wrap: wrap; }
+  .book-toolbar > button { flex-basis: 100%; justify-content: flex-start; }
+  .book-toolbar > .stats-bar { margin-left: auto; }
+}
+
+.path-disc { width: 72px; height: 72px; }
+.path-label { overflow-wrap: anywhere; }
+
+
 :root {
   --font-sans: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", ui-sans-serif, system-ui, sans-serif;
 
@@ -41,6 +93,9 @@
 
 html {
   scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 html,
