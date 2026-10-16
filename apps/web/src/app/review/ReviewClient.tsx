@@ -306,7 +306,7 @@ function MistakeItem({
               haptic("light");
               setExpanded(x => !x);
             }}
-            className="mt-2 min-h-11 px-2 text-sm font-semibold text-secondary hover:text-secondary-dark"
+            className="mt-2 min-h-11 px-2 text-sm font-semibold text-secondary hover:underline"
           >
             {expanded ? "收起答案" : "查看答案"}
           </button>
