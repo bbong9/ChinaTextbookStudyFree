@@ -1,24 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500" role="img" aria-labelledby="title desc">
 <title id="title">聪聪学堂 · 学习，从好奇心开始。</title>
-<desc id="desc">ChinaStudyFree 免费开源的小学全科学习平台。深色横幅配熊猫聪聪品牌图标。</desc>
+<desc id="desc">免费开源的小学全科学习平台。浅色横幅配熊猫聪聪品牌图标。</desc>
 <defs>
- <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#111416"/><stop offset="1" stop-color="#202728"/></linearGradient>
- <radialGradient id="glow"><stop stop-color="#9ee866" stop-opacity=".17"/><stop offset="1" stop-color="#9ee866" stop-opacity="0"/></radialGradient>
+ <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#fafbfa"/><stop offset="1" stop-color="#eef2ef"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#9ee866" stop-opacity=".12"/><stop offset="1" stop-color="#9ee866" stop-opacity="0"/></radialGradient>
  <linearGradient id="green" x2=".8" y2="1"><stop stop-color="#83e133"/><stop offset="1" stop-color="#58cc02"/></linearGradient>
- <filter id="shadow" x="-50%" y="-50%" width="200%" height="220%"><feDropShadow dx="0" dy="22" stdDeviation="25" flood-color="#000" flood-opacity=".3"/></filter>
+ <filter id="shadow" x="-50%" y="-50%" width="200%" height="220%"><feDropShadow dx="0" dy="22" stdDeviation="25" flood-color="#000" flood-opacity=".12"/></filter>
 </defs>
 <rect width="1600" height="500" rx="30" fill="url(#surface)"/>
 <circle cx="1272" cy="250" r="360" fill="url(#glow)"/>
-<path d="M1020 0V500" stroke="#fff" stroke-opacity=".05"/>
+<path d="M1020 0V500" stroke="#35533b" stroke-opacity=".04"/>
 <g font-family="-apple-system,BlinkMacSystemFont,'Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
- <rect x="94" y="78" width="8" height="8" rx="4" fill="#9be55f"/>
- <text x="119" y="89" font-family="'Avenir Next',Arial,sans-serif" font-size="20" font-weight="600" letter-spacing="3.5" fill="#b6bdb9">CHINASTUDYFREE</text>
- <text x="90" y="218" font-size="88" font-weight="600" letter-spacing="2" fill="#f5f5f7">聪聪学堂</text>
- <text x="94" y="300" font-size="42" font-weight="400" letter-spacing="1" fill="#e4e8e5">学习，从好奇心开始。</text>
- <text x="96" y="398" font-size="24" fill="#9fa9a2" letter-spacing="2">小学全科<tspan dx="28" fill="#637568">/</tspan><tspan dx="28">免费开源</tspan></text>
+ <text x="90" y="208" font-size="88" font-weight="600" letter-spacing="2" fill="#1d1d1f">聪聪学堂</text>
+ <text x="94" y="294" font-size="42" font-weight="400" letter-spacing="1" fill="#505a53">学习，从好奇心开始。</text>
+ <text x="96" y="388" font-size="24" fill="#68746c" letter-spacing="2">小学全科<tspan dx="28" fill="#98a39b">/</tspan><tspan dx="28">免费开源</tspan></text>
 </g>
 <g transform="translate(1132 112) rotate(7 138 138)">
- <rect x="-14" y="17" width="276" height="276" rx="64" fill="#fff" fill-opacity=".055" transform="rotate(-15 138 138)"/>
+ <rect x="-14" y="17" width="276" height="276" rx="64" fill="#fff" fill-opacity=".8" transform="rotate(-15 138 138)"/>
  <rect width="276" height="276" rx="64" fill="url(#green)" filter="url(#shadow)"/>
  <g transform="scale(2.3)"><g xmlns="http://www.w3.org/2000/svg">
     

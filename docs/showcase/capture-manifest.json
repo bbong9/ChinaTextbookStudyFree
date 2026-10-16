@@ -22,12 +22,12 @@
   "files": [
     {
       "path": "docs/banner.svg",
-      "bytes": 3166,
+      "bytes": 2929,
       "pixels": [
         1600,
         500
       ],
-      "sha256": "67bacd1e5685280fef65b26cb1711fe19259033057239e17b6d5cfd91ae4bb9d"
+      "sha256": "96ac467d224eccfdcd441102b3b258df43514cb6a178393f11ccb6f91bacf456"
     },
     {
       "path": "docs/posters/explore.png",
