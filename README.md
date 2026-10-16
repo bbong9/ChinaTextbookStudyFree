@@ -4,15 +4,11 @@
 
 **在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
 
-> **Web 修复预览** · 以下海报来自 PR #13 本地构建，尚未上线。
-
-![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/posters/hero.png)
+![聪聪学堂：互动点数与即时答题反馈](docs/posters/hero.png)
 
 <details>
 <summary>版本与资源说明</summary>
 
-> **画面预览（2026-10-15）**：新版 Web 海报与截图来自 [PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 的本地生产构建，相关功能尚未合并或上线。当前功能、资源规模与安装步骤仍按已发布版本说明。
->
 > **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
 > **完整资源包：[v1.2.0-assets](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/tag/v1.2.0-assets)**。包含新版 188 篇语文阅读、936 道配套题及既有四科资源；无需先安装旧版本。Release 中的 `web-source.zip` 是资源包发布时的源码快照，早于当前线上语音兼容和界面修复。详见 [安装与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/release-install.md)。
@@ -54,10 +50,8 @@
 
 **[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/posters) · [素材与重制说明](docs/showcase/README.md)
 
-> **画面版本 · 2026-10-15：**来自未上线的 `codex/ux-quality-repairs` 本地生产构建。海报保留真实界面，仅设计画面外的排版和展示边框；手机画面为浏览器视口模拟。iOS 历史截图另行标记。
-
 <details>
-<summary>查看未经包装的 Web 原始截图</summary>
+<summary>查看 Web 界面截图</summary>
 
 ### Web · 从第一步开始
 
