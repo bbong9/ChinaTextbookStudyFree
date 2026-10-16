@@ -425,6 +425,8 @@ ChinaStudyFree/
 
 本项目采用 **MIT License** 开源发布，详见 [LICENSE](LICENSE)。
 
+Copyright (c) 2026 wangzhang wu
+
 ---
 
 ## 💌 写在最后
