@@ -260,7 +260,7 @@ export function PathMap({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -8, opacity: 0 }}
             transition={{ duration: 0.18 }}
-            className="rounded-2xl px-3 py-2.5 text-white flex items-center gap-3"
+            className="rounded-2xl px-3 py-3 text-[#132C36] flex items-center gap-3"
             style={{
               backgroundColor: color.bg,
               boxShadow: `0 4px 0 0 ${color.shadow}`,
@@ -270,16 +270,16 @@ export function PathMap({
               <SoundLink
                 href={backHref}
                 aria-label="返回"
-                className="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl text-white border-2 border-white/60 hover:bg-white/15 transition-colors"
+                className="shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-xl border border-black/20 hover:bg-white/15 transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" aria-hidden />
               </SoundLink>
             )}
             <div className="min-w-0 flex-1">
               {/* 小标签行：subject + textbookName · 第 N 单元 */}
-              <div className="flex items-center gap-1.5 text-[11px] font-extrabold leading-none opacity-95 min-w-0 truncate">
+              <div className="flex items-center gap-1.5 text-xs font-bold leading-snug min-w-0 flex-wrap">
                 {headerLabel && (
-                  <span className="inline-flex items-center gap-1.5 min-w-0 truncate">
+                  <span className="inline-flex items-center gap-1.5 min-w-0">
                     {headerLabel}
                   </span>
                 )}
@@ -287,13 +287,13 @@ export function PathMap({
                 <span className="whitespace-nowrap">第 {activeUnitNum} 单元</span>
               </div>
               {/* 大字单元标题 */}
-              <div className="text-lg font-extrabold leading-tight truncate tracking-tight mt-1.5">
+              <div className="text-lg font-extrabold leading-snug break-words tracking-tight mt-1.5">
                 {activeUnitTitle}
               </div>
             </div>
             {activeUnitFullyLocked && (
               <SoundLink href={`/jump/?book=${bookId}&unit=${activeUnitNum}`} hapticIntensity="medium"
-                className="shrink-0 inline-flex items-center gap-1.5 px-2 min-h-10 rounded-xl text-white border border-white/60 hover:bg-white/15 transition-colors text-xs font-bold"
+                className="shrink-0 inline-flex items-center gap-1.5 px-2 min-h-11 rounded-xl border border-black/20 hover:bg-white/15 transition-colors text-xs font-bold"
                 aria-label={`跳级测试：直接跳到第 ${activeUnitNum} 单元`}>
                 <Lightning className="w-4 h-4" aria-hidden /><span>跳级</span>
               </SoundLink>
@@ -301,7 +301,7 @@ export function PathMap({
             {hasGuide && (
               <SoundLink
                 href={`/book/${bookId}/guide/${activeUnitNum}/`}
-                className="shrink-0 inline-flex items-center gap-1.5 px-3 h-10 rounded-xl text-white font-extrabold text-xs tracking-tight border-2 border-white/60 hover:bg-white/15 transition-colors"
+                className="shrink-0 inline-flex items-center gap-1.5 px-3 h-11 rounded-xl font-bold text-xs tracking-tight border border-black/20 hover:bg-white/15 transition-colors"
                 aria-label="打开知识手册"
               >
                 <Book className="w-4 h-4" aria-hidden />

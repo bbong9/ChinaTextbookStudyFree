@@ -75,6 +75,8 @@ export function useRecorder() {
       setState("recording");
       return true;
     } catch (e) {
+      // A cancelled permission prompt may reject after a new recording has started.
+      if (generation !== generationRef.current) return false;
       setState("error");
       setError(e instanceof Error ? e.message : String(e));
       cleanup();

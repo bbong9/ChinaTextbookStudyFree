@@ -64,6 +64,7 @@ export function TrueFalseQuestion({
       <motion.button
         key={label}
         type="button"
+        aria-pressed={selected}
         disabled={phase === "checked"}
         onClick={() => select(label)}
         whileTap={phase === "answering" ? { scale: 0.98 } : undefined}

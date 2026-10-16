@@ -33,7 +33,7 @@ export function GemBadge({ className = "", asLink = true }: GemBadgeProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.12 }}
       whileTap={asLink ? { scale: 0.95 } : undefined}
-      className={`relative min-h-11 px-3 inline-flex items-center gap-1.5 rounded-xl border font-bold text-sm select-none tabular-nums border-secondary/50 text-secondary-dark bg-secondary/10 ${asLink ? "hover:bg-secondary/20 transition-colors cursor-pointer" : ""} ${className}`}
+      className={`relative min-h-11 px-3 inline-flex items-center gap-1.5 rounded-xl border font-bold text-sm select-none tabular-nums border-gem/50 text-gem bg-gem/10 ${asLink ? "hover:bg-gem/20 transition-colors cursor-pointer" : ""} ${className}`}
       aria-label={asLink ? `宝石 ${display}，进入商店` : `可用宝石 ${display}`}
     >
       <Gem className="w-[18px] h-[18px]" />

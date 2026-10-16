@@ -92,8 +92,8 @@ export function BookPathView({
 
   const headerLabel = (
     <>
-      <SubjectBadge book={book} className="!border-white/60 !bg-white/15 !text-white" />
-      <span className="truncate">{book.textbookName}</span>
+      <SubjectBadge book={book} className="!border-black/20 !bg-white/20 !text-[#132C36]" />
+      <span className="break-words">{book.textbookName}</span>
     </>
   );
 

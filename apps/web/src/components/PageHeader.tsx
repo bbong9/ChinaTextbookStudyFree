@@ -51,7 +51,7 @@ export function PageHeader({
           <SoundLink
             href={backHref}
             aria-label="返回"
-            className="inline-flex items-center justify-center w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-white border-2 border-bg-softer text-ink-light hover:text-primary hover:border-primary transition-colors shrink-0 lg:hidden"
+            className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-white border-2 border-bg-softer text-ink-light hover:text-primary hover:border-primary transition-colors shrink-0 lg:hidden"
             style={{ boxShadow: "0 3px 0 0 var(--shadow-card-color)" }}
           >
             <ArrowLeft className="w-5 h-5" />

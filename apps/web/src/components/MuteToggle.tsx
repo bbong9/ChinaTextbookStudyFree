@@ -27,6 +27,7 @@ export function MuteToggle({ className }: MuteToggleProps) {
   return (
     <button
       type="button"
+      aria-pressed={!muted}
       aria-label={muted ? "开启音效" : "关闭音效"}
       onClick={() => {
         toggleMute();
@@ -54,6 +55,7 @@ export function AutoNarrateToggle({ className }: MuteToggleProps) {
   return (
     <button
       type="button"
+      aria-pressed={autoNarrate}
       aria-label={autoNarrate ? "关闭自动朗读" : "开启自动朗读"}
       title={autoNarrate ? "自动朗读：开" : "自动朗读：关"}
       onClick={() => {

@@ -44,7 +44,7 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
         role="radiogroup"
         aria-label="外观模式"
       >
-        {OPTIONS.map(opt => {
+        {OPTIONS.map((opt, index) => {
           const selected = active === opt.mode;
           const Icon = opt.Icon;
           return (
@@ -55,6 +55,16 @@ export function ThemeModeToggle({ compact = false }: { compact?: boolean }) {
               aria-checked={selected}
               aria-label={opt.mode === "system" ? "跟随系统" : opt.mode === "light" ? "浅色模式" : "深色模式"}
               disabled={forcedDark}
+              tabIndex={selected ? 0 : -1}
+              onKeyDown={event => {
+                const next = event.key === "ArrowRight" || event.key === "ArrowDown" ? (index + 1) % OPTIONS.length
+                  : event.key === "ArrowLeft" || event.key === "ArrowUp" ? (index + OPTIONS.length - 1) % OPTIONS.length
+                  : event.key === "Home" ? 0 : event.key === "End" ? OPTIONS.length - 1 : null;
+                if (next === null || forcedDark) return;
+                event.preventDefault();
+                setThemeMode(OPTIONS[next].mode);
+                (event.currentTarget.parentElement?.querySelectorAll("button")[next] as HTMLButtonElement | undefined)?.focus();
+              }}
               onClick={() => {
                 playSfx("tap");
                 haptic("light");

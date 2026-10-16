@@ -75,7 +75,7 @@ export function MathText({ text, block = false }: MathTextProps) {
               <BlockMath math={p.value} />
             </span>
           );
-        return <span key={idx} className="inline-block max-w-full overflow-x-auto align-middle"><InlineMath math={p.value} /></span>;
+        return <span key={idx} className="inline-block max-w-full overflow-x-auto overflow-y-hidden align-middle py-1"><InlineMath math={p.value} /></span>;
       })}
     </span>
   );

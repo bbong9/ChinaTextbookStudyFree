@@ -110,6 +110,7 @@ export function ChoiceQuestion({
             <div key={idx} className="flex items-stretch gap-2">
               <motion.button
                 type="button"
+                aria-pressed={selected}
                 disabled={phase === "checked"}
                 onClick={e => handleTap(letter, e)}
                 className={cn("flex-1 text-left flex items-center gap-3 relative", cls)}

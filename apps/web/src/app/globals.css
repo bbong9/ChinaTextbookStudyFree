@@ -88,7 +88,7 @@
   --app-border: #37464F;
   --app-ink: #F1F5F9;
   --app-ink-light: #CBD5E1;
-  --app-ink-softer: #94A3B8;
+  --app-ink-softer: #B3C0CC;
   --shadow-card-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -324,7 +324,7 @@ button:focus-visible,
  * 暗色主题：.theme-dark 挂在 <html> 上（首屏内联脚本预挂，防白闪），
  * 通过选择器重映射常用 Tailwind 工具类。
  * 仅覆盖最常用的背景 / 边框 / 文本 token，保持设计语言一致；
- * 主色（primary / secondary / danger）依然使用 Duolingo 原色，避免品牌漂移。
+ * 强调色跟随装备主题，阅读文字与状态反馈使用独立前景色。
  * ============================================================ */
 .theme-dark body {
   background-color: var(--app-bg) !important;
@@ -372,4 +372,61 @@ button:focus-visible,
 .theme-dark .btn-chunky-disabled {
   background-color: var(--app-bg-softer);
   color: var(--app-ink-softer);
+}
+
+/* Accent fills stay vivid; readable foregrounds are separate from fill colors. */
+.text-primary, .text-primary-dark { color: var(--theme-primary-ink, #2D6908); }
+.text-secondary, .text-secondary-dark { color: var(--theme-accent-ink, #076B98); }
+.text-warning, .text-gold { color: #875600; }
+.text-danger, .text-danger-dark { color: #C52B32; }
+.theme-dark .text-primary, .theme-dark .text-primary-dark { color: var(--theme-primary-ink, #9BE45C); }
+.theme-dark .text-secondary, .theme-dark .text-secondary-dark { color: var(--theme-accent-ink, #62D0FF); }
+.theme-dark .text-warning, .theme-dark .text-gold { color: #FFDA66; }
+.theme-dark .text-danger, .theme-dark .text-danger-dark { color: #FF9298; }
+
+/* Filled actions choose their foreground from the equipped accent's luminance. */
+.btn-chunky-primary, .btn-chunky-primary .text-primary,
+.theme-dark .btn-chunky-primary, .bg-primary.text-white { color: var(--theme-on-primary, #132C36); }
+.btn-chunky-primary { box-shadow: 0 4px 0 0 var(--theme-primary-dark, #58A700); }
+.btn-chunky-secondary, .btn-chunky-secondary .text-secondary,
+.theme-dark .btn-chunky-secondary, .bg-secondary.text-white { color: var(--theme-on-accent, #132C36); }
+.btn-chunky-danger { color: #FFFFFF; background-color: #C52B32; }
+
+/* Low-height landscape and zoom must keep desktop navigation reachable. */
+.shell-sidebar > nav { overflow-y: auto; scrollbar-width: thin; }
+.shell-sidebar > nav > a { flex-shrink: 0; }
+
+.bg-warning.text-white {
+  color: #132C36;
+}
+
+.bg-danger.text-white { background-color: #C52B32; }
+
+.hover\:bg-primary-dark:hover { color: var(--theme-on-primary-dark, #132C36); }
+
+/* Grading states remain distinct after the dark base surface is applied. */
+.option-card-selected { color: var(--theme-accent-ink, #076B98); }
+.option-card-correct { border-color: #58CC02; background-color: #58CC0233; color: #2D6908; }
+.option-card-wrong { color: #C52B32; }
+.theme-dark .option-card-selected {
+  border-color: rgb(var(--theme-accent-rgb, 28 176 246));
+  background-color: color-mix(in srgb, rgb(var(--theme-accent-rgb, 28 176 246)) 14%, var(--app-card));
+  color: var(--theme-accent-ink, #62D0FF);
+}
+.theme-dark .option-card-correct {
+  border-color: #58CC02;
+  background-color: color-mix(in srgb, #58CC02 16%, var(--app-card));
+  color: #9BE45C;
+}
+.theme-dark .option-card-wrong {
+  border-color: #FF4B4B;
+  background-color: color-mix(in srgb, #FF4B4B 16%, var(--app-card));
+  color: #FF9298;
+}
+
+/* Currency keeps its identity when a cosmetic accent changes. */
+.text-gem, .text-gem-dark { color: #076B98; }
+.theme-dark .text-gem, .theme-dark .text-gem-dark { color: #62D0FF; }
+@media (min-width: 1024px) {
+  .theme-dark .lg\:bg-transparent { background-color: transparent !important; }
 }

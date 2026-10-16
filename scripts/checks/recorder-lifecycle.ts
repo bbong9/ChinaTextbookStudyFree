@@ -23,6 +23,17 @@ async function main(){
   resolve(pending.stream);
   assert.equal(await start,false,'Stop while permission is pending must cancel a late start');
   assert.equal(pending.stopped(),1,'Late streams must release their microphone tracks');
+  let requests=0;
+  let rejectOld!: (reason:Error)=>void;
+  const retry=load(()=>++requests===1 ? new Promise((_,reject)=>{rejectOld=reject;}) : Promise.resolve(retry.stream));
+  const oldStart=retry.rec.start();
+  await retry.rec.stop();
+  assert.equal(await retry.rec.start(),true);
+  rejectOld(new Error('Late denial'));
+  assert.equal(await oldStart,false);
+  assert.equal(retry.stopped(),0,'A cancelled request rejection must not stop the newer active microphone');
+  await retry.rec.stop();
+  assert.equal(retry.stopped(),1);
   const success=load(async()=>success.stream);
   assert.equal(await success.rec.start(),true);
   success.cleanup();

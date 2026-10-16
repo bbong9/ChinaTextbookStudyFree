@@ -193,7 +193,7 @@ function QuestRow({
             className="min-h-11 rounded-xl bg-primary/10 px-2 text-xs font-bold text-primary-dark"
             aria-label={`领取奖励 ${quest.reward} 宝石`}>领取</motion.button>
         ) : (
-          <span className="inline-flex items-center gap-1 text-xs font-bold text-secondary-dark tabular-nums whitespace-nowrap" aria-label={`奖励 ${quest.reward} 宝石`}>
+          <span className="inline-flex items-center gap-1 text-xs font-bold text-gem tabular-nums whitespace-nowrap" aria-label={`奖励 ${quest.reward} 宝石`}>
             <Gem className="w-3.5 h-3.5" />{quest.reward}
           </span>
         )}

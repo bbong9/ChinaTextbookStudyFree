@@ -72,12 +72,12 @@ export function ContinueLearningCard() {
               继续学习
             </div>
             <div className="mt-0.5 flex items-center gap-1.5 min-w-0">
-              <span className="text-base lg:text-2xl font-extrabold text-ink truncate">
+              <span className="text-base lg:text-2xl font-extrabold text-ink break-words">
                 上次的课程还没做完呢
               </span>
               <Sparkle className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-gold shrink-0" />
             </div>
-            <div className="text-xs lg:text-base text-ink-light mt-1 truncate">
+            <div className="text-xs lg:text-base text-ink-light mt-1 leading-relaxed">
               已答 {activeLesson.correctCount + activeLesson.mistakeCount} 题 · 连击 ×{activeLesson.combo}
             </div>
           </div>
@@ -91,18 +91,6 @@ export function ContinueLearningCard() {
           </motion.div>
         </div>
 
-        {/* 底部进度条占位（不显示具体百分比，仅视觉点缀） */}
-        <motion.div
-          className="mt-4 h-1.5 rounded-full bg-primary/15 overflow-hidden"
-          aria-hidden
-        >
-          <motion.div
-            className="h-full bg-primary rounded-full"
-            initial={{ width: "0%" }}
-            animate={{ width: "60%" }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          />
-        </motion.div>
       </Link>
     </motion.div>
   );
@@ -206,7 +194,7 @@ export function CurrentBookBadge({
         >
           {cur.glyph}
         </span>
-        <span className="text-xs font-extrabold text-ink truncate max-w-[150px]">
+        <span className="text-xs font-extrabold text-ink break-words max-w-[150px]">
           {book.subjectName ?? ""}
           {book.textbookName}
         </span>
@@ -246,7 +234,7 @@ export function CurrentBookBadge({
                   {s.glyph}
                 </span>
                 <span className="flex-1 min-w-0">
-                  <span className="block text-sm font-extrabold text-ink truncate">
+                  <span className="block text-sm font-extrabold text-ink break-words">
                     {b.subjectName ?? ""}
                     {b.textbookName}
                   </span>

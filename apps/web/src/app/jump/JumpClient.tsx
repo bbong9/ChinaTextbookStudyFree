@@ -257,7 +257,7 @@ export function JumpClient() {
             initial={{ scale: 0, y: 10, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
             transition={{ delay: 0.45, type: "spring", damping: 11 }}
-            className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-extrabold text-base text-white"
+            className="mt-5 inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-extrabold text-base text-[#132C36]"
             style={{
               background: "linear-gradient(135deg, #FFC800, #FF9600)",
               boxShadow: "0 5px 0 0 #C89600",
@@ -357,7 +357,7 @@ export function JumpClient() {
       {/* 跳级上下文胶囊 */}
       <div className="max-w-md lg:max-w-2xl mx-auto w-full px-5 pt-4 flex items-center gap-2 flex-wrap">
         <span
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white text-[11px] font-extrabold"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[#132C36] text-xs font-extrabold"
           style={{
             background: "linear-gradient(135deg, #FFC800, #FF9600)",
             boxShadow: "0 2px 0 0 #C89600",

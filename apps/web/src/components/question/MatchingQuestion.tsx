@@ -166,7 +166,7 @@ export function MatchingQuestion({
         <TTSButton src={question.audio?.question} className="mt-1" label="朗读题目" />
       </div>
 
-      <p className="text-sm text-ink-light mb-4">先选左侧，再选右侧，找到意思相同的一对。</p>
+      <p className="text-sm text-ink-light mb-4">先选左侧，再选右侧，找到对应的一对。</p>
       <div className="grid grid-cols-2 gap-3">
         {/* 左列 */}
         <div className="flex flex-col gap-2">
@@ -181,6 +181,7 @@ export function MatchingQuestion({
                 {!gone && (
                   <motion.button
                     type="button"
+                    aria-pressed={active}
                     disabled={disabled || isVanishing}
                     onClick={() => pickLeft(k)}
                     exit={{ scale: 0.6, opacity: 0, transition: { duration: 0.25 } }}

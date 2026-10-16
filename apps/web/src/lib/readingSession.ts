@@ -55,3 +55,11 @@ export async function followPassage(sentences: readonly Sentence[], io: Playback
   }
   return io.cancelled() ? 'cancelled' : 'completed';
 }
+
+/** Bind recorder callbacks to the playback run that owns them. */
+export function recordingForSession(recorder: { start: () => Promise<boolean>; stop: () => Promise<string | null> }, isCurrent: () => boolean) {
+  return {
+    start: () => isCurrent() ? recorder.start() : Promise.resolve(false),
+    stop: () => isCurrent() ? recorder.stop() : Promise.resolve(null),
+  };
+}

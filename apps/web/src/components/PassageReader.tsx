@@ -20,7 +20,7 @@ import { Volume, Lightning } from "@/components/icons";
 import { MuteToggle, useSyncMute } from "@/components/MuteToggle";
 import { InnerHeader } from "@/components/InnerHeader";
 import { playTTSResult, preloadTTS, stopTTS } from "@/lib/tts";
-import { listenToPassage, followPassage, type ReadingResult } from "@/lib/readingSession";
+import { listenToPassage, followPassage, recordingForSession, type ReadingResult } from "@/lib/readingSession";
 import { useRecorder } from "@/lib/useRecorder";
 import { useProgressStore } from "@/store/progress";
 import { playSfx } from "@/lib/sfx";
@@ -166,9 +166,10 @@ export function PassageReader({ passage, backHref }: Props) {
     recordings.forEach(url => { if (url) URL.revokeObjectURL(url); });
     setRecordings(passage.sentences.map(() => null));
     setPlaybackError(null);
+    const recording = recordingForSession(rec, () => generation === playbackGenerationRef.current);
     const result = await followPassage(passage.sentences, {
       play: playTTSResult, cancelled: () => abortRef.current || generation !== playbackGenerationRef.current, onSentence: setCurrentIndex, wait: sleep,
-      startRecording: rec.start, stopRecording: rec.stop,
+      startRecording: recording.start, stopRecording: recording.stop,
       onRecording: (index, url) => setRecordings(previous => {
         const next = [...previous]; next[index] = url; return next;
       }),
@@ -186,14 +187,26 @@ export function PassageReader({ passage, backHref }: Props) {
     if (result === "recording-unavailable") setPlaybackError("录音未完成，请检查麦克风权限后重试。本次未记录完成。");
   }
 
-  const playMyRecording = useCallback((idx: number) => {
+  const playMyRecording = useCallback(async (idx: number) => {
     const url = recordings[idx];
     if (!url) return;
-    const a = new Audio(url);
-    void a.play();
+    const generation = ++playbackGenerationRef.current;
+    stopTTS();
+    setPlaybackError(null);
+    setMode("playing");
+    setCurrentIndex(idx);
+    const result = await playTTSResult(url);
+    if (generation !== playbackGenerationRef.current) return;
+    if (result !== "ended") showPlaybackError("audio-unavailable");
+    setMode("idle");
+    setCurrentIndex(null);
   }, [recordings]);
 
   const resetRecordings = useCallback(() => {
+    playbackGenerationRef.current++;
+    stopTTS();
+    setMode("idle");
+    setCurrentIndex(null);
     recordings.forEach(u => {
       if (u) URL.revokeObjectURL(u);
     });
@@ -263,7 +276,7 @@ export function PassageReader({ passage, backHref }: Props) {
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[10px] px-2 py-0.5 rounded-full">
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/75 text-white text-xs px-2 py-0.5 rounded-full">
                   {pageIdx + 1} / {pageImages.length}
                 </div>
               </>
@@ -300,7 +313,7 @@ export function PassageReader({ passage, backHref }: Props) {
                 {!isPoem && (
                   <button
                     type="button"
-                    aria-label="朗读这一句"
+                    aria-label={`朗读第 ${i + 1} 句`}
                     onClick={() => playSingle(i)}
                     disabled={!s.audio || mode !== "idle"}
                     className={cn(
@@ -314,7 +327,7 @@ export function PassageReader({ passage, backHref }: Props) {
                 )}
                 <span
                   className={cn(
-                    "text-lg leading-[2] text-ink",
+                    "min-w-0 break-words text-lg leading-[2] text-ink",
                     isPoem && "text-center",
                     active && "font-bold text-primary",
                   )}
@@ -340,7 +353,7 @@ export function PassageReader({ passage, backHref }: Props) {
                 <button
                   type="button"
                   onClick={resetRecordings}
-                  className="inline-flex items-center gap-1 text-xs text-ink-light hover:text-danger"
+                  className="min-h-11 min-w-11 inline-flex items-center justify-center gap-1 text-sm text-ink-light hover:text-danger"
                 >
                   <RotateCcw className="w-3 h-3" />
                   清空
@@ -357,12 +370,12 @@ export function PassageReader({ passage, backHref }: Props) {
                       <span className="shrink-0 w-5 text-ink-light tabular-nums">
                         {i + 1}.
                       </span>
-                      <span className="flex-1 truncate">{s.text}</span>
+                      <span className="flex-1 min-w-0 break-words leading-relaxed">{s.text}</span>
                       <button
                         type="button"
                         onClick={() => playSingle(i)}
                         disabled={!s.audio}
-                        className="shrink-0 text-xs px-2 py-1 rounded-full bg-bg-soft text-primary disabled:opacity-40"
+                        className="shrink-0 min-h-11 min-w-11 inline-flex items-center justify-center text-xs px-2 py-1 rounded-xl bg-bg-soft text-primary disabled:opacity-40"
                       >
                         原音
                       </button>
@@ -370,7 +383,7 @@ export function PassageReader({ passage, backHref }: Props) {
                         type="button"
                         onClick={() => playMyRecording(i)}
                         disabled={!myUrl}
-                        className="shrink-0 text-xs px-2 py-1 rounded-full bg-secondary/15 text-secondary disabled:opacity-40"
+                        className="shrink-0 min-h-11 min-w-11 inline-flex items-center justify-center text-xs px-2 py-1 rounded-xl bg-secondary/15 text-secondary disabled:opacity-40"
                       >
                         我的
                       </button>

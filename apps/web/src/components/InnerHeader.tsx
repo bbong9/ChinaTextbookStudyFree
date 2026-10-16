@@ -67,7 +67,7 @@ export function InnerHeader({
             {badge}
             <h1
               className={cn(
-                "text-sm lg:text-base font-extrabold text-ink break-words min-w-0",
+                "text-base lg:text-lg font-extrabold text-ink break-words min-w-0",
                 flatOnDesktop && "lg:text-2xl",
               )}
             >
@@ -77,7 +77,7 @@ export function InnerHeader({
           {subtitle && (
             <div
               className={cn(
-                "text-[10px] lg:text-[11px] text-ink-light mt-1 leading-relaxed",
+                "text-xs lg:text-sm text-ink-light mt-1 leading-relaxed",
                 flatOnDesktop && "lg:text-sm lg:mt-1.5",
               )}
             >

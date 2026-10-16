@@ -38,7 +38,6 @@ import { Mascot } from "@/components/Mascot";
 import {
   Gem,
   Check,
-  Lock,
   Panda,
   Palette,
   Picture,
@@ -46,8 +45,10 @@ import {
   Heart,
 } from "@/components/icons";
 import { GemBadge } from "@/components/GemBadge";
+import { SoundLink } from "@/components/SoundLink";
 import { AppShell } from "@/components/layout/AppShell";
 import { playSfx } from "@/lib/sfx";
+import { useThemeMode, useSystemPrefersDark } from "@/lib/themeMode";
 import { haptic } from "@/lib/haptic";
 
 type Tab = "mascot_skin" | "ui_theme" | "lesson_backdrop";
@@ -324,7 +325,7 @@ function PowerUpCard({
         </div>
       </div>
       {disabled ? (
-        <div className="mt-3 w-full inline-flex items-center justify-center gap-1.5 rounded-2xl py-2 font-extrabold text-sm bg-bg-softer text-ink-softer cursor-not-allowed">
+        <div className="mt-3 w-full inline-flex items-center justify-center gap-1.5 rounded-2xl min-h-11 py-2 font-extrabold text-sm bg-bg-softer text-ink-light cursor-not-allowed">
           <Check className="w-4 h-4" strokeWidth={3} />
           <span>{disabledLabel}</span>
         </div>
@@ -333,8 +334,8 @@ function PowerUpCard({
           type="button"
           onClick={onBuy}
           disabled={!canAfford}
-          className={`mt-3 w-full inline-flex items-center justify-center gap-1.5 rounded-2xl py-2 font-extrabold text-sm transition-colors ${
-            canAfford ? "text-white" : "bg-bg-softer text-ink-softer cursor-not-allowed"
+          className={`mt-3 w-full inline-flex items-center justify-center gap-1.5 rounded-2xl min-h-11 py-2 font-extrabold text-sm transition-colors ${
+            canAfford ? "text-[#132C36]" : "bg-bg-softer text-ink-softer cursor-not-allowed"
           }`}
           style={
             canAfford
@@ -402,7 +403,7 @@ function PreviewPane({
         {/* 状态 / 行动按钮 */}
         <div className="mt-4">
           {equipped ? (
-            <div className="btn-chunky bg-bg-softer text-ink-light cursor-default w-full">
+            <div className="min-h-[50px] inline-flex items-center justify-center rounded-2xl bg-bg-softer text-ink-light font-bold w-full">
               <Check className="w-4 h-4 mr-1.5" strokeWidth={3} />
               已装备
             </div>
@@ -419,7 +420,7 @@ function PreviewPane({
             <button
               type="button"
               onClick={onTryEquip}
-              className="btn-chunky w-full text-white"
+              className="btn-chunky-secondary w-full"
               style={{
                 background: "linear-gradient(135deg, #1CB0F6, #1899D6)",
                 boxShadow: "0 5px 0 0 #0d7aa8",
@@ -430,10 +431,9 @@ function PreviewPane({
               <span className="ml-1.5">解锁</span>
             </button>
           ) : (
-            <div className="btn-chunky bg-bg-softer text-ink-softer cursor-not-allowed w-full">
-              <Lock className="w-4 h-4 mr-1.5" />
-              <span className="tabular-nums">{item.cost}</span>
-              <span className="ml-1.5">还差 {item.cost - gems}</span>
+            <div role="status" className="rounded-2xl border border-bg-softer bg-bg-soft p-3 text-center">
+              <p className="text-sm text-ink-light">还差 <span className="font-bold tabular-nums">{item.cost - gems}</span> 颗宝石</p>
+              <SoundLink href="/" className="mt-2 min-h-11 flex items-center justify-center rounded-xl text-sm font-bold text-gem hover:bg-bg-softer">去学习赚宝石</SoundLink>
             </div>
           )}
         </div>
@@ -446,6 +446,8 @@ function PreviewPane({
 // 预览舞台 —— 根据道具类型渲染不同的全屏式预览
 // ============================================================
 function PreviewStage({ item }: { item: CosmeticItem }) {
+  const mode = useThemeMode();
+  const systemDark = useSystemPrefersDark();
   if (item.type === "mascot_skin") {
     return (
       <div
@@ -469,20 +471,23 @@ function PreviewStage({ item }: { item: CosmeticItem }) {
   if (item.type === "ui_theme") {
     const theme = item as UiTheme;
     const t = theme.data;
+    const dark = !!t.isDark || mode === "dark" || (mode === "system" && systemDark);
+    const surface = dark ? (t.isDark ? t.cardBg : "#202F36") : "#FFFFFF";
+    const border = dark ? (t.isDark ? t.borderSoft : "#37464F") : "#E5E5E5";
     return (
       <div
         className="relative h-64 px-5 py-5 flex flex-col gap-3"
-        style={{ background: t.bg }}
+        style={{ background: dark ? (t.isDark ? t.bg : "#131F24") : t.bg, color: dark ? "#CBD5E1" : "#4B4B4B" }}
       >
         {/* 模拟一个题区卡片 */}
-        <div className="bg-white rounded-2xl border-2 border-bg-softer p-3 flex items-center gap-2 shadow-sm">
+        <div className="rounded-2xl border-2 p-3 flex items-center gap-2 shadow-sm" style={{ background: surface, borderColor: border }}>
           <div
             className="w-8 h-8 rounded-full"
             style={{ background: t.primary }}
           />
           <div className="flex-1">
-            <div className="h-2.5 rounded-full bg-bg-softer w-3/4 mb-1.5" />
-            <div className="h-2 rounded-full bg-bg-softer w-1/2" />
+            <div className="h-2.5 rounded-full w-3/4 mb-1.5" style={{ background: border }} />
+            <div className="h-2 rounded-full w-1/2" style={{ background: border }} />
           </div>
         </div>
         {/* 模拟一个 chunky 主按钮 */}
@@ -490,6 +495,7 @@ function PreviewStage({ item }: { item: CosmeticItem }) {
           className="rounded-2xl py-3 text-center text-white font-extrabold text-sm"
           style={{
             background: t.primary,
+            color: "#071317",
             boxShadow: `0 4px 0 0 ${t.primaryDark}`,
           }}
         >
@@ -590,7 +596,7 @@ function ColorChip({ color, label }: { color: string; label: string }) {
         className="w-9 h-9 rounded-xl border-2 border-white"
         style={{ background: color, boxShadow: "0 2px 6px rgba(0,0,0,0.12)" }}
       />
-      <div className="text-[9px] text-ink-softer font-extrabold uppercase tracking-wider">
+      <div className="text-xs font-medium">
         {label}
       </div>
     </div>
@@ -625,8 +631,8 @@ function ItemCard({
       aria-pressed={selected}
       className="min-w-0 relative bg-white rounded-2xl border overflow-hidden text-left flex flex-col"
       style={{
-        borderColor: selected ? "#58CC02" : "var(--app-border, #E5E5E5)",
-        boxShadow: selected ? "0 0 0 1px #58CC02" : "0 2px 5px rgba(0,0,0,.025)",
+        borderColor: selected ? "var(--theme-primary, #58CC02)" : "var(--app-border, #E5E5E5)",
+        boxShadow: selected ? "0 0 0 1px var(--theme-primary, #58CC02)" : "0 2px 5px rgba(0,0,0,.025)",
       }}
     >
       {/* 缩略预览 */}
@@ -656,7 +662,7 @@ function ItemCard({
             <span
               className="inline-flex items-center gap-1 text-xs font-semibold tabular-nums text-ink-light"
             >
-              <Gem className="w-3.5 h-3.5 text-secondary-dark" />
+              <Gem className="w-3.5 h-3.5 text-gem" />
               {item.cost}
             </span>
           )}
@@ -688,6 +694,7 @@ function ItemThumb({ item }: { item: CosmeticItem }) {
           className="rounded-md h-6 mt-auto"
           style={{
             background: t.primary,
+            color: "#071317",
             boxShadow: `0 2px 0 0 ${t.primaryDark}`,
           }}
         />

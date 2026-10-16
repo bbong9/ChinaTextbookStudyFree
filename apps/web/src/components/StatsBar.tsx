@@ -190,7 +190,7 @@ export function StatsBar({ compact = false, placement = "page" }: StatsBarProps 
                 disabled={gems < HEART_REFILL_COST}
                 className={`w-full mt-4 inline-flex items-center justify-center gap-1.5 rounded-2xl py-2.5 font-extrabold text-sm transition-colors ${
                   gems >= HEART_REFILL_COST
-                    ? "text-white"
+                    ? "text-[#132C36]"
                     : "bg-bg-softer text-ink-softer cursor-not-allowed"
                 }`}
                 style={
@@ -369,7 +369,7 @@ function StreakModal({
                   {WEEK_LABELS[i]}
                 </div>
                 <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center border-2 ${
+                  className={`w-full max-w-9 aspect-square rounded-xl flex items-center justify-center border-2 ${
                     learned
                       ? "bg-fox/15 border-fox text-fox"
                       : isToday
@@ -421,7 +421,7 @@ function StreakModal({
               type="button"
               onClick={handleBuyFreeze}
               disabled={gems < FREEZE_COST}
-              className={`w-full mt-2.5 inline-flex items-center justify-center gap-1.5 rounded-2xl py-2 font-extrabold text-sm transition-colors ${
+              className={`w-full mt-2.5 inline-flex items-center justify-center gap-1.5 rounded-2xl min-h-11 py-2 font-extrabold text-sm transition-colors ${
                 gems >= FREEZE_COST
                   ? "text-white bg-secondary"
                   : "bg-bg-softer text-ink-softer cursor-not-allowed"
@@ -448,9 +448,9 @@ function StreakModal({
               type="button"
               onClick={handleMakeup}
               disabled={gems < STREAK_MAKEUP_COST}
-              className={`w-full mt-2.5 inline-flex items-center justify-center gap-1.5 rounded-2xl py-2 font-extrabold text-sm transition-colors ${
+              className={`w-full mt-2.5 inline-flex items-center justify-center gap-1.5 rounded-2xl min-h-11 py-2 font-extrabold text-sm transition-colors ${
                 gems >= STREAK_MAKEUP_COST
-                  ? "text-white bg-fox"
+                  ? "text-[#132C36] bg-fox"
                   : "bg-bg-softer text-ink-softer cursor-not-allowed"
               }`}
               style={gems >= STREAK_MAKEUP_COST ? { boxShadow: "0 3px 0 0 #C87500" } : undefined}

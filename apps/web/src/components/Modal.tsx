@@ -58,6 +58,11 @@ export function Modal({ open, onClose, children, dismissible = true, ariaLabel }
     restoreFocusRef.current = document.activeElement as HTMLElement | null;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // Keep background links and controls out of keyboard and accessibility navigation.
+    const background = Array.from(document.body.children)
+      .filter((element): element is HTMLElement => element instanceof HTMLElement && !element.contains(dialogRef.current))
+      .map(element => ({ element, inert: element.inert }));
+    background.forEach(({ element }) => { element.inert = true; });
 
     // 下一帧聚焦第一个可聚焦元素
     const raf = requestAnimationFrame(() => {
@@ -88,7 +93,7 @@ export function Modal({ open, onClose, children, dismissible = true, ariaLabel }
           last.focus();
         }
       } else {
-        if (active === last) {
+        if (active === last || active === root || !root.contains(active)) {
           e.preventDefault();
           first.focus();
         }
@@ -100,6 +105,7 @@ export function Modal({ open, onClose, children, dismissible = true, ariaLabel }
       cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = prevOverflow;
+      background.forEach(({ element, inert }) => { element.inert = inert; });
       restoreFocusRef.current?.focus?.();
     };
   }, [open, portalReady]);

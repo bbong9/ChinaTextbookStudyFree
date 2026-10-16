@@ -2572,9 +2572,9 @@ function IntroCard({
       <div className="bg-white border-t-2 border-bg-softer" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         {narration.locked && (narration.muted || narration.status === "error") && <div className="max-w-md lg:max-w-2xl mx-auto px-5 pt-3 text-center text-sm text-ink-light" role="status">
           {narration.locked && narration.muted ? (
-            <><span>当前已静音，可以阅读后继续。</span><button type="button" onClick={narration.continueWithoutAudio} className="ml-3 font-bold text-secondary-dark underline">阅读后继续</button></>
+            <><span>当前已静音，可以阅读后继续。</span><button type="button" onClick={narration.continueWithoutAudio} className="ml-3 min-h-11 inline-flex items-center font-bold text-secondary-dark underline">阅读后继续</button></>
           ) : narration.locked && narration.status === "error" ? (
-            <><span>语音暂时无法播放。</span><button type="button" onClick={narration.start} className="ml-3 font-bold text-secondary-dark underline">重新播放</button><button type="button" onClick={narration.continueWithoutAudio} className="ml-3 font-bold text-ink-light underline">阅读后继续</button></>
+            <><span>语音暂时无法播放。</span><button type="button" onClick={narration.start} className="ml-3 min-h-11 inline-flex items-center font-bold text-secondary-dark underline">重新播放</button><button type="button" onClick={narration.continueWithoutAudio} className="ml-3 min-h-11 inline-flex items-center font-bold text-ink-light underline">阅读后继续</button></>
           ) : null}
         </div>}
         <div className="max-w-md lg:max-w-2xl mx-auto px-5 py-4 flex items-center gap-3">

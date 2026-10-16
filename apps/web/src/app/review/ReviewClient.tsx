@@ -42,7 +42,7 @@ const BOX_LABELS: Record<number, { label: string; color: string }> = {
 };
 
 const GRADUATED_LABEL = {
-  label: "已掌握 🎓",
+  label: "已掌握",
   color: "text-secondary-dark bg-secondary/10 border-secondary/30",
 };
 
@@ -70,7 +70,7 @@ export function ReviewClient() {
   // 按 lessonId 分组
   const grouped = sortedMistakes.reduce<Record<string, { title: string; items: typeof mistakes }>>((acc, m) => {
     const key = m.lessonId;
-    if (!acc[key]) acc[key] = { title: m.lessonTitle || m.lessonId, items: [] };
+    if (!acc[key]) acc[key] = { title: m.lessonTitle || "学习练习", items: [] };
     acc[key].items.push(m);
     return acc;
   }, {});
@@ -85,7 +85,7 @@ export function ReviewClient() {
     <AppShell centerMaxWidth={840}>
     <main className="min-h-screen bg-bg-soft lg:bg-transparent relative">
       {/* Header —— 仅移动端：白底 sticky（lg+ HUD 由右栏 RightRail 常驻，不再重复） */}
-      <div className="shell-page-toolbar bg-white border-b border-bg-softer sticky top-0 z-10">
+      <div className="shell-page-toolbar bg-white border-b border-bg-softer">
         <div className="max-w-2xl lg:max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
           <SoundLink
             href="/"
@@ -104,7 +104,7 @@ export function ReviewClient() {
         </div>
       </div>
 
-      <div className="max-w-2xl lg:max-w-4xl mx-auto px-4 py-6">
+      <div className="max-w-2xl lg:max-w-4xl mx-auto px-4 pt-6 pb-28">
         <h1 className="hidden lg:block text-3xl font-extrabold text-ink mb-6">错题本</h1>
         {hydrated && totalMistakes > 0 && (
           <SrsSummary
@@ -165,7 +165,7 @@ export function ReviewClient() {
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", damping: 20, stiffness: 240, delay: 0.2 }}
-          className="fixed bottom-20 lg:bottom-6 left-0 right-0 z-20 px-5 pointer-events-none"
+          className="fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] md:bottom-6 left-0 right-0 z-20 px-5 pointer-events-none"
         >
           <div className="max-w-2xl lg:max-w-4xl mx-auto flex justify-center">
             <SoundLink
@@ -223,7 +223,7 @@ function SrsSummary({
         <SrsBucket label="今天" count={todayCount} color="text-danger" bg="bg-danger/10" />
         <SrsBucket label="明天" count={tomorrowCount} color="text-warning" bg="bg-warning/15" />
         <SrsBucket label="之后" count={laterCount} color="text-secondary" bg="bg-secondary/10" />
-        <SrsBucket label="已掌握 🎓" count={graduatedCount} color="text-primary" bg="bg-primary/10" />
+        <SrsBucket label="已掌握" count={graduatedCount} color="text-primary" bg="bg-primary/10" />
       </div>
     </motion.section>
   );
@@ -243,7 +243,7 @@ function SrsBucket({
   return (
     <div className={`rounded-xl ${bg} p-2 text-center`}>
       <div className={`text-xl font-extrabold tabular-nums leading-none ${color}`}>{count}</div>
-      <div className="text-[10px] uppercase tracking-wider text-ink-softer font-extrabold mt-1">
+      <div className="text-xs text-ink-light font-extrabold mt-1">
         {label}
       </div>
     </div>
