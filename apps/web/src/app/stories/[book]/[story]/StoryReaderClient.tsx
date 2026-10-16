@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 import { readingId } from "@cstf/core/reading";
 import { Volume, Check, XMark, Star, Lightning } from "@/components/icons";
+import { MuteToggle, useSyncMute } from "@/components/MuteToggle";
 import { InnerHeader } from "@/components/InnerHeader";
 import { QuestionRenderer, type QuestionPhase } from "@/components/question/QuestionRenderer";
 import { playTTS, stopTTS } from "@/lib/tts";
@@ -44,6 +45,7 @@ interface Props {
 }
 
 export default function StoryReaderClient({ story, backHref }: Props) {
+  useSyncMute();
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("reading");
   const [mode, setMode] = useState<PlayMode>("idle");
@@ -149,16 +151,16 @@ export default function StoryReaderClient({ story, backHref }: Props) {
   const stars = accuracy >= 0.95 ? 3 : accuracy >= 0.75 ? 2 : 1;
 
   return (
-    <main className="min-h-screen bg-bg-soft pb-24">
+    <main className="min-h-screen bg-bg-soft" style={{ paddingBottom: "calc(6rem + env(safe-area-inset-bottom))" }}>
       <InnerHeader
         backHref={backHref}
         title={story.title}
         subtitle={`第${story.unitNumber}单元 · ${story.unitTitle}`}
-        right={phase === "quiz" ? (
+        right={<div className="flex items-center gap-2"><MuteToggle />{phase === "quiz" ? (
           <span className="text-xs font-bold text-primary tabular-nums">
             {qIdx + 1}/{story.questions.length}
           </span>
-        ) : undefined}
+        ) : null}</div>}
         bottom={phase === "quiz" ? (
           <div className="h-1 bg-bg-softer">
             <motion.div
@@ -218,7 +220,7 @@ export default function StoryReaderClient({ story, backHref }: Props) {
                           onClick={() => playSingle(i)}
                           disabled={!s.audio || mode !== "idle"}
                           className={cn(
-                            "shrink-0 w-7 h-7 inline-flex items-center justify-center rounded-full",
+                            "shrink-0 w-11 h-11 inline-flex items-center justify-center rounded-full",
                             "bg-bg-soft text-primary hover:bg-primary/10 transition-colors",
                             (!s.audio || mode !== "idle") && "opacity-40 cursor-not-allowed",
                           )}
@@ -268,14 +270,14 @@ export default function StoryReaderClient({ story, backHref }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 className={cn(
                   "rounded-2xl p-4 mb-4",
-                  isCorrect ? "bg-success/10 border border-success/30" : "bg-danger/10 border border-danger/30",
+                  isCorrect ? "bg-primary/10 border border-primary/30" : "bg-danger/10 border border-danger/30",
                 )}
               >
                 <div className="flex items-center gap-2 mb-1">
                   {isCorrect ? (
                     <>
-                      <Check className="w-5 h-5 text-success" />
-                      <span className="font-extrabold text-success">答对了!</span>
+                      <Check className="w-5 h-5 text-primary-dark" />
+                      <span className="font-extrabold text-primary-dark">答对了!</span>
                     </>
                   ) : (
                     <>
@@ -384,7 +386,7 @@ export default function StoryReaderClient({ story, backHref }: Props) {
 
       {/* 底部操作栏 — 仅阅读阶段 */}
       {phase === "reading" && (
-        <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-bg-softer shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
+        <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-bg-softer shadow-[0_-4px_12px_rgba(0,0,0,0.04)]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
           <div className="max-w-md lg:max-w-6xl mx-auto px-4 py-3 flex gap-3">
             <motion.button
               type="button"

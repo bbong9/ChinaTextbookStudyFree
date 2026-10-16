@@ -160,12 +160,13 @@ export function MatchingQuestion({
   return (
     <div className="w-full">
       <div className="flex items-start gap-3 mb-6">
-        <div className="text-xl font-bold text-ink leading-relaxed whitespace-pre-wrap flex-1">
+        <div className="text-xl font-bold text-ink leading-relaxed whitespace-pre-wrap flex-1 min-w-0">
           <MathText text={question.question} />
         </div>
         <TTSButton src={question.audio?.question} className="mt-1" label="朗读题目" />
       </div>
 
+      <p className="text-sm text-ink-light mb-4">先选左侧，再选右侧，找到意思相同的一对。</p>
       <div className="grid grid-cols-2 gap-3">
         {/* 左列 */}
         <div className="flex flex-col gap-2">
@@ -186,7 +187,7 @@ export function MatchingQuestion({
                     animate={isWrong ? shakeAnim : { x: 0 }}
                     whileTap={!disabled ? { scale: 0.98 } : undefined}
                     className={cn(
-                      "option-card text-left flex items-center gap-2 relative",
+                      "option-card matching-option min-w-0 text-left flex items-center gap-2 relative",
                       isVanishing
                         ? "option-card-correct"
                         : isWrong
@@ -199,9 +200,9 @@ export function MatchingQuestion({
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-current text-xs shrink-0">
                       {k}
                     </span>
-                    <span className="flex-1">{txt}</span>
+                    <span className="flex-1 min-w-0 break-words">{txt}</span>
                     {/* 桌面端键盘角标 1-4 */}
-                    <span className="w-5 h-5 rounded border-2 border-bg-softer hidden [@media(pointer:fine)]:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
+                    <span className="w-5 h-5 rounded border-2 border-bg-softer hidden lg:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
                       {i + 1}
                     </span>
                   </motion.button>
@@ -230,7 +231,7 @@ export function MatchingQuestion({
                     animate={isWrong ? shakeAnim : { x: 0 }}
                     whileTap={clickable ? { scale: 0.98 } : undefined}
                     className={cn(
-                      "option-card text-left flex items-center gap-2 relative",
+                      "option-card matching-option min-w-0 text-left flex items-center gap-2 relative",
                       isVanishing
                         ? "option-card-correct"
                         : isWrong
@@ -243,9 +244,9 @@ export function MatchingQuestion({
                     <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-current text-xs shrink-0">
                       {k}
                     </span>
-                    <span className="flex-1">{txt}</span>
+                    <span className="flex-1 min-w-0 break-words">{txt}</span>
                     {/* 桌面端键盘角标 5-8 */}
-                    <span className="w-5 h-5 rounded border-2 border-bg-softer hidden [@media(pointer:fine)]:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
+                    <span className="w-5 h-5 rounded border-2 border-bg-softer hidden lg:flex items-center justify-center font-extrabold text-ink-softer text-[10px] tabular-nums shrink-0">
                       {i + 5}
                     </span>
                   </motion.button>

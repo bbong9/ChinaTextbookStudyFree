@@ -66,7 +66,7 @@ export function ProfileClient() {
           <SoundLink
             href="/"
             aria-label="返回"
-            className="inline-flex items-center justify-center w-10 h-10 rounded-full text-ink-light hover:text-primary hover:bg-bg-soft transition-colors shrink-0 lg:hidden"
+            className="inline-flex items-center justify-center w-11 h-11 rounded-full text-ink-light hover:text-primary hover:bg-bg-soft transition-colors shrink-0 lg:hidden"
           >
             <ArrowLeft className="w-5 h-5" />
           </SoundLink>
@@ -98,7 +98,7 @@ export function ProfileClient() {
           </motion.div>
           <div className="flex-1">
             <div className="text-sm text-ink-light">欢迎回来</div>
-            <div className="text-2xl font-extrabold text-ink">聪明的同学</div>
+            <h1 className="text-2xl font-extrabold text-ink">聪明的同学</h1>
             <div className="text-sm text-ink-light mt-1">
               {hydrated && streak > 0 ? `已连续学习 ${streak} 天` : "开始你的学习之旅"}
             </div>
@@ -245,7 +245,8 @@ export function ProfileClient() {
                   key={opt.min}
                   type="button"
                   onClick={() => pickLimit(opt.min)}
-                  className={`h-9 px-4 inline-flex items-center rounded-2xl text-sm font-extrabold border-2 transition-colors ${
+                  aria-pressed={active}
+                  className={`min-h-11 px-4 inline-flex items-center rounded-2xl text-sm font-extrabold border-2 transition-colors ${
                     active
                       ? "bg-primary text-white border-primary"
                       : "bg-white text-ink-light border-bg-softer hover:border-primary/40"
@@ -374,7 +375,7 @@ function BackupSection() {
         <button
           type="button"
           onClick={handleExport}
-          className="h-10 px-4 inline-flex items-center gap-1.5 rounded-2xl text-sm font-extrabold border-2 bg-primary text-white border-primary"
+          className="min-h-11 px-4 inline-flex items-center gap-1.5 rounded-2xl text-sm font-extrabold border-2 bg-primary text-white border-primary"
           style={{ boxShadow: "0 3px 0 0 #58A700" }}
         >
           📤 导出存档
@@ -386,7 +387,7 @@ function BackupSection() {
             haptic("light");
             fileInputRef.current?.click();
           }}
-          className="h-10 px-4 inline-flex items-center gap-1.5 rounded-2xl text-sm font-extrabold border-2 bg-white text-ink-light border-bg-softer hover:border-primary/40 transition-colors"
+          className="min-h-11 px-4 inline-flex items-center gap-1.5 rounded-2xl text-sm font-extrabold border-2 bg-white text-ink-light border-bg-softer hover:border-primary/40 transition-colors"
           style={{ boxShadow: "0 2px 0 0 var(--shadow-card-color)" }}
         >
           📥 导入存档

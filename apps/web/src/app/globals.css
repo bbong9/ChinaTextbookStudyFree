@@ -55,6 +55,7 @@
 
 .path-disc { width: 72px; height: 72px; }
 .path-label { overflow-wrap: anywhere; }
+.option-card.matching-option { padding: 12px; }
 
 
 :root {

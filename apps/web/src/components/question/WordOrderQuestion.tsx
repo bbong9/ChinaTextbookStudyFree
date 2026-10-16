@@ -86,7 +86,7 @@ export function WordOrderQuestion({
   return (
     <div className="w-full">
       <div className="flex items-start gap-3 mb-6">
-        <div className="text-xl font-bold text-ink leading-relaxed whitespace-pre-wrap flex-1">
+        <div className="text-xl font-bold text-ink leading-relaxed whitespace-pre-wrap flex-1 min-w-0">
           <MathText text={question.question} />
         </div>
         <TTSButton src={question.audio?.question} className="mt-1" label="朗读题目" />
@@ -126,7 +126,7 @@ export function WordOrderQuestion({
               whileTap={!disabled ? { scale: 0.98 } : undefined}
               onClick={() => unpick(i)}
               disabled={disabled}
-              className="h-10 px-4 inline-flex items-center rounded-xl bg-secondary text-white font-extrabold text-base"
+              className="min-h-11 min-w-11 px-4 inline-flex items-center rounded-xl bg-secondary text-white font-extrabold text-base"
               style={{ boxShadow: "0 3px 0 0 #1899d6" }}
             >
               {options[i]}
@@ -145,7 +145,7 @@ export function WordOrderQuestion({
             whileTap={!disabled ? { scale: 0.98 } : undefined}
             onClick={() => pick(i)}
             disabled={disabled}
-            className="h-10 px-4 inline-flex items-center rounded-xl bg-white border-2 border-bg-softer text-ink font-extrabold text-base hover:border-secondary transition-colors"
+            className="min-h-11 min-w-11 px-4 inline-flex items-center rounded-xl bg-white border-2 border-bg-softer text-ink font-extrabold text-base hover:border-secondary transition-colors"
             style={{ boxShadow: "0 3px 0 0 var(--shadow-card-color)" }}
           >
             {options[i]}

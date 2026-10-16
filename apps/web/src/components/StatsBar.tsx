@@ -146,7 +146,7 @@ export function StatsBar({ compact = false, placement = "page" }: StatsBarProps 
       </div>
 
       {/* 红心详情弹窗 */}
-      <Modal open={showHearts} onClose={() => setShowHearts(false)}>
+      <Modal ariaLabel="红心详情" open={showHearts} onClose={() => setShowHearts(false)}>
         <div className="flex flex-col items-center text-center">
           <Mascot mood={heartsFull ? "happy" : "think"} size={88} />
           <h2 className="text-2xl font-extrabold text-ink mt-3">红心</h2>
@@ -340,7 +340,7 @@ function StreakModal({
   }
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal ariaLabel="连胜详情" open={open} onClose={onClose}>
       <div className="flex flex-col items-center text-center">
         <Mascot mood={streakDisplay > 0 ? "cheer" : "think"} size={88} />
         <h2 className="text-2xl font-extrabold text-ink mt-3">连胜</h2>

@@ -86,25 +86,26 @@ export function ReviewClient() {
     <main className="min-h-screen bg-bg-soft lg:bg-transparent relative">
       {/* Header —— 仅移动端：白底 sticky（lg+ HUD 由右栏 RightRail 常驻，不再重复） */}
       <div className="shell-page-toolbar bg-white border-b border-bg-softer sticky top-0 z-10">
-        <div className="max-w-2xl lg:max-w-4xl mx-auto flex items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
+        <div className="max-w-2xl lg:max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-0 lg:py-2">
           <SoundLink
             href="/"
             aria-label="返回"
-            className="inline-flex items-center justify-center w-10 h-10 rounded-full text-ink-light hover:text-primary hover:bg-bg-soft transition-colors shrink-0 lg:hidden"
+            className="inline-flex items-center justify-center w-11 h-11 rounded-full text-ink-light hover:text-primary hover:bg-bg-soft transition-colors shrink-0 lg:hidden"
           >
             <ArrowLeft className="w-5 h-5" />
           </SoundLink>
           <div className="flex-1 min-w-0 text-center lg:hidden">
-            <div className="text-base font-extrabold text-ink truncate">错题本</div>
+            <h1 className="text-base font-extrabold text-ink">错题本</h1>
           </div>
           <div className="hidden lg:block flex-1" />
-          <div className="shrink-0">
+          <div className="w-full min-[480px]:w-auto shrink-0 flex justify-end">
             <StatsBar compact />
           </div>
         </div>
       </div>
 
       <div className="max-w-2xl lg:max-w-4xl mx-auto px-4 py-6">
+        <h1 className="hidden lg:block text-3xl font-extrabold text-ink mb-6">错题本</h1>
         {hydrated && totalMistakes > 0 && (
           <SrsSummary
             todayCount={dueCount}
@@ -116,8 +117,8 @@ export function ReviewClient() {
         {hydrated && totalMistakes === 0 ? (
           <EmptyState
             mood="cheer"
-            title="还没有错题！"
-            desc="继续加油，保持零错误～"
+            title="这里记录你的进步"
+            desc="做错的题会收在这里，慢慢练，就会越来越熟悉。"
             action={
               <SoundLink href="/" hapticIntensity="medium" className="btn-chunky-primary px-8">
                 去学习
@@ -305,7 +306,7 @@ function MistakeItem({
               haptic("light");
               setExpanded(x => !x);
             }}
-            className="mt-2 text-xs font-semibold text-secondary hover:text-secondary-dark"
+            className="mt-2 min-h-11 px-2 text-sm font-semibold text-secondary hover:text-secondary-dark"
           >
             {expanded ? "收起答案" : "查看答案"}
           </button>

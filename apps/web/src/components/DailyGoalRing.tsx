@@ -155,7 +155,7 @@ export function DailyGoalRing({ size = 120 }: DailyGoalRingProps) {
       </motion.button>
 
       {/* 目标调整弹窗 */}
-      <Modal open={showModal} onClose={() => setShowModal(false)}>
+      <Modal ariaLabel="每日目标" open={showModal} onClose={() => setShowModal(false)}>
         <div className="text-center">
           <Target className="w-12 h-12 text-primary mx-auto" />
           <h2 className="text-2xl font-extrabold text-ink mt-2">每日目标</h2>
@@ -165,6 +165,7 @@ export function DailyGoalRing({ size = 120 }: DailyGoalRingProps) {
               <button
                 key={opt}
                 type="button"
+                aria-pressed={goal === opt}
                 onClick={() => {
                   playSfx("tap");
                   haptic("light");

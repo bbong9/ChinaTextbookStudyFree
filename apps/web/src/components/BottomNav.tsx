@@ -100,6 +100,7 @@ export function BottomNav() {
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
 
+  const selectedGrade = useProgressStore(s => s.selectedGrade);
   const mistakes = useProgressStore(s => s.mistakesBank);
   const gems = useProgressStore(s => s.gems);
   const ownedCosmetics = useProgressStore(s => s.ownedCosmetics);
@@ -127,7 +128,7 @@ export function BottomNav() {
 
   // 沉浸式路径（课程 / 跳级 / 复习 runner / 阅读器）隐藏底部导航，
   // 否则固定底栏会盖住这些页面底部的「检查 / 继续」按钮。
-  if (isImmersivePath(pathname)) return null;
+  if (!hydrated || (pathname === "/" && selectedGrade == null) || isImmersivePath(pathname)) return null;
 
   function getBadge(item: NavItem): { count?: number; dot?: boolean } | null {
     if (item.matchPrefix === "/review" && reviewBadge > 0) return { count: reviewBadge };

@@ -124,11 +124,11 @@ export function LessonStartModal({
   }
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal ariaLabel={title} open={open} onClose={onClose}>
       <div className="flex flex-col items-center text-center">
         <Mascot mood={canStart ? "happy" : "sad"} size={88} />
         <div className="text-[11px] uppercase tracking-wider text-ink-softer mt-4 font-extrabold">
-          {isExam ? `第 ${unitNumber} 单元 · 单元挑战` : `第 ${unitNumber} 单元 · ${kpIndex}/${kpTotal}`}
+          {isExam ? `第 ${unitNumber} 单元 · 单元挑战` : `第 ${unitNumber} 单元 · ${kpIndex + 1}/${kpTotal}`}
         </div>
         <h2 className="text-2xl font-extrabold text-ink mt-2 leading-tight">{title}</h2>
 

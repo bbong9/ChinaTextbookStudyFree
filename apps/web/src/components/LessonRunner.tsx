@@ -1069,7 +1069,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
 
       {/* 退出确认 —— 用户第一次点关闭按钮时才 mount */}
       {exitConfirmMounted && (
-      <Modal open={showExitConfirm} onClose={() => setShowExitConfirm(false)}>
+      <Modal ariaLabel="退出课程" open={showExitConfirm} onClose={() => setShowExitConfirm(false)}>
         <div className="flex flex-col items-center text-center">
           <Mascot mood="sad" size={96} />
           <h2 className="text-2xl font-extrabold text-ink mt-3">你确定要退出吗？</h2>
@@ -1172,7 +1172,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
           <button
             type="button"
             onClick={handleRequestExit}
-            className="h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
+            className="h-11 w-11 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
             aria-label="退出课程"
           >
             <Close className="w-5 h-5" />
@@ -1270,7 +1270,7 @@ export function LessonRunner({ lesson, chestSlot = null }: LessonRunnerProps) {
                 setSettingsMounted(true);
                 setShowSettings(true);
               }}
-              className="h-8 w-8 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors"
+              className="h-11 w-11 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors"
               aria-label="课程设置"
             >
               <GearIcon className="w-5 h-5" />

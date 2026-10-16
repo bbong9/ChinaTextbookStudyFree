@@ -238,7 +238,7 @@ export function ReviewRunnerClient() {
           <button
             type="button"
             onClick={handleExit}
-            className="h-9 w-9 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
+            className="h-11 w-11 -ml-1 inline-flex items-center justify-center rounded-full text-ink-light hover:text-ink hover:bg-bg-softer transition-colors shrink-0"
             aria-label="退出复习"
           >
             <Close className="w-5 h-5" />

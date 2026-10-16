@@ -196,7 +196,7 @@ export function CurrentBookBadge({
         }}
         aria-haspopup="dialog"
         aria-label={`当前教材：${book.subjectName ?? ""}${book.textbookName}，点击切换`}
-        className="inline-flex items-center gap-1.5 h-9 px-3 rounded-full bg-white border-2 border-bg-softer hover:border-primary/50 transition-colors select-none min-w-0"
+        className="inline-flex items-center gap-1.5 min-h-11 px-3 rounded-xl bg-white border-2 border-bg-softer hover:border-primary/50 transition-colors select-none min-w-0"
         style={{ boxShadow: "0 2px 0 0 var(--shadow-card-color)" }}
       >
         <span
@@ -266,14 +266,14 @@ export function CurrentBookBadge({
           <button
             type="button"
             onClick={changeGrade}
-            className="text-sm font-extrabold text-secondary hover:underline"
+            className="min-h-11 px-2 text-sm font-extrabold text-secondary hover:underline"
           >
             换个年级
           </button>
           <SoundLink
             href={`/grade/${book.grade}/`}
             onClick={() => setOpen(false)}
-            className="text-sm font-extrabold text-ink-light hover:text-ink"
+            className="min-h-11 px-2 text-sm font-extrabold text-ink-light hover:text-ink"
           >
             看年级主页 →
           </SoundLink>
