@@ -1,10 +1,23 @@
-# ChinaStudyFree · 小学全科 AI 学习平台
+# 聪聪学堂 · ChinaStudyFree
 
-**在线体验：[小猫头鹰课堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
+**学习，从好奇心开始。** 小学全科，免费、开源。
 
+**在线体验：[聪聪学堂](https://d3nmsqi4n72idj.cloudfront.net/)** · 支持电脑和手机浏览器，无需安装。
+
+> **Web 修复预览** · 以下海报来自 PR #13 本地构建，尚未上线。
+
+![聪聪学堂：互动点数与即时答题反馈，Web 修复分支预览](docs/posters/hero.png)
+
+<details>
+<summary>版本与资源说明</summary>
+
+> **画面预览（2026-10-15）**：新版 Web 海报与截图来自 [PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13) 的本地生产构建，相关功能尚未合并或上线。当前功能、资源规模与安装步骤仍按已发布版本说明。
+>
 > **版本说明（2026-10-05）**：当前线上 Web 已部署 [`main`](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/tree/main) 的判分与音频兼容更新，并保留首次听完讲解才解锁的边框光环体验。下文本地启动步骤使用 `main`。
 >
 > **完整资源包：[v1.2.0-assets](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/releases/tag/v1.2.0-assets)**。包含新版 188 篇语文阅读、936 道配套题及既有四科资源；无需先安装旧版本。Release 中的 `web-source.zip` 是资源包发布时的源码快照，早于当前线上语音兼容和界面修复。详见 [安装与升级说明](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/blob/codex/publish-tested-web/docs/release-install.md)。
+
+</details>
 
 > **一个免费、开源、纯公益的小学全科学习平台**
 >
@@ -31,29 +44,57 @@
 
 ---
 
-## 📸 功能预览
+## 产品一览
 
-### Web 端
+![从选择年级到互动点数与答题反馈的学习流程海报](docs/posters/learning.png)
 
-<table>
+![课本原页与手机逐句听读的功能海报](docs/posters/reading.png)
+
+![故事阅读与聪聪衣橱的功能海报](docs/posters/explore.png)
+
+**[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/posters) · [素材与重制说明](docs/showcase/README.md)
+
+> **画面版本 · 2026-10-15：**来自未上线的 `codex/ux-quality-repairs` 本地生产构建。海报保留真实界面，仅设计画面外的排版和展示边框；手机画面为浏览器视口模拟。iOS 历史截图另行标记。
+
+<details>
+<summary>查看未经包装的 Web 原始截图</summary>
+
+### Web · 从第一步开始
+
+<table width="100%">
   <tr>
-    <td align="center"><img src="docs/screenshots/screen-0.png" width="200" /><br/><b>年级选择</b></td>
-    <td align="center"><img src="docs/screenshots/screen-1.png" width="400" /><br/><b>学科总览</b></td>
-    <td align="center"><img src="docs/screenshots/screen-3.png" width="400" /><br/><b>学习路径</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/screen-2.png" width="200" /><br/><b>单元答题</b></td>
-    <td align="center"><img src="docs/screenshots/screen-6.png" width="400" /><br/><b>课文听读</b></td>
-    <td align="center"><img src="docs/screenshots/screen-7.png" width="400" /><br/><b>课外故事</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/screen-4.png" width="400" /><br/><b>错题回顾</b></td>
-    <td align="center"><img src="docs/screenshots/screen-5.png" width="400" /><br/><b>个人中心</b></td>
-    <td></td>
+    <td align="center"><img src="docs/screenshots/web/01-onboarding.jpg" width="220" alt="手机端年级选择，继续按钮完整可见" /><br/><b>找到自己的起点</b><br/>选择年级，开始探索</td>
+    <td align="center"><img src="docs/screenshots/web/04-counting.jpg" width="220" alt="点击三个苹果，完成互动点数" /><br/><b>亲手数一数</b><br/>先动手，再理解</td>
+    <td align="center"><img src="docs/screenshots/web/05-feedback.jpg" width="220" alt="答对后显示 10 XP 与具体解析" /><br/><b>看懂每一次反馈</b><br/>知道答案，也知道为什么</td>
   </tr>
 </table>
 
-### iOS 端
+### Web · 在更大的屏幕上，展开好奇心
+
+<table width="100%">
+  <tr>
+    <td width="50%"><img src="docs/screenshots/web/02-subjects.jpg" width="520" alt="桌面端学科总览" /><br/><b>全科学习，从容选择</b></td>
+    <td width="50%"><img src="docs/screenshots/web/03-learning-path.jpg" width="520" alt="按教材单元展开的数学学习路径" /><br/><b>沿着教材，一步一步前进</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/06-reading.jpg" width="520" alt="课本原页与咏鹅逐句听读" /><br/><b>课本原页，逐句听读</b></td>
+    <td><img src="docs/screenshots/web/08-story-reader.jpg" width="520" alt="门口的小伞的插画和分句故事阅读" /><br/><b>在故事里，发现新世界</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/09-wardrobe.jpg" width="520" alt="聪聪衣橱的大幅预览与商品卡片" /><br/><b>给聪聪，换一种模样</b></td>
+    <td><img src="docs/screenshots/web/10-review.jpg" width="520" alt="错题本空状态鼓励尝试并提供巩固入口" /><br/><b>每一次尝试，都在进步</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/web/07-stories.jpg" width="520" alt="聪聪的故事时间与分级故事列表" /><br/><b>选一个故事，一起读</b></td>
+    <td><img src="docs/screenshots/web/11-profile.jpg" width="520" alt="个人中心、本周报告和成就入口" /><br/><b>留下属于自己的学习足迹</b></td>
+  </tr>
+</table>
+
+</details>
+
+### iOS 原生界面 · 历史素材
+
+以下保留原有 iOS 截图，与上方新采集的 Web 画面分别标示；本轮未重新运行 iOS 构建。
 
 <table>
   <tr>
