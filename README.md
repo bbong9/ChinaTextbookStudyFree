@@ -40,11 +40,23 @@
 
 ![聪聪与苹果、书本的品牌主视觉](docs/visuals/hero.png)
 
-![聪聪探索三步台阶与苹果的学习主题视觉](docs/visuals/learning.png)
+### 动手练习，即时反馈
 
-![聪聪阅读立体白鹅书的听读主题视觉](docs/visuals/reading.png)
+![iPhone 展示互动点数与答题反馈](docs/visuals/feature-learning.png)
 
-![戴学士帽的聪聪探索立体故事书的主题视觉](docs/visuals/explore.png)
+通过互动点数和多种题型理解知识，答题后查看解析，随时继续未完成的课程。
+
+### 课本原页，逐句听读
+
+![平板与 iPhone 展示课本原页、全文朗读和跟读](docs/visuals/feature-reading.png)
+
+对照课本原页听读，支持全文朗读和跟读练习。
+
+### 故事阅读与聪聪衣橱
+
+![笔记本和平板展示故事阅读、阅读理解与聪聪衣橱](docs/visuals/feature-explore.png)
+
+从分级故事到阅读理解，再用学习获得的宝石为聪聪解锁装扮。
 
 **[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/visuals) · [素材与重制说明](docs/showcase/README.md)
 

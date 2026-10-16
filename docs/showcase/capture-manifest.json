@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
   "artwork_updated": "2026-10-16",
-  "format": "AI-generated brand visuals, SVG banner and original interface captures",
+  "format": "Brand hero, generated feature device mockups, SVG banner and original UI captures",
   "branch": "codex/ux-quality-repairs",
   "screenshot_base_commit": "acde104e22321d4e0f84764fc62fd158a324a05f",
   "release_state": "unmerged; not deployed",
@@ -16,8 +16,9 @@
     ]
   },
   "notes": [
-    "Brand visuals are generated concepts based on the project mascot and UI references, not actual interfaces.",
-    "The original UI capture files are unchanged.",
+    "The hero is a generated brand concept. Feature posters are generated device mockups based on actual app screenshots.",
+    "Device screens may contain generated redraws; original captures and the running app are the UI source of truth.",
+    "All original capture files are unchanged. Device mockups are not real-device acceptance evidence.",
     "Mobile captures use browser viewport simulations; iOS captures remain historical."
   ],
   "files": [
@@ -31,14 +32,14 @@
       "sha256": "96ac467d224eccfdcd441102b3b258df43514cb6a178393f11ccb6f91bacf456"
     },
     {
-      "path": "docs/visuals/explore.png",
-      "bytes": 1685998,
+      "path": "docs/visuals/feature-explore.png",
+      "bytes": 1727860,
       "pixels": [
         1586,
         992
       ],
-      "sha256": "e54e77cf6b509b3b7bbf1bb488a72d2501982baa7e963424ac9cc65e414f2f4f",
-      "kind": "generated-brand-concept"
+      "sha256": "3c2a927ea88c780783c04cd62ed4e8b998663d76910c86d48ff428fb29e0eeb2",
+      "kind": "generated-feature-device-mockup"
     },
     {
       "path": "docs/visuals/hero.png",
@@ -51,24 +52,24 @@
       "kind": "generated-brand-concept"
     },
     {
-      "path": "docs/visuals/learning.png",
-      "bytes": 1673135,
+      "path": "docs/visuals/feature-learning.png",
+      "bytes": 1626540,
       "pixels": [
         1586,
         992
       ],
-      "sha256": "8ce974cd1687d1dc76afa6c2de0bb20c51e0fa491207a3ab2f8e4483fecc0faf",
-      "kind": "generated-brand-concept"
+      "sha256": "069b006c6761426f4b9af8d5a4b1766c6bce1be19be4cd7ea34977fc24fe5941",
+      "kind": "generated-feature-device-mockup"
     },
     {
-      "path": "docs/visuals/reading.png",
-      "bytes": 1621161,
+      "path": "docs/visuals/feature-reading.png",
+      "bytes": 1548340,
       "pixels": [
         1586,
         992
       ],
-      "sha256": "4a13c2c6874e3a863f6d87fde0b1a02a03616e77642a54c88038e420eaef3477",
-      "kind": "generated-brand-concept"
+      "sha256": "5fdc72ada4aabd0cd8691f20928d70a5ff703fe3d9b96ca261560511c8b07fa2",
+      "kind": "generated-feature-device-mockup"
     },
     {
       "path": "docs/screenshots/web/01-onboarding.jpg",
@@ -201,6 +202,8 @@
     "tool": "Codex built-in imagegen",
     "date": "2026-10-16",
     "prompts": "docs/showcase/imagegen-prompts.md",
-    "visuals_are_ui_screenshots": false
+    "visuals_are_ui_screenshots": false,
+    "feature_prompts": "docs/showcase/feature-prompts.md",
+    "device_screens_are_original_captures": false
   }
 }
