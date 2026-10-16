@@ -1,7 +1,7 @@
 {
   "date": "2026-10-15",
   "artwork_updated": "2026-10-16",
-  "format": "static product posters and intact browser screenshots",
+  "format": "AI-generated brand visuals, SVG banner and original interface captures",
   "branch": "codex/ux-quality-repairs",
   "screenshot_base_commit": "acde104e22321d4e0f84764fc62fd158a324a05f",
   "release_state": "unmerged; not deployed",
@@ -16,9 +16,9 @@
     ]
   },
   "notes": [
-    "Poster typography and framing are editorial; UI content is not altered.",
-    "Original capture pixels are listed individually; some exclude page edges.",
-    "Mobile images are browser simulations; iOS images remain separately labeled historical material."
+    "Brand visuals are generated concepts based on the project mascot and UI references, not actual interfaces.",
+    "The original UI capture files are unchanged.",
+    "Mobile captures use browser viewport simulations; iOS captures remain historical."
   ],
   "files": [
     {
@@ -31,40 +31,44 @@
       "sha256": "96ac467d224eccfdcd441102b3b258df43514cb6a178393f11ccb6f91bacf456"
     },
     {
-      "path": "docs/posters/explore.png",
-      "bytes": 659852,
+      "path": "docs/visuals/explore.png",
+      "bytes": 1685998,
       "pixels": [
-        2400,
-        1500
+        1586,
+        992
       ],
-      "sha256": "2f4e33e4ee564107a2872620aadc5779665751cd60f30f38c215fee6b9aa24c6"
+      "sha256": "e54e77cf6b509b3b7bbf1bb488a72d2501982baa7e963424ac9cc65e414f2f4f",
+      "kind": "generated-brand-concept"
     },
     {
-      "path": "docs/posters/hero.png",
-      "bytes": 371720,
+      "path": "docs/visuals/hero.png",
+      "bytes": 1655562,
       "pixels": [
-        2400,
-        1500
+        1586,
+        992
       ],
-      "sha256": "3b6bbce971f34af36b03e75f7626d431a3cde62e66bc9cc321828161df450900"
+      "sha256": "8eb4d909b42a1f9041602d9e27aaa2b30037a6dd76737d6305f17b8553336405",
+      "kind": "generated-brand-concept"
     },
     {
-      "path": "docs/posters/learning.png",
-      "bytes": 399799,
+      "path": "docs/visuals/learning.png",
+      "bytes": 1673135,
       "pixels": [
-        2400,
-        1500
+        1586,
+        992
       ],
-      "sha256": "8cbc818b91585a98e19e6e50b4b620ace85b0e44ce927df2e4f3970747117f3d"
+      "sha256": "8ce974cd1687d1dc76afa6c2de0bb20c51e0fa491207a3ab2f8e4483fecc0faf",
+      "kind": "generated-brand-concept"
     },
     {
-      "path": "docs/posters/reading.png",
-      "bytes": 468611,
+      "path": "docs/visuals/reading.png",
+      "bytes": 1621161,
       "pixels": [
-        2400,
-        1500
+        1586,
+        992
       ],
-      "sha256": "9ae94de969cc987adcb30815c0a653d5633a819509c49e0a532ce7a7dd85cf04"
+      "sha256": "4a13c2c6874e3a863f6d87fde0b1a02a03616e77642a54c88038e420eaef3477",
+      "kind": "generated-brand-concept"
     },
     {
       "path": "docs/screenshots/web/01-onboarding.jpg",
@@ -192,5 +196,11 @@
       ],
       "sha256": "46101f8e9d8718e77afaa2cb067d847d89313898a8df33e0222363104b9ae3e6"
     }
-  ]
+  ],
+  "generation": {
+    "tool": "Codex built-in imagegen",
+    "date": "2026-10-16",
+    "prompts": "docs/showcase/imagegen-prompts.md",
+    "visuals_are_ui_screenshots": false
+  }
 }

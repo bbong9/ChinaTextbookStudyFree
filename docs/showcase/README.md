@@ -1,39 +1,29 @@
-# 聪聪学堂 · 静态产品展示
+# 聪聪学堂 · 品牌视觉
 
-统一采用浅色背景、常规字重、大留白和细边浅影，只制作静态海报与真实截图。四张海报均为2400×1500，画面不添加英文品牌名或工程备注。横幅采用可缩放SVG，海报为高分辨率、无损PNG，可直接用于README、介绍页或演示文档。无视频、动图、配乐或播放组件。
+以项目熊猫图标与学习截图为参考，用内置 imagegen 生成统一的立体品牌视觉：浅色背景、柔和光线、中文排版和充足留白。横幅保留可编辑 SVG；四张海报均为生成器的原生 PNG 输出，没有放大或裁切。
 
-| 海报 | 尺寸 | 内容 |
+| 素材 | 尺寸 | 内容 |
 | --- | --- | --- |
-| [README 品牌横幅](../banner.svg) | 1600×500 · SVG | 聪聪学堂与熊猫聪聪 |
-| [品牌主视觉](../posters/hero.png) | 2400×1500 | 学习，从好奇心开始 |
-| [学习流程](../posters/learning.png) | 2400×1500 | 选择年级、互动点数与答题反馈 |
-| [课文听读](../posters/reading.png) | 2400×1500 | 课本原页与手机逐句听读 |
-| [故事与衣橱](../posters/explore.png) | 2400×1500 | 课外阅读与聪聪装扮 |
+| [品牌横幅](../banner.svg) | 1600×500 · SVG | 聪聪学堂与熊猫聪聪 |
+| [品牌主视觉](../visuals/hero.png) | 1586×992 · PNG | 学习，从好奇心开始 |
+| [学习](../visuals/learning.png) | 1586×992 · PNG | 每一步，都有小小的进步 |
+| [听读](../visuals/reading.png) | 1586×992 · PNG | 让每一句，都读得懂 |
+| [探索](../visuals/explore.png) | 1586×992 · PNG | 好奇心，不止于课堂 |
 
-横幅复用项目 App 图标中的熊猫几何图形，文字与布局直接编辑 `docs/banner.svg`，不依赖外部图片或生成API。
+## 查看
 
-## 浏览与重制
-
-直接打开 [静态画廊](../web-showcase.html) 可查看和放大图片；或在仓库根目录运行：
+[静态画廊](../web-showcase.html) 可在本地打开并放大图片；也可在仓库根目录运行：
 
 ```sh
 python3 scripts/media/preview_showcase.py
 ```
 
-访问 `http://127.0.0.1:3037/web-showcase.html`。画廊没有自动播放或背景动效，支持键盘打开图片、Esc关闭并返回原焦点。
+访问 `http://127.0.0.1:3037/web-showcase.html`。支持键盘打开图片、Esc关闭并返回原焦点。
 
-海报通过代码排版，不调用生成API；原始界面截图位于 `../screenshots/web/`。重新生成只需要Python 3与Pillow：
+## 生成与来源
 
-```sh
-python3 scripts/media/build_showcase.py
-```
+2026-10-16 使用 Codex 内置 imagegen 生成。完整提示词、精修步骤及各图的参考来源见 [生成记录](imagegen-prompts.md)。新的变体应以 `hero.png` 作为风格与熊猫形象参考，并保留最终输出文件；旧的截图拼贴生成脚本已移除，不会覆盖这些图片。
 
-macOS默认使用本机Hiragino Sans GB与Avenir Next；Linux可安装Noto Sans CJK与DejaVu Sans，或用`--cjk-font`和`--latin-font`指定字体路径。系统字体不随仓库分发。海报和原始截图的像素尺寸及SHA256见 [素材清单](capture-manifest.json)。
+这些是品牌概念图，不是产品界面截图。原始 Web 截图保留在 [screenshots/web](../screenshots/web/)，采集于2026-10-15的 `codex/ux-quality-repairs` 本地生产构建。手机截图为浏览器视口模拟；iOS历史截图单独标记。相关UX修复状态见 [PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13)。
 
-2026-10-16更新海报排版，原始截图保持不变。
-
-## 画面边界
-
-2026-10-15采集，来自`codex/ux-quality-repairs`本地生产构建。截图保留实际文字、布局、分数和学习状态，不虚构成绩。海报中的通用显示边框、标题和背景属于展示排版，未使用Apple商标或设备外形。
-
-手机画面为浏览器CSS视口模拟，不是真机拍摄；截图服务可能裁去页面边缘，精确像素以素材清单为准。iOS图片仍单独标记为历史素材。画面中的UX修复来自 [PR #13](https://github.com/wuwangzhang1216/ChinaTextbookStudyFree/pull/13)，尚未合并或上线，不能将海报视为线上、教师、儿童或真机验收证据。
+横幅直接编辑 `docs/banner.svg`，复用项目现有熊猫图标。全部素材的像素尺寸、长度与SHA256见 [素材清单](capture-manifest.json)。

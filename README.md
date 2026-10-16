@@ -38,15 +38,15 @@
 
 ## 产品一览
 
-![聪聪学堂：互动点数与即时答题反馈](docs/posters/hero.png)
+![聪聪与苹果、书本的品牌主视觉](docs/visuals/hero.png)
 
-![从选择年级到互动点数与答题反馈的学习流程海报](docs/posters/learning.png)
+![聪聪探索三步台阶与苹果的学习主题视觉](docs/visuals/learning.png)
 
-![课本原页与手机逐句听读的功能海报](docs/posters/reading.png)
+![聪聪阅读立体白鹅书的听读主题视觉](docs/visuals/reading.png)
 
-![故事阅读与聪聪衣橱的功能海报](docs/posters/explore.png)
+![戴学士帽的聪聪探索立体故事书的主题视觉](docs/visuals/explore.png)
 
-**[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/posters) · [素材与重制说明](docs/showcase/README.md)
+**[海报与截图画廊](docs/web-showcase.html)**（下载仓库后本地打开） · [原尺寸 PNG](docs/visuals) · [素材与重制说明](docs/showcase/README.md)
 
 <details>
 <summary>查看 Web 界面截图</summary>
