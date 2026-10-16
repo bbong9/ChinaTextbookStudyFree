@@ -1,5 +1,6 @@
 {
   "date": "2026-10-15",
+  "artwork_updated": "2026-10-16",
   "format": "static product posters and intact browser screenshots",
   "branch": "codex/ux-quality-repairs",
   "screenshot_base_commit": "acde104e22321d4e0f84764fc62fd158a324a05f",
@@ -31,39 +32,39 @@
     },
     {
       "path": "docs/posters/explore.png",
-      "bytes": 725977,
+      "bytes": 659852,
       "pixels": [
         2400,
         1500
       ],
-      "sha256": "66e00eb15dd734dab2d52f3a1f0db95dc7af5abc95a73f4199c886aa9807b0ee"
+      "sha256": "2f4e33e4ee564107a2872620aadc5779665751cd60f30f38c215fee6b9aa24c6"
     },
     {
       "path": "docs/posters/hero.png",
-      "bytes": 425603,
+      "bytes": 371720,
       "pixels": [
         2400,
         1500
       ],
-      "sha256": "6c4bf8a5e36a1e180decf5d0426bc1d251c63dbce531025699118e6399d18060"
+      "sha256": "3b6bbce971f34af36b03e75f7626d431a3cde62e66bc9cc321828161df450900"
     },
     {
       "path": "docs/posters/learning.png",
-      "bytes": 530056,
-      "pixels": [
-        2400,
-        1600
-      ],
-      "sha256": "9b60c072c18a5ede573887e1591e9f4b261c1c901787676e13ef81ea71b428b0"
-    },
-    {
-      "path": "docs/posters/reading.png",
-      "bytes": 488318,
+      "bytes": 399799,
       "pixels": [
         2400,
         1500
       ],
-      "sha256": "acf809a1ef73003c999f32c9acb2a85434aadfa09aac8a47ca3439923974ed73"
+      "sha256": "8cbc818b91585a98e19e6e50b4b620ace85b0e44ce927df2e4f3970747117f3d"
+    },
+    {
+      "path": "docs/posters/reading.png",
+      "bytes": 468611,
+      "pixels": [
+        2400,
+        1500
+      ],
+      "sha256": "9ae94de969cc987adcb30815c0a653d5633a819509c49e0a532ce7a7dd85cf04"
     },
     {
       "path": "docs/screenshots/web/01-onboarding.jpg",
