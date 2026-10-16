@@ -35,7 +35,9 @@ async function main() {
     assert.equal(current.get(id)?.id, id, "all four subjects must load");
   }
   assert.deepEqual(reconcileMistakes([entry], new Map([[entry.lessonId, { ...lesson, questions: [] }]])), [], "retire removed questions without grading or rewards");
-  const removed = await loadReviewLessons([entry], async () => new Response(null, { status: 404 }));
+  await assert.rejects(loadReviewLessons([entry], async url => url.includes("outline.json")
+    ? new Response(JSON.stringify({lessons:[{id:entry.lessonId}]})) : new Response(null,{status:404})), "a missing object for a listed lesson must not delete the saved mistake");
+  const removed = await loadReviewLessons([entry], async url => url.includes("outline.json") ? new Response(JSON.stringify({lessons:[],units:[]})) : new Response(null, { status: 404 }));
   assert.deepEqual(reconcileMistakes([entry], removed), []);
   for (const response of [new Response(null, { status: 503 }), new Response("not JSON"), new Response(JSON.stringify({ ...lesson, id: "wrong" }))]) {
     await assert.rejects(loadReviewLessons([entry], async () => response), "failed loads must not silently fall back to ungradable snapshots");

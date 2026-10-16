@@ -1,5 +1,6 @@
 "use client";
 
+import { saveReviewSession } from "@/lib/reviewSession";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { Question, LessonResult, Lesson } from "@/types";
@@ -883,6 +884,7 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       importBackup: envelope => {
+        saveReviewSession(null);
         const d = envelope.data;
         const today = todayStr();
 
@@ -896,13 +898,16 @@ export const useProgressStore = create<ProgressState>()(
           };
         }
 
-        // 错题本：web 复习需要题面快照，无快照的条目只能丢弃（iOS 导出会带）
+        // Legacy/cross-client backups may omit the snapshot. Keep its identity and
+        // schedule; the review loader resolves current content before any grading.
         const mistakesBank: MistakeEntry[] = [];
         for (const m of d.mistakesBank) {
-          if (!m.question) continue;
           mistakesBank.push({
             lessonId: m.lessonId,
-            question: m.question,
+            question: m.question ? {...m.question,id:m.questionId} : {
+              id:m.questionId,type:"choice",question:"进入复习后同步这道旧题",answer:"",options:[],
+              explanation:"",knowledge_point:"",score:1,difficulty:1,
+            },
             addedAt: new Date().toISOString(),
             box: m.box ?? 1,
             correctCount: m.correctCount ?? 0,

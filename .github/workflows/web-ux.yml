@@ -32,6 +32,9 @@ jobs:
           npx tsx scripts/checks/lesson-resume.ts
           npx tsx scripts/checks/review-recovery.ts
           npx tsx scripts/checks/review-content.ts
+          npx tsx scripts/checks/review-preparation.ts
+          npx tsx scripts/checks/review-session.ts
+          npx tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/lesson-boundary.tsx
           npx tsx scripts/checks/question-drafts.ts
           npx tsx scripts/checks/content-math.ts
           npx tsx --tsconfig apps/web/tsconfig.json scripts/checks/ux-rewards.ts

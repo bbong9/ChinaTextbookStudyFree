@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { lessonContentKey } from "@cstf/core/content";
 import type { Lesson } from "@/types";
 import type { ChestSlot } from "@/lib/chestLogic";
 
@@ -29,5 +30,5 @@ export default function LessonPageClient({
   chestSlot: ChestSlot | null;
   nextLessonId?: string;
 }) {
-  return <LessonRunner key={lesson.id} lesson={lesson} chestSlot={chestSlot} nextLessonId={nextLessonId} />;
+  return <LessonRunner key={`${lesson.id}:${lessonContentKey(lesson)}`} lesson={lesson} chestSlot={chestSlot} nextLessonId={nextLessonId} />;
 }

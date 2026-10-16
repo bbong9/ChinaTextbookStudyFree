@@ -11,4 +11,7 @@ const recovery = reviewQueue([item, due, item], true);
 assert.deepEqual(recovery.map(q => [q.entry.question.id, q.scheduled]), [[2, true], [1, false]], "scheduled entries lead; repeated bank items appear once");
 assert.equal(reviewQueue(Array.from({ length: 10 }, (_, i) => ({ ...item, question: { ...item.question, id: i } })), true).length, 5);
 assert.deepEqual(reviewQueue([], true), []);
-console.log("PASS: recovery uses available practice, preserves future SRS dates, deduplicates and bounds extra practice.");
+assert.equal(reviewQueue([due, due], false).length, 1, 'duplicate due entries must not count as two questions');
+assert.equal(reviewQueue(Array.from({length:12},(_,i)=>({...due,question:{...due.question,id:i}})),true).length,5,'heart recovery must also bound scheduled questions');
+
+console.log("PASS: recovery uses available practice, preserves future SRS dates, deduplicates all entries and bounds heart sessions.");

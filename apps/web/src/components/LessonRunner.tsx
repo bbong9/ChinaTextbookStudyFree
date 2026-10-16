@@ -16,8 +16,10 @@ import {
   Heart,
 } from "@/components/icons";
 import type { Lesson, KnowledgeSummary } from "@/types";
+import { dateKey } from "@cstf/core/week";
 import { gradeAnswer } from "@/lib/grade";
 import { cn } from "@/lib/cn";
+import { SoundLink } from "./SoundLink";
 import { MathText } from "@/components/MathText";
 import { useProgressStore, MAX_HEARTS, HEART_REFILL_COST, type LessonOutcome } from "@/store/progress";
 import {
@@ -254,6 +256,8 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
     s => !!(chestSlot && s.claimedChests[chestSlot.id]),
   );
   const hearts = useProgressStore(s => s.hearts);
+  const lastReviewHeartDate = useProgressStore(s => s.lastReviewHeartDate);
+  const reviewHeartClaimed = lastReviewHeartDate === dateKey(new Date());
   const gems = useProgressStore(s => s.gems);
   const backdropId = useProgressStore(s => s.equippedBackdrop);
   const backdropStyle = useMemo<React.CSSProperties>(() => {
@@ -913,7 +917,7 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
     playSfx("tap");
     haptic("light");
     // 会话保留（不清除 activeLesson），复习完回来无缝续课
-    router.push("/review/runner/?from=hearts");
+    router.push(`/review/runner/?from=hearts&lesson=${encodeURIComponent(lesson.id)}`);
   }
 
   function handleGateExit() {
@@ -1090,7 +1094,7 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
           <Mascot mood="sad" size={96} />
           <h2 className="text-2xl font-extrabold text-ink mt-3">红心用完了！</h2>
           <p className="text-ink-light mt-2">
-            补满红心继续闯关，或者去复习错题回心～
+            {reviewHeartClaimed ? "今天的复习回心已经领取，红心会慢慢恢复。也可以先巩固练习。" : "补满红心继续闯关，或者免费巩固练习回心。"}
           </p>
           <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-extrabold text-secondary-dark">
             <Gem className="w-4 h-4" />
@@ -1112,10 +1116,10 @@ export function LessonRunner({ lesson, chestSlot = null, nextLessonId }: LessonR
               </span>
             </button>
             {gems < HEART_REFILL_COST && (
-              <p className="text-xs text-ink-softer -mt-1">宝石不够，先去复习错题回心吧</p>
+              <p className="text-xs text-ink-softer -mt-1">{reviewHeartClaimed ? "宝石不足，可以先休息或巩固练习。" : "宝石不足，也可以免费巩固练习回心。"}</p>
             )}
             <button onClick={handleGateReview} className="btn-chunky-secondary w-full">
-              去复习错题回心
+              {reviewHeartClaimed ? "去巩固练习（今日回心已领取）" : "去巩固练习回心"}
             </button>
             <p className="text-xs text-ink-softer -mt-1">做完复习回来，这节课会接着上次继续</p>
             <button onClick={handleGateExit} className="btn-chunky-ghost w-full">
@@ -1896,6 +1900,8 @@ function FailScreen({
 }) {
   const now = useProgressTicker();
   const hearts = useProgressStore(s => s.hearts);
+  const lastReviewHeartDate = useProgressStore(s => s.lastReviewHeartDate);
+  const reviewHeartClaimed = lastReviewHeartDate === dateKey(new Date());
   const nextHeartAt = useProgressStore(s => s.nextHeartAt);
   const canRetry = hearts > 0;
   const msToNext = nextHeartAt ? Math.max(0, nextHeartAt - now) : 0;
@@ -1925,6 +1931,7 @@ function FailScreen({
         )}
 
         <div className="flex flex-col gap-3 w-64">
+          {!canRetry && <SoundLink href={`/review/runner/?from=hearts&lesson=${encodeURIComponent(lesson.id)}`} className="btn-chunky-secondary">{reviewHeartClaimed ? "巩固练习（今日回心已领取）" : "免费巩固练习回心"}</SoundLink>}
           <button
             onClick={() => {
               if (!canRetry) return;

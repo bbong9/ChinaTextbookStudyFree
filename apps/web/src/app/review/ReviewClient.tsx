@@ -299,7 +299,7 @@ function MistakeItem({
           </div>
 
           {/* 正确答案默认折叠：先想一想，再看答案 */}
-          <button
+          {!correctAnswer.trim() ? <p className="mt-2 text-sm text-ink-light">进入复习后同步题目</p> : <button
             type="button"
             onClick={() => {
               playSfx("tap");
@@ -309,9 +309,9 @@ function MistakeItem({
             className="mt-2 min-h-11 px-2 text-sm font-semibold text-secondary hover:underline"
           >
             {expanded ? "收起答案" : "查看答案"}
-          </button>
+          </button>}
           <AnimatePresence>
-            {expanded && (
+            {expanded && !!correctAnswer.trim() && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}

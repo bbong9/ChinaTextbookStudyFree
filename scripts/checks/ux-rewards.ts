@@ -27,6 +27,11 @@ async function main() {
   assert.equal(store.awardReviewHeart(3, 3), 1, 'a complete three-question review must not promise an impossible five-question reward');
   assert.equal(useProgressStore.getState().hearts, 1);
   assert.equal(store.awardReviewHeart(3, 3), 0, 'the smaller review pool must preserve the daily claim limit');
+  const {buildBackup}=await import('../../packages/core/src/backup');
+  store.importBackup(buildBackup({platform:'web',data:{mistakesBank:[{lessonId:'g1up-u1-kp1',questionId:11,box:2,nextReviewDate:'2999-01-01'}]}}));
+  assert.equal(useProgressStore.getState().mistakesBank.length,1,'snapshot-free legacy mistakes must not be silently discarded');
+  assert.equal(useProgressStore.getState().mistakesBank[0].question.id,11);
+  assert.equal(useProgressStore.getState().mistakesBank[0].nextReviewDate,'2999-01-01');
   console.log('micro-practice evidence and attainable quest regressions passed');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });
