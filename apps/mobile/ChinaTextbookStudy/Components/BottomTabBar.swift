@@ -16,7 +16,7 @@ struct BottomTabBar: View {
                 tabItem(tab)
             }
         }
-        .frame(height: 60)
+        .frame(height: 62)
         .padding(.top, 6)
         .background(DuoColors.bg)
         .overlay(alignment: .top) {
@@ -35,18 +35,24 @@ struct BottomTabBar: View {
             withAnimation(Motion.press) { activeTab = tab }
         } label: {
             ZStack(alignment: .topTrailing) {
-                ZStack {
-                    if isActive {
-                        RoundedRectangle(cornerRadius: Radius.card)
-                            .fill(tab.activeColor.opacity(0.14))
-                            .frame(width: 60, height: 40)
+                VStack(spacing: 2) {
+                    ZStack {
+                        if isActive {
+                            RoundedRectangle(cornerRadius: Radius.card)
+                                .fill(tab.activeColor.opacity(0.14))
+                                .frame(width: 56, height: 32)
+                        }
+                        Image(systemName: tab.symbol)
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(isActive ? tab.activeColor : DuoColors.inkSofter)
+                            .symbolEffect(.bounce, value: isActive)
                     }
-                    Image(systemName: tab.symbol)
-                        .font(.system(size: 25, weight: .semibold))
+                    .frame(width: 64, height: 32)
+                    Text(tab.label)
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
                         .foregroundStyle(isActive ? tab.activeColor : DuoColors.inkSofter)
-                        .symbolEffect(.bounce, value: isActive)
                 }
-                .frame(width: 64, height: 44)
+                .frame(height: 50)
 
                 if let count = badge?.count, count > 0 {
                     Text(count > 99 ? "99+" : "\(count)")

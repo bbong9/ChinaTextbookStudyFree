@@ -241,8 +241,8 @@ private struct FillBlankQuestionView: View {
     }
     private var fieldForeground: Color {
         switch state {
-        case .correct: return DuoColors.primary
-        case .wrong:   return DuoColors.danger
+        case .correct: return DuoColors.primaryDark
+        case .wrong:   return DuoColors.dangerDark
         default:       return DuoColors.ink
         }
     }

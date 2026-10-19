@@ -59,7 +59,7 @@ enum MascotTriggers {
         .think:       ["想想看?", "再仔细一点!", "别急!", "慢慢来!"],
         .embarrassed: ["小心呀!", "保住红心!", "稳住!", "深呼吸!"],
         .wave:        ["加油!", "我们一起!"],
-        .surprise:    ["哇!", "诶?", "厉害厉害!"],
+        .surprise:    ["哇!", "厉害厉害!"],
     ]
 
     static func pickBubble(mood: MascotMood) -> String {

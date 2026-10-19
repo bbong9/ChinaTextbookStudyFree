@@ -997,6 +997,13 @@ private struct BookPickerSheet: View {
             }
             .padding(.vertical, 2)
         }
+        .mask(
+            HStack(spacing: 0) {
+                Color.black
+                LinearGradient(colors: [.black, .clear], startPoint: .leading, endPoint: .trailing)
+                    .frame(width: 24)
+            }
+        )
     }
 
     @ViewBuilder

@@ -30,7 +30,13 @@ struct OptionCardModifier: ViewModifier {
             .frame(minHeight: 60)
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
-            .background(backgroundColor, in: .rect(cornerRadius: cornerRadius))
+            .background {
+                // 先铺不透明底色，否则半透明色会透出下面的 3D 底座（深绿叠绿，文字看不见）。
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(DuoColors.bg)
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(backgroundColor)
+                }
+            }
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .strokeBorder(borderColor, lineWidth: borderWidth)
@@ -69,9 +75,9 @@ struct OptionCardModifier: ViewModifier {
     private var foregroundColor: Color {
         switch state {
         case .default:  return DuoColors.darkInk
-        case .selected: return DuoColors.secondary
-        case .correct:  return DuoColors.primary
-        case .wrong:    return DuoColors.danger
+        case .selected: return DuoColors.secondaryDark
+        case .correct:  return DuoColors.primaryDark
+        case .wrong:    return DuoColors.dangerDark
         case .disabled: return DuoColors.darkInkSofter
         }
     }

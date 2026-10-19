@@ -582,12 +582,12 @@ struct LessonRunnerView: View {
             VStack(spacing: Space.l) {
                 MascotView(mood: .sad, size: 92)
 
-                Text("再坚持一下，快完成了！")
+                Text(solvedIDs.count * 2 >= originalTotal ? "再坚持一下，快完成了！" : "确定要退出吗？")
                     .duoFont(.heading)
                     .foregroundStyle(DuoColors.ink)
                     .multilineTextAlignment(.center)
 
-                Text("已答对 \(solvedIDs.count) / \(originalTotal) 题，现在放弃太可惜啦")
+                Text("已答对 \(solvedIDs.count) / \(originalTotal) 题，退出后可以从这里继续")
                     .duoFont(.caption)
                     .foregroundStyle(DuoColors.inkMuted)
                     .multilineTextAlignment(.center)

@@ -19,7 +19,7 @@ struct PathMapView: View {
 
     private static let offsets: [CGFloat] = [0, 35, 45, 35, 0, -35, -45, -35]
     private let nodeSize: CGFloat = 72
-    private let stepY: CGFloat = 96
+    private let stepY: CGFloat = 108
     private let bannerHeight: CGFloat = 72
     private var stageWidth: CGFloat { 340 }
 
@@ -257,7 +257,7 @@ struct PathMapView: View {
         var offset: CGFloat = 0
         for i in 1..<min(index + 1, lessons.count) {
             if lessons[i].unitNumber != lessons[i - 1].unitNumber {
-                offset += bannerHeight + 24
+                offset += bannerHeight + 40
             }
         }
         return offset
@@ -268,7 +268,7 @@ struct PathMapView: View {
         let extraY = bannerOffsetBefore(index: index)
         return CGPoint(
             x: stageWidth / 2 + xOffset,
-            y: nodeSize / 2 + CGFloat(index) * stepY + extraY + bannerHeight + 24
+            y: nodeSize / 2 + CGFloat(index) * stepY + extraY + bannerHeight + 40
         )
     }
 
