@@ -1,0 +1,31 @@
+
+> china-textbook-study-free-monorepo@0.1.0 test
+> npm test --workspace=@cstf/core
+
+
+> @cstf/core@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /private/tmp/rd-05-core-economy/packages/core
+
+ ✓ src/__tests__/choiceGrading.test.ts (11 tests) 7ms
+ ✓ src/__tests__/quizContent.test.ts (4 tests) 22ms
+ ✓ src/__tests__/storyQuiz.test.ts (3 tests) 13ms
+ ✓ src/__tests__/quests.test.ts (12 tests) 80ms
+ ✓ src/__tests__/jump.test.ts (11 tests) 11ms
+ ✓ src/__tests__/numberSense.test.ts (5 tests) 74ms
+ ✓ src/__tests__/backup.test.ts (17 tests) 25ms
+ ✓ src/__tests__/goldenVectors.test.ts (221 tests) 45ms
+ ✓ src/__tests__/league.test.ts (24 tests) 1447ms
+   ✓ botXpAt > 整周逐小时单调不减，周日深夜收敛到周目标，晚于本周恒为周目标  1070ms
+   ✓ standings > XP 降序排 16 人，rank 1..16  360ms
+ ✓ src/__tests__/grade.test.ts (10 tests) 14ms
+ ✓ src/__tests__/week.test.ts (20 tests) 28ms
+ ✓ src/__tests__/learningQualityContent.test.ts (2 tests) 9ms
+ ✓ src/__tests__/reading.test.ts (24 tests) 263ms
+
+ Test Files  13 passed (13)
+      Tests  364 passed (364)
+   Start at  21:14:25
+   Duration  5.68s (transform 7.22s, setup 0ms, collect 12.18s, tests 2.04s, environment 2ms, prepare 6.15s)

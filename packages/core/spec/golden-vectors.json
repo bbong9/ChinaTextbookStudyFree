@@ -128,5 +128,181 @@
     { "lessonsCompletedInUnit": 10, "expChests": 2 },
     { "lessonsCompletedInUnit": 11, "expChests": 2 },
     { "lessonsCompletedInUnit": 12, "expChests": 2 }
-  ]
+  ],
+  "level": [
+    {"totalXp": -10, "expInfo": {"level": 1, "xpIntoLevel": 0, "xpForNextLevel": 100}},
+    {"totalXp": 0, "expInfo": {"level": 1, "xpIntoLevel": 0, "xpForNextLevel": 100}},
+    {"totalXp": 99, "expInfo": {"level": 1, "xpIntoLevel": 99, "xpForNextLevel": 100}},
+    {"totalXp": 100, "expInfo": {"level": 2, "xpIntoLevel": 0, "xpForNextLevel": 200}},
+    {"totalXp": 299, "expInfo": {"level": 2, "xpIntoLevel": 199, "xpForNextLevel": 200}},
+    {"totalXp": 300, "expInfo": {"level": 3, "xpIntoLevel": 0, "xpForNextLevel": 300}},
+    {"totalXp": 999, "expInfo": {"level": 4, "xpIntoLevel": 399, "xpForNextLevel": 400}},
+    {"totalXp": 1000, "expInfo": {"level": 5, "xpIntoLevel": 0, "xpForNextLevel": 500}},
+    {"totalXp": 4499, "expInfo": {"level": 9, "xpIntoLevel": 899, "xpForNextLevel": 900}},
+    {"totalXp": 4500, "expInfo": {"level": 10, "xpIntoLevel": 0, "xpForNextLevel": 1000}},
+    {"totalXp": 485099, "expInfo": {"level": 98, "xpIntoLevel": 9799, "xpForNextLevel": 9800}},
+    {"totalXp": 485100, "expInfo": {"level": 99, "xpIntoLevel": 0, "xpForNextLevel": 9900}},
+    {"totalXp": 494999, "expInfo": {"level": 99, "xpIntoLevel": 9899, "xpForNextLevel": 9900}},
+    {"totalXp": 495000, "expInfo": {"level": 99, "xpIntoLevel": 0, "xpForNextLevel": 10000}},
+    {"totalXp": 505000, "expInfo": {"level": 99, "xpIntoLevel": 0, "xpForNextLevel": 10100}}
+  ],
+  "pets": {
+    "catalog": [
+      {"id": "pet_mituan", "name": "米团", "acquisition": "starter", "price": 0, "skill": "学习陪伴；Lv5 起开花形态", "floweringLevel": 5},
+      {"id": "pet_fox", "name": "阿橘", "acquisition": "purchase", "price": 450, "skill": "数学小火车每局多 1 次提示"},
+      {"id": "pet_cat", "name": "奶糖", "acquisition": "purchase", "price": 600, "skill": "识字闯关「练」每关多 1 次提示"},
+      {"id": "pet_penguin", "name": "冰冰", "acquisition": "purchase", "price": 800, "skill": "英语气球里用英语鼓励你"},
+      {"id": "pet_owl", "name": "博博", "acquisition": "streak", "price": 0, "skill": "课外书屋每日导读由博博朗读", "requiredStreak": 7},
+      {"id": "pet_dragon", "name": "云宝", "acquisition": "level", "price": 0, "skill": "成语动画专属解说开场", "requiredLevel": 10},
+      {"id": "pet_egg", "name": "神秘蛋", "acquisition": "purchase", "price": 300, "skill": "按固定顺序孵出小黄鸭 → 噜噜 → 咩咩"},
+      {"id": "pet_duck", "name": "小黄鸭", "acquisition": "egg", "price": null, "skill": "无"},
+      {"id": "pet_pig", "name": "噜噜", "acquisition": "egg", "price": null, "skill": "无"},
+      {"id": "pet_sheep", "name": "咩咩", "acquisition": "egg", "price": null, "skill": "无"}
+    ],
+    "unlock": [
+      {"$case": "空账本领取初始伙伴", "id": "pet_mituan", "ctx": {"gems": 0, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "初始伙伴不重复领取", "id": "pet_mituan", "ctx": {"gems": 0, "level": 1, "claimedStreakRewards": [], "owned": ["pet_mituan"]}, "expCanUnlock": false},
+      {"$case": "阿橘差一金币", "id": "pet_fox", "ctx": {"gems": 449, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "阿橘刚好够价", "id": "pet_fox", "ctx": {"gems": 450, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "已拥有阿橘不能再买", "id": "pet_fox", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": ["pet_fox"]}, "expCanUnlock": false},
+      {"$case": "奶糖差一金币", "id": "pet_cat", "ctx": {"gems": 599, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "奶糖刚好够价", "id": "pet_cat", "ctx": {"gems": 600, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "冰冰差一金币", "id": "pet_penguin", "ctx": {"gems": 799, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "冰冰刚好够价", "id": "pet_penguin", "ctx": {"gems": 800, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "博博空里程碑账本", "id": "pet_owl", "ctx": {"gems": 1000, "level": 99, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "仅有其他里程碑不算七天", "id": "pet_owl", "ctx": {"gems": 0, "level": 1, "claimedStreakRewards": [3, 14], "owned": []}, "expCanUnlock": false},
+      {"$case": "曾经七天即可领取博博", "id": "pet_owl", "ctx": {"gems": 0, "level": 1, "claimedStreakRewards": [3, 7], "owned": []}, "expCanUnlock": true},
+      {"$case": "已拥有博博不再领取", "id": "pet_owl", "ctx": {"gems": 0, "level": 1, "claimedStreakRewards": [7], "owned": ["pet_owl"]}, "expCanUnlock": false},
+      {"$case": "云宝九级未解锁", "id": "pet_dragon", "ctx": {"gems": 0, "level": 9, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "云宝十级解锁", "id": "pet_dragon", "ctx": {"gems": 0, "level": 10, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "已拥有云宝不再领取", "id": "pet_dragon", "ctx": {"gems": 0, "level": 99, "claimedStreakRewards": [], "owned": ["pet_dragon"]}, "expCanUnlock": false},
+      {"$case": "神秘蛋差一金币", "id": "pet_egg", "ctx": {"gems": 299, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "神秘蛋刚好够价", "id": "pet_egg", "ctx": {"gems": 300, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": true},
+      {"$case": "神秘蛋是可重复购买的消耗品", "id": "pet_egg", "ctx": {"gems": 300, "level": 1, "claimedStreakRewards": [], "owned": ["pet_egg", "pet_duck"]}, "expCanUnlock": true},
+      {"$case": "集齐后神秘蛋下架", "id": "pet_egg", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": ["pet_duck", "pet_pig", "pet_sheep"]}, "expCanUnlock": false},
+      {"$case": "小黄鸭只能孵化", "id": "pet_duck", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "噜噜只能孵化", "id": "pet_pig", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "咩咩只能孵化", "id": "pet_sheep", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false},
+      {"$case": "未知宠物不可领取", "id": "", "ctx": {"gems": 1000, "level": 1, "claimedStreakRewards": [], "owned": []}, "expCanUnlock": false}
+    ],
+    "hatch": [
+      {"owned": [], "expId": "pet_duck"},
+      {"owned": ["pet_duck"], "expId": "pet_pig"},
+      {"owned": ["pet_duck", "pet_pig"], "expId": "pet_sheep"},
+      {"owned": ["pet_duck", "pet_pig", "pet_sheep"], "expId": null},
+      {"owned": ["pet_sheep"], "expId": "pet_duck"},
+      {"owned": ["pet_duck", "pet_duck", "unknown"], "expId": "pet_pig"},
+      {"owned": ["pet_mituan", "pet_fox"], "expId": "pet_duck"}
+    ]
+  },
+  "lessonTreats": [
+    {"stars": 0, "treatsFromLessonsToday": 0, "expTreats": 0},
+    {"stars": 1, "treatsFromLessonsToday": 0, "expTreats": 0},
+    {"stars": 2, "treatsFromLessonsToday": 0, "expTreats": 1},
+    {"stars": 3, "treatsFromLessonsToday": 0, "expTreats": 1},
+    {"stars": 2, "treatsFromLessonsToday": 4, "expTreats": 1},
+    {"stars": 3, "treatsFromLessonsToday": 5, "expTreats": 0},
+    {"stars": 2, "treatsFromLessonsToday": 6, "expTreats": 0},
+    {"stars": 2, "treatsFromLessonsToday": -1, "expTreats": 1}
+  ],
+  "checkInCycle": {
+    "cycle": [
+      {"effectiveStreak": -1, "expDay": 1, "expTreats": 0},
+      {"effectiveStreak": 0, "expDay": 1, "expTreats": 0},
+      {"effectiveStreak": 1, "expDay": 1, "expTreats": 0},
+      {"effectiveStreak": 2, "expDay": 2, "expTreats": 0},
+      {"effectiveStreak": 3, "expDay": 3, "expTreats": 1},
+      {"effectiveStreak": 6, "expDay": 6, "expTreats": 1},
+      {"effectiveStreak": 7, "expDay": 7, "expTreats": 3},
+      {"effectiveStreak": 8, "expDay": 1, "expTreats": 0},
+      {"effectiveStreak": 10, "expDay": 3, "expTreats": 1},
+      {"effectiveStreak": 13, "expDay": 6, "expTreats": 1},
+      {"effectiveStreak": 14, "expDay": 7, "expTreats": 3},
+      {"effectiveStreak": 15, "expDay": 1, "expTreats": 0}
+    ],
+    "days": [
+      {"cycleDay": 0, "expTreats": 0},
+      {"cycleDay": 1, "expTreats": 0},
+      {"cycleDay": 2, "expTreats": 0},
+      {"cycleDay": 3, "expTreats": 1},
+      {"cycleDay": 4, "expTreats": 0},
+      {"cycleDay": 5, "expTreats": 0},
+      {"cycleDay": 6, "expTreats": 1},
+      {"cycleDay": 7, "expTreats": 3},
+      {"cycleDay": 8, "expTreats": 0},
+      {"cycleDay": -1, "expTreats": 0}
+    ]
+  },
+  "studyChests": {
+    "catalog": [
+      {"minutes": 10, "gems": 10, "treats": 0},
+      {"minutes": 20, "gems": 15, "treats": 0},
+      {"minutes": 30, "gems": 20, "treats": 2}
+    ],
+    "claims": [
+      {"minutesToday": 0, "claimedToday": [], "expChests": []},
+      {"minutesToday": 9.99, "claimedToday": [], "expChests": []},
+      {"minutesToday": 10, "claimedToday": [], "expChests": [{"minutes": 10, "gems": 10, "treats": 0}]},
+      {"minutesToday": 19.99, "claimedToday": [], "expChests": [{"minutes": 10, "gems": 10, "treats": 0}]},
+      {"minutesToday": 20, "claimedToday": [], "expChests": [{"minutes": 10, "gems": 10, "treats": 0}, {"minutes": 20, "gems": 15, "treats": 0}]},
+      {"minutesToday": 29.99, "claimedToday": [10, 20], "expChests": []},
+      {"minutesToday": 30, "claimedToday": [], "expChests": [{"minutes": 10, "gems": 10, "treats": 0}, {"minutes": 20, "gems": 15, "treats": 0}, {"minutes": 30, "gems": 20, "treats": 2}]},
+      {"minutesToday": 30, "claimedToday": [10, 20], "expChests": [{"minutes": 30, "gems": 20, "treats": 2}]},
+      {"minutesToday": 100, "claimedToday": [10, 20, 30], "expChests": []},
+      {"minutesToday": 30, "claimedToday": [10, 10, 999], "expChests": [{"minutes": 20, "gems": 15, "treats": 0}, {"minutes": 30, "gems": 20, "treats": 2}]}
+    ]
+  },
+  "miniGame": [
+    {"accuracy": 0, "rewardedRoundsToday": 0, "isWeekend": false, "expReward": {"gems": 3, "xp": 5}},
+    {"accuracy": 0.799, "rewardedRoundsToday": 0, "isWeekend": false, "expReward": {"gems": 3, "xp": 5}},
+    {"accuracy": 0.8, "rewardedRoundsToday": 0, "isWeekend": false, "expReward": {"gems": 8, "xp": 10}},
+    {"accuracy": 1, "rewardedRoundsToday": 2, "isWeekend": false, "expReward": {"gems": 8, "xp": 10}},
+    {"accuracy": 0.799, "rewardedRoundsToday": 2, "isWeekend": false, "expReward": {"gems": 3, "xp": 5}},
+    {"accuracy": 1, "rewardedRoundsToday": 3, "isWeekend": false, "expReward": {"gems": 0, "xp": 0}},
+    {"accuracy": 0, "rewardedRoundsToday": 4, "isWeekend": false, "expReward": {"gems": 0, "xp": 0}},
+    {"accuracy": 0.8, "rewardedRoundsToday": 0, "isWeekend": true, "expReward": {"gems": 8, "xp": 20}},
+    {"accuracy": 0.799, "rewardedRoundsToday": 0, "isWeekend": true, "expReward": {"gems": 3, "xp": 10}},
+    {"accuracy": 1, "rewardedRoundsToday": 2, "isWeekend": true, "expReward": {"gems": 8, "xp": 20}},
+    {"accuracy": 1, "rewardedRoundsToday": 3, "isWeekend": true, "expReward": {"gems": 0, "xp": 0}},
+    {"accuracy": 0.8, "rewardedRoundsToday": -1, "isWeekend": false, "expReward": {"gems": 8, "xp": 10}}
+  ],
+  "idiomWatch": [
+    {"alreadyWatched": false, "expReward": {"gems": 10, "xp": 10}},
+    {"alreadyWatched": true, "expReward": {"gems": 0, "xp": 0}}
+  ],
+  "hanziXp": [
+    {"firstTryCorrect": 0, "wrote": false, "spoke": false, "expXp": 0},
+    {"firstTryCorrect": 0, "wrote": true, "spoke": false, "expXp": 10},
+    {"firstTryCorrect": 0, "wrote": false, "spoke": true, "expXp": 10},
+    {"firstTryCorrect": 0, "wrote": true, "spoke": true, "expXp": 20},
+    {"firstTryCorrect": 5, "wrote": false, "spoke": false, "expXp": 50},
+    {"firstTryCorrect": 6, "wrote": false, "spoke": false, "expXp": 60},
+    {"firstTryCorrect": 6, "wrote": true, "spoke": false, "expXp": 70},
+    {"firstTryCorrect": 6, "wrote": true, "spoke": true, "expXp": 80},
+    {"firstTryCorrect": 7, "wrote": true, "spoke": true, "expXp": 80},
+    {"firstTryCorrect": -1, "wrote": false, "spoke": false, "expXp": 0}
+  ],
+  "readingLog": {
+    "daily": [
+      {"$case": "空记录且零分钟", "minutesRead": 0, "loggedDateKeys": [], "now": "2026-10-20T00:30:00", "expReward": {"gems": 0, "xp": 0}},
+      {"$case": "不足十五分钟", "minutesRead": 14.99, "loggedDateKeys": [], "now": "2026-10-20T00:30:00", "expReward": {"gems": 0, "xp": 0}},
+      {"$case": "十五分钟首次记录", "minutesRead": 15, "loggedDateKeys": [], "now": "2026-10-20T00:30:00", "expReward": {"gems": 5, "xp": 10}},
+      {"$case": "本地凌晨已记录不重复发", "minutesRead": 30, "loggedDateKeys": ["2026-10-20"], "now": "2026-10-20T00:30:00", "expReward": {"gems": 0, "xp": 0}},
+      {"$case": "跨本地午夜恢复资格", "minutesRead": 15, "loggedDateKeys": ["2026-10-19"], "now": "2026-10-20T00:30:00", "expReward": {"gems": 5, "xp": 10}},
+      {"$case": "周日深夜不受UTC跨日影响", "minutesRead": 15, "loggedDateKeys": ["2026-10-25"], "now": "2026-10-25T23:30:00", "expReward": {"gems": 0, "xp": 0}}
+    ],
+    "weekly": [
+      {"$case": "空记录", "loggedDateKeys": [], "claimedWeekKeys": [], "now": "2026-10-23T23:30:00", "expGems": 0},
+      {"$case": "四天不达标", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22"], "claimedWeekKeys": [], "now": "2026-10-23T23:30:00", "expGems": 0},
+      {"$case": "第五天达标", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": [], "now": "2026-10-23T23:30:00", "expGems": 30},
+      {"$case": "本周已领取不重复发", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": ["2026-10-19"], "now": "2026-10-23T23:30:00", "expGems": 0},
+      {"$case": "上周领取不影响本周", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": ["2026-10-12"], "now": "2026-10-23T23:30:00", "expGems": 30},
+      {"$case": "重复同一天不凑天数", "loggedDateKeys": ["2026-10-19", "2026-10-19", "2026-10-19", "2026-10-19", "2026-10-19"], "claimedWeekKeys": [], "now": "2026-10-23T23:30:00", "expGems": 0},
+      {"$case": "周外和非法日期不凑天数", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-18", "bad-date", "2026-02-30"], "claimedWeekKeys": [], "now": "2026-10-23T23:30:00", "expGems": 0},
+      {"$case": "未来记录不凑天数", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": [], "now": "2026-10-22T23:30:00", "expGems": 0},
+      {"$case": "周一凌晨已开启新周", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": ["2026-10-19"], "now": "2026-10-26T00:30:00", "expGems": 0},
+      {"$case": "周日深夜仍是旧周", "loggedDateKeys": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23"], "claimedWeekKeys": [], "now": "2026-10-25T23:30:00", "expGems": 30},
+      {"$case": "跨年仍按同一日历周", "loggedDateKeys": ["2025-12-29", "2025-12-30", "2025-12-31", "2026-01-01", "2026-01-02"], "claimedWeekKeys": [], "now": "2026-01-02T00:30:00", "expGems": 30}
+    ]
+  }
 }

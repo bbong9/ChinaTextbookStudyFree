@@ -1,0 +1,35 @@
+基线：eaeff4f43353cfe7aad4ff1e28ef7aa3f6a1c93d
+分支：codex/rd-05-core-economy
+代码范围检查：通过，暂存文件全部属于本卡允许范围或证据目录。
+以下文件与基线逐字节一致（SHA-256）：
+f6efaec29ffcf8434e17f4cc994f0e14ce4fa98742dde4df259845c295d1992e  apps/mobile/project.yml
+8737efe072984b1100217df5fccda26028be1cf32a7ed8ae63d80dc09d54014f  apps/mobile/ChinaTextbookStudy/Domain/Economy.swift
+885c9aef3d1ca0d5b9ff9dc7d5da319824824f1c3599c32f6c761d574994463e  apps/mobile/ChinaTextbookStudy/Domain/Backup.swift
+7efe0111f7211af040e3c111a710c9bfa5776a7773fef8f5af998803b8f6703f  apps/mobile/ChinaTextbookStudy/Stores/ProgressStore.swift
+16e700b470a31fa6d74cf2d50cb7f385d4fcc56d76857304eef0bd6ff9d07613  apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift
+98eec6de9cc1d2fb9e546a04a70af4fe0399db5ae4128fcc0f655ad5735b8070  apps/mobile/ChinaTextbookStudyUITests/CosmeticsUITests.swift
+26ea99699f4c8fc0809f257ba1330fe2a7cb308f80cdd6086a688e0de0d7ded0  apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift
+8da4e0b284050746112995588110e43befb17f7ef87a348f2f5177eb78b137e0  apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift
+f032582ddf60aacb498d8f04d90531e7075154ff6b8aa2124151b613d9af2e2f  packages/core/src/types.ts
+16e9b32047c4732a44cfbbce0402f3fbc91beb70c15a1b437d28a303e066a368  packages/core/src/backup.ts
+e67822fd1e1dd7537630b2cba4993aca1ebd68980ca8523f0dedd2cead1e3a42  package-lock.json
+
+golden-vectors.json SHA-256：
+be8b949d9906d31d33d6e39ab730b4f9e3b44a1a740e4b2d138986bd8ec28463
+
+代码与收入文档暂存后的原始 git diff --stat（测试日志另行添加）：
+ .../ChinaTextbookStudy/Domain/EconomyV2.swift      | 126 +++++++++++
+ apps/mobile/ChinaTextbookStudy/Domain/Level.swift  |  23 ++
+ apps/mobile/ChinaTextbookStudy/Domain/Pets.swift   |  61 ++++++
+ .../GoldenVectorTests.swift                        | 232 +++++++++++++++++++++
+ docs/redesign-v2/evidence/rd-05/income-estimate.md |  37 ++++
+ packages/core/package.json                         |   3 +
+ packages/core/spec/golden-vectors.json             | 178 +++++++++++++++-
+ packages/core/src/__tests__/goldenVectors.test.ts  | 142 +++++++++++++
+ packages/core/src/economyV2.ts                     | 128 ++++++++++++
+ packages/core/src/index.ts                         |   3 +
+ packages/core/src/level.ts                         |  20 ++
+ packages/core/src/pets.ts                          |  49 +++++
+ 12 files changed, 1001 insertions(+), 1 deletion(-)
+
+git diff --cached --check：退出码 0
