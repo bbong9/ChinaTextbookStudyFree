@@ -1,0 +1,77 @@
+{
+  "baselineCommit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+  "artifacts": [
+    {
+      "file": "screenshots/iphone16-reactions.png",
+      "sourceResultBundle": "/private/tmp/rd00-gallery-iphone16.xcresult",
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "attachment": "rd04-reactions-landscape_0_36D10905-94FB-43CB-9F8A-3E0B974F0ADA.png",
+      "size": [
+        2556,
+        1178
+      ],
+      "sha256": "af8498959c3065e20ba350250899a2403adf02addece3f8b29aa88057326a621",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    },
+    {
+      "file": "screenshots/iphone-se-reactions.png",
+      "sourceResultBundle": "/private/tmp/rd00-gallery-se.xcresult",
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "attachment": "rd04-reactions-landscape_0_89465554-2BE5-4F4E-9C1F-EC5AD78E8F4D.png",
+      "size": [
+        1334,
+        750
+      ],
+      "sha256": "dec44390a12de6082e6f6fc03894df1abb73e9a64dd14549b842c5899d664b9a",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    },
+    {
+      "file": "screenshots/ipad-a16-reactions.png",
+      "sourceResultBundle": "/private/tmp/rd00-gallery-ipad.xcresult",
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "attachment": "rd04-reactions-landscape_0_2A592366-03B3-4802-80A8-3C117696045C.png",
+      "size": [
+        2360,
+        1640
+      ],
+      "sha256": "7db1dac59d3510f3d51cf6141b67aaf9bae265bb398f38c07f167e2934f31102",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    },
+    {
+      "file": "screenshots/pet-before-portrait.png",
+      "sourceResultBundle": "/private/tmp/rd00-latest-before.xcresult",
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "attachment": "rd04-reactions-landscape_0_705F5762-D27C-4177-A160-AB005454564C.png",
+      "size": [
+        1178,
+        2556
+      ],
+      "sha256": "e6f9fb62cd97510c1dca07305d5ebe9e12db193735c6026e9d1d2859970c263b",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    },
+    {
+      "file": "screenshots/pet-after-portrait.png",
+      "sourceResultBundle": "/private/tmp/rd00-latest-after.xcresult",
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "attachment": "rd04-reactions-landscape_0_D65E2220-0E1C-43EA-A2D1-C341404E1284.png",
+      "size": [
+        1178,
+        2556
+      ],
+      "sha256": "784740db2562cff7908513f926e888ae05107a290999c8fc1ebd89da4086bd41",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    },
+    {
+      "file": "screenshots/lesson-feedback.png",
+      "sourceResultBundle": "/private/tmp/rd00-latest-after.xcresult",
+      "test": "ScreenshotTests/testCaptureMainScreens()",
+      "attachment": "04-lesson-feedback_0_106A8830-D5FB-410A-80EA-255B744C48B8.png",
+      "size": [
+        1178,
+        2556
+      ],
+      "sha256": "b0fc274bad960b1e4c23565a769c1c87ea9d905ea9a21e50f535e923f7b66146",
+      "processing": "仅按 EXIF 转正，无裁切或界面编辑"
+    }
+  ]
+}

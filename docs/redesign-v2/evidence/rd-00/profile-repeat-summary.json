@@ -1,0 +1,37 @@
+{
+  "baselineCommit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+  "phase": "profile-repeat",
+  "resultBundle": "/private/tmp/rd00-latest-profile-repeat.xcresult",
+  "result": "Passed",
+  "totalTestCount": 1,
+  "passedTests": 1,
+  "failedTests": 0,
+  "skippedTests": 0,
+  "expectedFailures": 0,
+  "exitCode": 0,
+  "perTarget": {
+    "ChinaTextbookStudyUITests": {
+      "Passed": 1
+    }
+  },
+  "testIdentifierCount": 1,
+  "sortedTestIdentifierURLsSha256": "e1c841da5260d23d1754ab8826d16c5860fd4466aae4f8edf71ff53a2a1e204c",
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+    "deviceName": "iPhone 16",
+    "modelName": "iPhone 16",
+    "osBuildNumber": "22G86",
+    "osVersion": "18.6",
+    "platform": "iOS Simulator"
+  },
+  "deviceResultCounts": {
+    "passedTests": 10,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "expectedFailures": 0
+  },
+  "startTime": "2026-10-21T02:01:17.560000+00:00",
+  "finishTime": "2026-10-21T02:05:54.579000+00:00",
+  "failures": []
+}

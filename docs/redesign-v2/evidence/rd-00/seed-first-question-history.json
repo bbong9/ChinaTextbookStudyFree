@@ -1,0 +1,23 @@
+[
+  {
+    "commit": "5969787661eff159cec9519aeb6e8e9fa59d617e",
+    "pathInSeed": "data/books/g1up/lessons/g1up-u1-kp1.json",
+    "questionId": 1,
+    "question": "数数时，应按照从左到右或从上到下的顺序，做到不重复、不遗漏。",
+    "answer": "对"
+  },
+  {
+    "commit": "99e033aaefbf99e9b2845279f1efe1a20e5f6fb6",
+    "pathInSeed": "data/books/g1up/lessons/g1up-u1-kp1.json",
+    "questionId": 1,
+    "question": "一排有5个物体，只数到第4个，就能说这排物体一共有4个。",
+    "answer": "错"
+  },
+  {
+    "commit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+    "pathInSeed": "data/books/g1up/lessons/g1up-u1-kp1.json",
+    "questionId": 1,
+    "question": "一排有5个物体，只数到第4个，就能说这排物体一共有4个。",
+    "answer": "错"
+  }
+]
