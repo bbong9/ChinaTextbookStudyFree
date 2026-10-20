@@ -1,0 +1,66 @@
+{
+  "char": "禾",
+  "status": "draft",
+  "pinyin": "hé",
+  "strokeCount": 5,
+  "strokeNames": [
+    "撇",
+    "横",
+    "竖",
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "禾苗",
+      "pinyin": "hé miáo",
+      "status": "draft",
+      "audio": "/audio/15/157d6397d4c99a937c43b612c358470ef7289223.opus"
+    },
+    {
+      "text": "禾田",
+      "pinyin": "hé tián",
+      "status": "draft",
+      "audio": "/audio/ef/ef9cf9b9bd48afb64453af52226ff48479dc5952.opus"
+    }
+  ],
+  "scene": "grain",
+  "sceneCaption": "看图：垂着穗子的禾苗",
+  "origin": {
+    "kind": "象形",
+    "explanation": "“禾”像一棵长着叶子、垂着穗子的庄稼。刚长出来的小苗可以叫禾苗。",
+    "forms": [],
+    "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+    "license": "MIT",
+    "status": "draft"
+  },
+  "distractors": {
+    "shape": [
+      "木",
+      "米"
+    ],
+    "sound": [
+      "河"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "禾",
+  "audio": {
+    "char": "/audio/2c/2c8cfde621aef6cf2c9fdb83fb7d0f4e0d88a9c2.opus",
+    "pinyin": "/audio/2c/2c8cfde621aef6cf2c9fdb83fb7d0f4e0d88a9c2.opus",
+    "origin": "/audio/bd/bd66c09aea9890da2e7e0114c7dbaf4d4ef04160.opus"
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "hé"
+    ],
+    "radical": "禾"
+  }
+}

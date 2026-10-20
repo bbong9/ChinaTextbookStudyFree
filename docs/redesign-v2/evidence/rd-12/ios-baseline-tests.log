@@ -1,0 +1,29 @@
+Test Suite 'Selected tests' started at 2026-10-20 21:36:48.120.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 21:36:48.123.
+Test Suite 'PRFixTests' started at 2026-10-20 21:36:48.123.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' started.
+/tmp/rd12-clean-baseline/apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift:347: error: -[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' failed (0.237 seconds).
+Test Suite 'PRFixTests' failed at 2026-10-20 21:36:48.361.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.237 (0.238) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' failed at 2026-10-20 21:36:48.362.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.237 (0.238) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:36:48.373.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.237 (0.253) seconds
+Test Suite 'Selected tests' started at 2026-10-20 21:37:56.590.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 21:37:56.610.
+Test Suite 'CosmeticsUITests' started at 2026-10-20 21:37:56.611.
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' started.
+<unknown>:0: error: -[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted] : Failed to failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame. (Underlying Error: Activation point invalid and no suggested hit points based on element frame)
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' failed (92.070 seconds).
+Test Suite 'CosmeticsUITests' failed at 2026-10-20 21:39:28.686.
+	 Executed 1 test, with 1 failure (0 unexpected) in 92.070 (92.075) seconds
+Test Suite 'LayoutUITests' started at 2026-10-20 21:39:28.686.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileReachesAchievementsAndSettings]' started.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileReachesAchievementsAndSettings]' passed (32.520 seconds).
+Test Suite 'LayoutUITests' passed at 2026-10-20 21:40:01.208.
+	 Executed 1 test, with 0 failures (0 unexpected) in 32.520 (32.522) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' failed at 2026-10-20 21:40:01.209.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 124.590 (124.599) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:40:01.210.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 124.590 (124.619) seconds

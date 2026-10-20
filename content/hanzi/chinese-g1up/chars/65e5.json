@@ -1,0 +1,63 @@
+{
+  "char": "日",
+  "status": "draft",
+  "pinyin": "rì",
+  "strokeCount": 4,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "日出",
+      "pinyin": "rì chū",
+      "status": "draft",
+      "audio": "/audio/79/7919c5af53dc0a1092a80d1d62487652873045d5.opus"
+    },
+    {
+      "text": "日月",
+      "pinyin": "rì yuè",
+      "status": "draft",
+      "audio": "/audio/47/479a318312e66d6c014951d88e5c5f0e51155f85.opus"
+    }
+  ],
+  "scene": "sun",
+  "sceneCaption": "看图：圆圆的太阳",
+  "origin": {
+    "kind": "象形",
+    "explanation": "可以把“日”想成天空中的太阳。它表示太阳，也可以表示一天。",
+    "forms": [],
+    "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+    "license": "MIT",
+    "status": "draft"
+  },
+  "distractors": {
+    "shape": [
+      "目",
+      "白"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "日",
+  "audio": {
+    "char": "/audio/15/15917f3b32616f3c61f1bd69a435a449c35fa12d.opus",
+    "pinyin": "/audio/15/15917f3b32616f3c61f1bd69a435a449c35fa12d.opus",
+    "origin": "/audio/ac/ac6ea3d79bc738ef4540311e2b66ac11d5b4ab26.opus"
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "rì"
+    ],
+    "radical": "日"
+  }
+}

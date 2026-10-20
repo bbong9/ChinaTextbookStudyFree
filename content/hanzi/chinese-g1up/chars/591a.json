@@ -1,0 +1,58 @@
+{
+  "char": "多",
+  "status": "draft",
+  "pinyin": "duō",
+  "strokeCount": 6,
+  "strokeNames": [
+    "撇",
+    "横撇",
+    "点",
+    "撇",
+    "横撇",
+    "点"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "多少",
+      "pinyin": "duō shǎo",
+      "status": "draft",
+      "audio": "/audio/6c/6c999d484a3a2ad686cccc959583e2329884a333.opus"
+    },
+    {
+      "text": "多人",
+      "pinyin": "duō rén",
+      "status": "draft",
+      "audio": "/audio/28/28311f6dd0892218f74dc33421a91574b3c7853e.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "夕",
+      "名"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "夕",
+  "audio": {
+    "char": "/audio/45/451b1366afa68d537b072c922072340325dde575.opus",
+    "pinyin": "/audio/45/451b1366afa68d537b072c922072340325dde575.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "duō"
+    ],
+    "radical": "夕"
+  }
+}

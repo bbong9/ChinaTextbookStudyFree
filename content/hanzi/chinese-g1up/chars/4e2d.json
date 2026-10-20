@@ -1,0 +1,61 @@
+{
+  "char": "中",
+  "status": "draft",
+  "pinyin": "zhōng",
+  "strokeCount": 4,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "竖"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "中国",
+      "pinyin": "zhōng guó",
+      "status": "draft",
+      "audio": "/audio/10/101806f57c322fb403a9788c4c24b79650d02e77.opus"
+    },
+    {
+      "text": "中间",
+      "pinyin": "zhōng jiān",
+      "status": "draft",
+      "audio": "/audio/91/910253ea0c16efe6db83ffabca75e5101f422c7f.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "申",
+      "甲"
+    ],
+    "sound": [
+      "钟"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "zhòng"
+  ],
+  "radical": "丨",
+  "audio": {
+    "char": "/audio/08/0869071c92c0c11170ac87036bebedb52ea0c993.opus",
+    "pinyin": "/audio/08/0869071c92c0c11170ac87036bebedb52ea0c993.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "zhòng",
+      "zhōng"
+    ],
+    "radical": "丨"
+  }
+}

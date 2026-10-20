@@ -1,0 +1,65 @@
+{
+  "char": "作",
+  "status": "draft",
+  "pinyin": "zuò",
+  "strokeCount": 7,
+  "strokeNames": [
+    "撇",
+    "竖",
+    "撇",
+    "横",
+    "竖",
+    "横",
+    "横"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "作业",
+      "pinyin": "zuò yè",
+      "status": "draft",
+      "audio": "/audio/11/11f513efc18da7c6d97f8b30e91b0544f40f1718.opus"
+    },
+    {
+      "text": "工作",
+      "pinyin": "gōng zuò",
+      "status": "draft",
+      "audio": "/audio/dd/dd9fc2c0a1aa4ca55cb6e8110dac0e26fc65e537.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "昨",
+      "住"
+    ],
+    "sound": [
+      "做"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "zuō"
+  ],
+  "radical": "人",
+  "audio": {
+    "char": "/audio/e8/e8555020c4b330e701ddf27db895c5abfdc84168.opus",
+    "pinyin": "/audio/e8/e8555020c4b330e701ddf27db895c5abfdc84168.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "zuò",
+      "zuó",
+      "zuō"
+    ],
+    "radical": "人"
+  }
+}

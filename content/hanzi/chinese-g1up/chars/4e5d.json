@@ -1,0 +1,57 @@
+{
+  "char": "九",
+  "status": "draft",
+  "pinyin": "jiǔ",
+  "strokeCount": 2,
+  "strokeNames": [
+    "撇",
+    "横折弯钩"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "九月",
+      "pinyin": "jiǔ yuè",
+      "status": "draft",
+      "audio": "/audio/d5/d5712c61aadbb444c434a88c4df9629c28011664.opus"
+    },
+    {
+      "text": "九个",
+      "pinyin": "jiǔ ge",
+      "status": "draft",
+      "audio": "/audio/c7/c7ffd70e5bc2973d88a81dd5a88b793ebf4f6db9.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "几",
+      "丸"
+    ],
+    "sound": [
+      "久"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "乙",
+  "audio": {
+    "char": "/audio/27/27a2b9f17beaf4c904d503b1a58fb01ba04f8a03.opus",
+    "pinyin": "/audio/27/27a2b9f17beaf4c904d503b1a58fb01ba04f8a03.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "jiū",
+      "jiǔ"
+    ],
+    "radical": "乙"
+  }
+}

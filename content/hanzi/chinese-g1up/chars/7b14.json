@@ -1,0 +1,64 @@
+{
+  "char": "笔",
+  "status": "draft",
+  "pinyin": "bǐ",
+  "strokeCount": 10,
+  "strokeNames": [
+    "撇",
+    "横",
+    "点",
+    "撇",
+    "横",
+    "点",
+    "撇",
+    "横",
+    "横",
+    "竖弯钩"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "毛笔",
+      "pinyin": "máo bǐ",
+      "status": "draft",
+      "audio": "/audio/84/84ed15db7ab4e56456fa661b3b08da7aa8ff3656.opus"
+    },
+    {
+      "text": "铅笔",
+      "pinyin": "qiān bǐ",
+      "status": "draft",
+      "audio": "/audio/cd/cd52d6c26eac71f33ec9eb77d62a49ef4dcf74b5.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "笑",
+      "毛"
+    ],
+    "sound": [
+      "比"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "竹",
+  "audio": {
+    "char": "/audio/f4/f4d0aeab9772512b63bbfcff4cf63f4fd9873dfd.opus",
+    "pinyin": "/audio/f4/f4d0aeab9772512b63bbfcff4cf63f4fd9873dfd.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "bǐ"
+    ],
+    "radical": "竹"
+  }
+}

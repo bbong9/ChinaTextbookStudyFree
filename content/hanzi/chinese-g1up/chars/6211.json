@@ -1,0 +1,59 @@
+{
+  "char": "我",
+  "status": "draft",
+  "pinyin": "wǒ",
+  "strokeCount": 7,
+  "strokeNames": [
+    "撇",
+    "横",
+    "竖钩",
+    "提",
+    "斜钩",
+    "撇",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "我们",
+      "pinyin": "wǒ men",
+      "status": "draft",
+      "audio": "/audio/08/0805949359741ce14fe90402b25e2e023f449748.opus"
+    },
+    {
+      "text": "我家",
+      "pinyin": "wǒ jiā",
+      "status": "draft",
+      "audio": "/audio/f2/f2a8a3ceea188596dee598a3a828b425c7e8fd13.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "找",
+      "成"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "戈",
+  "audio": {
+    "char": "/audio/34/34f201bc507e33caaef736de328bf041234d1138.opus",
+    "pinyin": "/audio/34/34f201bc507e33caaef736de328bf041234d1138.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "wǒ"
+    ],
+    "radical": "戈"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "char": "云",
+  "status": "draft",
+  "pinyin": "yún",
+  "strokeCount": 4,
+  "strokeNames": [
+    "横",
+    "横",
+    "撇折",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "白云",
+      "pinyin": "bái yún",
+      "status": "draft",
+      "audio": "/audio/a2/a2dcf0894185ceb49506b3d0acc24ecfed58bb9e.opus"
+    },
+    {
+      "text": "云朵",
+      "pinyin": "yún duǒ",
+      "status": "draft",
+      "audio": "/audio/8b/8bc54e65af5fff38f4158a948f59a060d913d8be.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "去",
+      "元"
+    ],
+    "sound": [
+      "匀"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "二",
+  "audio": {
+    "char": "/audio/2e/2ea617b5cf83804ff7757e89269f700dce9ba1fa.opus",
+    "pinyin": "/audio/2e/2ea617b5cf83804ff7757e89269f700dce9ba1fa.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "yún"
+    ],
+    "radical": "二"
+  }
+}

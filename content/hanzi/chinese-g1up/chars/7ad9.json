@@ -1,0 +1,65 @@
+{
+  "char": "站",
+  "status": "draft",
+  "pinyin": "zhàn",
+  "strokeCount": 10,
+  "strokeNames": [
+    "点",
+    "横",
+    "点",
+    "撇",
+    "提",
+    "竖",
+    "横",
+    "竖",
+    "横折",
+    "横"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "站立",
+      "pinyin": "zhàn lì",
+      "status": "draft",
+      "audio": "/audio/13/134fe7db0939c973ea2ce6d44ba71e901d57706b.opus"
+    },
+    {
+      "text": "车站",
+      "pinyin": "chē zhàn",
+      "status": "draft",
+      "audio": "/audio/97/977097fb7855e52b52139acda2715ac183ac552d.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "贴",
+      "店"
+    ],
+    "sound": [
+      "战"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "立",
+  "audio": {
+    "char": "/audio/bc/bc07b7b167d7ed62ef7a4f414c1ac02291886045.opus",
+    "pinyin": "/audio/bc/bc07b7b167d7ed62ef7a4f414c1ac02291886045.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "zhàn",
+      "zhān"
+    ],
+    "radical": "立"
+  }
+}

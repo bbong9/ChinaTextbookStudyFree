@@ -1,0 +1,56 @@
+{
+  "char": "牛",
+  "status": "draft",
+  "pinyin": "niú",
+  "strokeCount": 4,
+  "strokeNames": [
+    "撇",
+    "横",
+    "横",
+    "竖"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "水牛",
+      "pinyin": "shuǐ niú",
+      "status": "draft",
+      "audio": "/audio/9e/9e41b090d599d6fcf1ac3751c597f8deb8087f34.opus"
+    },
+    {
+      "text": "小牛",
+      "pinyin": "xiǎo niú",
+      "status": "draft",
+      "audio": "/audio/06/06c95e6b4b1cb74784d1aa26a7858e8766bd0189.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "午",
+      "生"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "牛",
+  "audio": {
+    "char": "/audio/bf/bf9b3e9c32c4dbb149c64b255d85b4d9f7f116e6.opus",
+    "pinyin": "/audio/bf/bf9b3e9c32c4dbb149c64b255d85b4d9f7f116e6.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "niú"
+    ],
+    "radical": "牛"
+  }
+}

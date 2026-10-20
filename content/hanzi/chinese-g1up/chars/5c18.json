@@ -1,0 +1,60 @@
+{
+  "char": "尘",
+  "status": "draft",
+  "pinyin": "chén",
+  "strokeCount": 6,
+  "strokeNames": [
+    "竖",
+    "撇",
+    "点",
+    "横",
+    "竖",
+    "横"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "灰尘",
+      "pinyin": "huī chén",
+      "status": "draft",
+      "audio": "/audio/84/8424e24fe77763c0860b748fe966a3df80b49812.opus"
+    },
+    {
+      "text": "尘土",
+      "pinyin": "chén tǔ",
+      "status": "draft",
+      "audio": "/audio/48/48eeec4e7141ec669fcf47d42d3fc7df2c0d9dd6.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "尖",
+      "坐"
+    ],
+    "sound": [
+      "陈"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "小",
+  "audio": {
+    "char": "/audio/7b/7b04538f750c31b5648fd524f2bf115989be942e.opus",
+    "pinyin": "/audio/7b/7b04538f750c31b5648fd524f2bf115989be942e.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "chén"
+    ],
+    "radical": "小"
+  }
+}

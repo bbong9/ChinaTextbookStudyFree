@@ -1,0 +1,60 @@
+{
+  "char": "早",
+  "status": "draft",
+  "pinyin": "zǎo",
+  "strokeCount": 6,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "横",
+    "竖"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "早上",
+      "pinyin": "zǎo shang",
+      "status": "draft",
+      "audio": "/audio/17/172fb7196ffcff0d3fa4d966985164fc20773e9e.opus"
+    },
+    {
+      "text": "早安",
+      "pinyin": "zǎo ān",
+      "status": "draft",
+      "audio": "/audio/a9/a97eddb0ace010c54a75e805801aad12cc940a17.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "旱",
+      "草"
+    ],
+    "sound": [
+      "枣"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "日",
+  "audio": {
+    "char": "/audio/13/13a8589339d9223d3e4f0ff4eb9888cba3981435.opus",
+    "pinyin": "/audio/13/13a8589339d9223d3e4f0ff4eb9888cba3981435.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "zǎo"
+    ],
+    "radical": "日"
+  }
+}

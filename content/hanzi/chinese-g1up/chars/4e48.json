@@ -1,0 +1,60 @@
+{
+  "char": "么",
+  "status": "draft",
+  "pinyin": "me",
+  "strokeCount": 3,
+  "strokeNames": [
+    "撇",
+    "撇折",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "什么",
+      "pinyin": "shén me",
+      "status": "draft",
+      "audio": "/audio/1d/1d57c0fe68f233805661a0f67e74524a25213d4c.opus"
+    },
+    {
+      "text": "怎么",
+      "pinyin": "zěn me",
+      "status": "draft",
+      "audio": "/audio/6f/6f409884bb8c2e40c5086ee04a2d4356173864a4.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "幺",
+      "乡"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "本课词“多么”的轻声 me；组词轻声仍需教材复核。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "丿",
+  "audio": {
+    "char": "/audio/90/902c4b264f7bd3c047eb7c7a8221a5a79733bb18.opus",
+    "pinyin": "/audio/90/902c4b264f7bd3c047eb7c7a8221a5a79733bb18.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "ma",
+      "me",
+      "mó",
+      "yāo"
+    ],
+    "radical": "丿"
+  }
+}

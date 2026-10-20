@@ -1,0 +1,56 @@
+{
+  "char": "人",
+  "status": "draft",
+  "pinyin": "rén",
+  "strokeCount": 2,
+  "strokeNames": [
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "大人",
+      "pinyin": "dà rén",
+      "status": "draft",
+      "audio": "/audio/46/46696e251f51cf90e1092943ebcede8fc61d98cb.opus"
+    },
+    {
+      "text": "工人",
+      "pinyin": "gōng rén",
+      "status": "draft",
+      "audio": "/audio/37/37b7c70ccea24a148ab06162ed5af241d567f059.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "入",
+      "八"
+    ],
+    "sound": [
+      "仁"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "人",
+  "audio": {
+    "char": "/audio/49/4912771a4216d897b1f3c71bb0e4994e86410815.opus",
+    "pinyin": "/audio/49/4912771a4216d897b1f3c71bb0e4994e86410815.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "rén"
+    ],
+    "radical": "人"
+  }
+}

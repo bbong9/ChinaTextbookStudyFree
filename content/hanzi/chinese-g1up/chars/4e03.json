@@ -1,0 +1,56 @@
+{
+  "char": "七",
+  "status": "draft",
+  "pinyin": "qī",
+  "strokeCount": 2,
+  "strokeNames": [
+    "横",
+    "竖弯钩"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "七月",
+      "pinyin": "qī yuè",
+      "status": "draft",
+      "audio": "/audio/df/dfd42b9c455a14b2315dc35ff2643260550445e5.opus"
+    },
+    {
+      "text": "七个",
+      "pinyin": "qī ge",
+      "status": "draft",
+      "audio": "/audio/d1/d1be4dba3ca0c8f8b5894cc9373e65c315c37f4f.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "匕",
+      "十"
+    ],
+    "sound": [
+      "漆"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "一",
+  "audio": {
+    "char": "/audio/7d/7db1eeb5c3746b6625047193939edad3c9f5a946.opus",
+    "pinyin": "/audio/7d/7db1eeb5c3746b6625047193939edad3c9f5a946.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "qī"
+    ],
+    "radical": "一"
+  }
+}

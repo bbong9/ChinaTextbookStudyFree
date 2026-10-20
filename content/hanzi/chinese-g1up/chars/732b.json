@@ -1,0 +1,65 @@
+{
+  "char": "猫",
+  "status": "draft",
+  "pinyin": "māo",
+  "strokeCount": 11,
+  "strokeNames": [
+    "撇",
+    "弯钩",
+    "撇",
+    "横",
+    "竖",
+    "竖",
+    "竖",
+    "横折",
+    "横",
+    "竖",
+    "横"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "小猫",
+      "pinyin": "xiǎo māo",
+      "status": "draft",
+      "audio": "/audio/3e/3e5be3b89ae2fa683df4bc780d51dd27bb6b65a7.opus"
+    },
+    {
+      "text": "花猫",
+      "pinyin": "huā māo",
+      "status": "draft",
+      "audio": "/audio/f4/f41f2a3adf179a00e315c13f3687d36c12013b74.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "狗",
+      "苗"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "犬",
+  "audio": {
+    "char": "/audio/e1/e10bd9f09bf8645cbc09111df49cd3a35017e086.opus",
+    "pinyin": "/audio/e1/e10bd9f09bf8645cbc09111df49cd3a35017e086.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "miáo",
+      "máo",
+      "māo"
+    ],
+    "radical": "犬"
+  }
+}

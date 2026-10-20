@@ -1,0 +1,544 @@
+** BUILD SUCCEEDED **
+Test Suite 'All tests' started at 2026-10-20 21:23:54.782.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 21:23:54.787.
+Test Suite 'AchievementsTests' started at 2026-10-20 21:23:54.787.
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testEmptySnapshotUnlocksNothing]' started.
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testEmptySnapshotUnlocksNothing]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testFirstLessonUnlocks]' started.
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testFirstLessonUnlocks]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testNewlyUnlockedDiff]' started.
+Test Case '-[ChinaTextbookStudyTests.AchievementsTests testNewlyUnlockedDiff]' passed (0.000 seconds).
+Test Suite 'AchievementsTests' passed at 2026-10-20 21:23:54.792.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'ChestTests' started at 2026-10-20 21:23:54.849.
+Test Case '-[ChinaTextbookStudyTests.ChestTests testRollRewardTiersWithSeededRNG]' started.
+Test Case '-[ChinaTextbookStudyTests.ChestTests testRollRewardTiersWithSeededRNG]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.ChestTests testSlotsEveryFiveLessonsWithinUnit]' started.
+Test Case '-[ChinaTextbookStudyTests.ChestTests testSlotsEveryFiveLessonsWithinUnit]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.ChestTests testSlotsResetCounterPerUnit]' started.
+Test Case '-[ChinaTextbookStudyTests.ChestTests testSlotsResetCounterPerUnit]' passed (0.000 seconds).
+Test Suite 'ChestTests' passed at 2026-10-20 21:23:54.853.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.003 (0.004) seconds
+Test Suite 'CoreTypesTests' started at 2026-10-20 21:23:55.032.
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testCanDecodeRealLessonJSON]' started.
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testCanDecodeRealLessonJSON]' passed (0.015 seconds).
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testQuestionTypeRawValuesMatchTSEnum]' started.
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testQuestionTypeRawValuesMatchTSEnum]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testSeedIndexDecodes]' started.
+Test Case '-[ChinaTextbookStudyTests.CoreTypesTests testSeedIndexDecodes]' passed (0.002 seconds).
+Test Suite 'CoreTypesTests' passed at 2026-10-20 21:23:55.177.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.017 (0.145) seconds
+Test Suite 'CosmeticsTests' started at 2026-10-20 21:23:55.177.
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testDefaultEquippedExist]' started.
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testDefaultEquippedExist]' passed (0.052 seconds).
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testItemsByTypeMatchLayer]' started.
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testItemsByTypeMatchLayer]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testStartersHaveZeroCost]' started.
+Test Case '-[ChinaTextbookStudyTests.CosmeticsTests testStartersHaveZeroCost]' passed (0.000 seconds).
+Test Suite 'CosmeticsTests' passed at 2026-10-20 21:23:55.230.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.052 (0.053) seconds
+Test Suite 'GoldenVectorTests' started at 2026-10-20 21:23:55.230.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testChestSlotVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testChestSlotVectors]' passed (0.009 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testDailyRewardVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testDailyRewardVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyConstantsMatchSpec]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyConstantsMatchSpec]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testExamXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testExamXpVectors]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testGemDripVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testGemDripVectors]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotNameVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotNameVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotXpVectors]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueConstantsMatchSpec]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueConstantsMatchSpec]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMilestoneVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMilestoneVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testSrsReviewVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testSrsReviewVectors]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStarVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStarVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStreakAdvanceVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStreakAdvanceVectors]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testXpVectors]' passed (0.000 seconds).
+Test Suite 'GoldenVectorTests' passed at 2026-10-20 21:23:55.272.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.028 (0.042) seconds
+Test Suite 'GradeTests' started at 2026-10-20 21:23:55.272.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testChoiceLetterAndContent]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testChoiceLetterAndContent]' passed (0.027 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testChoiceWithContentAnswer]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testChoiceWithContentAnswer]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testEmptyAnswerFails]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testEmptyAnswerFails]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testFillBlankNumeric]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testFillBlankNumeric]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testFillBlankText]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testFillBlankText]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testIssue2DoesNotTreatAnswerTextAsFirstLetter]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testIssue2DoesNotTreatAnswerTextAsFirstLetter]' passed (0.133 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testMatchingOrderInsensitive]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testMatchingOrderInsensitive]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testTrueFalseTolerantSynonyms]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testTrueFalseTolerantSynonyms]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GradeTests testWordOrder]' started.
+Test Case '-[ChinaTextbookStudyTests.GradeTests testWordOrder]' passed (0.001 seconds).
+Test Suite 'GradeTests' passed at 2026-10-20 21:23:55.465.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.172 (0.193) seconds
+Test Suite 'HanziDecodingTests' started at 2026-10-20 21:23:55.468.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testAllSeedCharactersDecodeAndMergeSharedStrokes]' started.
+RD-12：实际 seed 中 100 个字卡全部解码并合并共享笔顺。
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testAllSeedCharactersDecodeAndMergeSharedStrokes]' passed (4.044 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testCorruptStrokeFileAndMissingLicenseDegradeToEmpty]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testCorruptStrokeFileAndMissingLicenseDegradeToEmpty]' passed (4.241 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingMalformedOrUnsafeRequestsReturnNil]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingMalformedOrUnsafeRequestsReturnNil]' passed (4.089 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingStrokeFileKeepsCharacterWithEmptyStrokes]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingStrokeFileKeepsCharacterWithEmptyStrokes]' passed (3.769 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testWithoutRecordingsRegistersTextAndStartsSystemTTS]' started.
+RD-12：无任何试点录音，山/拼音/组词/字源均可回退，已启动系统 TTS 队列。
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testWithoutRecordingsRegistersTextAndStartsSystemTTS]' passed (5.281 seconds).
+Test Suite 'HanziDecodingTests' passed at 2026-10-20 21:24:16.895.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 21.424 (21.427) seconds
+Test Suite 'LeagueSettleTests' started at 2026-10-20 21:24:16.895.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testBotXpMonotonicAndConverges]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testBotXpMonotonicAndConverges]' passed (0.070 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testClearPendingLeagueResult]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testClearPendingLeagueResult]' passed (0.015 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamLessonDoublesXpNotGems]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamLessonDoublesXpNotGems]' passed (0.019 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamPathNodeStates]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamPathNodeStates]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamXpStacksWithWeekend]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testExamXpStacksWithWeekend]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueEnrollsAtTenLessons]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueEnrollsAtTenLessons]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueLockedBeforeTenLessons]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueLockedBeforeTenLessons]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueWeeklyXpSumsSevenDays]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testLeagueWeeklyXpSumsSevenDays]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankBoundaries]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankBoundaries]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankDiamondCapAndBronzeFloor]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankDiamondCapAndBronzeFloor]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankGems]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testSettleRankGems]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testStandingsTieBreak]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testStandingsTieBreak]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testTierLadder]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testTierLadder]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForCrossesMonthAndYear]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForCrossesMonthAndYear]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForMidweekFallsBackToMonday]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForMidweekFallsBackToMonday]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForMondayReturnsSameDay]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeekKeyForMondayReturnsSameDay]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettleDemotionNoGems]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettleDemotionNoGems]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettleDiamondCapAndBronzeFloor]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettleDiamondCapAndBronzeFloor]' passed (0.012 seconds).
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettlePromotionPaysOnce]' started.
+Test Case '-[ChinaTextbookStudyTests.LeagueSettleTests testWeeklySettlePromotionPaysOnce]' passed (0.008 seconds).
+Test Suite 'LeagueSettleTests' passed at 2026-10-20 21:24:17.092.
+	 Executed 19 tests, with 0 failures (0 unexpected) in 0.189 (0.196) seconds
+Test Suite 'MascotTriggersTests' started at 2026-10-20 21:24:17.092.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testCheerOnHighCombo]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testCheerOnHighCombo]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testEmbarrassedOnLastHeartWrong]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testEmbarrassedOnLastHeartWrong]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testProudOnPerfectFinish]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testProudOnPerfectFinish]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testReactionLevelupOnComboMilestones]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testReactionLevelupOnComboMilestones]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testThinkOnFirstWrong]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testThinkOnFirstWrong]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testToneMapping]' started.
+Test Case '-[ChinaTextbookStudyTests.MascotTriggersTests testToneMapping]' passed (0.001 seconds).
+Test Suite 'MascotTriggersTests' passed at 2026-10-20 21:24:17.099.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.004 (0.007) seconds
+Test Suite 'MathTextTests' started at 2026-10-20 21:24:17.099.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testBareBracesAreGroupingOnly]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testBareBracesAreGroupingOnly]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testDoubleDollarBlock]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testDoubleDollarBlock]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testFractionMidSentence]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testFractionMidSentence]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testFractionWithCommandInside]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testFractionWithCommandInside]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testGradingUsesRawStringsNotRendered]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testGradingUsesRawStringsNotRendered]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testMultiDigitFraction]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testMultiDigitFraction]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testMultipleMathSegments]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testMultipleMathSegments]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNestedFraction]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNestedFraction]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNonNumericFractionFallsBack]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNonNumericFractionFallsBack]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNoSpaceAfterCommand]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testNoSpaceAfterCommand]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testPlainChineseUnchanged]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testPlainChineseUnchanged]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedBigcircBlank]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedBigcircBlank]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedFractionInSentence]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedFractionInSentence]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedFractionOption]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedFractionOption]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedGrade1Comparison]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedGrade1Comparison]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedTimes]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSeedTimes]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSpacingCommands]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSpacingCommands]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSubscript]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSubscript]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSuperscript]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSuperscript]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSymbolCommands]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testSymbolCommands]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnknownCommandDropsBackslash]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnknownCommandDropsBackslash]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnmappableScriptKeepsCaret]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnmappableScriptKeepsCaret]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnpairedDollarKeptLiterally]' started.
+Test Case '-[ChinaTextbookStudyTests.MathTextTests testUnpairedDollarKeptLiterally]' passed (0.002 seconds).
+Test Suite 'MathTextTests' passed at 2026-10-20 21:24:17.128.
+	 Executed 23 tests, with 0 failures (0 unexpected) in 0.017 (0.029) seconds
+Test Suite 'PRFixTests' started at 2026-10-20 21:24:17.128.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testBackupCarriesClaimedQuestLedger]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testBackupCarriesClaimedQuestLedger]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testCloudChangeNotificationConfirmsCloudState]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testCloudChangeNotificationConfirmsCloudState]' passed (0.009 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testCloudReadStaysUnknownUntilGraceElapses]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testCloudReadStaysUnknownUntilGraceElapses]' passed (0.008 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDeclineDisownsCloudArchiveSoDeviceKeepsBackingUp]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDeclineDisownsCloudArchiveSoDeviceKeepsBackingUp]' passed (0.015 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDeclineRestoreStillProtectsCloudBackupFromEmptySave]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDeclineRestoreStillProtectsCloudBackupFromEmptySave]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDerivedGraduationKeepsImportedEntryOutOfDueQueue]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testDerivedGraduationKeepsImportedEntryOutOfDueQueue]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testEmptyLocalNeverOverwritesCloudBackup]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testEmptyLocalNeverOverwritesCloudBackup]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testExportedReadingDatesAreNeverEmpty]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testExportedReadingDatesAreNeverEmpty]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportedZeroHeartSaveStillRecharges]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportedZeroHeartSaveStillRecharges]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportingYesterdaysArchiveDoesNotResetReviewHeartLedger]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportingYesterdaysArchiveDoesNotResetReviewHeartLedger]' passed (0.008 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' started.
+/tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift:347: error: -[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' failed (0.025 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testLegacyReadingKeysMigrateOnLaunch]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testLegacyReadingKeysMigrateOnLaunch]' passed (0.008 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testMakeupTopsUpDailyRewardToWebEquivalentTotal]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testMakeupTopsUpDailyRewardToWebEquivalentTotal]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testNoMakeupKeepsTierZeroReward]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testNoMakeupKeepsTierZeroReward]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testPendingRestoreBlocksMirror]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testPendingRestoreBlocksMirror]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReadingIdNormalizationMatchesCoreRules]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReadingIdNormalizationMatchesCoreRules]' passed (0.026 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRecentXpAndWeeklyTotalsUseCalendarWeek]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRecentXpAndWeeklyTotalsUseCalendarWeek]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRefreshWhilePendingRestoreKeepsPromptAndSkipsSettlement]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRefreshWhilePendingRestoreKeepsPromptAndSkipsSettlement]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testResetProgressIsNotMistakenForANewDevice]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testResetProgressIsNotMistakenForANewDevice]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRestoreOfferGateIgnoresOnboardingProgress]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testRestoreOfferGateIgnoresOnboardingProgress]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartIsOncePerDayAndGated]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartIsOncePerDayAndGated]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartLedgerSurvivesExportImportRoundTrip]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartLedgerSurvivesExportImportRoundTrip]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartRewardMirrorsCore]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testReviewHeartRewardMirrorsCore]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testSrsGraduationGoldenVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testSrsGraduationGoldenVectors]' passed (0.009 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testTickHeartRechargeSelfHealsMissingTimer]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testTickHeartRechargeSelfHealsMissingTimer]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testUnknownCloudStateIsReadOnly]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testUnknownCloudStateIsReadOnly]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWeakerLocalNeverOverwritesCloud]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWeakerLocalNeverOverwritesCloud]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWebReadingKeysImportIntoCanonicalSpace]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWebReadingKeysImportIntoCanonicalSpace]' passed (0.014 seconds).
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWeekWindowIsCalendarWeekMondayFirst]' started.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testWeekWindowIsCalendarWeekMondayFirst]' passed (0.009 seconds).
+Test Suite 'PRFixTests' failed at 2026-10-20 21:24:17.413.
+	 Executed 29 tests, with 1 failure (0 unexpected) in 0.275 (0.284) seconds
+Test Suite 'PathLessonMetasTests' started at 2026-10-20 21:24:17.413.
+Test Case '-[ChinaTextbookStudyTests.PathLessonMetasTests testChestAfterFifthLessonOnly]' started.
+Test Case '-[ChinaTextbookStudyTests.PathLessonMetasTests testChestAfterFifthLessonOnly]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.PathLessonMetasTests testMetasUseDataLoaderLessonIdConvention]' started.
+Test Case '-[ChinaTextbookStudyTests.PathLessonMetasTests testMetasUseDataLoaderLessonIdConvention]' passed (0.000 seconds).
+Test Suite 'PathLessonMetasTests' passed at 2026-10-20 21:24:17.416.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'ProgressStoreEconomyTests' started at 2026-10-20 21:24:17.416.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testAllWrongReviewSessionStillCounts]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testAllWrongReviewSessionStillCounts]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testLessonGemDripMatchesWebEconomy]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testLessonGemDripMatchesWebEconomy]' passed (0.012 seconds).
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testLessonXpMatchesUnifiedFormula]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testLessonXpMatchesUnifiedFormula]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testPerfectFirstThreeStarXp]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testPerfectFirstThreeStarXp]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testStreakFreezeIsConsumedOnMissedDay]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testStreakFreezeIsConsumedOnMissedDay]' passed (0.011 seconds).
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testWeekendDoublesLessonXp]' started.
+Test Case '-[ChinaTextbookStudyTests.ProgressStoreEconomyTests testWeekendDoublesLessonXp]' passed (0.007 seconds).
+Test Suite 'ProgressStoreEconomyTests' passed at 2026-10-20 21:24:17.477.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.050 (0.061) seconds
+Test Suite 'QuestsTests' started at 2026-10-20 21:24:17.477.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testAlwaysIncludesAnXPQuest]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testAlwaysIncludesAnXPQuest]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testAlwaysReturnsThreeQuests]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testAlwaysReturnsThreeQuests]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testIsDeterministicForTheSameDay]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testIsDeterministicForTheSameDay]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testKindsAreDistinctWithinADay]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testKindsAreDistinctWithinADay]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testSetVariesAcrossDays]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testSetVariesAcrossDays]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testTargetsAndRewardsArePositive]' started.
+Test Case '-[ChinaTextbookStudyTests.QuestsTests testTargetsAndRewardsArePositive]' passed (0.001 seconds).
+Test Suite 'QuestsTests' passed at 2026-10-20 21:24:17.482.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'SRSTests' started at 2026-10-20 21:24:17.482.
+Test Case '-[ChinaTextbookStudyTests.SRSTests testBoxThreeStaysAtThreeAndPushes7Days]' started.
+Test Case '-[ChinaTextbookStudyTests.SRSTests testBoxThreeStaysAtThreeAndPushes7Days]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.SRSTests testCorrectAnswerPromotesBox]' started.
+Test Case '-[ChinaTextbookStudyTests.SRSTests testCorrectAnswerPromotesBox]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.SRSTests testDueEntriesSortByBoxThenDate]' started.
+Test Case '-[ChinaTextbookStudyTests.SRSTests testDueEntriesSortByBoxThenDate]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.SRSTests testWrongAnswerResetsToBoxOne]' started.
+Test Case '-[ChinaTextbookStudyTests.SRSTests testWrongAnswerResetsToBoxOne]' passed (0.001 seconds).
+Test Suite 'SRSTests' passed at 2026-10-20 21:24:17.488.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.003 (0.006) seconds
+Test Suite 'StreakTests' started at 2026-10-20 21:24:17.489.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testConsecutiveDayIncrements]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testConsecutiveDayIncrements]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testFirstEverStartsAtOne]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testFirstEverStartsAtOne]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testFreezesCoverMissedDays]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testFreezesCoverMissedDays]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testGapResetsWithoutFreezes]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testGapResetsWithoutFreezes]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testInsufficientFreezesResetKeepsShields]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testInsufficientFreezesResetKeepsShields]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpCapsAtMax]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpCapsAtMax]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpOnConsecutiveDay]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpOnConsecutiveDay]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpOnlyAppliesToGapOne]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testMondayTopUpOnlyAppliesToGapOne]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testSameDayNoChange]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testSameDayNoChange]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.StreakTests testUnparseableDateResets]' started.
+Test Case '-[ChinaTextbookStudyTests.StreakTests testUnparseableDateResets]' passed (0.001 seconds).
+Test Suite 'StreakTests' passed at 2026-10-20 21:24:17.506.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.011 (0.017) seconds
+Test Suite 'SubjectsTests' started at 2026-10-20 21:24:17.506.
+Test Case '-[ChinaTextbookStudyTests.SubjectsTests testEverySubjectHasConfig]' started.
+Test Case '-[ChinaTextbookStudyTests.SubjectsTests testEverySubjectHasConfig]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.SubjectsTests testResolveDefaultsToMath]' started.
+Test Case '-[ChinaTextbookStudyTests.SubjectsTests testResolveDefaultsToMath]' passed (0.001 seconds).
+Test Suite 'SubjectsTests' passed at 2026-10-20 21:24:17.515.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.008 (0.009) seconds
+Test Suite 'WaveATests' started at 2026-10-20 21:24:17.519.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testBuyHeartRefillDoesNotChargeWhenHeartsRechargedOffscreen]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testBuyHeartRefillDoesNotChargeWhenHeartsRechargedOffscreen]' passed (0.008 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testBuyHeartRefillStillChargesWhenHeartsAreMissing]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testBuyHeartRefillStillChargesWhenHeartsAreMissing]' passed (0.019 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakDropsToZeroWhenShieldsCannotCoverTheGap]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakDropsToZeroWhenShieldsCannotCoverTheGap]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakHoldsWhileTodayCanStillContinueIt]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakHoldsWhileTodayCanStillContinueIt]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakShowsCurrentStreakWhenStudiedToday]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakShowsCurrentStreakWhenStudiedToday]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakSurvivesGapCoveredByShields]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testDisplayStreakSurvivesGapCoveredByShields]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveATests testRefreshForNowRestoresHeartsAfterTimePassed]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveATests testRefreshForNowRestoresHeartsAfterTimePassed]' passed (0.008 seconds).
+Test Suite 'WaveATests' passed at 2026-10-20 21:24:17.579.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.057 (0.060) seconds
+Test Suite 'WaveBTests' started at 2026-10-20 21:24:17.579.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testAchievementLedgerNeverRelocks]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testAchievementLedgerNeverRelocks]' passed (0.012 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testAchievementRewardPaidOnClaimExactlyOnce]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testAchievementRewardPaidOnClaimExactlyOnce]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testBuySucceedsBelowCap]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testBuySucceedsBelowCap]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testClaimRefusedWhileStillLocked]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testClaimRefusedWhileStillLocked]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyGoalOptionsAndLegacyValuePreserved]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyGoalOptionsAndLegacyValuePreserved]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardClaimsOncePerDay]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardClaimsOncePerDay]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardHonestAfterBrokenChain]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardHonestAfterBrokenChain]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardTierFollowsSalvageableStreak]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testDailyRewardTierFollowsSalvageableStreak]' passed (0.009 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testFirstReviewSurvivesGraduation]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testFirstReviewSurvivesGraduation]' passed (0.007 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testFreshSaveStartsWithTwoShieldsAndCapBlocksPurchase]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testFreshSaveStartsWithTwoShieldsAndCapBlocksPurchase]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveAboveCapKeepsShieldsButBlocksBuying]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveAboveCapKeepsShieldsButBlocksBuying]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveMigratesShieldsUpToTwo]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveMigratesShieldsUpToTwo]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveTreatsUnlockedAsClaimed]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testLegacySaveTreatsUnlockedAsClaimed]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRefusedWhenStreakIsNotBroken]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRefusedWhenStreakIsNotBroken]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRefusedWithoutEnoughGems]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRefusedWithoutEnoughGems]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRevivesABrokenStreak]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMakeUpRevivesABrokenStreak]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMigrationRunsOnlyOnce]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMigrationRunsOnlyOnce]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMondayShieldTopUpThroughTheStore]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testMondayShieldTopUpThroughTheStore]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testNonMilestoneDayPaysNothing]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testNonMilestoneDayPaysNothing]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testStreakMilestonePaidOnceViaLedger]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveBTests testStreakMilestonePaidOnceViaLedger]' passed (0.009 seconds).
+Test Suite 'WaveBTests' passed at 2026-10-20 21:24:17.689.
+	 Executed 20 tests, with 0 failures (0 unexpected) in 0.105 (0.110) seconds
+Test Suite 'WaveDStoreTests' started at 2026-10-20 21:24:17.689.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testAddHeartCapsAtMax]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testAddHeartCapsAtMax]' passed (0.008 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimableQuestCountMatchesCardLogic]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimableQuestCountMatchesCardLogic]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimAchievementIsIdempotent]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimAchievementIsIdempotent]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimRequiresUnlock]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimRequiresUnlock]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimSurvivesRelaunchWithoutDoublePay]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testClaimSurvivesRelaunchWithoutDoublePay]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testCompletingAnotherLessonKeepsForeignSession]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testCompletingAnotherLessonKeepsForeignSession]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testCompletingTheLessonDropsItsSession]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testCompletingTheLessonDropsItsSession]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFamiliesCoverEveryAchievementExactlyOnce]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFamiliesCoverEveryAchievementExactlyOnce]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFamilyTierHelpers]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFamilyTierHelpers]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFreezesConsumedReachesLessonOutcome]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFreezesConsumedReachesLessonOutcome]' passed (0.010 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFreshSaveJoinsToday]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testFreshSaveJoinsToday]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testGraduationKeepsEntryOutOfDueQueue]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testGraduationKeepsEntryOutOfDueQueue]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testLegacySaveBackfillsJoinedDateFromEarliestLesson]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testLegacySaveBackfillsJoinedDateFromEarliestLesson]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testQuestsSnapshotIsAPureRead]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testQuestsSnapshotIsAPureRead]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testSessionSurvivesRelaunch]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testSessionSurvivesRelaunch]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testSessionUpsertReadAndClear]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testSessionUpsertReadAndClear]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testUngraduatedEntryStillComesDue]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testUngraduatedEntryStillComesDue]' passed (0.004 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testWrongAnswerSendsGraduateBackToOven]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveDStoreTests testWrongAnswerSendsGraduateBackToOven]' passed (0.005 seconds).
+Test Suite 'WaveDStoreTests' passed at 2026-10-20 21:24:17.772.
+	 Executed 18 tests, with 0 failures (0 unexpected) in 0.079 (0.083) seconds
+Test Suite 'WaveE2Tests' started at 2026-10-20 21:24:17.773.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testApplyJumpUnlockMarksLessonsWithZeroEconomy]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testApplyJumpUnlockMarksLessonsWithZeroEconomy]' passed (0.006 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testBackupRoundTripPreservesProgress]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testBackupRoundTripPreservesProgress]' passed (0.025 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testImportWebEnvelope]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testImportWebEnvelope]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testIntroSeenPersistsAcrossRelaunch]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testIntroSeenPersistsAcrossRelaunch]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testJumpSamplingEvenDedupedAndDeterministic]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testJumpSamplingEvenDedupedAndDeterministic]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testJumpSamplingSmallPoolTakesAllAndDedupes]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testJumpSamplingSmallPoolTakesAllAndDedupes]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testReportsDedupeAndPersist]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testReportsDedupeAndPersist]' passed (0.005 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testValidateRejectsOnlyStructuralDamage]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testValidateRejectsOnlyStructuralDamage]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testValidateToleratesBadFieldsAndFutureVersions]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveE2Tests testValidateToleratesBadFieldsAndFutureVersions]' passed (0.002 seconds).
+Test Suite 'WaveE2Tests' passed at 2026-10-20 21:24:17.826.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.052 (0.054) seconds
+Test Suite 'WaveFTests' started at 2026-10-20 21:24:17.827.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontCapDoesNotBiteAtModerateSizes]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontCapDoesNotBiteAtModerateSizes]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontDefaultCategoryKeepsBaseSize]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontDefaultCategoryKeepsBaseSize]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontMetadataRolesAreCapped]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontMetadataRolesAreCapped]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontReadingRolesGrowAtAccessibilitySizes]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontReadingRolesGrowAtAccessibilitySizes]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontScalingIsMonotonic]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testDuoFontScalingIsMonotonic]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterAllowsFirstRequest]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterAllowsFirstRequest]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterCapsAtTwoPerVersion]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterCapsAtTwoPerVersion]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterRecordCountsPerVersion]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterRecordCountsPerVersion]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterResetsOnNewVersion]' started.
+Test Case '-[ChinaTextbookStudyTests.WaveFTests testReviewPrompterResetsOnNewVersion]' passed (0.004 seconds).
+Test Suite 'WaveFTests' passed at 2026-10-20 21:24:17.842.
+	 Executed 9 tests, with 0 failures (0 unexpected) in 0.014 (0.016) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' failed at 2026-10-20 21:24:17.842.
+	 Executed 209 tests, with 1 failure (0 unexpected) in 22.570 (23.056) seconds
+Test Suite 'All tests' failed at 2026-10-20 21:24:17.843.
+	 Executed 209 tests, with 1 failure (0 unexpected) in 22.570 (23.060) seconds
+Test Suite 'All tests' started at 2026-10-20 21:24:28.268.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 21:24:28.274.
+Test Suite 'CosmeticsUITests' started at 2026-10-20 21:24:28.275.
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testBuyingCosmeticEquipsItAndPersists]' started.
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testBuyingCosmeticEquipsItAndPersists]' passed (49.253 seconds).
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' started.
+<unknown>:0: error: -[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted] : Failed to failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame. (Underlying Error: Activation point invalid and no suggested hit points based on element frame)
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' failed (13.882 seconds).
+Test Suite 'CosmeticsUITests' failed at 2026-10-20 21:25:31.414.
+	 Executed 2 tests, with 1 failure (0 unexpected) in 63.135 (63.139) seconds
+Test Suite 'LayoutUITests' started at 2026-10-20 21:25:31.415.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testBottomTabBarReachesEveryTab]' started.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testBottomTabBarReachesEveryTab]' passed (19.994 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testDarkAppearancePreferenceRenders]' started.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testDarkAppearancePreferenceRenders]' passed (14.388 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileReachesAchievementsAndSettings]' started.
+/tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyUITests/LayoutUITests.swift:100: error: -[ChinaTextbookStudyUITests.LayoutUITests testProfileReachesAchievementsAndSettings] : XCTAssertTrue failed - profile did not navigate to 设置
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileReachesAchievementsAndSettings]' failed (40.443 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileShowsQuestsAndWeeklyReport]' started.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testProfileShowsQuestsAndWeeklyReport]' passed (21.473 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testSidebarOnRegularWidth]' started.
+Test Case '-[ChinaTextbookStudyUITests.LayoutUITests testSidebarOnRegularWidth]' passed (29.446 seconds).
+Test Suite 'LayoutUITests' failed at 2026-10-20 21:27:37.173.
+	 Executed 5 tests, with 1 failure (0 unexpected) in 125.745 (125.758) seconds
+Test Suite 'LessonFlowUITests' started at 2026-10-20 21:27:37.175.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' started.
+/tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:106: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel] : XCTAssertTrue failed - feedback panel did not appear after checking a correct answer
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' failed (70.818 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testKnowledgeIntroShowsOnceBeforeFirstRun]' started.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testKnowledgeIntroShowsOnceBeforeFirstRun]' passed (36.663 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testPathHomeOpensLessonViaStartPopup]' started.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testPathHomeOpensLessonViaStartPopup]' passed (24.047 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' started.
+/tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:127: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' failed (28.567 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingWithZeroProgressExitsDirectly]' started.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingWithZeroProgressExitsDirectly]' passed (24.063 seconds).
+Test Suite 'LessonFlowUITests' failed at 2026-10-20 21:30:41.343.
+	 Executed 5 tests, with 2 failures (0 unexpected) in 184.157 (184.168) seconds
+Test Suite 'ScreenshotTests' started at 2026-10-20 21:30:41.344.
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' started.
+/tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift:36: error: -[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' failed (71.328 seconds).
+Test Suite 'ScreenshotTests' failed at 2026-10-20 21:31:52.683.
+	 Executed 1 test, with 1 failure (0 unexpected) in 71.328 (71.340) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' failed at 2026-10-20 21:31:52.688.
+	 Executed 13 tests, with 5 failures (0 unexpected) in 444.364 (444.414) seconds
+Test Suite 'All tests' failed at 2026-10-20 21:31:52.693.
+	 Executed 13 tests, with 5 failures (0 unexpected) in 444.364 (444.425) seconds
+** TEST FAILED **

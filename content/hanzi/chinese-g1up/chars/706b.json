@@ -1,0 +1,68 @@
+{
+  "char": "火",
+  "status": "draft",
+  "pinyin": "huǒ",
+  "strokeCount": 4,
+  "strokeNames": [
+    "点",
+    "撇",
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "火山",
+      "pinyin": "huǒ shān",
+      "status": "draft",
+      "audio": "/audio/c1/c18a3754bb5fb384c98efd6d27d1775360755ca4.opus"
+    },
+    {
+      "text": "大火",
+      "pinyin": "dà huǒ",
+      "status": "draft",
+      "audio": "/audio/d7/d78e3564147ded218d7c26e2391e4259a501817d.opus"
+    }
+  ],
+  "scene": "fire",
+  "sceneCaption": "看图：跳动的火苗",
+  "origin": {
+    "kind": "象形",
+    "explanation": "“火”像向上跳动、向两边散开的火苗。用火时要有大人陪同。",
+    "forms": [],
+    "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+    "license": "MIT",
+    "status": "draft"
+  },
+  "distractors": {
+    "shape": [
+      "人",
+      "灭"
+    ],
+    "sound": [
+      "伙"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "重点核对前两笔点、撇的顺序。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "火",
+  "audio": {
+    "char": "/audio/ef/efb2620838c4f431a7d9e61441bd2445543f4731.opus",
+    "pinyin": "/audio/ef/efb2620838c4f431a7d9e61441bd2445543f4731.opus",
+    "origin": "/audio/c1/c16b3b2e910e0007221be153fdeccc5cf54d1109.opus"
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "huō",
+      "huǒ"
+    ],
+    "radical": "火"
+  }
+}

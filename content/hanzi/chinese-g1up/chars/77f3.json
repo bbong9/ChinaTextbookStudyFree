@@ -1,0 +1,71 @@
+{
+  "char": "石",
+  "status": "draft",
+  "pinyin": "shí",
+  "strokeCount": 5,
+  "strokeNames": [
+    "横",
+    "撇",
+    "竖",
+    "横折",
+    "横"
+  ],
+  "structure": "半包围结构",
+  "words": [
+    {
+      "text": "石头",
+      "pinyin": "shí tou",
+      "status": "draft",
+      "audio": "/audio/30/30f5dab2ca05cb98aa04caef79fe652e918c71f5.opus"
+    },
+    {
+      "text": "石子",
+      "pinyin": "shí zǐ",
+      "status": "draft",
+      "audio": "/audio/f0/f0f7c3fcaf8f4dcde7d6bc9493da676a0cd3c3dc.opus"
+    }
+  ],
+  "scene": "rock",
+  "sceneCaption": "看图：山崖下的石头",
+  "origin": {
+    "kind": "象形",
+    "explanation": "“石”可以联系山崖旁的一块石头来记忆。这是帮助认字的讲解，具体字源还要对照教参。",
+    "forms": [],
+    "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+    "license": "MIT",
+    "status": "draft"
+  },
+  "distractors": {
+    "shape": [
+      "右",
+      "后"
+    ],
+    "sound": [
+      "时"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "核对字源及结构分类，不把记忆联想当作已核定结论。"
+  ],
+  "pinyinAlternates": [
+    "dàn"
+  ],
+  "radical": "石",
+  "audio": {
+    "char": "/audio/04/04faff8adc51c68bbda9a684260f9bd2d5183226.opus",
+    "pinyin": "/audio/04/04faff8adc51c68bbda9a684260f9bd2d5183226.opus",
+    "origin": "/audio/57/5725d86a86f480d2b9c7c9b7777d4921422c46b4.opus"
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "dàn",
+      "shí"
+    ],
+    "radical": "石"
+  }
+}

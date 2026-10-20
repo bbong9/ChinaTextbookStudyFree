@@ -1,0 +1,64 @@
+{
+  "char": "声",
+  "status": "draft",
+  "pinyin": "shēng",
+  "strokeCount": 7,
+  "strokeNames": [
+    "横",
+    "竖",
+    "横",
+    "横折",
+    "竖",
+    "横",
+    "撇"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "声音",
+      "pinyin": "shēng yīn",
+      "status": "draft",
+      "audio": "/audio/ab/ab9ff81dac9b1eb8ac290529ff20724df44557d6.opus"
+    },
+    {
+      "text": "大声",
+      "pinyin": "dà shēng",
+      "status": "draft",
+      "audio": "/audio/4a/4a7e09793f0387319425109d46fbf268bbf943af.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "多",
+      "户"
+    ],
+    "sound": [
+      "生"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "核对下部的横折、竖、横、撇。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "士",
+  "audio": {
+    "char": "/audio/7e/7e4d6c40d01dd8f5b03b811dce32f5c38ca66cf7.opus",
+    "pinyin": "/audio/7e/7e4d6c40d01dd8f5b03b811dce32f5c38ca66cf7.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "qìng",
+      "shēng"
+    ],
+    "radical": "士"
+  }
+}

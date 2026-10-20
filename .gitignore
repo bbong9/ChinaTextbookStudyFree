@@ -61,6 +61,7 @@ apps/web/public/story-images/
 scripts/tts/logs/
 scripts/tts/manifest.json
 scripts/tts/ui_manifest.json
+scripts/hanzi/.cache/
 data/passages/
 data/stories/
 release-assets/

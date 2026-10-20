@@ -62,6 +62,15 @@ final class SpeechTextIndex: @unchecked Sendable {
         }
     }
 
+    func register(_ hanzi: HanziCharacter) {
+        // 系统语音不应把拉丁拼音当作英文读；拼音按钮回退为汉字读音。
+        // 多音字在系统 TTS 下仍须人工试听，本课规范读音以 pinyin 字段为准。
+        var pairs: [(String?, String)] = [(hanzi.audio.char, hanzi.char), (hanzi.audio.pinyin, hanzi.char)]
+        pairs += hanzi.words.map { ($0.audio, $0.text) }
+        if let origin = hanzi.origin { pairs.append((hanzi.audio.origin, origin.explanation)) }
+        store(pairs)
+    }
+
     private func store(_ pairs: [(String?, String)]) {
         lock.lock(); defer { lock.unlock() }
         for (path, text) in pairs {

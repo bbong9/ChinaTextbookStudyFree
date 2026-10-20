@@ -1,0 +1,61 @@
+{
+  "char": "虫",
+  "status": "draft",
+  "pinyin": "chóng",
+  "strokeCount": 6,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "竖",
+    "横",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "小虫",
+      "pinyin": "xiǎo chóng",
+      "status": "draft",
+      "audio": "/audio/b5/b5b60189abdd64e18e454d46133277d6d98355c5.opus"
+    },
+    {
+      "text": "虫子",
+      "pinyin": "chóng zi",
+      "status": "draft",
+      "audio": "/audio/d9/d9868a4ad5d85d9b74d249f5d974898a2db238d2.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "中",
+      "申"
+    ],
+    "sound": [
+      "重"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "虫",
+  "audio": {
+    "char": "/audio/01/01e3994b131c3a70c31e4aa3511e6f43a5999a8c.opus",
+    "pinyin": "/audio/01/01e3994b131c3a70c31e4aa3511e6f43a5999a8c.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "chóng",
+      "huǐ"
+    ],
+    "radical": "虫"
+  }
+}

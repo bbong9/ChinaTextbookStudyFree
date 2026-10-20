@@ -1,0 +1,57 @@
+{
+  "char": "小",
+  "status": "draft",
+  "pinyin": "xiǎo",
+  "strokeCount": 3,
+  "strokeNames": [
+    "竖钩",
+    "撇",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "小鸟",
+      "pinyin": "xiǎo niǎo",
+      "status": "draft",
+      "audio": "/audio/31/315a1bd4002c00f123e2673b1b4639fdb6ef84c1.opus"
+    },
+    {
+      "text": "小手",
+      "pinyin": "xiǎo shǒu",
+      "status": "draft",
+      "audio": "/audio/a6/a6046e00439620030d2146464d86907f76a544ff.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "少",
+      "水"
+    ],
+    "sound": [
+      "晓"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "小",
+  "audio": {
+    "char": "/audio/92/922517cc7363a85981329bfa950b9d325eb90cae.opus",
+    "pinyin": "/audio/92/922517cc7363a85981329bfa950b9d325eb90cae.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "xiǎo"
+    ],
+    "radical": "小"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "char": "耳",
+  "status": "draft",
+  "pinyin": "ěr",
+  "strokeCount": 6,
+  "strokeNames": [
+    "横",
+    "竖",
+    "竖",
+    "横",
+    "横",
+    "横"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "耳朵",
+      "pinyin": "ěr duo",
+      "status": "draft",
+      "audio": "/audio/47/47ecb8e0ae28c3e57b70a36d98680b6e9de2b017.opus"
+    },
+    {
+      "text": "木耳",
+      "pinyin": "mù ěr",
+      "status": "draft",
+      "audio": "/audio/cd/cdcfc9dbf6a8b750f65a92d11b95fdfa893009a3.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "目",
+      "自"
+    ],
+    "sound": [
+      "尔"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "耳",
+  "audio": {
+    "char": "/audio/84/8481effa10a79282d8a63ef7b7fae89968233779.opus",
+    "pinyin": "/audio/84/8481effa10a79282d8a63ef7b7fae89968233779.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "réng",
+      "ěr"
+    ],
+    "radical": "耳"
+  }
+}

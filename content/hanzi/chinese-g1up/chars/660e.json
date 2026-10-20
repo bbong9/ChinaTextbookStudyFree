@@ -1,0 +1,63 @@
+{
+  "char": "明",
+  "status": "draft",
+  "pinyin": "míng",
+  "strokeCount": 8,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "撇",
+    "横折钩",
+    "横",
+    "横"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "明天",
+      "pinyin": "míng tiān",
+      "status": "draft",
+      "audio": "/audio/b7/b76ce230d32c11cf7af79a7fb6ac7a1f71c8f7a1.opus"
+    },
+    {
+      "text": "明亮",
+      "pinyin": "míng liàng",
+      "status": "draft",
+      "audio": "/audio/5d/5d0c6da6a2d5e8160d5111a51c10ccb60230f362.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "朋",
+      "阴"
+    ],
+    "sound": [
+      "名"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "日",
+  "audio": {
+    "char": "/audio/fc/fca811d4f0275ef8ebab2ce9c4683827c8488fb6.opus",
+    "pinyin": "/audio/fc/fca811d4f0275ef8ebab2ce9c4683827c8488fb6.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "mèng",
+      "míng"
+    ],
+    "radical": "日"
+  }
+}
