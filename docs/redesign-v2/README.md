@@ -47,6 +47,9 @@
 - 单元测试放 `ChinaTextbookStudyTests/`,UI 测试放 `ChinaTextbookStudyUITests/`。纯逻辑(经济、等级、宠物状态、计时、题目生成、笔画判定)必须有单元测试。
 - 每个 PR 必须能在模拟器编译通过,并且原有测试全部通过。
 - 截图证据:每个涉及界面的 PR,附以下三个模拟器的横屏截图:**iPhone SE (3rd gen)**、**iPhone 16**、**iPad (A16)**。放在 `docs/redesign-v2/evidence/rd-XX/`。
+- 证据只提交截图和结果摘要(测试名、通过数、关键输出几行),完整 xcodebuild / 测试日志留在本地,不要提交。
+- 每张卡在独立的 git worktree 里开发,不要用主目录。`apps/mobile/BundledMedia/audio`、`story-images` 被 gitignore,新 worktree 里从主目录软链接过来(不提交)。
+- 已知基线失败(PRFixTests、CosmeticsUITests、LessonFlowUITests、ScreenshotTests、LayoutUITests,在 eaeff4f 上可复现)等 RD-00 修复;在此之前 PR 注明「与基线一致」即可,但新增或换了失败方式的要说明。
 
 ## 2. PR 模板(Codex 每个 PR 必须照填)
 
@@ -80,20 +83,20 @@
 | 卡 | 标题 | 依赖 | 状态 |
 | --- | --- | --- | --- |
 | **A 地基** | | | |
-| [RD-01](cards/RD-01-landscape-shell.md) | 横屏外壳与路由 | — | 待开发 |
-| [RD-02](cards/RD-02-clay-design-system.md) | 黏土设计系统与舞台容器 | — | 待开发 |
-| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | 待开发 |
-| [RD-04](cards/RD-04-pet-renderer.md) | 宠物渲染组件,替换熊猫 | RD-02 | 待开发 |
+| [RD-01](cards/RD-01-landscape-shell.md) | 横屏外壳与路由 | — | 开发中(PR #4) |
+| [RD-02](cards/RD-02-clay-design-system.md) | 黏土设计系统与舞台容器 | — | ✅ 已合并(PR #3) |
+| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | 可开工 |
+| [RD-04](cards/RD-04-pet-renderer.md) | 宠物渲染组件,替换熊猫 | RD-02 | 可开工 |
 | **B 经济与宠物** | | | |
-| [RD-05](cards/RD-05-core-economy.md) | core 经济扩展(等级/宠物/饼干/时长宝箱/小游戏奖励) | — | 待开发 |
-| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | 待开发 |
+| [RD-05](cards/RD-05-core-economy.md) | core 经济扩展(等级/宠物/饼干/时长宝箱/小游戏奖励) | — | ✅ 已合并(PR #2) |
+| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | 可开工 |
 | [RD-07](cards/RD-07-pet-screens.md) | 宠物家族、商店、小屋 | RD-03 RD-04 RD-06 | 待开发 |
 | [RD-08](cards/RD-08-checkin-study-time.md) | 签到与学习时长宝箱 | RD-03 RD-05 RD-06 | 待开发 |
 | **C 主线闯关** | | | |
 | [RD-09](cards/RD-09-home-map.md) | 首页闯关地图 | RD-01 RD-03 RD-04 RD-05 | 待开发 |
 | [RD-10](cards/RD-10-lesson-shell.md) | 课本关卡横屏改版(8 种题型) | RD-02 RD-03 RD-04 | 待开发 |
 | [RD-11](cards/RD-11-result.md) | 闯关结算 | RD-05 RD-06 RD-10 | 待开发 |
-| [RD-12](cards/RD-12-hanzi-content.md) | 汉字内容包与数据管线 | — | 待开发 |
+| [RD-12](cards/RD-12-hanzi-content.md) | 汉字内容包与数据管线 | — | ✅ 已合并(PR #1) |
 | [RD-13](cards/RD-13-hanzi-five-steps.md) | 识字五步关卡(玩认练写说 + 字源卡) | RD-09 RD-11 RD-12 | 待开发 |
 | **D 游戏与内容** | | | |
 | [RD-14](cards/RD-14-math-train.md) | 数学小火车 | RD-03 RD-05 | 待开发 |
