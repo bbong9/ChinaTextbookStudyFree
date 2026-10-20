@@ -58,14 +58,14 @@ struct LessonBackdropData: Hashable {
 
 enum Cosmetics {
     static let mascotSkins: [CosmeticItem] = [
-        .init(id: "skin_default",    type: .mascotSkin, name: "原版聪聪",    description: "最经典的熊猫聪聪",           cost: 0,   rarity: .common,    starter: true),
-        .init(id: "skin_graduate",   type: .mascotSkin, name: "学士帽",      description: "戴上学士帽的聪聪，学者气质满分", cost: 80,  rarity: .common,    starter: false),
-        .init(id: "skin_glasses",    type: .mascotSkin, name: "圆框眼镜",    description: "复古圆框眼镜，文艺青年聪聪",   cost: 100, rarity: .common,    starter: false),
+        .init(id: "skin_default",    type: .mascotSkin, name: "原版米团",    description: "最初相伴的米团",           cost: 0,   rarity: .common,    starter: true),
+        .init(id: "skin_graduate",   type: .mascotSkin, name: "学士帽",      description: "戴上学士帽的米团，学者气质满分", cost: 80,  rarity: .common,    starter: false),
+        .init(id: "skin_glasses",    type: .mascotSkin, name: "圆框眼镜",    description: "复古圆框眼镜，文艺青年米团",   cost: 100, rarity: .common,    starter: false),
         .init(id: "skin_party",      type: .mascotSkin, name: "派对锥帽",    description: "彩虹色派对帽，每天都是节日",   cost: 150, rarity: .rare,      starter: false),
         .init(id: "skin_crown",      type: .mascotSkin, name: "金色皇冠",    description: "学习路上的小国王/小女王",     cost: 250, rarity: .rare,      starter: false),
         .init(id: "skin_wizard",     type: .mascotSkin, name: "法师尖帽",    description: "知识就是魔法",                cost: 300, rarity: .epic,      starter: false),
         .init(id: "skin_astronaut",  type: .mascotSkin, name: "宇航员头盔",  description: "向知识的宇宙出发！",          cost: 500, rarity: .legendary, starter: false),
-        .init(id: "skin_sunglasses", type: .mascotSkin, name: "酷炫墨镜",    description: "Cool 到没朋友的墨镜聪聪",      cost: 120, rarity: .common,    starter: false),
+        .init(id: "skin_sunglasses", type: .mascotSkin, name: "酷炫墨镜",    description: "Cool 到没朋友的墨镜米团",      cost: 120, rarity: .common,    starter: false),
         .init(id: "skin_pirate",     type: .mascotSkin, name: "海盗船长",    description: "扬帆出海寻知识宝藏",          cost: 220, rarity: .rare,      starter: false),
         .init(id: "skin_headphones", type: .mascotSkin, name: "DJ 耳机",     description: "戴上耳机就能听见学习节奏",     cost: 180, rarity: .rare,      starter: false),
         .init(id: "skin_laurel",     type: .mascotSkin, name: "桂冠加身",    description: "胜利者才能戴的金色桂冠",       cost: 280, rarity: .epic,      starter: false),

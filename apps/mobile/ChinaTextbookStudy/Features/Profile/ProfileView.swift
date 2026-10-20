@@ -58,7 +58,7 @@ struct ProfileView: View {
         VStack(spacing: 12) {
             ZStack {
                 Circle().fill(DuoColors.secondary.opacity(0.14)).frame(width: 120, height: 120)
-                MascotView(mood: .happy, size: 104)
+                PetView(mood: .happy, size: 104)
             }
             HStack(spacing: 8) {
                 Text(progressStore.displayName).duoFont(.title).foregroundStyle(DuoColors.ink)
@@ -202,7 +202,7 @@ private struct RenameSheet: View {
 
     var body: some View {
         VStack(spacing: 18) {
-            MascotView(mood: .happy, size: 72)
+            PetView(mood: .happy, size: 72)
                 .padding(.top, 20)
 
             Text("给自己起个名字")

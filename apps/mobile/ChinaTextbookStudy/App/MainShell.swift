@@ -118,7 +118,7 @@ struct MainShell: View {
 
     private var firstLessonToast: some View {
         HStack(spacing: 10) {
-            MascotView(mood: .cheer, size: 52, reactTo: .correct)
+            PetView(mood: .cheer, size: 52, reactTo: .correct)
             Text("我们马上开始第一课！")
                 .duoFont(.subhead)
                 .foregroundStyle(DuoColors.ink)

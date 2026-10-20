@@ -337,7 +337,7 @@ struct LeagueResultView: View {
             VStack(spacing: 18) {
                 Spacer()
 
-                MascotView(mood: mascotMood, size: 100, reactTo: result.promoted ? .levelup : .correct)
+                PetView(mood: mascotMood, size: 100, reactTo: result.promoted ? .levelup : .correct)
 
                 Image(systemName: "trophy.fill")
                     .font(.system(size: 72, weight: .heavy))

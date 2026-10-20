@@ -5,6 +5,7 @@ import SwiftUI
 /// and an unlocked-but-unclaimed tier surfaces a bright「领取 +N💎」button.
 struct AchievementsView: View {
     @ObservedObject var progressStore: ProgressStore
+    @Environment(\.petEnvironment) private var pet
 
     private var snapshot: AchievementProgressSnapshot { progressStore.achievementSnapshot }
     /// Permanent ledger ∪ live snapshot — an earned badge never re-locks.
@@ -226,7 +227,7 @@ struct AchievementsView: View {
             headline: "成就解锁！",
             title: tier.name,
             subtitle: tier.description
-        )) {
+        ), pet: pet) {
             shareMoment = ShareMoment(id: tier.id, name: tier.name, image: image)
         }
     }

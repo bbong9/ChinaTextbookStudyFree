@@ -12,7 +12,7 @@ struct ClayGallery: View {
     @State private var message = "我饿啦，想吃"
     let onClose: () -> Void
 
-    private let titles = ["黏土组件", "全部渐变 · 50", "图标与字体"]
+    private let titles = ["黏土组件", "全部渐变 · 50", "图标与字体", "宠物"]
     private var reduceMotion: Bool { systemReduceMotion || (reduceMotionOverride ?? false) }
 
     var body: some View {
@@ -26,7 +26,7 @@ struct ClayGallery: View {
         } content: { ctx in
             ZStack(alignment: .topLeading) {
                 TitleRibbon(title: titles[page]).position(ctx.place(x: 422, y: 40))
-                Text("舞台 \(Int(ctx.size.width)) × \(Int(ctx.size.height)) · 第 \(page + 1)/3 页")
+                Text("舞台 \(Int(ctx.size.width)) × \(Int(ctx.size.height)) · 第 \(page + 1)/\(titles.count) 页")
                     .font(ClayFont.caption).foregroundStyle(ClayColor.ink)
                     .accessibilityIdentifier("clay-stage-metrics")
                     .accessibilityValue("\(ctx.scale),\(ctx.safeArea.top),\(ctx.safeArea.leading),\(ctx.safeArea.bottom),\(ctx.safeArea.trailing)")
@@ -34,7 +34,12 @@ struct ClayGallery: View {
                 switch page {
                 case 0: components(ctx)
                 case 1: gradients(ctx)
-                default: iconsAndFonts(ctx)
+                case 2: iconsAndFonts(ctx)
+                default:
+                    PetGallery()
+                        .environment(\.petAnimationsPaused, reduceMotion)
+                        .frame(width: 700, height: 206)
+                        .position(ctx.place(x: 422, y: 197))
                 }
                 hud(ctx)
             }
@@ -55,9 +60,9 @@ struct ClayGallery: View {
         }
         .accessibilityValue(reduceMotion ? "开启" : "关闭")
         .stageAnchor(.topTrailing, in: ctx, size: size)
-        ClayIconButton(icon: .left, id: "stage-bottom-leading", label: "上一组组件") { page = (page + 2) % 3 }
+        ClayIconButton(icon: .left, id: "stage-bottom-leading", label: "上一组组件") { page = (page + titles.count - 1) % titles.count }
             .stageAnchor(.bottomLeading, in: ctx, size: size)
-        ClayIconButton(icon: .right, id: "stage-bottom-trailing", label: "下一组组件") { page = (page + 1) % 3 }
+        ClayIconButton(icon: .right, id: "stage-bottom-trailing", label: "下一组组件") { page = (page + 1) % titles.count }
             .stageAnchor(.bottomTrailing, in: ctx, size: size)
     }
 

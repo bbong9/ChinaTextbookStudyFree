@@ -42,7 +42,7 @@ struct MistakeReviewRunnerView: View {
 
     private var emptyState: some View {
         VStack(spacing: 14) {
-            MascotView(mood: .proud, size: 96)
+            PetView(mood: .proud, size: 96)
             Text("没有要复习的错题").duoFont(.heading).foregroundStyle(DuoColors.ink)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -50,7 +50,7 @@ struct MistakeReviewRunnerView: View {
 
     private var summary: some View {
         VStack(spacing: 18) {
-            MascotView(mood: .proud, size: 110, reactTo: .levelup)
+            PetView(mood: .proud, size: 110, reactTo: .levelup)
             Text("复习完成！").duoFont(.title).foregroundStyle(DuoColors.ink)
             Text("答对 \(correctCount) / \(queue.count)").duoFont(.subhead).foregroundStyle(DuoColors.inkMuted)
 

@@ -17,6 +17,26 @@ enum ClayColor {
     static let levelTop = hex(0x5FB5FF), levelBottom = hex(0x2F7FE0)
     static let flame = hex(0xFF7A2E), flameCore = hex(0xFFD23F)
     static let white = Color.white, black = Color.black
+
+    /// PET_ART 的实色与旧配饰色；渐变继续复用现有 p-* / g-* 令牌。
+    enum Pet {
+        static let ink = hex(0x2A2230), blush = hex(0xFF8597), mouth = hex(0xB93A4A), tongue = hex(0xFF8C93)
+        static let ground = hex(0x173A2A), sprout = hex(0x4BA83A), bloom = hex(0xFFB3CF)
+        static let foxTail = hex(0xFFF8F0), foxEar = hex(0xFFD0BE), foxFoot = hex(0xE37419)
+        static let catEar = hex(0xFFC6C2), catNose = hex(0xFF8FA3), whisker = hex(0xB7A898)
+        static let owlWing = hex(0x7D60D8), owlFeather = hex(0xC8B6F5), owlHat = hex(0x3A2F5C), tassel = hex(0xFFC93C)
+        static let eggBlue = hex(0x8CC8FF), eggPink = hex(0xFFB3D1), eggGreen = hex(0x86D96A), crack = hex(0xC59C5E)
+        static let duckWing = hex(0xFFE97A), pigFoot = hex(0xEC8BA1), snout = hex(0xFF9DB2), nostril = hex(0xB24E68)
+        static let sheepLeg = hex(0x5B4A55), sheepEar = hex(0x6B5864), sheepFace = hex(0xFBE6D6)
+        static let accessoryDark = hex(0x2E2E2E), cap = hex(0x1F1F1F), glasses = hex(0x4A3A2A), sunglasses = hex(0x22262B)
+        static let gold = hex(0xFFC800), goldDark = hex(0xE0A800), jewel = hex(0xFF6B6B)
+        static let party = hex(0xFF6B9D), partyStripe = hex(0xFFD166), partyBand = hex(0x4ECDC4)
+        static let wizard = hex(0x7C3AED), wizardBrim = hex(0x5B21B6)
+        static let helmetGlass = hex(0xBFE3F7), helmetRim = hex(0xDCE9F0)
+        static let pirate = hex(0x1F2328), pirateBand = hex(0x8B0000)
+        static let headphones = hex(0x1CB0F6), earcup = hex(0x1899D6)
+        static let laurel = hex(0x4C9A2A), laurelLeaf = hex(0x6ABE30), bow = hex(0xE5484D), bowKnot = hex(0xB8353A)
+    }
 }
 
 enum ClayRadius {

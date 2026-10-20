@@ -500,7 +500,7 @@ struct ReportsListSheet: View {
 
             if progressStore.reports.isEmpty {
                 VStack(spacing: 10) {
-                    MascotView(mood: .happy, size: 80)
+                    PetView(mood: .happy, size: 80)
                     Text("还没有报告过问题")
                         .duoFont(.caption)
                         .foregroundStyle(DuoColors.inkMuted)
