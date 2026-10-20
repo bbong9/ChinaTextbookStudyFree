@@ -126,11 +126,20 @@ final class AudioPlayer: NSObject, ObservableObject {
     static let slowRate: Float = 0.65
 
     private struct QueueItem {
-        let url: URL
+        enum Source {
+            case file(URL)
+            /// 没有录音文件时用系统语音朗读文本（见 `SpeechTextIndex`）。
+            case speech(String)
+        }
+        let source: Source
         let index: Int
     }
 
     private var player: AVAudioPlayer?
+    private let synthesizer = AVSpeechSynthesizer()
+    /// 正在朗读的 utterance —— 回调里比对身份，防止上一轮迟到的 didFinish
+    /// 把新一轮队列往前推一格。
+    private var currentUtteranceId: ObjectIdentifier?
     private var queue: [QueueItem] = []
     /// How many files of the current run actually started playing.
     private var currentRunPlayedCount = 0
@@ -149,8 +158,10 @@ final class AudioPlayer: NSObject, ObservableObject {
             stop(); return
         }
         let items: [QueueItem] = paths.enumerated().compactMap { idx, path in
-            guard let path, let url = resolve(path) else { return nil }
-            return QueueItem(url: url, index: idx)
+            guard let path else { return nil }
+            if let url = resolve(path) { return QueueItem(source: .file(url), index: idx) }
+            if let text = SpeechTextIndex.shared.text(for: path) { return QueueItem(source: .speech(text), index: idx) }
+            return nil
         }
         registerInterruptionObserverIfNeeded()
         stop()
@@ -173,6 +184,8 @@ final class AudioPlayer: NSObject, ObservableObject {
     func stop() {
         player?.stop()
         player = nil
+        currentUtteranceId = nil
+        if synthesizer.isSpeaking { synthesizer.stopSpeaking(at: .immediate) }
         queue.removeAll()
         currentRunPlayedCount = 0
         isPlaying = false
@@ -195,10 +208,24 @@ final class AudioPlayer: NSObject, ObservableObject {
         if rel.hasPrefix("audio/") { rel.removeFirst("audio/".count) }
         if rel.hasSuffix(".opus") { rel = String(rel.dropLast(".opus".count)) + ".m4a" }
         let url = DataLoader.shared.sandboxAudioRoot.appendingPathComponent(rel)
-        return FileManager.default.fileExists(atPath: url.path) ? url : nil
+        if FileManager.default.fileExists(atPath: url.path) { return url }
+        // 内置在安装包里的录音（资源包 v1.4.0 起全是 mp3，AVAudioPlayer 原生支持）。
+        if let res = Bundle.main.resourceURL {
+            let bundled = res.appendingPathComponent("audio", isDirectory: true).appendingPathComponent(rel)
+            if FileManager.default.fileExists(atPath: bundled.path) { return bundled }
+        }
+        return nil
     }
 
-    /// 这批路径里**至少有一条**能落到本地文件吗?
+    /// 这条路径能出声吗 —— 本地有录音文件，或者有可供系统语音朗读的原文。
+    ///
+    /// 资源包里大量题目本来就没有录音（v1.4.0 约 2/3 的题），iOS 端音频包
+    /// 也可能没下载；有原文时一律回落到系统 TTS，喇叭按钮照常显示。
+    func canPlay(_ path: String) -> Bool {
+        resolve(path) != nil || SpeechTextIndex.shared.text(for: path) != nil
+    }
+
+    /// 这批路径里**至少有一条**能出声吗(录音文件或 TTS 原文)?
     ///
     /// 音频包没下载(或被 SeedInstaller 整体清掉)时,`play(paths:)` 会得到空队列 ——
     /// `isPlaying` 恒 false、`queueCompletionCount` 不动,依赖「整队自然播完」的
@@ -208,7 +235,7 @@ final class AudioPlayer: NSObject, ObservableObject {
     func hasAnyResolvable(_ paths: [String?]) -> Bool {
         paths.contains { path in
             guard let path else { return false }
-            return resolve(path) != nil
+            return canPlay(path)
         }
     }
 
@@ -255,8 +282,31 @@ final class AudioPlayer: NSObject, ObservableObject {
             return
         }
         let next = queue.removeFirst()
+        switch next.source {
+        case .file(let url):
+            playFile(url, index: next.index)
+        case .speech(let text):
+            speak(text, index: next.index)
+        }
+    }
+
+    private func speak(_ text: String, index: Int) {
+        let utterance = AVSpeechUtterance(string: SpeechTextIndex.spokenForm(text))
+        utterance.voice = AVSpeechSynthesisVoice(language: SpeechTextIndex.isChinese(text) ? "zh-CN" : "en-US")
+        // 系统默认 0.5 对低年级偏快；慢速开关按同样比例再降。
+        utterance.rate = max(AVSpeechUtteranceMinimumSpeechRate, 0.45 * min(currentRunRate, 1))
+        synthesizer.delegate = self
+        currentUtteranceId = ObjectIdentifier(utterance)
+        synthesizer.speak(utterance)
+        isPlaying = true
+        nowPlayingPath = "tts-\(index)"
+        nowPlayingIndex = index
+        currentRunPlayedCount += 1
+    }
+
+    private func playFile(_ url: URL, index: Int) {
         do {
-            let p = try AVAudioPlayer(contentsOf: next.url)
+            let p = try AVAudioPlayer(contentsOf: url)
             p.delegate = self
             p.enableRate = true
             p.rate = currentRunRate
@@ -264,12 +314,23 @@ final class AudioPlayer: NSObject, ObservableObject {
             p.play()
             self.player = p
             self.isPlaying = true
-            self.nowPlayingPath = next.url.lastPathComponent
-            self.nowPlayingIndex = next.index
+            self.nowPlayingPath = url.lastPathComponent
+            self.nowPlayingIndex = index
             self.currentRunPlayedCount += 1
         } catch {
-            print("[AudioPlayer] play failed for \(next.url.lastPathComponent): \(error)")
+            print("[AudioPlayer] play failed for \(url.lastPathComponent): \(error)")
             playNext()
+        }
+    }
+}
+
+extension AudioPlayer: AVSpeechSynthesizerDelegate {
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        let id = ObjectIdentifier(utterance)
+        Task { @MainActor in
+            guard self.currentUtteranceId == id else { return }
+            self.currentUtteranceId = nil
+            self.playNext()
         }
     }
 }

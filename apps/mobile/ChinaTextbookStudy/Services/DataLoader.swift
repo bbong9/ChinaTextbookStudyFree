@@ -90,7 +90,9 @@ final class DataLoader {
         guard FileManager.default.fileExists(atPath: url.path) else {
             throw DataLoaderError.lessonNotFound(lessonId)
         }
-        return try decode(Lesson.self, from: url)
+        let lesson = try decode(Lesson.self, from: url)
+        SpeechTextIndex.shared.register(lesson)
+        return lesson
     }
 
     /// 某节课的文件是否存在于本地（Wave E1：outline 声明了 examLessonId
@@ -105,13 +107,17 @@ final class DataLoader {
     func loadPassages(bookId: String) throws -> BookPassages? {
         let url = bookDir(bookId).appendingPathComponent("passages.json")
         guard FileManager.default.fileExists(atPath: url.path) else { return nil }
-        return try decode(BookPassages.self, from: url)
+        let passages = try decode(BookPassages.self, from: url)
+        SpeechTextIndex.shared.register(passages)
+        return passages
     }
 
     func loadStories(bookId: String) throws -> BookStories? {
         let url = bookDir(bookId).appendingPathComponent("stories.json")
         guard FileManager.default.fileExists(atPath: url.path) else { return nil }
-        return try decode(BookStories.self, from: url)
+        let stories = try decode(BookStories.self, from: url)
+        SpeechTextIndex.shared.register(stories)
+        return stories
     }
 
     // MARK: - Helpers

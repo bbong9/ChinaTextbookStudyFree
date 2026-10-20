@@ -6,13 +6,17 @@ import ZIPFoundation
 ///
 /// The zip is built by `scripts/build-seed-zip.sh` and contains:
 ///
+///     data/index.json          → `cstf/data/index.json`（全部教材的书单）
 ///     data/books/<id>/...      → unzipped under `cstf/data/books/<id>/`
 ///     audio/<xx>/<sha>.m4a     → unzipped under `cstf/audio/<xx>/<sha>.m4a`
 ///
 /// Both subtrees are siblings of `cstf/`, matching what AssetDownloader writes
-/// for downloaded books. Already-downloaded books overlay the seed without
-/// collision because the seed only ships a single book + the audio for one
-/// of its lessons.
+/// for downloaded books.
+///
+/// 自 v1.4.0 起 seed 内置**全部 44 册**的课程数据（JSON 压缩后约 7MB）：GitHub
+/// Release 上从来没有 iOS 分包（`ios-manifest.json` 404），国内网络也常拉不下来，
+/// 以前除了内置的「数学一年级上册」其余书都无法打开。录音不内置，缺录音时
+/// `AudioPlayer` 用系统语音朗读原文（见 `SpeechTextIndex`）。
 enum SeedInstaller {
     static func installIfNeeded() {
         guard let zipURL = Bundle.main.url(forResource: "seed-data", withExtension: "zip") else {
@@ -20,7 +24,6 @@ enum SeedInstaller {
         }
         // Parent of `data/` and `audio/` — i.e. `Application Support/cstf/`.
         let cstfRoot = DataLoader.shared.sandboxDataRoot.deletingLastPathComponent()
-        let booksDir = DataLoader.shared.sandboxDataRoot.appendingPathComponent("books", isDirectory: true)
         let fm = FileManager.default
         try? fm.createDirectory(at: cstfRoot, withIntermediateDirectories: true)
 
@@ -36,11 +39,11 @@ enum SeedInstaller {
         }
         // Wipe the audio dir before re-extracting — it's fully reproducible
         // from the zip and the downloader, so no risk of data loss.
-        // Don't touch books/ here: it may contain user-downloaded books.
         let audioDir = cstfRoot.appendingPathComponent("audio", isDirectory: true)
         try? fm.removeItem(at: audioDir)
-        // Same for the seed book's data subtree (we'll re-extract a fresh copy).
-        try? fm.removeItem(at: booksDir.appendingPathComponent("g1up", isDirectory: true))
+        // Seed 现在覆盖全部教材，data/ 整体可由 seed 重建；先清掉旧数据，
+        // 否则 ZIPFoundation 遇到已存在的文件会直接抛错、整包装不上。
+        try? fm.removeItem(at: DataLoader.shared.sandboxDataRoot)
 
         do {
             try fm.unzipItem(at: zipURL, to: cstfRoot)

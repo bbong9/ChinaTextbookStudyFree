@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # build-seed-zip.sh — 重建 apps/mobile 的离线种子包
 #
-# 把一本教材的 data + 第一节 lesson 引用的音频（转成 m4a）打成
+# 把**全部教材**的 data（index.json + books/*）+ 一节 lesson 引用的音频（转成 m4a）打成
 # apps/mobile/ChinaTextbookStudy/Resources/seed-data.zip，供 SeedInstaller
 # 在首启时解压到 Application Support/cstf/。
 #
@@ -9,7 +9,9 @@
 #   bash scripts/build-seed-zip.sh                  # 默认 g1up + g1up-u1-kp1
 #   bash scripts/build-seed-zip.sh g2up g2up-u1-kp1 # 换一本书 + 换一节课
 #
-# 体积参考: g1up + 49 个 24k AAC m4a ≈ 630 KB
+# 体积参考: 44 册 data + 49 个 24k AAC m4a ≈ 7.4 MB
+# （GitHub Release 上没有 iOS 分包，seed 只放一本时其余书都打不开；
+#  缺录音的句子 iOS 端用系统语音朗读。）
 
 set -euo pipefail
 
@@ -38,8 +40,9 @@ if [ ! -f "$LESSON_JSON" ]; then
 fi
 
 rm -rf "$STAGE" "$OUT"
-mkdir -p "$STAGE/data/books" "$STAGE/audio"
-cp -R "$DATA_DIR" "$STAGE/data/books/"
+mkdir -p "$STAGE/data" "$STAGE/audio"
+cp -R "$ROOT/apps/web/public/data/books" "$ROOT/apps/web/public/data/index.json" "$STAGE/data/"
+cp "$ROOT/apps/web/public/data/index.json" "$ROOT/apps/mobile/ChinaTextbookStudy/Resources/seed-index.json"
 
 echo "=== 抽取 $LESSON_ID 引用的音频 ==="
 python3 - "$LESSON_JSON" > /tmp/cstf-seed-audio.txt <<'PY'
@@ -63,7 +66,7 @@ while read rel; do
 done < /tmp/cstf-seed-audio.txt
 
 echo "=== 打包 ==="
-(cd "$STAGE" && zip -qr "$OUT" data audio)
+(cd "$STAGE" && zip -qr -9 -X "$OUT" data audio)
 SIZE=$(du -h "$OUT" | cut -f1)
 echo "完成 → $OUT ($SIZE)"
 rm -f /tmp/cstf-seed-audio.txt

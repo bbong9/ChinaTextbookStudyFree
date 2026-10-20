@@ -8,6 +8,7 @@ extension PassageKind {
         case .prose:              return "课文"
         case .story:              return "故事"
         case .song:               return "儿歌"
+        case .chant:              return "童谣"
         case .dialogue:           return "对话"
         }
     }
@@ -16,7 +17,7 @@ extension PassageKind {
         case .poem, .ancientPoem: return "scroll.fill"
         case .prose:              return "text.alignleft"
         case .story:              return "book.fill"
-        case .song:               return "music.note"
+        case .song, .chant:       return "music.note"
         case .dialogue:           return "bubble.left.and.bubble.right.fill"
         }
     }
@@ -469,7 +470,7 @@ struct SlowTTSButton: View {
 
     private var resolvedExists: Bool {
         guard let path else { return false }
-        return AudioPlayer.shared.resolve(path) != nil
+        return AudioPlayer.shared.canPlay(path)
     }
 
     var body: some View {

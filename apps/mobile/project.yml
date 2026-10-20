@@ -32,6 +32,12 @@ targets:
     platform: iOS
     sources:
       - path: ChinaTextbookStudy
+      - path: BundledMedia/audio
+        type: folder
+        buildPhase: resources
+      - path: BundledMedia/story-images
+        type: folder
+        buildPhase: resources
     resources:
       - path: ChinaTextbookStudy/Resources/seed-index.json
       - path: ChinaTextbookStudy/Resources/seed-data.zip

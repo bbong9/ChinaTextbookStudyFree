@@ -70,3 +70,6 @@ release-assets/
 
 # Local build verification and audio conversion cache
 deploy-output/
+
+# iOS 内置的大体积资源（由 scripts 从 Release 生成，不入库）
+apps/mobile/BundledMedia/

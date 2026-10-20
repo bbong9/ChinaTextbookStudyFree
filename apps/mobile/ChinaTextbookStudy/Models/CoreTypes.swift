@@ -191,7 +191,14 @@ struct Book: Codable, Hashable, Identifiable {
 enum PassageKind: String, Codable, Hashable {
     case poem
     case ancientPoem = "ancient_poem"
-    case prose, story, song, dialogue
+    case prose, story, song, dialogue, chant
+
+    /// 资源包会陆续加新体裁（v1.4.0 起英语出现 "chant"）。未知值按普通课文处理，
+    /// 别让一个新字段把整本书的 passages.json 解码打挂。
+    init(from decoder: Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        self = PassageKind(rawValue: raw) ?? .prose
+    }
 }
 
 struct PassageSentence: Codable, Hashable {

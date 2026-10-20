@@ -50,7 +50,7 @@
       "textbookName": "四年级上册",
       "fullName": "人教版小学数学四年级上册",
       "unitsCount": 9,
-      "lessonsCount": 29
+      "lessonsCount": 30
     },
     {
       "id": "g5up",
@@ -182,7 +182,7 @@
       "textbookName": "二年级上册",
       "fullName": "统编版小学语文二年级上册",
       "unitsCount": 8,
-      "lessonsCount": 54,
+      "lessonsCount": 57,
       "hasPassages": true,
       "hasStories": true
     },
@@ -197,7 +197,7 @@
       "textbookName": "三年级上册",
       "fullName": "统编版小学语文三年级上册",
       "unitsCount": 8,
-      "lessonsCount": 89,
+      "lessonsCount": 92,
       "hasPassages": true,
       "hasStories": true
     },
@@ -212,7 +212,7 @@
       "textbookName": "四年级上册",
       "fullName": "统编版小学语文四年级上册",
       "unitsCount": 8,
-      "lessonsCount": 54,
+      "lessonsCount": 55,
       "hasPassages": true,
       "hasStories": true
     },
@@ -242,7 +242,7 @@
       "textbookName": "六年级上册",
       "fullName": "统编版小学语文六年级上册",
       "unitsCount": 8,
-      "lessonsCount": 45,
+      "lessonsCount": 46,
       "hasPassages": true,
       "hasStories": true
     },
@@ -272,7 +272,7 @@
       "textbookName": "二年级下册",
       "fullName": "统编版小学语文二年级下册",
       "unitsCount": 8,
-      "lessonsCount": 79,
+      "lessonsCount": 82,
       "hasPassages": true,
       "hasStories": true
     },
@@ -287,7 +287,7 @@
       "textbookName": "三年级下册",
       "fullName": "统编版小学语文三年级下册",
       "unitsCount": 8,
-      "lessonsCount": 102,
+      "lessonsCount": 106,
       "hasPassages": true,
       "hasStories": true
     },
@@ -302,7 +302,7 @@
       "textbookName": "四年级下册",
       "fullName": "统编版小学语文四年级下册",
       "unitsCount": 8,
-      "lessonsCount": 125,
+      "lessonsCount": 133,
       "hasPassages": true,
       "hasStories": true
     },
@@ -317,7 +317,7 @@
       "textbookName": "五年级下册",
       "fullName": "统编版小学语文五年级下册",
       "unitsCount": 8,
-      "lessonsCount": 76,
+      "lessonsCount": 81,
       "hasPassages": true,
       "hasStories": true
     },
@@ -332,7 +332,7 @@
       "textbookName": "六年级下册",
       "fullName": "统编版小学语文六年级下册",
       "unitsCount": 6,
-      "lessonsCount": 39,
+      "lessonsCount": 40,
       "hasPassages": true,
       "hasStories": true
     },
@@ -347,7 +347,7 @@
       "textbookName": "三年级上册",
       "fullName": "人教版PEP小学英语三年级上册",
       "unitsCount": 6,
-      "lessonsCount": 49,
+      "lessonsCount": 55,
       "hasPassages": true,
       "hasStories": true
     },
@@ -362,7 +362,7 @@
       "textbookName": "四年级上册",
       "fullName": "人教版PEP小学英语四年级上册",
       "unitsCount": 6,
-      "lessonsCount": 93,
+      "lessonsCount": 105,
       "hasPassages": true,
       "hasStories": true
     },
@@ -377,7 +377,7 @@
       "textbookName": "五年级上册",
       "fullName": "人教版PEP小学英语五年级上册",
       "unitsCount": 6,
-      "lessonsCount": 36,
+      "lessonsCount": 40,
       "hasPassages": true,
       "hasStories": true
     },
@@ -392,7 +392,7 @@
       "textbookName": "六年级上册",
       "fullName": "人教版PEP小学英语六年级上册",
       "unitsCount": 7,
-      "lessonsCount": 125,
+      "lessonsCount": 143,
       "hasPassages": true,
       "hasStories": true
     },
@@ -407,7 +407,7 @@
       "textbookName": "三年级下册",
       "fullName": "人教版PEP小学英语三年级下册",
       "unitsCount": 6,
-      "lessonsCount": 39,
+      "lessonsCount": 42,
       "hasPassages": true,
       "hasStories": true
     },
@@ -422,7 +422,7 @@
       "textbookName": "四年级下册",
       "fullName": "人教版PEP小学英语四年级下册",
       "unitsCount": 6,
-      "lessonsCount": 59,
+      "lessonsCount": 66,
       "hasPassages": true,
       "hasStories": true
     },
@@ -437,7 +437,7 @@
       "textbookName": "五年级下册",
       "fullName": "人教版PEP小学英语五年级下册",
       "unitsCount": 6,
-      "lessonsCount": 59,
+      "lessonsCount": 69,
       "hasPassages": true,
       "hasStories": true
     },
@@ -452,7 +452,7 @@
       "textbookName": "六年级下册",
       "fullName": "人教版PEP小学英语六年级下册",
       "unitsCount": 5,
-      "lessonsCount": 95,
+      "lessonsCount": 110,
       "hasPassages": true,
       "hasStories": true
     },
@@ -467,7 +467,7 @@
       "textbookName": "一年级上册",
       "fullName": "教科版小学科学一年级上册",
       "unitsCount": 3,
-      "lessonsCount": 31
+      "lessonsCount": 34
     },
     {
       "id": "science-g2up",
@@ -493,7 +493,7 @@
       "textbookName": "三年级上册",
       "fullName": "教科版小学科学三年级上册",
       "unitsCount": 3,
-      "lessonsCount": 32
+      "lessonsCount": 38
     },
     {
       "id": "science-g4up",
@@ -506,7 +506,7 @@
       "textbookName": "四年级上册",
       "fullName": "教科版小学科学四年级上册",
       "unitsCount": 3,
-      "lessonsCount": 52
+      "lessonsCount": 63
     },
     {
       "id": "science-g5up",
@@ -519,7 +519,7 @@
       "textbookName": "五年级上册",
       "fullName": "教科版小学科学五年级上册",
       "unitsCount": 4,
-      "lessonsCount": 48
+      "lessonsCount": 57
     },
     {
       "id": "science-g6up",
@@ -532,7 +532,7 @@
       "textbookName": "六年级上册",
       "fullName": "教科版小学科学六年级上册",
       "unitsCount": 4,
-      "lessonsCount": 40
+      "lessonsCount": 46
     },
     {
       "id": "science-g1down",
@@ -545,7 +545,7 @@
       "textbookName": "一年级下册",
       "fullName": "教科版小学科学一年级下册",
       "unitsCount": 2,
-      "lessonsCount": 23
+      "lessonsCount": 32
     },
     {
       "id": "science-g2down",
@@ -571,7 +571,7 @@
       "textbookName": "三年级下册",
       "fullName": "教科版小学科学三年级下册",
       "unitsCount": 3,
-      "lessonsCount": 28
+      "lessonsCount": 37
     },
     {
       "id": "science-g4down",
@@ -584,7 +584,7 @@
       "textbookName": "四年级下册",
       "fullName": "教科版小学科学四年级下册",
       "unitsCount": 3,
-      "lessonsCount": 45
+      "lessonsCount": 54
     },
     {
       "id": "science-g5down",
@@ -597,7 +597,7 @@
       "textbookName": "五年级下册",
       "fullName": "教科版小学科学五年级下册",
       "unitsCount": 4,
-      "lessonsCount": 64
+      "lessonsCount": 81
     },
     {
       "id": "science-g6down",
@@ -610,10 +610,10 @@
       "textbookName": "六年级下册",
       "fullName": "教科版小学科学六年级下册",
       "unitsCount": 4,
-      "lessonsCount": 30
+      "lessonsCount": 36
     }
   ],
-  "generatedAt": "2026-04-15T13:48:53.050Z",
-  "totalLessons": 2166,
-  "totalQuestions": 6545
+  "generatedAt": "2026-10-18T16:37:31.680Z",
+  "totalLessons": 2356,
+  "totalQuestions": 15117
 }

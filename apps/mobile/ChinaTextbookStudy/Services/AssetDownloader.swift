@@ -168,7 +168,7 @@ final class AssetDownloader: ObservableObject {
     private func probeBookAudio(_ bookId: String) -> Bool {
         let refs = sampleAudioRefs(bookId, limit: 8)
         guard !refs.isEmpty else { return true }
-        return refs.allSatisfy { AudioPlayer.shared.resolve($0) != nil }
+        return refs.allSatisfy { AudioPlayer.shared.canPlay($0) }
     }
 
     private func sampleAudioRefs(_ bookId: String, limit: Int) -> [String] {
@@ -316,6 +316,14 @@ final class AssetDownloader: ObservableObject {
                 .appendingPathComponent(bookId, isDirectory: true)
                 .appendingPathComponent("\(storyId).jpg")
         )
+        // 内置在安装包里的配图：<bundle>/story-images/<bookId>/<storyId>.jpg
+        if let res = Bundle.main.resourceURL {
+            candidates.append(
+                res.appendingPathComponent("story-images", isDirectory: true)
+                    .appendingPathComponent(bookId, isDirectory: true)
+                    .appendingPathComponent("\(storyId).jpg")
+            )
+        }
         return candidates.first { FileManager.default.fileExists(atPath: $0.path) }
     }
 

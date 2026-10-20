@@ -1,9 +1,8 @@
 import SwiftUI
 
 /// Inline speaker button that plays a single audio path through the shared
-/// `AudioPlayer`. No-op (and renders nothing) when the path is nil OR the
-/// resolved file does not exist on disk — that way the lesson UI degrades
-/// gracefully when only some questions have audio.
+/// `AudioPlayer`. No-op (and renders nothing) when the path is nil OR there is
+/// neither a local recording nor source text for the system-voice fallback.
 struct TTSButton: View {
     let path: String?
     var size: CGFloat = 20
@@ -13,7 +12,7 @@ struct TTSButton: View {
 
     private var resolvedExists: Bool {
         guard let path else { return false }
-        return AudioPlayer.shared.resolve(path) != nil
+        return AudioPlayer.shared.canPlay(path)
     }
 
     var body: some View {
