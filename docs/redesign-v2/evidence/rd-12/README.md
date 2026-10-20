@@ -69,7 +69,7 @@ xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj \
 | `LessonFlowUITests.testQuittingMidLessonAsksForConfirmation` | 失败（127 行） | 同断言失败。 |
 | `ScreenshotTests.testCaptureMainScreens` | 失败（36 行） | 同断言失败。 |
 
-基线测试的原始测试行见 `ios-baseline-tests.log`、`ios-baseline-ui-remaining.log`。其中五项在无本卡的基线上也失败；导航用例需后续排查。按任务范围未修改这些测试及对应功能，也未把旧截图附件当作 RD-12 界面证据。
+基线测试的原始测试行见 `ios-baseline-tests.log`、`ios-baseline-ui-remaining.log`，结构化结果见 `ios-baseline-summary.json`、`ios-baseline-ui-remaining-summary.json`。两组均退出 65：第一组 3 项中 1 通过、2 失败，第二组 3 项全部失败。其中五项在无本卡的基线上也失败；导航用例需后续排查。按任务范围未修改这些测试及对应功能，也未把旧截图附件当作 RD-12 界面证据。
 
 ## 许可与范围检查
 
