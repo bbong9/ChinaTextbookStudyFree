@@ -6,6 +6,7 @@ struct ChinaTextbookStudyApp: App {
         WindowGroup {
             RootView()
                 .tint(DuoColors.primary)
+                .task { ClayKaiFontStore.shared.startIfNeeded() }
         }
     }
 }

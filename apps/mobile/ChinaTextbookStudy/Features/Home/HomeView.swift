@@ -111,6 +111,20 @@ struct HomeView: View {
         }
         .onAppear { reloadOutline() }
         .onChange(of: progressStore.activeBookId) { _, _ in reloadOutline() }
+        #if DEBUG
+        // 旧首页尚无头像；Debug 入口独立叠加，RD-09 改版时移到正式头像。
+        .overlay(alignment: .topTrailing) {
+            AvatarBadge(level: 3) {
+                Text("山").clayKaiFont(size: 30).foregroundStyle(ClayColor.ink)
+            }
+            .onLongPressGesture { path.append(.clayGallery) }
+            .accessibilityLabel("调试头像，长按打开黏土组件预览")
+            .accessibilityIdentifier("clay-gallery-entry")
+            .accessibilityAddTraits(.isButton)
+            .accessibilityAction(named: "打开黏土组件预览") { path.append(.clayGallery) }
+            .padding(14)
+        }
+        #endif
     }
 
     // MARK: - Main path layout

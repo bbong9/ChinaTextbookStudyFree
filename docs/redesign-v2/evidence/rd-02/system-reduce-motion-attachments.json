@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1AB108FF-245A-4626-BDF5-B6879E022162",
+        "deviceName" : "RD-02 横屏 iPhone 16",
+        "exportedFileName" : "E10EC28E-042A-48D3-A3D0-B4FF77A76023.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-05-reduce-motion_0_713A750B-1448-4A86-B4AC-CC2B022B9EC2.png",
+        "timestamp" : 1792505763.583
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1AB108FF-245A-4626-BDF5-B6879E022162",
+        "deviceName" : "RD-02 横屏 iPhone 16",
+        "exportedFileName" : "52BBC89F-9579-4241-BADC-D8C724397FA6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "go-static-after_0_EA0DD0B9-ACEE-4249-8F7C-5AA3352EA580.png",
+        "timestamp" : 1792505763.409
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1AB108FF-245A-4626-BDF5-B6879E022162",
+        "deviceName" : "RD-02 横屏 iPhone 16",
+        "exportedFileName" : "7CA8BC24-3D1E-4467-96E0-F03671DD0AE5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "go-static-before_0_30413A23-38E0-4AD3-BA67-AF74A6F89190.png",
+        "timestamp" : 1792505763.409
+      }
+    ],
+    "testIdentifier" : "ClayGalleryUITests/testReduceMotionStopsGoButton()",
+    "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/ClayGalleryUITests/testReduceMotionStopsGoButton"
+  }
+]

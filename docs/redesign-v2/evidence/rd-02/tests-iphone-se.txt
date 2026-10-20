@@ -1,0 +1,153 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj -scheme ChinaTextbookStudy -destination "platform=iOS Simulator,id=2BFFBB16-A3BE-4564-AC5F-868D16C3D025" -derivedDataPath /tmp/rd02-landscape-derived -parallel-testing-enabled NO -collect-test-diagnostics never "-only-testing:ChinaTextbookStudyUITests/ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages" -resultBundlePath /tmp/rd02-delivery-iphone-se.xcresult CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  ZIPFoundation: https://github.com/weichsel/ZIPFoundation @ 0.9.20
+
+Writing result bundle at path:
+	/tmp/rd02-delivery-iphone-se.xcresult
+
+2026-10-20 22:09:37.886998+0800 ChinaTextbookStudyUITests-Runner[35497:7205391] [Default] Running tests...
+Test Suite 'Selected tests' started at 2026-10-20 22:09:41.639.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 22:09:41.640.
+Test Suite 'ClayGalleryUITests' started at 2026-10-20 22:09:41.640.
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testAnchorsStepStatesCallbackAndGalleryPages]' started.
+    t =     0.00s Start Test at 2026-10-20 22:09:41.641
+    t =     1.13s Set Up
+    t =     1.13s Setting device orientation to Landscape Left
+    t =     1.14s     Device orientation changed to Landscape Left
+    t =     1.20s     Wait for com.apple.springboard to idle
+    t =     1.27s Open com.example.ChinaTextbookStudy
+    t =     1.28s     Launch com.example.ChinaTextbookStudy
+2026-10-20 22:09:43.092 xcodebuild[34809:7201172] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 22:09:43.092 xcodebuild[34809:7201172] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     3.81s         Interface orientation changed to Landscape Right
+    t =     3.92s         Setting up automation session
+    t =     4.52s         Wait for com.example.ChinaTextbookStudy to idle
+    t =     8.82s Waiting 15.0s for "clay-gallery-entry" Button to exist
+    t =     9.85s     Checking `Expect predicate `existsNoRetry == 1` for object "clay-gallery-entry" Button`
+    t =     9.85s         Checking existence of `"clay-gallery-entry" Button`
+    t =     9.95s Press "clay-gallery-entry" Button for 1.0 seconds
+    t =     9.95s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     9.96s     Find the "clay-gallery-entry" Button
+    t =     9.98s     Check for interrupting elements affecting "clay-gallery-entry" Button
+    t =    10.02s     Synthesize event
+    t =    11.37s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    11.38s Waiting 5.0s for "stage-top-leading" Button to exist
+    t =    12.47s     Checking `Expect predicate `existsNoRetry == 1` for object "stage-top-leading" Button`
+    t =    12.47s         Checking existence of `"stage-top-leading" Button`
+    t =    12.49s Find the "clay-stage-metrics" StaticText
+    t =    12.51s Find the "stage-top-leading" Button
+    t =    12.52s Find the "stage-top-trailing" Button
+    t =    12.54s Find the "stage-bottom-leading" Button
+    t =    12.55s Find the "stage-bottom-trailing" Button
+    t =    12.56s Find the Target Application 'com.example.ChinaTextbookStudy'
+    t =    12.57s Find the "clay-steps-0" Button
+    t =    12.58s Find the "clay-steps-1" Button
+    t =    12.59s Find the "clay-steps-2" Button
+    t =    12.69s Added attachment named 'rd02-01-components'
+    t =    12.69s Tap "clay-steps-2" Button
+    t =    12.69s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    12.69s     Find the "clay-steps-2" Button
+    t =    12.70s     Check for interrupting elements affecting "clay-steps-2" Button
+    t =    12.72s     Synthesize event
+    t =    13.02s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.02s Find the "clay-steps-2" Button
+    t =    13.03s Find the "clay-step-result" StaticText
+    t =    13.12s Added attachment named 'rd02-02-step-callback'
+    t =    13.13s Tap "stage-bottom-trailing" Button
+    t =    13.13s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.13s     Find the "stage-bottom-trailing" Button
+    t =    13.14s     Check for interrupting elements affecting "stage-bottom-trailing" Button
+    t =    13.16s     Synthesize event
+    t =    13.46s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.46s Checking existence of `"g-sky" StaticText`
+    t =    13.49s Checking existence of `"p-red" StaticText`
+    t =    13.57s Added attachment named 'rd02-03-gradients'
+    t =    13.57s Tap "stage-bottom-trailing" Button
+    t =    13.57s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.57s     Find the "stage-bottom-trailing" Button
+    t =    13.59s     Check for interrupting elements affecting "stage-bottom-trailing" Button
+    t =    13.61s     Synthesize event
+    t =    13.91s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.93s Checking existence of `"clay-icon-back" Button`
+    t =    13.95s Find the "clay-icon-back" Button
+    t =    13.97s Find the "clay-icon-back" Button
+    t =    13.99s Checking existence of `"clay-icon-pause" Button`
+    t =    14.01s Find the "clay-icon-pause" Button
+    t =    14.05s Find the "clay-icon-pause" Button
+    t =    14.06s Checking existence of `"clay-icon-help" Button`
+    t =    14.08s Find the "clay-icon-help" Button
+    t =    14.10s Find the "clay-icon-help" Button
+    t =    14.13s Checking existence of `"clay-icon-gu" Button`
+    t =    14.15s Find the "clay-icon-gu" Button
+    t =    14.18s Find the "clay-icon-gu" Button
+    t =    14.20s Checking existence of `"clay-icon-left" Button`
+    t =    14.21s Find the "clay-icon-left" Button
+    t =    14.23s Find the "clay-icon-left" Button
+    t =    14.25s Checking existence of `"clay-icon-right" Button`
+    t =    14.27s Find the "clay-icon-right" Button
+    t =    14.29s Find the "clay-icon-right" Button
+    t =    14.32s Checking existence of `"clay-icon-speaker" Button`
+    t =    14.34s Find the "clay-icon-speaker" Button
+    t =    14.39s Find the "clay-icon-speaker" Button
+    t =    14.43s Checking existence of `"clay-icon-mic" Button`
+    t =    14.44s Find the "clay-icon-mic" Button
+    t =    14.47s Find the "clay-icon-mic" Button
+    t =    14.49s Checking existence of `"clay-icon-redo" Button`
+    t =    14.51s Find the "clay-icon-redo" Button
+    t =    14.54s Find the "clay-icon-redo" Button
+    t =    14.57s Checking existence of `"clay-icon-play" Button`
+    t =    14.59s Find the "clay-icon-play" Button
+    t =    14.62s Find the "clay-icon-play" Button
+    t =    14.64s Checking existence of `"clay-icon-close" Button`
+    t =    14.66s Find the "clay-icon-close" Button
+    t =    14.69s Find the "clay-icon-close" Button
+    t =    14.72s Checking existence of `"clay-icon-heart" Button`
+    t =    14.74s Find the "clay-icon-heart" Button
+    t =    14.76s Find the "clay-icon-heart" Button
+    t =    14.78s Checking existence of `"clay-icon-flame" Button`
+    t =    14.80s Find the "clay-icon-flame" Button
+    t =    14.83s Find the "clay-icon-flame" Button
+    t =    14.85s Checking existence of `"clay-icon-lock" Button`
+    t =    14.87s Find the "clay-icon-lock" Button
+    t =    14.90s Find the "clay-icon-lock" Button
+    t =    15.01s Added attachment named 'rd02-04-icons-fonts'
+    t =    15.02s Find the "clay-kai-status" StaticText
+RD02_FONT_STATUS=PingFang · 楷体下载中
+    t =    15.04s Tap "stage-top-leading" Button
+    t =    15.04s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    15.06s     Find the "stage-top-leading" Button
+    t =    15.10s     Check for interrupting elements affecting "stage-top-leading" Button
+    t =    15.15s     Synthesize event
+    t =    15.49s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    15.50s Waiting 5.0s for "clay-gallery-entry" Button to exist
+    t =    16.58s     Checking `Expect predicate `existsNoRetry == 1` for object "clay-gallery-entry" Button`
+    t =    16.58s         Checking existence of `"clay-gallery-entry" Button`
+    t =    16.64s Setting device orientation to Portrait
+    t =    16.65s     Device orientation changed to Portrait
+    t =    16.66s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.67s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testAnchorsStepStatesCallbackAndGalleryPages]' passed (17.058 seconds).
+Test Suite 'ClayGalleryUITests' passed at 2026-10-20 22:09:58.699.
+	 Executed 1 test, with 0 failures (0 unexpected) in 17.058 (17.060) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' passed at 2026-10-20 22:09:58.700.
+	 Executed 1 test, with 0 failures (0 unexpected) in 17.058 (17.061) seconds
+Test Suite 'Selected tests' passed at 2026-10-20 22:09:58.701.
+	 Executed 1 test, with 0 failures (0 unexpected) in 17.058 (17.062) seconds
+2026-10-20 22:09:59.127 xcodebuild[34809:7201172] [MT] IDETestOperationsObserverDebug: 45.290 elapsed -- Testing started completed.
+2026-10-20 22:09:59.127 xcodebuild[34809:7201172] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-20 22:09:59.127 xcodebuild[34809:7201172] [MT] IDETestOperationsObserverDebug: 45.290 sec, +45.290 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/rd02-delivery-iphone-se.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

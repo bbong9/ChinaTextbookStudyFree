@@ -1,0 +1,14 @@
+RD-02 范围核对
+基线: eaeff4f43353cfe7aad4ff1e28ef7aa3f6a1c93d
+UISupportedInterfaceOrientations: 与基线一致
+CODE_SIGN: 与基线一致
+DEVELOPMENT_TEAM: 与基线一致
+PRODUCT_BUNDLE_IDENTIFIER: 与基线一致
+bundleIdPrefix: 与基线一致
+MARKETING_VERSION: 与基线一致
+CURRENT_PROJECT_VERSION: 与基线一致
+packages/core: 无差异
+apps/mobile/ChinaTextbookStudy/Domain: 无差异
+apps/mobile/ChinaTextbookStudy/DesignSystem: 无差异
+全部变更均在本卡组件、字体、预览入口、测试和证据范围内。
+没有生成工程、经济、存档或旧 Duo 改动。

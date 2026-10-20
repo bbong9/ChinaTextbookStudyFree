@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E6B19521-9912-4EFA-860C-CFAEB112530C",
+        "deviceName" : "iPhone 16 Pro Max",
+        "exportedFileName" : "D7E692E2-71C9-4FB2-8DE6-156A6ED0D8C9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-04-icons-fonts_0_34823236-7CB2-4576-849D-B9FB67F9E7D3.png",
+        "timestamp" : 1792505454.799
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E6B19521-9912-4EFA-860C-CFAEB112530C",
+        "deviceName" : "iPhone 16 Pro Max",
+        "exportedFileName" : "5DE4A3F8-406F-4840-AA59-A28A031433A8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-03-gradients_0_768308E4-086B-4AF9-9886-5B901193E4A8.png",
+        "timestamp" : 1792505453.578
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E6B19521-9912-4EFA-860C-CFAEB112530C",
+        "deviceName" : "iPhone 16 Pro Max",
+        "exportedFileName" : "76710998-866E-476C-B8B6-3E31C73FC810.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-02-step-callback_0_F8F8D31F-7A7C-44DF-A294-1FC22E69D5DE.png",
+        "timestamp" : 1792505453.071
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "E6B19521-9912-4EFA-860C-CFAEB112530C",
+        "deviceName" : "iPhone 16 Pro Max",
+        "exportedFileName" : "6118B487-6880-45A1-9D9F-94A930F08CDE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-01-components_0_CAB779F1-8471-433D-9D1C-37D8B5FEFD75.png",
+        "timestamp" : 1792505452.531
+      }
+    ],
+    "testIdentifier" : "ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages()",
+    "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages"
+  }
+]
