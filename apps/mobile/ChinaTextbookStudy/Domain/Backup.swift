@@ -81,6 +81,14 @@ enum Backup {
         var xpHistory: [String: Int] = [:]
         var leagueTier: String?
         var leagueWeekKey: String?
+        var ownedPets: [String]?
+        var activePet: String?
+        var petTreats: Int?
+        var treatsFromLessonsDate: String?
+        var treatsFromLessonsCount: Int?
+        var petCare: [String: PetCareState]?
+        var petAccessory: [String: String]?
+        var petsMigrated: Bool?
     }
 
     struct Envelope: Codable, Hashable {
@@ -247,6 +255,14 @@ enum Backup {
         data.xpHistory = (p.xpHistory ?? [:]).filter { $0.value >= 0 }
         data.leagueTier = p.leagueTier
         data.leagueWeekKey = p.leagueWeekKey
+        data.ownedPets = p.ownedPets
+        data.activePet = p.activePet
+        data.petTreats = p.petTreats
+        data.treatsFromLessonsDate = p.treatsFromLessonsDate
+        data.treatsFromLessonsCount = p.treatsFromLessonsCount
+        data.petCare = p.petCare
+        data.petAccessory = p.petAccessory
+        data.petsMigrated = p.petsMigrated
 
         return Envelope(
             schema: schema,
@@ -382,6 +398,16 @@ enum Backup {
         p.leagueSalt = keepLeagueSalt
         p.leagueTier = d.leagueTier
         p.leagueWeekKey = d.leagueWeekKey
+        p.ownedPets = d.ownedPets
+        p.activePet = d.activePet
+        p.petTreats = d.petTreats
+        p.treatsFromLessonsDate = d.treatsFromLessonsDate
+        p.treatsFromLessonsCount = d.treatsFromLessonsCount
+        p.petCare = d.petCare
+        p.petAccessory = d.petAccessory
+        p.petsMigrated = d.petsMigrated
+        // 导入旧信封也走同一迁移；新信封的状态和时间戳原样保留。
+        PetState.migrate(&p)
 
         return p
     }
@@ -485,5 +511,21 @@ extension Backup.DataPayload: Decodable {
 
         leagueTier = string("leagueTier")
         leagueWeekKey = string("leagueWeekKey")
+        activePet = string("activePet")
+        treatsFromLessonsDate = string("treatsFromLessonsDate")
+        petTreats = int("petTreats").flatMap { $0 >= 0 ? $0 : nil }
+        treatsFromLessonsCount = int("treatsFromLessonsCount").flatMap { $0 >= 0 ? $0 : nil }
+        petsMigrated = (try? c.decodeIfPresent(Bool.self, forKey: AnyKey("petsMigrated"))) ?? nil
+        if let ids = try? c.decode([Lossy<String>].self, forKey: AnyKey("ownedPets")) {
+            ownedPets = ids.compactMap(\.value)
+        }
+        if c.contains(AnyKey("petAccessory")) {
+            let raw = (try? c.decode([String: Lossy<String>].self, forKey: AnyKey("petAccessory"))) ?? [:]
+            petAccessory = raw.compactMapValues(\.value)
+        }
+        if c.contains(AnyKey("petCare")) {
+            let raw = (try? c.decode([String: Lossy<PetCareState>].self, forKey: AnyKey("petCare"))) ?? [:]
+            petCare = raw.compactMapValues { $0.value?.validatedForBackup }
+        }
     }
 }

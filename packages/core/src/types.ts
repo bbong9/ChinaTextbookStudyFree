@@ -241,12 +241,30 @@ export interface LessonResult {
   completedAt: string;
 }
 
+/** RD-06：照顾数值保留小数；所有时间戳为 Unix 毫秒。 */
+export interface PetCareState {
+  fullness: number;
+  clean: number;
+  happy: number;
+  updatedAt: number;
+  lastBathAt?: number;
+  lastPlayAt?: number;
+}
+
 export interface UserProgress {
   xp: number;
   streak: number;
   lastActiveDate: string; // YYYY-MM-DD
   completedLessons: Record<string, LessonResult>;
   mistakesBank: { lessonId: string; question: Question }[];
+  ownedPets?: string[];
+  activePet?: string;
+  petTreats?: number;
+  treatsFromLessonsDate?: string;
+  treatsFromLessonsCount?: number;
+  petCare?: Record<string, PetCareState>;
+  petAccessory?: Record<string, string>;
+  petsMigrated?: boolean;
 }
 
 // ============================================================

@@ -443,6 +443,16 @@ struct UserProgress: Codable, Hashable {
     var seenIntros: [String]?
     /// 题目报错列表（纯本地；设置页可查看 / 导出）。
     var reports: [QuestionReport]?
+
+    // RD-06 宠物存档：全部可选，旧版本存档可直接解码。
+    var ownedPets: [String]?
+    var activePet: String?
+    var petTreats: Int?
+    var treatsFromLessonsDate: String?
+    var treatsFromLessonsCount: Int?
+    var petCare: [String: PetCareState]?
+    var petAccessory: [String: String]?
+    var petsMigrated: Bool?
 }
 
 // ============================================================

@@ -1,0 +1,89 @@
+{
+  "data" : {
+    "activePet" : "pet_fox",
+    "claimedAchievements" : {
+
+    },
+    "claimedChests" : {
+
+    },
+    "claimedQuests" : {
+
+    },
+    "claimedStreakRewards" : {
+
+    },
+    "completedLessons" : {
+
+    },
+    "completedReadings" : {
+
+    },
+    "dailyGoal" : 50,
+    "equipped" : {
+      "lessonBackdrop" : "backdrop_default",
+      "mascotSkin" : "skin_default",
+      "uiTheme" : "theme_default"
+    },
+    "gems" : 1234,
+    "hearts" : 5,
+    "lastActiveDate" : "",
+    "lastDailyRewardDate" : "",
+    "lifetimeGems" : 1500,
+    "mistakesBank" : [
+
+    ],
+    "ownedCosmetics" : {
+      "skin_glasses" : true,
+      "skin_graduate" : true
+    },
+    "ownedPets" : [
+      "pet_mituan",
+      "pet_fox",
+      "pet_duck"
+    ],
+    "petAccessory" : {
+      "pet_fox" : "skin_glasses",
+      "pet_mituan" : "skin_graduate"
+    },
+    "petCare" : {
+      "pet_duck" : {
+        "clean" : 100,
+        "fullness" : 100,
+        "happy" : 100,
+        "updatedAt" : 1792483200000
+      },
+      "pet_fox" : {
+        "clean" : 100,
+        "fullness" : 40,
+        "happy" : 75.25,
+        "lastBathAt" : 1792479600000,
+        "lastPlayAt" : 1792481400000,
+        "updatedAt" : 1792483200000
+      },
+      "pet_mituan" : {
+        "clean" : 80,
+        "fullness" : 72.5,
+        "happy" : 35,
+        "updatedAt" : 1792483200000
+      }
+    },
+    "petTreats" : 4,
+    "petsMigrated" : true,
+    "streak" : 0,
+    "streakFreezes" : 2,
+    "treatsFromLessonsCount" : 5,
+    "treatsFromLessonsDate" : "2026-10-20",
+    "unlockedAchievements" : {
+
+    },
+    "xp" : 560,
+    "xpHistory" : {
+
+    }
+  },
+  "exportedAt" : "2026-10-20T08:00:00.000Z",
+  "platform" : "ios",
+  "schema" : "cstf-backup",
+  "version" : 1
+}

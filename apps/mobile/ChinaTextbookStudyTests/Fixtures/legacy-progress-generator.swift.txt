@@ -1,0 +1,44 @@
+// 配合 eaeff4f 的原始 CoreTypes.swift 编译；不使用 RD-06 新模型删字段来伪造旧档。
+import Foundation
+
+var p = UserProgress(
+    xp: 560, streak: 7, lastActiveDate: "2026-10-19",
+    completedLessons: ["g1up-u1-kp1": LessonResult(
+        lessonId: "g1up-u1-kp1", stars: 3, accuracy: 1, completedAt: "2026-10-19T08:00:00Z")],
+    mistakesBank: []
+)
+p.hearts = 5
+p.gems = 321
+p.lifetimeGems = 901
+p.todayXp = 60
+p.lastXpDate = "2026-10-19"
+p.dailyGoal = 50
+p.claimedChests = ["g1up-u1-c1": true]
+p.equippedMascotSkin = "skin_graduate"
+p.equippedTheme = "theme_default"
+p.equippedBackdrop = "backdrop_default"
+p.streakFreezes = 2
+p.ownedCosmetics = ["skin_default", "skin_graduate", "skin_glasses"]
+p.displayName = "旧版测试档"
+p.completedReadings = []
+p.claimedQuests = ["2026-10-19:earnXP-60"]
+p.xpHistory = ["2026-10-19": 60]
+p.dailyDate = "2026-10-19"
+p.dailyLessons = 1
+p.dailyReviews = 0
+p.dailyReadings = 0
+p.claimedStreakRewards = [3, 7]
+p.lastDailyRewardDate = "2026-10-19"
+p.lastDailyRewardStreak = 7
+p.unlockedAchievements = ["first-lesson"]
+p.claimedAchievements = ["first-lesson"]
+p.freezesMigrated = true
+p.joinedDate = "2026-10-13"
+p.leagueSalt = "synthetic-legacy-fixture"
+p.leagueTier = "bronze"
+p.leagueWeekKey = "2026-10-19"
+p.seenIntros = ["g1up-u1-kp1"]
+p.reports = []
+let encoder = JSONEncoder()
+encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+try encoder.encode(p).write(to: URL(fileURLWithPath: CommandLine.arguments[1]))
