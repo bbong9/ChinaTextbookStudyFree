@@ -1,0 +1,58 @@
+{
+  "char": "天",
+  "status": "draft",
+  "pinyin": "tiān",
+  "strokeCount": 4,
+  "strokeNames": [
+    "横",
+    "横",
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "天空",
+      "pinyin": "tiān kōng",
+      "status": "draft",
+      "audio": "/audio/b1/b125e5a8da05a9008f4285ac9cb49ad6beaaf716.opus"
+    },
+    {
+      "text": "白天",
+      "pinyin": "bái tiān",
+      "status": "draft",
+      "audio": "/audio/9d/9dd6c2d4dee4fe2038212e80a59a272def2fb8f2.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "夭",
+      "夫"
+    ],
+    "sound": [
+      "添"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "大",
+  "audio": {
+    "char": "/audio/c3/c3304d1e49e3eaa7072ba35285041ebb452a0c0d.opus",
+    "pinyin": "/audio/c3/c3304d1e49e3eaa7072ba35285041ebb452a0c0d.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "tiān"
+    ],
+    "radical": "大"
+  }
+}

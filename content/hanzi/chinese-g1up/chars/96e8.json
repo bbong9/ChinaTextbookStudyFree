@@ -1,0 +1,65 @@
+{
+  "char": "雨",
+  "status": "draft",
+  "pinyin": "yǔ",
+  "strokeCount": 8,
+  "strokeNames": [
+    "横",
+    "竖",
+    "横折钩",
+    "竖",
+    "点",
+    "点",
+    "点",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "下雨",
+      "pinyin": "xià yǔ",
+      "status": "draft",
+      "audio": "/audio/b9/b94ed83e391b4749ef316bc874104aa8af8ed2cf.opus"
+    },
+    {
+      "text": "雨水",
+      "pinyin": "yǔ shuǐ",
+      "status": "draft",
+      "audio": "/audio/9c/9c638684ad413cd1602156c14d96965d32a5dc9d.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "两",
+      "而"
+    ],
+    "sound": [
+      "语"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "yù"
+  ],
+  "radical": "雨",
+  "audio": {
+    "char": "/audio/89/8995b8979971e99abf52e3aacbd66754a06fa685.opus",
+    "pinyin": "/audio/89/8995b8979971e99abf52e3aacbd66754a06fa685.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "yù",
+      "yǔ"
+    ],
+    "radical": "雨"
+  }
+}

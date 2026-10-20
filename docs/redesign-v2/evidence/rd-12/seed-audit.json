@@ -1,0 +1,12 @@
+{
+  "baselineCommit": "eaeff4f",
+  "baselineBytes": 7438076,
+  "currentBytes": 7672566,
+  "deltaBytes": 234490,
+  "originalEntries": 2624,
+  "changedOrRemovedOriginalEntries": [],
+  "addedEntries": 204,
+  "newAudioEntries": [],
+  "strokeFiles": 100,
+  "sha256": "3a290570f421a5fa609014acdd23417f9cb01020b345f64b6ead5e570e426f33"
+}

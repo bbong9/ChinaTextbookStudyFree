@@ -1,0 +1,61 @@
+{
+  "char": "杏",
+  "status": "draft",
+  "pinyin": "xìng",
+  "strokeCount": 7,
+  "strokeNames": [
+    "横",
+    "竖",
+    "撇",
+    "捺",
+    "竖",
+    "横折",
+    "横"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "杏子",
+      "pinyin": "xìng zi",
+      "status": "draft",
+      "audio": "/audio/40/4018c4ab4aeab6a16dc318288f20c13910d23982.opus"
+    },
+    {
+      "text": "杏花",
+      "pinyin": "xìng huā",
+      "status": "draft",
+      "audio": "/audio/ad/add7bacbcacddfc240be86fae3e1228189329774.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "呆",
+      "李"
+    ],
+    "sound": [
+      "幸"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "木",
+  "audio": {
+    "char": "/audio/dd/dd6d39fd3cf0ab1acf32ec5802c01bfbc36dc95f.opus",
+    "pinyin": "/audio/dd/dd6d39fd3cf0ab1acf32ec5802c01bfbc36dc95f.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "xìng"
+    ],
+    "radical": "木"
+  }
+}

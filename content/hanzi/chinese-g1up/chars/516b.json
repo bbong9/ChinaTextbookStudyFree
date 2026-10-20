@@ -1,0 +1,56 @@
+{
+  "char": "八",
+  "status": "draft",
+  "pinyin": "bā",
+  "strokeCount": 2,
+  "strokeNames": [
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "八月",
+      "pinyin": "bā yuè",
+      "status": "draft",
+      "audio": "/audio/38/384f3abedb37b20791c7de0b866612006bbd1139.opus"
+    },
+    {
+      "text": "八个",
+      "pinyin": "bā ge",
+      "status": "draft",
+      "audio": "/audio/c5/c526ac6273cd535df87e0ae36d300a149c9e7f59.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "人",
+      "入"
+    ],
+    "sound": [
+      "巴"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "八",
+  "audio": {
+    "char": "/audio/21/2142fb62fd47115cc6b5717e6426ebc88bce6c68.opus",
+    "pinyin": "/audio/21/2142fb62fd47115cc6b5717e6426ebc88bce6c68.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "bā"
+    ],
+    "radical": "八"
+  }
+}

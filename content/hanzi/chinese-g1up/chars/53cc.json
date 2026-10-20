@@ -1,0 +1,56 @@
+{
+  "char": "双",
+  "status": "draft",
+  "pinyin": "shuāng",
+  "strokeCount": 4,
+  "strokeNames": [
+    "横撇",
+    "点",
+    "横撇",
+    "捺"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "双手",
+      "pinyin": "shuāng shǒu",
+      "status": "draft",
+      "audio": "/audio/dd/ddeff54907e0273cd399c88e39fce39fd4b12a2a.opus"
+    },
+    {
+      "text": "双目",
+      "pinyin": "shuāng mù",
+      "status": "draft",
+      "audio": "/audio/6e/6e79b849d0823051a0ce5b54ef8c1b2f85c5a8a8.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "对",
+      "又"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "又",
+  "audio": {
+    "char": "/audio/4e/4e01f8387a52831b5380d135c8b12fd19cde4d8d.opus",
+    "pinyin": "/audio/4e/4e01f8387a52831b5380d135c8b12fd19cde4d8d.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "shuāng"
+    ],
+    "radical": "又"
+  }
+}

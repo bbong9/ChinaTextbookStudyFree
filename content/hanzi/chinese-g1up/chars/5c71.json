@@ -1,0 +1,66 @@
+{
+  "char": "山",
+  "status": "draft",
+  "pinyin": "shān",
+  "strokeCount": 3,
+  "strokeNames": [
+    "竖",
+    "竖折",
+    "竖"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "高山",
+      "pinyin": "gāo shān",
+      "status": "draft",
+      "audio": "/audio/c2/c2795f7fe81515c37338bed89d5e1fba96932d28.opus"
+    },
+    {
+      "text": "山羊",
+      "pinyin": "shān yáng",
+      "status": "draft",
+      "audio": "/audio/02/02e0e45ea6727f168ce9621237aeda182d3d345b.opus"
+    }
+  ],
+  "scene": "mountains",
+  "sceneCaption": "看图：三座山峰",
+  "origin": {
+    "kind": "象形",
+    "explanation": "“山”像连在一起的几座山峰，中间高，两边低。高高隆起的地面就是山。",
+    "forms": [],
+    "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+    "license": "MIT",
+    "status": "draft"
+  },
+  "distractors": {
+    "shape": [
+      "出",
+      "田"
+    ],
+    "sound": [
+      "衫"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "核对第二笔名称为竖折，不能照卡片示例误标横折。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "山",
+  "audio": {
+    "char": "/audio/0e/0e248e5603d3e908214e506d4c5fa3700b2ef7ff.opus",
+    "pinyin": "/audio/0e/0e248e5603d3e908214e506d4c5fa3700b2ef7ff.opus",
+    "origin": "/audio/d8/d883bbe8943bc7bff4471f5a9c9682cffd9cbe0c.opus"
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "shān"
+    ],
+    "radical": "山"
+  }
+}

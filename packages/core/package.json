@@ -30,7 +30,8 @@
     "./backup": "./src/backup.ts",
     "./jump": "./src/jump.ts",
     "./storyQuiz": "./src/storyQuiz.ts",
-    "./numberSense": "./src/numberSense.ts"
+    "./numberSense": "./src/numberSense.ts",
+    "./hanzi": "./src/hanzi.ts"
   },
   "scripts": {
     "type-check": "tsc --noEmit",

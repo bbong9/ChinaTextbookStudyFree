@@ -1,0 +1,58 @@
+{
+  "char": "风",
+  "status": "draft",
+  "pinyin": "fēng",
+  "strokeCount": 4,
+  "strokeNames": [
+    "撇",
+    "横斜钩",
+    "撇",
+    "点"
+  ],
+  "structure": "半包围结构",
+  "words": [
+    {
+      "text": "大风",
+      "pinyin": "dà fēng",
+      "status": "draft",
+      "audio": "/audio/f0/f0b2b86513eb580be3c612c0c9ad903ef252b06b.opus"
+    },
+    {
+      "text": "风雨",
+      "pinyin": "fēng yǔ",
+      "status": "draft",
+      "audio": "/audio/69/698c0fe4f1ecb8662c69cbc06f943fe72b86fa4a.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "凤",
+      "几"
+    ],
+    "sound": [
+      "丰"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "风",
+  "audio": {
+    "char": "/audio/53/534418ad36f925d1e9455904bf6f6e4f2393e753.opus",
+    "pinyin": "/audio/53/534418ad36f925d1e9455904bf6f6e4f2393e753.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "fēng"
+    ],
+    "radical": "风"
+  }
+}

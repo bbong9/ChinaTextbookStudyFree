@@ -32,6 +32,13 @@ enum DataLoaderError: Error, LocalizedError {
 final class DataLoader {
     static let shared = DataLoader()
 
+    private let dataRootOverride: URL?
+
+    /// 测试可用独立的 seed 解压目录，不读写真实沙盒数据。
+    init(dataRoot: URL? = nil) {
+        dataRootOverride = dataRoot
+    }
+
     private let decoder: JSONDecoder = {
         let d = JSONDecoder()
         return d
@@ -41,6 +48,7 @@ final class DataLoader {
 
     /// `Application Support/cstf/data/`
     var sandboxDataRoot: URL {
+        if let dataRootOverride { return dataRootOverride }
         let fm = FileManager.default
         let base = (try? fm.url(for: .applicationSupportDirectory,
                                 in: .userDomainMask,
@@ -118,6 +126,46 @@ final class DataLoader {
         let stories = try decode(BookStories.self, from: url)
         SpeechTextIndex.shared.register(stories)
         return stories
+    }
+
+    // MARK: - Hanzi（缺失或损坏均返回 nil；缺笔顺仍可读字卡）
+
+    func loadHanziIndex(bookId: String) -> HanziIndex? {
+        guard let directory = hanziBookDir(bookId),
+              let index = try? decode(HanziIndex.self, from: directory.appendingPathComponent("index.json")),
+              index.bookId == bookId, index.version == 1 else { return nil }
+        return index
+    }
+
+    func loadHanziChar(bookId: String, char: String) -> HanziCharacter? {
+        guard let directory = hanziBookDir(bookId), char.unicodeScalars.count == 1,
+              let scalar = char.unicodeScalars.first else { return nil }
+        let filename = String(scalar.value, radix: 16) + ".json"
+        let charURL = directory.appendingPathComponent("chars", isDirectory: true).appendingPathComponent(filename)
+        guard var character = try? decode(HanziCharacter.self, from: charURL),
+              character.char == char, character.origin?.forms.isEmpty != false else { return nil }
+        let strokeURL = sandboxDataRoot.appendingPathComponent("hanzi/strokes", isDirectory: true)
+            .appendingPathComponent(filename)
+        if let data = try? decode(HanziStrokeData.self, from: strokeURL),
+           data.char == char, data.strokes.count == character.strokeCount,
+           data.strokes.allSatisfy({ stroke in
+               !stroke.outline.isEmpty && stroke.median.count >= 2 && stroke.median.allSatisfy { point in
+                   point.count == 2 && point.allSatisfy { $0.isFinite && (0...1024).contains($0) }
+               }
+           }),
+           !data.source.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+           !data.license.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            character.strokes = data.strokes
+            character.strokeAttribution = HanziAttribution(source: data.source, license: data.license)
+        }
+        SpeechTextIndex.shared.register(character)
+        return character
+    }
+
+    private func hanziBookDir(_ bookId: String) -> URL? {
+        guard bookId.range(of: #"^[a-z0-9]+(?:-[a-z0-9]+)*$"#, options: .regularExpression) != nil else { return nil }
+        return sandboxDataRoot.appendingPathComponent("hanzi", isDirectory: true)
+            .appendingPathComponent(bookId, isDirectory: true)
     }
 
     // MARK: - Helpers

@@ -1,0 +1,63 @@
+{
+  "char": "地",
+  "status": "draft",
+  "pinyin": "dì",
+  "strokeCount": 6,
+  "strokeNames": [
+    "横",
+    "竖",
+    "提",
+    "横折钩",
+    "竖",
+    "竖弯钩"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "土地",
+      "pinyin": "tǔ dì",
+      "status": "draft",
+      "audio": "/audio/01/010108fbb92b43eb0fabd223fa84347d4b1d98b8.opus"
+    },
+    {
+      "text": "大地",
+      "pinyin": "dà dì",
+      "status": "draft",
+      "audio": "/audio/65/656b916e94fefb57b30080ccc1be1ceaad198698.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "他",
+      "池"
+    ],
+    "sound": [
+      "弟"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "de"
+  ],
+  "radical": "土",
+  "audio": {
+    "char": "/audio/ed/ede5b1e640596814d29c553b466645b208d93864.opus",
+    "pinyin": "/audio/ed/ede5b1e640596814d29c553b466645b208d93864.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "de",
+      "dì"
+    ],
+    "radical": "土"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "char": "旗",
+  "status": "draft",
+  "pinyin": "qí",
+  "strokeCount": 14,
+  "strokeNames": [
+    "点",
+    "横",
+    "横折钩",
+    "撇",
+    "撇",
+    "横",
+    "横",
+    "竖",
+    "竖",
+    "横",
+    "横",
+    "横",
+    "撇",
+    "点"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "国旗",
+      "pinyin": "guó qí",
+      "status": "draft",
+      "audio": "/audio/96/96d22f5fb875697fd8abe0a94224f5a2c3bc120d.opus"
+    },
+    {
+      "text": "升旗",
+      "pinyin": "shēng qí",
+      "status": "draft",
+      "audio": "/audio/19/19fad05d5c808c23ed57207758b3987df23f5769.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "族",
+      "旅"
+    ],
+    "sound": [
+      "齐"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "方",
+  "audio": {
+    "char": "/audio/9a/9ab6a72585efd5884c0faa533da588e23ce1d075.opus",
+    "pinyin": "/audio/9a/9ab6a72585efd5884c0faa533da588e23ce1d075.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "qí"
+    ],
+    "radical": "方"
+  }
+}

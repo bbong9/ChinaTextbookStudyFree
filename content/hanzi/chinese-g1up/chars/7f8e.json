@@ -1,0 +1,63 @@
+{
+  "char": "美",
+  "status": "draft",
+  "pinyin": "měi",
+  "strokeCount": 9,
+  "strokeNames": [
+    "点",
+    "撇",
+    "横",
+    "横",
+    "竖",
+    "横",
+    "横",
+    "撇",
+    "捺"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "美丽",
+      "pinyin": "měi lì",
+      "status": "draft",
+      "audio": "/audio/e1/e15915eae6609a45d9d1f0c8cb5fd22ed0893d3c.opus"
+    },
+    {
+      "text": "美好",
+      "pinyin": "měi hǎo",
+      "status": "draft",
+      "audio": "/audio/fc/fc1f266bc8e2932f77cf494a83b587ef98c3ecbc.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "羊",
+      "关"
+    ],
+    "sound": [
+      "每"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "羊",
+  "audio": {
+    "char": "/audio/88/88583a5ba07c746279a178281bf2846bd68bac12.opus",
+    "pinyin": "/audio/88/88583a5ba07c746279a178281bf2846bd68bac12.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "měi"
+    ],
+    "radical": "羊"
+  }
+}

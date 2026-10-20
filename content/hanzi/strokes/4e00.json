@@ -1,0 +1,32 @@
+{
+  "char": "一",
+  "strokes": [
+    {
+      "outline": "M 518 518 Q 572 515 623 511 Q 758 501 900 517 Q 928 521 935 510 Q 944 495 930 481 Q 896 448 845 425 Q 829 418 798 427 Q 723 440 480 466 Q 180 491 137 492 Q 130 492 124 492 Q 108 492 106 505 Q 105 520 127 537 Q 146 552 183 566 Q 195 570 216 562 Q 232 556 306 546 Q 400 527 518 518 Z",
+      "median": [
+        [
+          121,
+          507
+        ],
+        [
+          193,
+          528
+        ],
+        [
+          417,
+          498
+        ],
+        [
+          827,
+          466
+        ],
+        [
+          920,
+          499
+        ]
+      ]
+    }
+  ],
+  "source": "Make Me a Hanzi (graphics.txt) @ bddc96d41bef78427ed0e034e9f7e31d71fd1b92; https://raw.githubusercontent.com/skishore/makemeahanzi/bddc96d41bef78427ed0e034e9f7e31d71fd1b92/graphics.txt",
+  "license": "Arphic Public License"
+}

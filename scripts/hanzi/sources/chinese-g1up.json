@@ -1,0 +1,4511 @@
+{
+  "version": 1,
+  "bookId": "chinese-g1up",
+  "status": "draft",
+  "source": "Codex 按常见统编版旧编排整理的初稿；教材版次及字表待纸质课本和教参人工复核",
+  "license": "MIT",
+  "editionNote": "参考现有 seed 大纲的单元编号 2、6；拟按含《天地人》《画》《大小多少》等课文的常见旧编排整理，识字（一）含语文园地一的六七八九十。尚未核对任何纸质教材，实际版次、园地归属及漏字/多字均待人工复核。",
+  "units": [
+    {
+      "unitNumber": 2,
+      "title": "识字(一)",
+      "status": "draft",
+      "recognitionChars": [
+        "天",
+        "地",
+        "人",
+        "你",
+        "我",
+        "他",
+        "一",
+        "二",
+        "三",
+        "四",
+        "五",
+        "上",
+        "下",
+        "口",
+        "耳",
+        "目",
+        "手",
+        "足",
+        "站",
+        "坐",
+        "日",
+        "月",
+        "水",
+        "火",
+        "山",
+        "石",
+        "田",
+        "禾",
+        "对",
+        "云",
+        "雨",
+        "风",
+        "花",
+        "鸟",
+        "虫",
+        "六",
+        "七",
+        "八",
+        "九",
+        "十"
+      ],
+      "writingChars": [
+        "一",
+        "二",
+        "三",
+        "上",
+        "口",
+        "目",
+        "耳",
+        "手",
+        "日",
+        "田",
+        "禾",
+        "火",
+        "虫",
+        "云",
+        "山",
+        "八",
+        "十"
+      ]
+    },
+    {
+      "unitNumber": 6,
+      "title": "识字(二)",
+      "status": "draft",
+      "recognitionChars": [
+        "远",
+        "有",
+        "色",
+        "近",
+        "听",
+        "无",
+        "声",
+        "去",
+        "还",
+        "来",
+        "大",
+        "小",
+        "多",
+        "少",
+        "黄",
+        "牛",
+        "只",
+        "猫",
+        "边",
+        "鸭",
+        "苹",
+        "果",
+        "杏",
+        "桃",
+        "书",
+        "包",
+        "尺",
+        "作",
+        "业",
+        "本",
+        "笔",
+        "刀",
+        "课",
+        "早",
+        "校",
+        "明",
+        "力",
+        "尘",
+        "从",
+        "众",
+        "双",
+        "木",
+        "林",
+        "森",
+        "条",
+        "心",
+        "升",
+        "国",
+        "旗",
+        "中",
+        "红",
+        "歌",
+        "起",
+        "么",
+        "美",
+        "丽",
+        "立"
+      ],
+      "writingChars": [
+        "水",
+        "去",
+        "来",
+        "不",
+        "小",
+        "少",
+        "牛",
+        "果",
+        "鸟",
+        "早",
+        "书",
+        "刀",
+        "尺",
+        "本",
+        "木",
+        "林",
+        "土",
+        "力",
+        "心",
+        "中",
+        "五",
+        "立",
+        "正"
+      ]
+    }
+  ],
+  "chars": [
+    {
+      "char": "天",
+      "status": "draft",
+      "pinyin": "tiān",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "横",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "天空",
+          "pinyin": "tiān kōng",
+          "status": "draft"
+        },
+        {
+          "text": "白天",
+          "pinyin": "bái tiān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "夭",
+          "夫"
+        ],
+        "sound": [
+          "添"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "地",
+      "status": "draft",
+      "pinyin": "dì",
+      "strokeCount": 6,
+      "strokeNames": [
+        "横",
+        "竖",
+        "提",
+        "横折钩",
+        "竖",
+        "竖弯钩"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "土地",
+          "pinyin": "tǔ dì",
+          "status": "draft"
+        },
+        {
+          "text": "大地",
+          "pinyin": "dà dì",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "他",
+          "池"
+        ],
+        "sound": [
+          "弟"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "de"
+      ]
+    },
+    {
+      "char": "人",
+      "status": "draft",
+      "pinyin": "rén",
+      "strokeCount": 2,
+      "strokeNames": [
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "大人",
+          "pinyin": "dà rén",
+          "status": "draft"
+        },
+        {
+          "text": "工人",
+          "pinyin": "gōng rén",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "入",
+          "八"
+        ],
+        "sound": [
+          "仁"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "你",
+      "status": "draft",
+      "pinyin": "nǐ",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "竖",
+        "撇",
+        "横钩",
+        "竖钩",
+        "撇",
+        "点"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "你们",
+          "pinyin": "nǐ men",
+          "status": "draft"
+        },
+        {
+          "text": "你好",
+          "pinyin": "nǐ hǎo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "他",
+          "休"
+        ],
+        "sound": [
+          "拟"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "我",
+      "status": "draft",
+      "pinyin": "wǒ",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "横",
+        "竖钩",
+        "提",
+        "斜钩",
+        "撇",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "我们",
+          "pinyin": "wǒ men",
+          "status": "draft"
+        },
+        {
+          "text": "我家",
+          "pinyin": "wǒ jiā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "找",
+          "成"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "他",
+      "status": "draft",
+      "pinyin": "tā",
+      "strokeCount": 5,
+      "strokeNames": [
+        "撇",
+        "竖",
+        "横折钩",
+        "竖",
+        "竖弯钩"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "他们",
+          "pinyin": "tā men",
+          "status": "draft"
+        },
+        {
+          "text": "他人",
+          "pinyin": "tā rén",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "池",
+          "地"
+        ],
+        "sound": [
+          "她"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "一",
+      "status": "draft",
+      "pinyin": "yī",
+      "strokeCount": 1,
+      "strokeNames": [
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "一声",
+          "pinyin": "yì shēng",
+          "status": "draft"
+        },
+        {
+          "text": "一条",
+          "pinyin": "yì tiáo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "二",
+          "十"
+        ],
+        "sound": [
+          "衣"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对词中“一”的变调；主读音保留 yī。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "二",
+      "status": "draft",
+      "pinyin": "èr",
+      "strokeCount": 2,
+      "strokeNames": [
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "二月",
+          "pinyin": "èr yuè",
+          "status": "draft"
+        },
+        {
+          "text": "第二",
+          "pinyin": "dì èr",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "三",
+          "工"
+        ],
+        "sound": [
+          "贰"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "三",
+      "status": "draft",
+      "pinyin": "sān",
+      "strokeCount": 3,
+      "strokeNames": [
+        "横",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "三月",
+          "pinyin": "sān yuè",
+          "status": "draft"
+        },
+        {
+          "text": "三个",
+          "pinyin": "sān ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "二",
+          "王"
+        ],
+        "sound": [
+          "叁"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "四",
+      "status": "draft",
+      "pinyin": "sì",
+      "strokeCount": 5,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "撇",
+        "竖弯",
+        "横"
+      ],
+      "structure": "全包围结构",
+      "words": [
+        {
+          "text": "四季",
+          "pinyin": "sì jì",
+          "status": "draft"
+        },
+        {
+          "text": "四方",
+          "pinyin": "sì fāng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "西",
+          "田"
+        ],
+        "sound": [
+          "寺"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "五",
+      "status": "draft",
+      "pinyin": "wǔ",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横折",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "五月",
+          "pinyin": "wǔ yuè",
+          "status": "draft"
+        },
+        {
+          "text": "五个",
+          "pinyin": "wǔ ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "互",
+          "丑"
+        ],
+        "sound": [
+          "午"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "上",
+      "status": "draft",
+      "pinyin": "shàng",
+      "strokeCount": 3,
+      "strokeNames": [
+        "竖",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "上学",
+          "pinyin": "shàng xué",
+          "status": "draft"
+        },
+        {
+          "text": "上山",
+          "pinyin": "shàng shān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "下",
+          "土"
+        ],
+        "sound": [
+          "尚"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "shǎng"
+      ]
+    },
+    {
+      "char": "下",
+      "status": "draft",
+      "pinyin": "xià",
+      "strokeCount": 3,
+      "strokeNames": [
+        "横",
+        "竖",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "下雨",
+          "pinyin": "xià yǔ",
+          "status": "draft"
+        },
+        {
+          "text": "下山",
+          "pinyin": "xià shān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "上",
+          "不"
+        ],
+        "sound": [
+          "夏"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "口",
+      "status": "draft",
+      "pinyin": "kǒu",
+      "strokeCount": 3,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "门口",
+          "pinyin": "mén kǒu",
+          "status": "draft"
+        },
+        {
+          "text": "开口",
+          "pinyin": "kāi kǒu",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "日",
+          "中"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "耳",
+      "status": "draft",
+      "pinyin": "ěr",
+      "strokeCount": 6,
+      "strokeNames": [
+        "横",
+        "竖",
+        "竖",
+        "横",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "耳朵",
+          "pinyin": "ěr duo",
+          "status": "draft"
+        },
+        {
+          "text": "木耳",
+          "pinyin": "mù ěr",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "目",
+          "自"
+        ],
+        "sound": [
+          "尔"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "目",
+      "status": "draft",
+      "pinyin": "mù",
+      "strokeCount": 5,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "目光",
+          "pinyin": "mù guāng",
+          "status": "draft"
+        },
+        {
+          "text": "双目",
+          "pinyin": "shuāng mù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "日",
+          "自"
+        ],
+        "sound": [
+          "木"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "手",
+      "status": "draft",
+      "pinyin": "shǒu",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "横",
+        "横",
+        "竖钩"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "小手",
+          "pinyin": "xiǎo shǒu",
+          "status": "draft"
+        },
+        {
+          "text": "手心",
+          "pinyin": "shǒu xīn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "毛",
+          "丰"
+        ],
+        "sound": [
+          "首"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "足",
+      "status": "draft",
+      "pinyin": "zú",
+      "strokeCount": 7,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横",
+        "撇",
+        "捺"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "手足",
+          "pinyin": "shǒu zú",
+          "status": "draft"
+        },
+        {
+          "text": "足球",
+          "pinyin": "zú qiú",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "走",
+          "是"
+        ],
+        "sound": [
+          "族"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "站",
+      "status": "draft",
+      "pinyin": "zhàn",
+      "strokeCount": 10,
+      "strokeNames": [
+        "点",
+        "横",
+        "点",
+        "撇",
+        "提",
+        "竖",
+        "横",
+        "竖",
+        "横折",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "站立",
+          "pinyin": "zhàn lì",
+          "status": "draft"
+        },
+        {
+          "text": "车站",
+          "pinyin": "chē zhàn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "贴",
+          "店"
+        ],
+        "sound": [
+          "战"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "坐",
+      "status": "draft",
+      "pinyin": "zuò",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "点",
+        "撇",
+        "点",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "坐下",
+          "pinyin": "zuò xià",
+          "status": "draft"
+        },
+        {
+          "text": "坐车",
+          "pinyin": "zuò chē",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "丛",
+          "土"
+        ],
+        "sound": [
+          "座"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "日",
+      "status": "draft",
+      "pinyin": "rì",
+      "strokeCount": 4,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "日出",
+          "pinyin": "rì chū",
+          "status": "draft"
+        },
+        {
+          "text": "日月",
+          "pinyin": "rì yuè",
+          "status": "draft"
+        }
+      ],
+      "scene": "sun",
+      "sceneCaption": "看图：圆圆的太阳",
+      "origin": {
+        "kind": "象形",
+        "explanation": "可以把“日”想成天空中的太阳。它表示太阳，也可以表示一天。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "目",
+          "白"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "月",
+      "status": "draft",
+      "pinyin": "yuè",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "横折钩",
+        "横",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "月亮",
+          "pinyin": "yuè liang",
+          "status": "draft"
+        },
+        {
+          "text": "月光",
+          "pinyin": "yuè guāng",
+          "status": "draft"
+        }
+      ],
+      "scene": "moon",
+      "sceneCaption": "看图：弯弯的月亮",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“月”让人想到夜空里弯弯的月亮，也能用来表示一个月。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "用",
+          "目"
+        ],
+        "sound": [
+          "越"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "水",
+      "status": "draft",
+      "pinyin": "shuǐ",
+      "strokeCount": 4,
+      "strokeNames": [
+        "竖钩",
+        "横撇",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "河水",
+          "pinyin": "hé shuǐ",
+          "status": "draft"
+        },
+        {
+          "text": "水田",
+          "pinyin": "shuǐ tián",
+          "status": "draft"
+        }
+      ],
+      "scene": "water",
+      "sceneCaption": "看图：流动的河水",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“水”的中间和两边让人想到水流与水花，可以用来记住河水的“水”。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "木",
+          "永"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "火",
+      "status": "draft",
+      "pinyin": "huǒ",
+      "strokeCount": 4,
+      "strokeNames": [
+        "点",
+        "撇",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "火山",
+          "pinyin": "huǒ shān",
+          "status": "draft"
+        },
+        {
+          "text": "大火",
+          "pinyin": "dà huǒ",
+          "status": "draft"
+        }
+      ],
+      "scene": "fire",
+      "sceneCaption": "看图：跳动的火苗",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“火”像向上跳动、向两边散开的火苗。用火时要有大人陪同。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "人",
+          "灭"
+        ],
+        "sound": [
+          "伙"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "重点核对前两笔点、撇的顺序。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "山",
+      "status": "draft",
+      "pinyin": "shān",
+      "strokeCount": 3,
+      "strokeNames": [
+        "竖",
+        "竖折",
+        "竖"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "高山",
+          "pinyin": "gāo shān",
+          "status": "draft"
+        },
+        {
+          "text": "山羊",
+          "pinyin": "shān yáng",
+          "status": "draft"
+        }
+      ],
+      "scene": "mountains",
+      "sceneCaption": "看图：三座山峰",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“山”像连在一起的几座山峰，中间高，两边低。高高隆起的地面就是山。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "出",
+          "田"
+        ],
+        "sound": [
+          "衫"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对第二笔名称为竖折，不能照卡片示例误标横折。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "石",
+      "status": "draft",
+      "pinyin": "shí",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横",
+        "撇",
+        "竖",
+        "横折",
+        "横"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "石头",
+          "pinyin": "shí tou",
+          "status": "draft"
+        },
+        {
+          "text": "石子",
+          "pinyin": "shí zǐ",
+          "status": "draft"
+        }
+      ],
+      "scene": "rock",
+      "sceneCaption": "看图：山崖下的石头",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“石”可以联系山崖旁的一块石头来记忆。这是帮助认字的讲解，具体字源还要对照教参。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "右",
+          "后"
+        ],
+        "sound": [
+          "时"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对字源及结构分类，不把记忆联想当作已核定结论。"
+      ],
+      "pinyinAlternates": [
+        "dàn"
+      ]
+    },
+    {
+      "char": "田",
+      "status": "draft",
+      "pinyin": "tián",
+      "strokeCount": 5,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "水田",
+          "pinyin": "shuǐ tián",
+          "status": "draft"
+        },
+        {
+          "text": "田地",
+          "pinyin": "tián dì",
+          "status": "draft"
+        }
+      ],
+      "scene": "field",
+      "sceneCaption": "看图：分成小块的田地",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“田”的外框和里面的线条，让人想到分成小块、种着庄稼的田地。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "由",
+          "甲"
+        ],
+        "sound": [
+          "甜"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "禾",
+      "status": "draft",
+      "pinyin": "hé",
+      "strokeCount": 5,
+      "strokeNames": [
+        "撇",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "禾苗",
+          "pinyin": "hé miáo",
+          "status": "draft"
+        },
+        {
+          "text": "禾田",
+          "pinyin": "hé tián",
+          "status": "draft"
+        }
+      ],
+      "scene": "grain",
+      "sceneCaption": "看图：垂着穗子的禾苗",
+      "origin": {
+        "kind": "象形",
+        "explanation": "“禾”像一棵长着叶子、垂着穗子的庄稼。刚长出来的小苗可以叫禾苗。",
+        "forms": [],
+        "source": "Codex 自写识字讲解初稿；字源说法待教参人工复核",
+        "license": "MIT",
+        "status": "draft"
+      },
+      "distractors": {
+        "shape": [
+          "木",
+          "米"
+        ],
+        "sound": [
+          "河"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "对",
+      "status": "draft",
+      "pinyin": "duì",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横撇",
+        "点",
+        "横",
+        "竖钩",
+        "点"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "对手",
+          "pinyin": "duì shǒu",
+          "status": "draft"
+        },
+        {
+          "text": "对话",
+          "pinyin": "duì huà",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "树",
+          "双"
+        ],
+        "sound": [
+          "队"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "云",
+      "status": "draft",
+      "pinyin": "yún",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "横",
+        "撇折",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "白云",
+          "pinyin": "bái yún",
+          "status": "draft"
+        },
+        {
+          "text": "云朵",
+          "pinyin": "yún duǒ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "去",
+          "元"
+        ],
+        "sound": [
+          "匀"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "雨",
+      "status": "draft",
+      "pinyin": "yǔ",
+      "strokeCount": 8,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横折钩",
+        "竖",
+        "点",
+        "点",
+        "点",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "下雨",
+          "pinyin": "xià yǔ",
+          "status": "draft"
+        },
+        {
+          "text": "雨水",
+          "pinyin": "yǔ shuǐ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "两",
+          "而"
+        ],
+        "sound": [
+          "语"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "yù"
+      ]
+    },
+    {
+      "char": "风",
+      "status": "draft",
+      "pinyin": "fēng",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "横斜钩",
+        "撇",
+        "点"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "大风",
+          "pinyin": "dà fēng",
+          "status": "draft"
+        },
+        {
+          "text": "风雨",
+          "pinyin": "fēng yǔ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "凤",
+          "几"
+        ],
+        "sound": [
+          "丰"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "花",
+      "status": "draft",
+      "pinyin": "huā",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "竖",
+        "竖",
+        "撇",
+        "竖",
+        "撇",
+        "竖弯钩"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "花朵",
+          "pinyin": "huā duǒ",
+          "status": "draft"
+        },
+        {
+          "text": "开花",
+          "pinyin": "kāi huā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "草",
+          "芒"
+        ],
+        "sound": [
+          "哗"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "鸟",
+      "status": "draft",
+      "pinyin": "niǎo",
+      "strokeCount": 5,
+      "strokeNames": [
+        "撇",
+        "横折钩",
+        "点",
+        "竖折折钩",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "小鸟",
+          "pinyin": "xiǎo niǎo",
+          "status": "draft"
+        },
+        {
+          "text": "鸟儿",
+          "pinyin": "niǎo ér",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "乌",
+          "马"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对第四笔竖折折钩的连笔与命名。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "虫",
+      "status": "draft",
+      "pinyin": "chóng",
+      "strokeCount": 6,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "小虫",
+          "pinyin": "xiǎo chóng",
+          "status": "draft"
+        },
+        {
+          "text": "虫子",
+          "pinyin": "chóng zi",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "中",
+          "申"
+        ],
+        "sound": [
+          "重"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "六",
+      "status": "draft",
+      "pinyin": "liù",
+      "strokeCount": 4,
+      "strokeNames": [
+        "点",
+        "横",
+        "撇",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "六月",
+          "pinyin": "liù yuè",
+          "status": "draft"
+        },
+        {
+          "text": "六个",
+          "pinyin": "liù ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "交",
+          "穴"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "lù"
+      ]
+    },
+    {
+      "char": "七",
+      "status": "draft",
+      "pinyin": "qī",
+      "strokeCount": 2,
+      "strokeNames": [
+        "横",
+        "竖弯钩"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "七月",
+          "pinyin": "qī yuè",
+          "status": "draft"
+        },
+        {
+          "text": "七个",
+          "pinyin": "qī ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "匕",
+          "十"
+        ],
+        "sound": [
+          "漆"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "八",
+      "status": "draft",
+      "pinyin": "bā",
+      "strokeCount": 2,
+      "strokeNames": [
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "八月",
+          "pinyin": "bā yuè",
+          "status": "draft"
+        },
+        {
+          "text": "八个",
+          "pinyin": "bā ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "人",
+          "入"
+        ],
+        "sound": [
+          "巴"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "九",
+      "status": "draft",
+      "pinyin": "jiǔ",
+      "strokeCount": 2,
+      "strokeNames": [
+        "撇",
+        "横折弯钩"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "九月",
+          "pinyin": "jiǔ yuè",
+          "status": "draft"
+        },
+        {
+          "text": "九个",
+          "pinyin": "jiǔ ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "几",
+          "丸"
+        ],
+        "sound": [
+          "久"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "十",
+      "status": "draft",
+      "pinyin": "shí",
+      "strokeCount": 2,
+      "strokeNames": [
+        "横",
+        "竖"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "十月",
+          "pinyin": "shí yuè",
+          "status": "draft"
+        },
+        {
+          "text": "十个",
+          "pinyin": "shí ge",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "千",
+          "土"
+        ],
+        "sound": [
+          "时"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "远",
+      "status": "draft",
+      "pinyin": "yuǎn",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "横",
+        "撇",
+        "竖弯钩",
+        "点",
+        "横折折撇",
+        "捺"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "远方",
+          "pinyin": "yuǎn fāng",
+          "status": "draft"
+        },
+        {
+          "text": "远近",
+          "pinyin": "yuǎn jìn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "运",
+          "园"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "有",
+      "status": "draft",
+      "pinyin": "yǒu",
+      "strokeCount": 6,
+      "strokeNames": [
+        "横",
+        "撇",
+        "竖",
+        "横折钩",
+        "横",
+        "横"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "有用",
+          "pinyin": "yǒu yòng",
+          "status": "draft"
+        },
+        {
+          "text": "有人",
+          "pinyin": "yǒu rén",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "右",
+          "月"
+        ],
+        "sound": [
+          "友"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "色",
+      "status": "draft",
+      "pinyin": "sè",
+      "strokeCount": 6,
+      "strokeNames": [
+        "撇",
+        "横撇",
+        "竖",
+        "横折",
+        "横",
+        "竖弯钩"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "红色",
+          "pinyin": "hóng sè",
+          "status": "draft"
+        },
+        {
+          "text": "颜色",
+          "pinyin": "yán sè",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "巴",
+          "鱼"
+        ],
+        "sound": [
+          "涩"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "shǎi"
+      ]
+    },
+    {
+      "char": "近",
+      "status": "draft",
+      "pinyin": "jìn",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "撇",
+        "横",
+        "竖",
+        "点",
+        "横折折撇",
+        "捺"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "远近",
+          "pinyin": "yuǎn jìn",
+          "status": "draft"
+        },
+        {
+          "text": "近处",
+          "pinyin": "jìn chù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "听",
+          "斤"
+        ],
+        "sound": [
+          "进"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "听",
+      "status": "draft",
+      "pinyin": "tīng",
+      "strokeCount": 7,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "撇",
+        "撇",
+        "横",
+        "竖"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "听见",
+          "pinyin": "tīng jiàn",
+          "status": "draft"
+        },
+        {
+          "text": "听说",
+          "pinyin": "tīng shuō",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "近",
+          "叶"
+        ],
+        "sound": [
+          "厅"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "无",
+      "status": "draft",
+      "pinyin": "wú",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "横",
+        "撇",
+        "竖弯钩"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "无声",
+          "pinyin": "wú shēng",
+          "status": "draft"
+        },
+        {
+          "text": "无人",
+          "pinyin": "wú rén",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "天",
+          "元"
+        ],
+        "sound": [
+          "吴"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "声",
+      "status": "draft",
+      "pinyin": "shēng",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横",
+        "横折",
+        "竖",
+        "横",
+        "撇"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "声音",
+          "pinyin": "shēng yīn",
+          "status": "draft"
+        },
+        {
+          "text": "大声",
+          "pinyin": "dà shēng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "多",
+          "户"
+        ],
+        "sound": [
+          "生"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对下部的横折、竖、横、撇。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "去",
+      "status": "draft",
+      "pinyin": "qù",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横",
+        "撇折",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "出去",
+          "pinyin": "chū qù",
+          "status": "draft"
+        },
+        {
+          "text": "来去",
+          "pinyin": "lái qù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "云",
+          "丢"
+        ],
+        "sound": [
+          "趣"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "还",
+      "status": "draft",
+      "pinyin": "hái",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "撇",
+        "竖",
+        "点",
+        "点",
+        "横折折撇",
+        "捺"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "还有",
+          "pinyin": "hái yǒu",
+          "status": "draft"
+        },
+        {
+          "text": "还是",
+          "pinyin": "hái shi",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "这",
+          "过"
+        ],
+        "sound": [
+          "孩"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "《画》初稿采用 hái，其他义读 huán 只作提示。"
+      ],
+      "pinyinAlternates": [
+        "huán"
+      ]
+    },
+    {
+      "char": "来",
+      "status": "draft",
+      "pinyin": "lái",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "点",
+        "撇",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "回来",
+          "pinyin": "huí lái",
+          "status": "draft"
+        },
+        {
+          "text": "来去",
+          "pinyin": "lái qù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "米",
+          "未"
+        ],
+        "sound": [
+          "莱"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "大",
+      "status": "draft",
+      "pinyin": "dà",
+      "strokeCount": 3,
+      "strokeNames": [
+        "横",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "大人",
+          "pinyin": "dà rén",
+          "status": "draft"
+        },
+        {
+          "text": "大小",
+          "pinyin": "dà xiǎo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "太",
+          "天"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "dài"
+      ]
+    },
+    {
+      "char": "小",
+      "status": "draft",
+      "pinyin": "xiǎo",
+      "strokeCount": 3,
+      "strokeNames": [
+        "竖钩",
+        "撇",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "小鸟",
+          "pinyin": "xiǎo niǎo",
+          "status": "draft"
+        },
+        {
+          "text": "小手",
+          "pinyin": "xiǎo shǒu",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "少",
+          "水"
+        ],
+        "sound": [
+          "晓"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "多",
+      "status": "draft",
+      "pinyin": "duō",
+      "strokeCount": 6,
+      "strokeNames": [
+        "撇",
+        "横撇",
+        "点",
+        "撇",
+        "横撇",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "多少",
+          "pinyin": "duō shǎo",
+          "status": "draft"
+        },
+        {
+          "text": "多人",
+          "pinyin": "duō rén",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "夕",
+          "名"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "少",
+      "status": "draft",
+      "pinyin": "shǎo",
+      "strokeCount": 4,
+      "strokeNames": [
+        "竖",
+        "撇",
+        "点",
+        "撇"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "多少",
+          "pinyin": "duō shǎo",
+          "status": "draft"
+        },
+        {
+          "text": "少量",
+          "pinyin": "shǎo liàng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "小",
+          "沙"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "shào"
+      ]
+    },
+    {
+      "char": "黄",
+      "status": "draft",
+      "pinyin": "huáng",
+      "strokeCount": 11,
+      "strokeNames": [
+        "横",
+        "竖",
+        "竖",
+        "横",
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横",
+        "撇",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "黄牛",
+          "pinyin": "huáng niú",
+          "status": "draft"
+        },
+        {
+          "text": "黄色",
+          "pinyin": "huáng sè",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "共",
+          "苗"
+        ],
+        "sound": [
+          "皇"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "牛",
+      "status": "draft",
+      "pinyin": "niú",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "横",
+        "横",
+        "竖"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "水牛",
+          "pinyin": "shuǐ niú",
+          "status": "draft"
+        },
+        {
+          "text": "小牛",
+          "pinyin": "xiǎo niú",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "午",
+          "生"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "只",
+      "status": "draft",
+      "pinyin": "zhī",
+      "strokeCount": 5,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "撇",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "一只",
+          "pinyin": "yì zhī",
+          "status": "draft"
+        },
+        {
+          "text": "两只",
+          "pinyin": "liǎng zhī",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "贝",
+          "兄"
+        ],
+        "sound": [
+          "支"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "量词初稿采用 zhī，副词 zhǐ 只作提示。"
+      ],
+      "pinyinAlternates": [
+        "zhǐ"
+      ]
+    },
+    {
+      "char": "猫",
+      "status": "draft",
+      "pinyin": "māo",
+      "strokeCount": 11,
+      "strokeNames": [
+        "撇",
+        "弯钩",
+        "撇",
+        "横",
+        "竖",
+        "竖",
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "小猫",
+          "pinyin": "xiǎo māo",
+          "status": "draft"
+        },
+        {
+          "text": "花猫",
+          "pinyin": "huā māo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "狗",
+          "苗"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "边",
+      "status": "draft",
+      "pinyin": "biān",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横折钩",
+        "撇",
+        "点",
+        "横折折撇",
+        "捺"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "河边",
+          "pinyin": "hé biān",
+          "status": "draft"
+        },
+        {
+          "text": "旁边",
+          "pinyin": "páng biān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "过",
+          "达"
+        ],
+        "sound": [
+          "编"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "鸭",
+      "status": "draft",
+      "pinyin": "yā",
+      "strokeCount": 10,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "竖",
+        "撇",
+        "横折钩",
+        "点",
+        "竖折折钩",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "鸭子",
+          "pinyin": "yā zi",
+          "status": "draft"
+        },
+        {
+          "text": "小鸭",
+          "pinyin": "xiǎo yā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "鸡",
+          "鹅"
+        ],
+        "sound": [
+          "丫"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "苹",
+      "status": "draft",
+      "pinyin": "píng",
+      "strokeCount": 8,
+      "strokeNames": [
+        "横",
+        "竖",
+        "竖",
+        "横",
+        "点",
+        "撇",
+        "横",
+        "竖"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "苹果",
+          "pinyin": "píng guǒ",
+          "status": "draft"
+        },
+        {
+          "text": "苹果树",
+          "pinyin": "píng guǒ shù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "草",
+          "花"
+        ],
+        "sound": [
+          "平"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "果",
+      "status": "draft",
+      "pinyin": "guǒ",
+      "strokeCount": 8,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "水果",
+          "pinyin": "shuǐ guǒ",
+          "status": "draft"
+        },
+        {
+          "text": "苹果",
+          "pinyin": "píng guǒ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "里",
+          "东"
+        ],
+        "sound": [
+          "裹"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "杏",
+      "status": "draft",
+      "pinyin": "xìng",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "捺",
+        "竖",
+        "横折",
+        "横"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "杏子",
+          "pinyin": "xìng zi",
+          "status": "draft"
+        },
+        {
+          "text": "杏花",
+          "pinyin": "xìng huā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "呆",
+          "李"
+        ],
+        "sound": [
+          "幸"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "桃",
+      "status": "draft",
+      "pinyin": "táo",
+      "strokeCount": 10,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "点",
+        "撇",
+        "点",
+        "提",
+        "竖弯钩",
+        "撇",
+        "点"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "桃子",
+          "pinyin": "táo zi",
+          "status": "draft"
+        },
+        {
+          "text": "桃花",
+          "pinyin": "táo huā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "柳",
+          "树"
+        ],
+        "sound": [
+          "逃"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对右部兆的点、提及竖弯钩顺序。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "书",
+      "status": "draft",
+      "pinyin": "shū",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横折",
+        "横折钩",
+        "竖",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "书包",
+          "pinyin": "shū bāo",
+          "status": "draft"
+        },
+        {
+          "text": "读书",
+          "pinyin": "dú shū",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "丰",
+          "韦"
+        ],
+        "sound": [
+          "舒"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对横折和横折钩的区分。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "包",
+      "status": "draft",
+      "pinyin": "bāo",
+      "strokeCount": 5,
+      "strokeNames": [
+        "撇",
+        "横折钩",
+        "横折",
+        "横",
+        "竖弯钩"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "书包",
+          "pinyin": "shū bāo",
+          "status": "draft"
+        },
+        {
+          "text": "包子",
+          "pinyin": "bāo zi",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "句",
+          "勺"
+        ],
+        "sound": [
+          "胞"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "尺",
+      "status": "draft",
+      "pinyin": "chǐ",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横折",
+        "横",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "尺子",
+          "pinyin": "chǐ zi",
+          "status": "draft"
+        },
+        {
+          "text": "直尺",
+          "pinyin": "zhí chǐ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "尸",
+          "尽"
+        ],
+        "sound": [
+          "齿"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "chě"
+      ]
+    },
+    {
+      "char": "作",
+      "status": "draft",
+      "pinyin": "zuò",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "竖",
+        "撇",
+        "横",
+        "竖",
+        "横",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "作业",
+          "pinyin": "zuò yè",
+          "status": "draft"
+        },
+        {
+          "text": "工作",
+          "pinyin": "gōng zuò",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "昨",
+          "住"
+        ],
+        "sound": [
+          "做"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "zuō"
+      ]
+    },
+    {
+      "char": "业",
+      "status": "draft",
+      "pinyin": "yè",
+      "strokeCount": 5,
+      "strokeNames": [
+        "竖",
+        "竖",
+        "点",
+        "撇",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "作业",
+          "pinyin": "zuò yè",
+          "status": "draft"
+        },
+        {
+          "text": "工业",
+          "pinyin": "gōng yè",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "亚",
+          "立"
+        ],
+        "sound": [
+          "夜"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "本",
+      "status": "draft",
+      "pinyin": "běn",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "捺",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "本子",
+          "pinyin": "běn zi",
+          "status": "draft"
+        },
+        {
+          "text": "书本",
+          "pinyin": "shū běn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "木",
+          "末"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "笔",
+      "status": "draft",
+      "pinyin": "bǐ",
+      "strokeCount": 10,
+      "strokeNames": [
+        "撇",
+        "横",
+        "点",
+        "撇",
+        "横",
+        "点",
+        "撇",
+        "横",
+        "横",
+        "竖弯钩"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "毛笔",
+          "pinyin": "máo bǐ",
+          "status": "draft"
+        },
+        {
+          "text": "铅笔",
+          "pinyin": "qiān bǐ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "笑",
+          "毛"
+        ],
+        "sound": [
+          "比"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "刀",
+      "status": "draft",
+      "pinyin": "dāo",
+      "strokeCount": 2,
+      "strokeNames": [
+        "横折钩",
+        "撇"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "小刀",
+          "pinyin": "xiǎo dāo",
+          "status": "draft"
+        },
+        {
+          "text": "剪刀",
+          "pinyin": "jiǎn dāo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "力",
+          "刃"
+        ],
+        "sound": [
+          "叨"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "课",
+      "status": "draft",
+      "pinyin": "kè",
+      "strokeCount": 10,
+      "strokeNames": [
+        "点",
+        "横折提",
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "上课",
+          "pinyin": "shàng kè",
+          "status": "draft"
+        },
+        {
+          "text": "课本",
+          "pinyin": "kè běn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "棵",
+          "果"
+        ],
+        "sound": [
+          "客"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "早",
+      "status": "draft",
+      "pinyin": "zǎo",
+      "strokeCount": 6,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "横",
+        "竖"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "早上",
+          "pinyin": "zǎo shang",
+          "status": "draft"
+        },
+        {
+          "text": "早安",
+          "pinyin": "zǎo ān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "旱",
+          "草"
+        ],
+        "sound": [
+          "枣"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "校",
+      "status": "draft",
+      "pinyin": "xiào",
+      "strokeCount": 10,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "点",
+        "点",
+        "横",
+        "撇",
+        "点",
+        "撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "学校",
+          "pinyin": "xué xiào",
+          "status": "draft"
+        },
+        {
+          "text": "校园",
+          "pinyin": "xiào yuán",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "较",
+          "交"
+        ],
+        "sound": [
+          "笑"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "jiào"
+      ]
+    },
+    {
+      "char": "明",
+      "status": "draft",
+      "pinyin": "míng",
+      "strokeCount": 8,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "撇",
+        "横折钩",
+        "横",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "明天",
+          "pinyin": "míng tiān",
+          "status": "draft"
+        },
+        {
+          "text": "明亮",
+          "pinyin": "míng liàng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "朋",
+          "阴"
+        ],
+        "sound": [
+          "名"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "力",
+      "status": "draft",
+      "pinyin": "lì",
+      "strokeCount": 2,
+      "strokeNames": [
+        "横折钩",
+        "撇"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "力气",
+          "pinyin": "lì qi",
+          "status": "draft"
+        },
+        {
+          "text": "用力",
+          "pinyin": "yòng lì",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "刀",
+          "办"
+        ],
+        "sound": [
+          "立"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "尘",
+      "status": "draft",
+      "pinyin": "chén",
+      "strokeCount": 6,
+      "strokeNames": [
+        "竖",
+        "撇",
+        "点",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "灰尘",
+          "pinyin": "huī chén",
+          "status": "draft"
+        },
+        {
+          "text": "尘土",
+          "pinyin": "chén tǔ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "尖",
+          "坐"
+        ],
+        "sound": [
+          "陈"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "从",
+      "status": "draft",
+      "pinyin": "cóng",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "点",
+        "撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "从前",
+          "pinyin": "cóng qián",
+          "status": "draft"
+        },
+        {
+          "text": "从来",
+          "pinyin": "cóng lái",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "众",
+          "叶"
+        ],
+        "sound": [
+          "丛"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "众",
+      "status": "draft",
+      "pinyin": "zhòng",
+      "strokeCount": 6,
+      "strokeNames": [
+        "撇",
+        "捺",
+        "撇",
+        "点",
+        "撇",
+        "捺"
+      ],
+      "structure": "品字形结构",
+      "words": [
+        {
+          "text": "众人",
+          "pinyin": "zhòng rén",
+          "status": "draft"
+        },
+        {
+          "text": "群众",
+          "pinyin": "qún zhòng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "从",
+          "坐"
+        ],
+        "sound": [
+          "重"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "双",
+      "status": "draft",
+      "pinyin": "shuāng",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横撇",
+        "点",
+        "横撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "双手",
+          "pinyin": "shuāng shǒu",
+          "status": "draft"
+        },
+        {
+          "text": "双目",
+          "pinyin": "shuāng mù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "对",
+          "又"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "木",
+      "status": "draft",
+      "pinyin": "mù",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "木头",
+          "pinyin": "mù tou",
+          "status": "draft"
+        },
+        {
+          "text": "树木",
+          "pinyin": "shù mù",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "本",
+          "禾"
+        ],
+        "sound": [
+          "目"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "林",
+      "status": "draft",
+      "pinyin": "lín",
+      "strokeCount": 8,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "点",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "树林",
+          "pinyin": "shù lín",
+          "status": "draft"
+        },
+        {
+          "text": "森林",
+          "pinyin": "sēn lín",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "森",
+          "休"
+        ],
+        "sound": [
+          "临"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "森",
+      "status": "draft",
+      "pinyin": "sēn",
+      "strokeCount": 12,
+      "strokeNames": [
+        "横",
+        "竖",
+        "撇",
+        "捺",
+        "横",
+        "竖",
+        "撇",
+        "点",
+        "横",
+        "竖",
+        "撇",
+        "捺"
+      ],
+      "structure": "品字形结构",
+      "words": [
+        {
+          "text": "森林",
+          "pinyin": "sēn lín",
+          "status": "draft"
+        },
+        {
+          "text": "森严",
+          "pinyin": "sēn yán",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "林",
+          "木"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "条",
+      "status": "draft",
+      "pinyin": "tiáo",
+      "strokeCount": 7,
+      "strokeNames": [
+        "撇",
+        "横撇",
+        "捺",
+        "横",
+        "竖钩",
+        "撇",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "一条",
+          "pinyin": "yì tiáo",
+          "status": "draft"
+        },
+        {
+          "text": "面条",
+          "pinyin": "miàn tiáo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "亲",
+          "冬"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "心",
+      "status": "draft",
+      "pinyin": "xīn",
+      "strokeCount": 4,
+      "strokeNames": [
+        "点",
+        "斜钩",
+        "点",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "手心",
+          "pinyin": "shǒu xīn",
+          "status": "draft"
+        },
+        {
+          "text": "开心",
+          "pinyin": "kāi xīn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "必",
+          "少"
+        ],
+        "sound": [
+          "新"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "升",
+      "status": "draft",
+      "pinyin": "shēng",
+      "strokeCount": 4,
+      "strokeNames": [
+        "撇",
+        "横",
+        "撇",
+        "竖"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "升旗",
+          "pinyin": "shēng qí",
+          "status": "draft"
+        },
+        {
+          "text": "上升",
+          "pinyin": "shàng shēng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "开",
+          "井"
+        ],
+        "sound": [
+          "生"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "国",
+      "status": "draft",
+      "pinyin": "guó",
+      "strokeCount": 8,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "横",
+        "竖",
+        "横",
+        "点",
+        "横"
+      ],
+      "structure": "全包围结构",
+      "words": [
+        {
+          "text": "中国",
+          "pinyin": "zhōng guó",
+          "status": "draft"
+        },
+        {
+          "text": "国旗",
+          "pinyin": "guó qí",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "回",
+          "园"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "旗",
+      "status": "draft",
+      "pinyin": "qí",
+      "strokeCount": 14,
+      "strokeNames": [
+        "点",
+        "横",
+        "横折钩",
+        "撇",
+        "撇",
+        "横",
+        "横",
+        "竖",
+        "竖",
+        "横",
+        "横",
+        "横",
+        "撇",
+        "点"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "国旗",
+          "pinyin": "guó qí",
+          "status": "draft"
+        },
+        {
+          "text": "升旗",
+          "pinyin": "shēng qí",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "族",
+          "旅"
+        ],
+        "sound": [
+          "齐"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "中",
+      "status": "draft",
+      "pinyin": "zhōng",
+      "strokeCount": 4,
+      "strokeNames": [
+        "竖",
+        "横折",
+        "横",
+        "竖"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "中国",
+          "pinyin": "zhōng guó",
+          "status": "draft"
+        },
+        {
+          "text": "中间",
+          "pinyin": "zhōng jiān",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "申",
+          "甲"
+        ],
+        "sound": [
+          "钟"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "zhòng"
+      ]
+    },
+    {
+      "char": "红",
+      "status": "draft",
+      "pinyin": "hóng",
+      "strokeCount": 6,
+      "strokeNames": [
+        "撇折",
+        "撇折",
+        "提",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "红色",
+          "pinyin": "hóng sè",
+          "status": "draft"
+        },
+        {
+          "text": "红花",
+          "pinyin": "hóng huā",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "江",
+          "约"
+        ],
+        "sound": [
+          "洪"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "候选 gōng 不在当前 Unihan 的 kMandarin/kHanyuPinyin 集合，暂不输出，待教参复核。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "歌",
+      "status": "draft",
+      "pinyin": "gē",
+      "strokeCount": 14,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横折",
+        "横",
+        "竖",
+        "横",
+        "竖",
+        "横折",
+        "横",
+        "竖钩",
+        "撇",
+        "横钩",
+        "撇",
+        "捺"
+      ],
+      "structure": "左右结构",
+      "words": [
+        {
+          "text": "唱歌",
+          "pinyin": "chàng gē",
+          "status": "draft"
+        },
+        {
+          "text": "儿歌",
+          "pinyin": "ér gē",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "吹",
+          "叶"
+        ],
+        "sound": [
+          "哥"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对两个可的末笔及欠部先后。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "起",
+      "status": "draft",
+      "pinyin": "qǐ",
+      "strokeCount": 10,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横",
+        "竖",
+        "横",
+        "撇",
+        "捺",
+        "横折",
+        "横",
+        "竖弯钩"
+      ],
+      "structure": "半包围结构",
+      "words": [
+        {
+          "text": "起来",
+          "pinyin": "qǐ lái",
+          "status": "draft"
+        },
+        {
+          "text": "起点",
+          "pinyin": "qǐ diǎn",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "超",
+          "走"
+        ],
+        "sound": [
+          "启"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "么",
+      "status": "draft",
+      "pinyin": "me",
+      "strokeCount": 3,
+      "strokeNames": [
+        "撇",
+        "撇折",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "什么",
+          "pinyin": "shén me",
+          "status": "draft"
+        },
+        {
+          "text": "怎么",
+          "pinyin": "zěn me",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "幺",
+          "乡"
+        ],
+        "sound": []
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "本课词“多么”的轻声 me；组词轻声仍需教材复核。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "美",
+      "status": "draft",
+      "pinyin": "měi",
+      "strokeCount": 9,
+      "strokeNames": [
+        "点",
+        "撇",
+        "横",
+        "横",
+        "竖",
+        "横",
+        "横",
+        "撇",
+        "捺"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "美丽",
+          "pinyin": "měi lì",
+          "status": "draft"
+        },
+        {
+          "text": "美好",
+          "pinyin": "měi hǎo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "羊",
+          "关"
+        ],
+        "sound": [
+          "每"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "丽",
+      "status": "draft",
+      "pinyin": "lì",
+      "strokeCount": 7,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横折钩",
+        "点",
+        "竖",
+        "横折钩",
+        "点"
+      ],
+      "structure": "上下结构",
+      "words": [
+        {
+          "text": "美丽",
+          "pinyin": "měi lì",
+          "status": "draft"
+        },
+        {
+          "text": "秀丽",
+          "pinyin": "xiù lì",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "两",
+          "雨"
+        ],
+        "sound": [
+          "利"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "立",
+      "status": "draft",
+      "pinyin": "lì",
+      "strokeCount": 5,
+      "strokeNames": [
+        "点",
+        "横",
+        "点",
+        "撇",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "站立",
+          "pinyin": "zhàn lì",
+          "status": "draft"
+        },
+        {
+          "text": "立正",
+          "pinyin": "lì zhèng",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "业",
+          "产"
+        ],
+        "sound": [
+          "力"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "不",
+      "status": "draft",
+      "pinyin": "bù",
+      "strokeCount": 4,
+      "strokeNames": [
+        "横",
+        "撇",
+        "竖",
+        "点"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "不去",
+          "pinyin": "bú qù",
+          "status": "draft"
+        },
+        {
+          "text": "不好",
+          "pinyin": "bù hǎo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "下",
+          "木"
+        ],
+        "sound": [
+          "布"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [
+        "核对“不去”的变调；主读音保留 bù。"
+      ],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "土",
+      "status": "draft",
+      "pinyin": "tǔ",
+      "strokeCount": 3,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "土地",
+          "pinyin": "tǔ dì",
+          "status": "draft"
+        },
+        {
+          "text": "尘土",
+          "pinyin": "chén tǔ",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "士",
+          "干"
+        ],
+        "sound": [
+          "吐"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": []
+    },
+    {
+      "char": "正",
+      "status": "draft",
+      "pinyin": "zhèng",
+      "strokeCount": 5,
+      "strokeNames": [
+        "横",
+        "竖",
+        "横",
+        "竖",
+        "横"
+      ],
+      "structure": "独体字",
+      "words": [
+        {
+          "text": "立正",
+          "pinyin": "lì zhèng",
+          "status": "draft"
+        },
+        {
+          "text": "正好",
+          "pinyin": "zhèng hǎo",
+          "status": "draft"
+        }
+      ],
+      "scene": null,
+      "sceneCaption": null,
+      "origin": null,
+      "distractors": {
+        "shape": [
+          "止",
+          "王"
+        ],
+        "sound": [
+          "郑"
+        ]
+      },
+      "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+      "license": "MIT",
+      "reviewNotes": [],
+      "pinyinAlternates": [
+        "zhēng"
+      ]
+    }
+  ]
+}

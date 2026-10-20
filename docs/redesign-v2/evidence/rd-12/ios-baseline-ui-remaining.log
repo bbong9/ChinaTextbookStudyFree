@@ -1,0 +1,22 @@
+Test Suite 'Selected tests' started at 2026-10-20 21:41:26.541.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 21:41:26.541.
+Test Suite 'LessonFlowUITests' started at 2026-10-20 21:41:26.541.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' started.
+/tmp/rd12-clean-baseline/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:106: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel] : XCTAssertTrue failed - feedback panel did not appear after checking a correct answer
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' failed (18.635 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' started.
+/tmp/rd12-clean-baseline/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:127: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' failed (20.503 seconds).
+Test Suite 'LessonFlowUITests' failed at 2026-10-20 21:42:05.681.
+	 Executed 2 tests, with 2 failures (0 unexpected) in 39.138 (39.140) seconds
+Test Suite 'ScreenshotTests' started at 2026-10-20 21:42:05.682.
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' started.
+/tmp/rd12-clean-baseline/apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift:36: error: -[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens] : XCTAssertTrue failed
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' failed (25.942 seconds).
+Test Suite 'ScreenshotTests' failed at 2026-10-20 21:42:31.625.
+	 Executed 1 test, with 1 failure (0 unexpected) in 25.942 (25.943) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' failed at 2026-10-20 21:42:31.625.
+	 Executed 3 tests, with 3 failures (0 unexpected) in 65.080 (65.084) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:42:31.625.
+	 Executed 3 tests, with 3 failures (0 unexpected) in 65.080 (65.085) seconds
+** TEST EXECUTE FAILED **

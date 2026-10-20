@@ -1,0 +1,58 @@
+{
+  "char": "手",
+  "status": "draft",
+  "pinyin": "shǒu",
+  "strokeCount": 4,
+  "strokeNames": [
+    "撇",
+    "横",
+    "横",
+    "竖钩"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "小手",
+      "pinyin": "xiǎo shǒu",
+      "status": "draft",
+      "audio": "/audio/a6/a6046e00439620030d2146464d86907f76a544ff.opus"
+    },
+    {
+      "text": "手心",
+      "pinyin": "shǒu xīn",
+      "status": "draft",
+      "audio": "/audio/69/6974994981e4732bdc89fdbf381a26a27f069019.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "毛",
+      "丰"
+    ],
+    "sound": [
+      "首"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "手",
+  "audio": {
+    "char": "/audio/c0/c08a56997a213be6ddd1039b6232fe05403de514.opus",
+    "pinyin": "/audio/c0/c08a56997a213be6ddd1039b6232fe05403de514.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "shǒu"
+    ],
+    "radical": "手"
+  }
+}

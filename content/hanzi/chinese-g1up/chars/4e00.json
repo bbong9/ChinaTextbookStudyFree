@@ -1,0 +1,57 @@
+{
+  "char": "一",
+  "status": "draft",
+  "pinyin": "yī",
+  "strokeCount": 1,
+  "strokeNames": [
+    "横"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "一声",
+      "pinyin": "yì shēng",
+      "status": "draft",
+      "audio": "/audio/f8/f881d6c489df4926eafdc96d08062b06a2829d97.opus"
+    },
+    {
+      "text": "一条",
+      "pinyin": "yì tiáo",
+      "status": "draft",
+      "audio": "/audio/9f/9f6bc64f171fbceb063ea3f2487cd4577ab555a7.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "二",
+      "十"
+    ],
+    "sound": [
+      "衣"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "核对词中“一”的变调；主读音保留 yī。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "一",
+  "audio": {
+    "char": "/audio/d2/d274eee8a175062ac04a45821689db93da5ccfae.opus",
+    "pinyin": "/audio/d2/d274eee8a175062ac04a45821689db93da5ccfae.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "yī"
+    ],
+    "radical": "一"
+  }
+}

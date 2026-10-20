@@ -1,0 +1,59 @@
+{
+  "char": "少",
+  "status": "draft",
+  "pinyin": "shǎo",
+  "strokeCount": 4,
+  "strokeNames": [
+    "竖",
+    "撇",
+    "点",
+    "撇"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "多少",
+      "pinyin": "duō shǎo",
+      "status": "draft",
+      "audio": "/audio/6c/6c999d484a3a2ad686cccc959583e2329884a333.opus"
+    },
+    {
+      "text": "少量",
+      "pinyin": "shǎo liàng",
+      "status": "draft",
+      "audio": "/audio/f9/f992621c74fa51aa86b9b257a0e8135c3346b74d.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "小",
+      "沙"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "shào"
+  ],
+  "radical": "小",
+  "audio": {
+    "char": "/audio/fa/fa495b65bd804cee37c42a6d429a819bb8f81254.opus",
+    "pinyin": "/audio/fa/fa495b65bd804cee37c42a6d429a819bb8f81254.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "shào",
+      "shǎo"
+    ],
+    "radical": "小"
+  }
+}

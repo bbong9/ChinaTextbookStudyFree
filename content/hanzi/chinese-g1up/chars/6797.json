@@ -1,0 +1,62 @@
+{
+  "char": "林",
+  "status": "draft",
+  "pinyin": "lín",
+  "strokeCount": 8,
+  "strokeNames": [
+    "横",
+    "竖",
+    "撇",
+    "点",
+    "横",
+    "竖",
+    "撇",
+    "捺"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "树林",
+      "pinyin": "shù lín",
+      "status": "draft",
+      "audio": "/audio/49/496a72a8675f696075894a14ef7a49fcb1f2f831.opus"
+    },
+    {
+      "text": "森林",
+      "pinyin": "sēn lín",
+      "status": "draft",
+      "audio": "/audio/70/70f4c18c327660f1edaa85614f5441eb9ddc332e.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "森",
+      "休"
+    ],
+    "sound": [
+      "临"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "木",
+  "audio": {
+    "char": "/audio/02/020ff479d2df7b0e8cc73de2df59c89fcb28d04c.opus",
+    "pinyin": "/audio/02/020ff479d2df7b0e8cc73de2df59c89fcb28d04c.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "lín"
+    ],
+    "radical": "木"
+  }
+}

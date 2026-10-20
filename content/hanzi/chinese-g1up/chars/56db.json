@@ -1,0 +1,59 @@
+{
+  "char": "四",
+  "status": "draft",
+  "pinyin": "sì",
+  "strokeCount": 5,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "撇",
+    "竖弯",
+    "横"
+  ],
+  "structure": "全包围结构",
+  "words": [
+    {
+      "text": "四季",
+      "pinyin": "sì jì",
+      "status": "draft",
+      "audio": "/audio/5a/5ac0a0c8d084de51a7da384a95bf7a7aab26ea55.opus"
+    },
+    {
+      "text": "四方",
+      "pinyin": "sì fāng",
+      "status": "draft",
+      "audio": "/audio/94/94ba9c7bbca5997e90bbebe2391b9b8d99f7af29.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "西",
+      "田"
+    ],
+    "sound": [
+      "寺"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "囗",
+  "audio": {
+    "char": "/audio/4f/4f88740b348014a4eef0d2132f6cc2fced6f5b3d.opus",
+    "pinyin": "/audio/4f/4f88740b348014a4eef0d2132f6cc2fced6f5b3d.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "sì"
+    ],
+    "radical": "囗"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "char": "课",
+  "status": "draft",
+  "pinyin": "kè",
+  "strokeCount": 10,
+  "strokeNames": [
+    "点",
+    "横折提",
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "横",
+    "竖",
+    "撇",
+    "捺"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "上课",
+      "pinyin": "shàng kè",
+      "status": "draft",
+      "audio": "/audio/14/14f4569aeb9a8057bab61fa17d7dbd21fcd3287f.opus"
+    },
+    {
+      "text": "课本",
+      "pinyin": "kè běn",
+      "status": "draft",
+      "audio": "/audio/1b/1bdbdeef93f48fe3f3c3979fefdefdb5ed77833a.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "棵",
+      "果"
+    ],
+    "sound": [
+      "客"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "讠",
+  "audio": {
+    "char": "/audio/51/510db33099241ca7dc0aa24982f95dc45ad7ed06.opus",
+    "pinyin": "/audio/51/510db33099241ca7dc0aa24982f95dc45ad7ed06.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "kè"
+    ],
+    "radical": "讠"
+  }
+}

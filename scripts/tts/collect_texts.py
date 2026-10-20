@@ -34,6 +34,7 @@ OUTPUT_DIR = ROOT / "output"
 PASSAGES_DIR = ROOT / "data" / "passages"
 STORIES_DIR = ROOT / "data" / "stories"
 MANIFEST_PATH = Path(__file__).resolve().parent / "manifest.json"
+HANZI_DIR = ROOT / "content" / "hanzi"
 
 # ---------------------------------------------------------------------------
 # 文件名 → 年级
@@ -189,6 +190,28 @@ def is_speakable(text: str) -> bool:
 # ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
+def collect_hanzi(content_dir: Path = HANZI_DIR):
+    """只读已构建字卡；笔顺目录不参与语音收集，初稿也允许登记待制作录音。"""
+    for file in sorted(content_dir.glob("*/chars/*.json")):
+        doc = json.loads(file.read_text(encoding="utf-8"))
+        audio = doc["audio"]
+        pairs = [(audio["char"], doc["char"], "hanzi_char"),
+                 (audio["pinyin"], doc["char"], "hanzi_pinyin")]
+        pairs += [(w["audio"], w["text"], "hanzi_word") for w in doc["words"]]
+        if doc.get("origin"):
+            pairs.append((audio["origin"], doc["origin"]["explanation"], "hanzi_origin"))
+        for path, original, field in pairs:
+            text = normalize(original)
+            h = text_hash(text)
+            if path != f"/audio/{h[:2]}/{h}.opus":
+                raise ValueError(f"汉字音频路径与原文哈希不匹配：{file} {field}")
+            speaker, instruction = pick_profile("chinese", 1, "Chinese")
+            yield {"hash": h, "text": text, "audio_rel": f"{h[:2]}/{h}.opus",
+                   "language": "Chinese", "speaker": speaker, "instruction": instruction,
+                   "field": field, "subject": "chinese", "grade": 1,
+                   "book_id": file.parent.parent.name, "char": doc["char"], "status": doc["status"]}
+
+
 def collect():
     if not OUTPUT_DIR.exists():
         sys.exit(f"❌ 找不到 output 目录: {OUTPUT_DIR}")
@@ -383,6 +406,13 @@ def collect():
                     for opt in q.get("options") or []:
                         push(opt, "story_option")
                     push(q.get("explanation", ""), "story_explanation")
+
+    for item in collect_hanzi():
+        if item["hash"] in seen:
+            continue
+        seen[item["hash"]] = item
+        stats["per_subject"]["chinese"] = stats["per_subject"].get("chinese", 0) + 1
+        stats["per_field"][item["field"]] = stats["per_field"].get(item["field"], 0) + 1
 
     items = list(seen.values())
     manifest = {

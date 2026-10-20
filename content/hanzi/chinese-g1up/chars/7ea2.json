@@ -1,0 +1,62 @@
+{
+  "char": "红",
+  "status": "draft",
+  "pinyin": "hóng",
+  "strokeCount": 6,
+  "strokeNames": [
+    "撇折",
+    "撇折",
+    "提",
+    "横",
+    "竖",
+    "横"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "红色",
+      "pinyin": "hóng sè",
+      "status": "draft",
+      "audio": "/audio/4e/4e68d49452c0d96fbea295c1177f2202bbc06810.opus"
+    },
+    {
+      "text": "红花",
+      "pinyin": "hóng huā",
+      "status": "draft",
+      "audio": "/audio/b0/b097830296d1bca053b37848c5a06cf1bcc85280.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "江",
+      "约"
+    ],
+    "sound": [
+      "洪"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [
+    "候选 gōng 不在当前 Unihan 的 kMandarin/kHanyuPinyin 集合，暂不输出，待教参复核。"
+  ],
+  "pinyinAlternates": [],
+  "radical": "纟",
+  "audio": {
+    "char": "/audio/5e/5e3127724b85b4f938f73d079f80e3f3a8c138c5.opus",
+    "pinyin": "/audio/5e/5e3127724b85b4f938f73d079f80e3f3a8c138c5.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "hóng"
+    ],
+    "radical": "纟"
+  }
+}

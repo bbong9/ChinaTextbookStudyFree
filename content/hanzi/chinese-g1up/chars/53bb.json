@@ -1,0 +1,60 @@
+{
+  "char": "去",
+  "status": "draft",
+  "pinyin": "qù",
+  "strokeCount": 5,
+  "strokeNames": [
+    "横",
+    "竖",
+    "横",
+    "撇折",
+    "点"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "出去",
+      "pinyin": "chū qù",
+      "status": "draft",
+      "audio": "/audio/1e/1e858264e193687c3c768fa5c5679dec889e345a.opus"
+    },
+    {
+      "text": "来去",
+      "pinyin": "lái qù",
+      "status": "draft",
+      "audio": "/audio/6a/6ac6582d295f1bf290f8e2eeb2b892cb41386f49.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "云",
+      "丢"
+    ],
+    "sound": [
+      "趣"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "厶",
+  "audio": {
+    "char": "/audio/03/033fd274f014aec08c2dfb1902e6090cbbb2c295.opus",
+    "pinyin": "/audio/03/033fd274f014aec08c2dfb1902e6090cbbb2c295.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "qù",
+      "qū"
+    ],
+    "radical": "厶"
+  }
+}

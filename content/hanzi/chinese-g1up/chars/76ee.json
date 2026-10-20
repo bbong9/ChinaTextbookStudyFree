@@ -1,0 +1,59 @@
+{
+  "char": "目",
+  "status": "draft",
+  "pinyin": "mù",
+  "strokeCount": 5,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "横"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "目光",
+      "pinyin": "mù guāng",
+      "status": "draft",
+      "audio": "/audio/62/625f6b46e73e1b055882cc586d391573f690e993.opus"
+    },
+    {
+      "text": "双目",
+      "pinyin": "shuāng mù",
+      "status": "draft",
+      "audio": "/audio/6e/6e79b849d0823051a0ce5b54ef8c1b2f85c5a8a8.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "日",
+      "自"
+    ],
+    "sound": [
+      "木"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "目",
+  "audio": {
+    "char": "/audio/3a/3a0ea34a22f0eac2781fec4d2313834095742eee.opus",
+    "pinyin": "/audio/3a/3a0ea34a22f0eac2781fec4d2313834095742eee.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "mù"
+    ],
+    "radical": "目"
+  }
+}

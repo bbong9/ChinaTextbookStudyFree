@@ -1,0 +1,61 @@
+{
+  "char": "近",
+  "status": "draft",
+  "pinyin": "jìn",
+  "strokeCount": 7,
+  "strokeNames": [
+    "撇",
+    "撇",
+    "横",
+    "竖",
+    "点",
+    "横折折撇",
+    "捺"
+  ],
+  "structure": "半包围结构",
+  "words": [
+    {
+      "text": "远近",
+      "pinyin": "yuǎn jìn",
+      "status": "draft",
+      "audio": "/audio/96/9616756a04e49ae7c976dcf967f7a18f19e3de23.opus"
+    },
+    {
+      "text": "近处",
+      "pinyin": "jìn chù",
+      "status": "draft",
+      "audio": "/audio/94/94d3e4c2010d8c82e046fa59ae3db7cb520960e2.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "听",
+      "斤"
+    ],
+    "sound": [
+      "进"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "辵",
+  "audio": {
+    "char": "/audio/d8/d8c84172acf3b8a2ac35d124db209dcd1c55c728.opus",
+    "pinyin": "/audio/d8/d8c84172acf3b8a2ac35d124db209dcd1c55c728.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "jìn"
+    ],
+    "radical": "辵"
+  }
+}

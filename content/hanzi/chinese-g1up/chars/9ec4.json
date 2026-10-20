@@ -1,0 +1,65 @@
+{
+  "char": "黄",
+  "status": "draft",
+  "pinyin": "huáng",
+  "strokeCount": 11,
+  "strokeNames": [
+    "横",
+    "竖",
+    "竖",
+    "横",
+    "竖",
+    "横折",
+    "横",
+    "竖",
+    "横",
+    "撇",
+    "点"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "黄牛",
+      "pinyin": "huáng niú",
+      "status": "draft",
+      "audio": "/audio/78/78d1a335211069e9b81aa67a58149ea57552f8b8.opus"
+    },
+    {
+      "text": "黄色",
+      "pinyin": "huáng sè",
+      "status": "draft",
+      "audio": "/audio/c3/c33860af15c45134f79e576f0af18f61c0351f5d.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "共",
+      "苗"
+    ],
+    "sound": [
+      "皇"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "黃",
+  "audio": {
+    "char": "/audio/77/7720f8ea0aba7de47ac932a47e89cb84e5284526.opus",
+    "pinyin": "/audio/77/7720f8ea0aba7de47ac932a47e89cb84e5284526.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "huáng"
+    ],
+    "radical": "黃"
+  }
+}

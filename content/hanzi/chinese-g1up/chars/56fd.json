@@ -1,0 +1,60 @@
+{
+  "char": "国",
+  "status": "draft",
+  "pinyin": "guó",
+  "strokeCount": 8,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "竖",
+    "横",
+    "点",
+    "横"
+  ],
+  "structure": "全包围结构",
+  "words": [
+    {
+      "text": "中国",
+      "pinyin": "zhōng guó",
+      "status": "draft",
+      "audio": "/audio/10/101806f57c322fb403a9788c4c24b79650d02e77.opus"
+    },
+    {
+      "text": "国旗",
+      "pinyin": "guó qí",
+      "status": "draft",
+      "audio": "/audio/96/96d22f5fb875697fd8abe0a94224f5a2c3bc120d.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "回",
+      "园"
+    ],
+    "sound": []
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "囗",
+  "audio": {
+    "char": "/audio/f4/f4bba5643a36e3e8a18344ed69240389a87385d1.opus",
+    "pinyin": "/audio/f4/f4bba5643a36e3e8a18344ed69240389a87385d1.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "guó"
+    ],
+    "radical": "囗"
+  }
+}

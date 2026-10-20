@@ -1,0 +1,59 @@
+{
+  "char": "边",
+  "status": "draft",
+  "pinyin": "biān",
+  "strokeCount": 5,
+  "strokeNames": [
+    "横折钩",
+    "撇",
+    "点",
+    "横折折撇",
+    "捺"
+  ],
+  "structure": "半包围结构",
+  "words": [
+    {
+      "text": "河边",
+      "pinyin": "hé biān",
+      "status": "draft",
+      "audio": "/audio/4b/4b7d12d8428b764a4b05829e7902dc78fed91b37.opus"
+    },
+    {
+      "text": "旁边",
+      "pinyin": "páng biān",
+      "status": "draft",
+      "audio": "/audio/0a/0ad4bf9a33a5ec30c5704b3e4333bb0da68d4ef8.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "过",
+      "达"
+    ],
+    "sound": [
+      "编"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "辵",
+  "audio": {
+    "char": "/audio/58/586e4f0ccf873275dfb24a9d39fd1c5d8726ca93.opus",
+    "pinyin": "/audio/58/586e4f0ccf873275dfb24a9d39fd1c5d8726ca93.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "biān"
+    ],
+    "radical": "辵"
+  }
+}

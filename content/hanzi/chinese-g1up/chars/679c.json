@@ -1,0 +1,64 @@
+{
+  "char": "果",
+  "status": "draft",
+  "pinyin": "guǒ",
+  "strokeCount": 8,
+  "strokeNames": [
+    "竖",
+    "横折",
+    "横",
+    "横",
+    "横",
+    "竖",
+    "撇",
+    "捺"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "水果",
+      "pinyin": "shuǐ guǒ",
+      "status": "draft",
+      "audio": "/audio/c4/c4bed30f0248c26aa5dfff0d00bbb363bf7876e5.opus"
+    },
+    {
+      "text": "苹果",
+      "pinyin": "píng guǒ",
+      "status": "draft",
+      "audio": "/audio/b3/b38d961e7096a459849c6e00e388581efca2f58b.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "里",
+      "东"
+    ],
+    "sound": [
+      "裹"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "木",
+  "audio": {
+    "char": "/audio/d6/d62c08d357e1fb3ef88c580c85e5c7622860baaa.opus",
+    "pinyin": "/audio/d6/d62c08d357e1fb3ef88c580c85e5c7622860baaa.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "guàn",
+      "guǒ",
+      "luǒ"
+    ],
+    "radical": "木"
+  }
+}

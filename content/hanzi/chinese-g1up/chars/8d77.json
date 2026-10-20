@@ -1,0 +1,64 @@
+{
+  "char": "起",
+  "status": "draft",
+  "pinyin": "qǐ",
+  "strokeCount": 10,
+  "strokeNames": [
+    "横",
+    "竖",
+    "横",
+    "竖",
+    "横",
+    "撇",
+    "捺",
+    "横折",
+    "横",
+    "竖弯钩"
+  ],
+  "structure": "半包围结构",
+  "words": [
+    {
+      "text": "起来",
+      "pinyin": "qǐ lái",
+      "status": "draft",
+      "audio": "/audio/51/514d3f649b09c03c594cbfe9d755b11ebfd4ccf7.opus"
+    },
+    {
+      "text": "起点",
+      "pinyin": "qǐ diǎn",
+      "status": "draft",
+      "audio": "/audio/e1/e188ebcab620413869ef93393c8a9a67fb987fad.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "超",
+      "走"
+    ],
+    "sound": [
+      "启"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "走",
+  "audio": {
+    "char": "/audio/29/29195326fd1323aae990ceb94a12a95212b1ada7.opus",
+    "pinyin": "/audio/29/29195326fd1323aae990ceb94a12a95212b1ada7.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "qǐ"
+    ],
+    "radical": "走"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "char": "校",
+  "status": "draft",
+  "pinyin": "xiào",
+  "strokeCount": 10,
+  "strokeNames": [
+    "横",
+    "竖",
+    "撇",
+    "点",
+    "点",
+    "横",
+    "撇",
+    "点",
+    "撇",
+    "捺"
+  ],
+  "structure": "左右结构",
+  "words": [
+    {
+      "text": "学校",
+      "pinyin": "xué xiào",
+      "status": "draft",
+      "audio": "/audio/08/08610a85a1b50b73fc799df32d0c8dd386dd586b.opus"
+    },
+    {
+      "text": "校园",
+      "pinyin": "xiào yuán",
+      "status": "draft",
+      "audio": "/audio/d2/d2eb0e3e82c1e223d69f4b9904254271aaf012d0.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "较",
+      "交"
+    ],
+    "sound": [
+      "笑"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "jiào"
+  ],
+  "radical": "木",
+  "audio": {
+    "char": "/audio/51/5118ad88e3dbb527cf8fb0b2dc3919aa62637160.opus",
+    "pinyin": "/audio/51/5118ad88e3dbb527cf8fb0b2dc3919aa62637160.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "jiào",
+      "jiǎo",
+      "qiāo",
+      "xiào"
+    ],
+    "radical": "木"
+  }
+}

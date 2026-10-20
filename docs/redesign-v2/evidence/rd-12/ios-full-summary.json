@@ -1,0 +1,96 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+        "deviceName" : "iPhone 16",
+        "modelName" : "iPhone 16",
+        "osBuildNumber" : "22G86",
+        "osVersion" : "18.6",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 6,
+      "passedTests" : 216,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "ChinaTextbookStudy · Built with macOS 27.2",
+  "expectedFailures" : 0,
+  "failedTests" : 6,
+  "finishTime" : 1792502567.52,
+  "passedTests" : 216,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1792502497.563,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "ChinaTextbookStudyTests",
+      "testIdentifier" : 98,
+      "testIdentifierString" : "PRFixTests/testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyTests/PRFixTests/testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable",
+      "testName" : "testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed - feedback panel did not appear after checking a correct answer",
+      "targetName" : "ChinaTextbookStudyUITests",
+      "testIdentifier" : 217,
+      "testIdentifierString" : "LessonFlowUITests/testAnsweringShowsFeedbackPanel()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/LessonFlowUITests/testAnsweringShowsFeedbackPanel",
+      "testName" : "testAnsweringShowsFeedbackPanel()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "ChinaTextbookStudyUITests",
+      "testIdentifier" : 222,
+      "testIdentifierString" : "ScreenshotTests/testCaptureMainScreens()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/ScreenshotTests/testCaptureMainScreens",
+      "testName" : "testCaptureMainScreens()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed - profile did not navigate to 设置",
+      "targetName" : "ChinaTextbookStudyUITests",
+      "testIdentifier" : 214,
+      "testIdentifierString" : "LayoutUITests/testProfileReachesAchievementsAndSettings()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/LayoutUITests/testProfileReachesAchievementsAndSettings",
+      "testName" : "testProfileReachesAchievementsAndSettings()"
+    },
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "ChinaTextbookStudyUITests",
+      "testIdentifier" : 220,
+      "testIdentifierString" : "LessonFlowUITests/testQuittingMidLessonAsksForConfirmation()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/LessonFlowUITests/testQuittingMidLessonAsksForConfirmation",
+      "testName" : "testQuittingMidLessonAsksForConfirmation()"
+    },
+    {
+      "failureText" : "Failed to failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame. (Underlying Error: Activation point invalid and no suggested hit points based on element frame)",
+      "targetName" : "ChinaTextbookStudyUITests",
+      "testIdentifier" : 211,
+      "testIdentifierString" : "CosmeticsUITests/testUnaffordableCosmeticIsNotGranted()",
+      "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/CosmeticsUITests/testUnaffordableCosmeticIsNotGranted",
+      "testName" : "testUnaffordableCosmeticIsNotGranted()"
+    }
+  ],
+  "title" : "Test - ChinaTextbookStudy",
+  "topInsights" : [
+    {
+      "category" : "Longest Test Runs",
+      "impact" : "94% of duration",
+      "text" : "5 longest test runs with outlier durations exceeding 2.08s (three standard deviations)"
+    }
+  ],
+  "totalTestCount" : 222
+}

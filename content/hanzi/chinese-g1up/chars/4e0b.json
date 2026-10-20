@@ -1,0 +1,57 @@
+{
+  "char": "下",
+  "status": "draft",
+  "pinyin": "xià",
+  "strokeCount": 3,
+  "strokeNames": [
+    "横",
+    "竖",
+    "点"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "下雨",
+      "pinyin": "xià yǔ",
+      "status": "draft",
+      "audio": "/audio/b9/b94ed83e391b4749ef316bc874104aa8af8ed2cf.opus"
+    },
+    {
+      "text": "下山",
+      "pinyin": "xià shān",
+      "status": "draft",
+      "audio": "/audio/7a/7a3ed3596044dbedff3c8e2f5eb6bd543fbde3ad.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "上",
+      "不"
+    ],
+    "sound": [
+      "夏"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "一",
+  "audio": {
+    "char": "/audio/a6/a6caf2effb1c0ddb386ff14e1278c73187b81815.opus",
+    "pinyin": "/audio/a6/a6caf2effb1c0ddb386ff14e1278c73187b81815.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "xià"
+    ],
+    "radical": "一"
+  }
+}

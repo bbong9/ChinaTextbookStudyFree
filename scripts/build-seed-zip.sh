@@ -8,6 +8,7 @@
 # 用法:
 #   bash scripts/build-seed-zip.sh                  # 默认 g1up + g1up-u1-kp1
 #   bash scripts/build-seed-zip.sh g2up g2up-u1-kp1 # 换一本书 + 换一节课
+#   bash scripts/build-seed-zip.sh --content-only   # 在已有 seed 中只更新根目录 content
 #
 # 体积参考: 44 册 data + 49 个 24k AAC m4a ≈ 7.4 MB
 # （GitHub Release 上没有 iOS 分包，seed 只放一本时其余书都打不开；
@@ -16,6 +17,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+if [ "${1:-}" = "--content-only" ]; then
+  python3 "$ROOT/scripts/hanzi/pack-seed.py" "$ROOT"
+  exit 0
+fi
 BOOK_ID="${1:-g1up}"
 LESSON_ID="${2:-g1up-u1-kp1}"
 DATA_DIR="$ROOT/apps/web/public/data/books/$BOOK_ID"
@@ -67,6 +72,7 @@ done < /tmp/cstf-seed-audio.txt
 
 echo "=== 打包 ==="
 (cd "$STAGE" && zip -qr -9 -X "$OUT" data audio)
+python3 "$ROOT/scripts/hanzi/pack-seed.py" "$ROOT"
 SIZE=$(du -h "$OUT" | cut -f1)
 echo "完成 → $OUT ($SIZE)"
 rm -f /tmp/cstf-seed-audio.txt

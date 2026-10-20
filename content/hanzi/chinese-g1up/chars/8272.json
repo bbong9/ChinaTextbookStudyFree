@@ -1,0 +1,63 @@
+{
+  "char": "色",
+  "status": "draft",
+  "pinyin": "sè",
+  "strokeCount": 6,
+  "strokeNames": [
+    "撇",
+    "横撇",
+    "竖",
+    "横折",
+    "横",
+    "竖弯钩"
+  ],
+  "structure": "上下结构",
+  "words": [
+    {
+      "text": "红色",
+      "pinyin": "hóng sè",
+      "status": "draft",
+      "audio": "/audio/4e/4e68d49452c0d96fbea295c1177f2202bbc06810.opus"
+    },
+    {
+      "text": "颜色",
+      "pinyin": "yán sè",
+      "status": "draft",
+      "audio": "/audio/8e/8ef4886033563ed64e136bb380e5179d05dc0af1.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "巴",
+      "鱼"
+    ],
+    "sound": [
+      "涩"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [
+    "shǎi"
+  ],
+  "radical": "色",
+  "audio": {
+    "char": "/audio/13/1391f4a4c627d7b473e4ce3b4da340c1f7fba13d.opus",
+    "pinyin": "/audio/13/1391f4a4c627d7b473e4ce3b4da340c1f7fba13d.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "shǎi",
+      "sè"
+    ],
+    "radical": "色"
+  }
+}

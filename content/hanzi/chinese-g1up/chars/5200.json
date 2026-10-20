@@ -1,0 +1,57 @@
+{
+  "char": "刀",
+  "status": "draft",
+  "pinyin": "dāo",
+  "strokeCount": 2,
+  "strokeNames": [
+    "横折钩",
+    "撇"
+  ],
+  "structure": "独体字",
+  "words": [
+    {
+      "text": "小刀",
+      "pinyin": "xiǎo dāo",
+      "status": "draft",
+      "audio": "/audio/7e/7e78f3b921dfc1b8446f8c7a4ada06b647504f01.opus"
+    },
+    {
+      "text": "剪刀",
+      "pinyin": "jiǎn dāo",
+      "status": "draft",
+      "audio": "/audio/9d/9db829fc07cfee57ada6d615ad440fa0c9c93456.opus"
+    }
+  ],
+  "scene": null,
+  "sceneCaption": null,
+  "origin": null,
+  "distractors": {
+    "shape": [
+      "力",
+      "刃"
+    ],
+    "sound": [
+      "叨"
+    ]
+  },
+  "source": "Codex 整理的教材配套初稿；未经纸质课本和教参核对",
+  "license": "MIT",
+  "reviewNotes": [],
+  "pinyinAlternates": [],
+  "radical": "刀",
+  "audio": {
+    "char": "/audio/c8/c8f6dd0c320d279ae1e89682fa063e3eccf9cd31.opus",
+    "pinyin": "/audio/c8/c8f6dd0c320d279ae1e89682fa063e3eccf9cd31.opus",
+    "origin": null
+  },
+  "unihan": {
+    "source": "https://www.unicode.org/Public/17.0.0/ucd/Unihan.zip",
+    "license": "Unicode-3.0",
+    "version": "17.0.0",
+    "readings": [
+      "diāo",
+      "dāo"
+    ],
+    "radical": "刀"
+  }
+}

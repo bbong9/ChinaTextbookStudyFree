@@ -1,0 +1,31 @@
+
+> china-textbook-study-free-monorepo@0.1.0 test
+> npm test --workspace=@cstf/core
+
+
+> @cstf/core@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /Users/bbong9/Desktop/ChinaTextbookStudyFree/packages/core
+
+ ✓ src/__tests__/quizContent.test.ts (4 tests) 7ms
+ ✓ src/__tests__/hanzi.test.ts (2 tests) 40ms
+ ✓ src/__tests__/numberSense.test.ts (5 tests) 12ms
+ ✓ src/__tests__/storyQuiz.test.ts (3 tests) 6ms
+ ✓ src/__tests__/quests.test.ts (12 tests) 27ms
+ ✓ src/__tests__/week.test.ts (20 tests) 34ms
+ ✓ src/__tests__/league.test.ts (24 tests) 73ms
+ ✓ src/__tests__/backup.test.ts (17 tests) 52ms
+ ✓ src/__tests__/goldenVectors.test.ts (88 tests) 36ms
+ ✓ src/__tests__/learningQualityContent.test.ts (2 tests) 3ms
+ ✓ src/__tests__/grade.test.ts (10 tests) 2ms
+ ✓ src/__tests__/reading.test.ts (24 tests) 6ms
+ ✓ src/__tests__/jump.test.ts (11 tests) 6ms
+ ✓ src/__tests__/choiceGrading.test.ts (11 tests) 6ms
+
+ Test Files  14 passed (14)
+      Tests  233 passed (233)
+   Start at  21:25:28
+   Duration  754ms (transform 601ms, setup 0ms, collect 1.16s, tests 309ms, environment 1ms, prepare 1.01s)
+
