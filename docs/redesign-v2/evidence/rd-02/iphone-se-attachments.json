@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2BFFBB16-A3BE-4564-AC5F-868D16C3D025",
+        "deviceName" : "RD-02 横屏 iPhone SE",
+        "exportedFileName" : "F9232326-AFF6-4E11-9DDF-E4DA52506F18.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-04-icons-fonts_0_EEC5C265-66E0-4423-A7F6-8D5C217DA04A.png",
+        "timestamp" : 1792505396.651
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2BFFBB16-A3BE-4564-AC5F-868D16C3D025",
+        "deviceName" : "RD-02 横屏 iPhone SE",
+        "exportedFileName" : "B8256229-CC1D-4A59-A9B6-D6EF04F41CD0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-03-gradients_0_85653D9A-2476-4778-A0D0-B5A705599C88.png",
+        "timestamp" : 1792505395.207
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2BFFBB16-A3BE-4564-AC5F-868D16C3D025",
+        "deviceName" : "RD-02 横屏 iPhone SE",
+        "exportedFileName" : "7630491D-DA2F-4501-BE71-F0B9262F9D39.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-02-step-callback_0_C56BF7E3-EC60-4449-BE1A-FBBB6094E957.png",
+        "timestamp" : 1792505394.763
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "2BFFBB16-A3BE-4564-AC5F-868D16C3D025",
+        "deviceName" : "RD-02 横屏 iPhone SE",
+        "exportedFileName" : "68DFC27E-87BE-45DC-8CD9-76CD5C66C41B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-01-components_0_0970D217-9AF2-4E45-AB2F-856C8306D66C.png",
+        "timestamp" : 1792505394.327
+      }
+    ],
+    "testIdentifier" : "ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages()",
+    "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages"
+  }
+]

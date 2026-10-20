@@ -3,6 +3,9 @@ import Foundation
 /// All push destinations used by the root NavigationStack. Adding a new screen
 /// is a one-line edit here + a `case` in `RootView.navigationDestination`.
 enum AppRoute: Hashable {
+    #if DEBUG
+    case clayGallery
+    #endif
     case bookList(grade: Int)
     case bookDetail(bookId: String)
     case lesson(bookId: String, lessonId: String)

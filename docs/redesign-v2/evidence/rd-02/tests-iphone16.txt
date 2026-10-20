@@ -1,0 +1,600 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj -scheme ChinaTextbookStudy -destination "platform=iOS Simulator,id=1AB108FF-245A-4626-BDF5-B6879E022162" -derivedDataPath /tmp/rd02-landscape-derived -parallel-testing-enabled NO -collect-test-diagnostics never "-only-testing:ChinaTextbookStudyUITests/ClayGalleryUITests" "-only-testing:ChinaTextbookStudyTests/ClayFontTests" "-only-testing:ChinaTextbookStudyTests/ClayGradientTests" "-only-testing:ChinaTextbookStudyTests/ClayIconTests" "-only-testing:ChinaTextbookStudyTests/StageLayoutTests" -resultBundlePath /tmp/rd02-delivery.xcresult CODE_SIGNING_ALLOWED=NO "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone=UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight" build test
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+    INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  ZIPFoundation: https://github.com/weichsel/ZIPFoundation @ 0.9.20
+
+Writing result bundle at path:
+	/tmp/rd02-delivery.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (5 targets)
+    Target 'ChinaTextbookStudy' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ChinaTextbookStudyWidget' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ZIPFoundation-product' in project 'ZIPFoundation'
+    Target 'ZIPFoundation-product' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation'
+    Target 'ZIPFoundation' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation'
+    Target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation' (no dependencies)
+    Target 'ChinaTextbookStudyWidget' in project 'ChinaTextbookStudy' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+Build description signature: 26ba881b1b3ff6faa82e02a0d1ca74a4
+Build description path: /tmp/rd02-landscape-derived/Build/Intermediates.noindex/XCBuildData/26ba881b1b3ff6faa82e02a0d1ca74a4.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache
+    cd /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -o /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyWidget.appex/Info.plist /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudyWidget/Info.plist (in target 'ChinaTextbookStudyWidget' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudyWidget/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyWidget.appex/Info.plist
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation.bundle/Info.plist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ZIPFoundation.build/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation-b.build/empty-ZIPFoundation_ZIPFoundation.plist (in target 'ZIPFoundation_ZIPFoundation' from project 'ZIPFoundation')
+    cd /tmp/rd02-landscape-derived/SourcePackages/checkouts/ZIPFoundation
+    builtin-infoPlistUtility /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ZIPFoundation.build/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation-b.build/empty-ZIPFoundation_ZIPFoundation.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation.bundle/Info.plist
+
+SwiftDriver ChinaTextbookStudy normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ChinaTextbookStudy -Onone @/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/rd02-landscape-derived/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache -output-file-map /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -sdk-module-cache-path /tmp/rd02-landscape-derived/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/rd02-landscape-derived/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-generated-files.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-own-target-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy-f8f9c12b00600128e7376e58fc79a46c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-project-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources-normal/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-Swift.h -working-directory /tmp/rd02-clay-design-system/apps/mobile -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ ClayTokens.swift /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Clay/ClayTokens.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftCompile normal arm64 /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Clay/ClayTokens.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-SwiftPerFileCompile ClayTokens.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ ChinaTextbookStudy (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftCompile normal arm64 (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Book/BookDetailView.swift:197:17: warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+195 |
+196 |     @State private var tick = Date()
+197 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+198 |
+199 |     var body: some View {
+
+Combine.Publishers.Autoconnect:2:14: note: generic class declared here
+ 1 | enum Publishers {
+ 2 | public class Autoconnect<Upstream> : Publisher where Upstream : ConnectablePublisher {
+   |              `- note: generic class declared here
+ 3 |     public typealias Output = Upstream.Output
+ 4 |     public typealias Failure = Upstream.Failure
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Book/BookDetailView.swift:197:17: warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+195 |
+196 |     @State private var tick = Date()
+197 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+198 |
+199 |     var body: some View {
+
+Combine.Publishers:2:13: note: enum declared here
+1 | @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+2 | public enum Publishers {
+  |             `- note: enum declared here
+3 | }
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Home/HomeView.swift:808:17: warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 806 |
+ 807 |     @State private var tick = Date()
+ 808 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+     |                 `- warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 809 |
+ 810 |     var body: some View {
+
+Combine.Publishers.Autoconnect:2:14: note: generic class declared here
+ 1 | enum Publishers {
+ 2 | public class Autoconnect<Upstream> : Publisher where Upstream : ConnectablePublisher {
+   |              `- note: generic class declared here
+ 3 |     public typealias Output = Upstream.Output
+ 4 |     public typealias Failure = Upstream.Failure
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Home/HomeView.swift:808:17: warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 806 |
+ 807 |     @State private var tick = Date()
+ 808 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+     |                 `- warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 809 |
+ 810 |     var body: some View {
+
+Combine.Publishers:2:13: note: enum declared here
+1 | @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+2 | public enum Publishers {
+  |             `- note: enum declared here
+3 | }
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/League/LeagueView.swift:17:17: warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 15 |     /// 榜单的「现在」——每分钟刷新一次，bot XP 与倒计时随之推进。
+ 16 |     @State private var now = Date()
+ 17 |     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 18 |
+ 19 |     var body: some View {
+
+Combine.Publishers.Autoconnect:2:14: note: generic class declared here
+ 1 | enum Publishers {
+ 2 | public class Autoconnect<Upstream> : Publisher where Upstream : ConnectablePublisher {
+   |              `- note: generic class declared here
+ 3 |     public typealias Output = Upstream.Output
+ 4 |     public typealias Failure = Upstream.Failure
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/League/LeagueView.swift:17:17: warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 15 |     /// 榜单的「现在」——每分钟刷新一次，bot XP 与倒计时随之推进。
+ 16 |     @State private var now = Date()
+ 17 |     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+ 18 |
+ 19 |     var body: some View {
+
+Combine.Publishers:2:13: note: enum declared here
+1 | @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+2 | public enum Publishers {
+  |             `- note: enum declared here
+3 | }
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Lesson/LessonRunnerView.swift:887:17: warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+885 |     private let refillCost = Economy.heartRefillCost
+886 |     @State private var tick = Date()
+887 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use generic class 'Autoconnect' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+888 |
+889 |     private var hasDueMistakes: Bool { !progressStore.dueMistakes.isEmpty }
+
+Combine.Publishers.Autoconnect:2:14: note: generic class declared here
+ 1 | enum Publishers {
+ 2 | public class Autoconnect<Upstream> : Publisher where Upstream : ConnectablePublisher {
+   |              `- note: generic class declared here
+ 3 |     public typealias Output = Upstream.Output
+ 4 |     public typealias Failure = Upstream.Failure
+
+/tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Features/Lesson/LessonRunnerView.swift:887:17: warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+885 |     private let refillCost = Economy.heartRefillCost
+886 |     @State private var tick = Date()
+887 |     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    |                 `- warning: cannot use enum 'Publishers' in a property declaration member of a type not marked '@_implementationOnly'; 'Combine' was not imported by this file
+888 |
+889 |     private var hasDueMistakes: Bool { !progressStore.dueMistakes.isEmpty }
+
+Combine.Publishers:2:13: note: enum declared here
+1 | @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+2 | public enum Publishers {
+  |             `- note: enum declared here
+3 | }
+SwiftCompile normal arm64 Compiling\ ClayLabels.swift /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Clay/ClayLabels.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftCompile normal arm64 /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Clay/ClayLabels.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-SwiftPerFileCompile ClayLabels.swift
+
+SwiftDriverJobDiscovery normal arm64 Compiling ClayTokens.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ClayLabels.swift (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for ChinaTextbookStudy (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+SwiftDriver\ Compilation\ Requirements ChinaTextbookStudy normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ChinaTextbookStudy -Onone @/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/rd02-landscape-derived/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache -output-file-map /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -sdk-module-cache-path /tmp/rd02-landscape-derived/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/rd02-landscape-derived/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-generated-files.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-own-target-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy-f8f9c12b00600128e7376e58fc79a46c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-project-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources-normal/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-Swift.h -working-directory /tmp/rd02-clay-design-system/apps/mobile -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver\ Compilation ChinaTextbookStudy normal arm64 com.apple.xcode.tools.swift.compiler (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name ChinaTextbookStudy -Onone @/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /tmp/rd02-landscape-derived/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -c -j10 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache -output-file-map /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /tmp/rd02-landscape-derived/ModuleCache.noindex -sdk-module-cache-path /tmp/rd02-landscape-derived/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /tmp/rd02-landscape-derived/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_const_extract_protocols.json -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-generated-files.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-own-target-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy-f8f9c12b00600128e7376e58fc79a46c-VFS-iphonesimulator/all-product-headers.yaml -Xcc -iquote -Xcc /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-project-headers.hmap -Xcc -I/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/include -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources-normal/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources/arm64 -Xcc -I/tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy-Swift.h -working-directory /tmp/rd02-clay-design-system/apps/mobile -experimental-emit-module-separately -disable-cmo
+
+Copy /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftsourceinfo (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftsourceinfo /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+Copy /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.swiftmodule/arm64-apple-ios-simulator.abi.json /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.abi.json (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.abi.json /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Ld /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib normal (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/tmp/rd02-landscape-derived/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -F/tmp/rd02-landscape-derived/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -filelist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.LinkFileList -install_name @rpath/ChinaTextbookStudy.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib
+
+ConstructStubExecutorLinkFileList /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-ExecutorLinkFileList-normal-arm64.txt (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    construct-stub-executor-link-file-list /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+
+Ld /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy normal (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy-ExecutorLinkFileList-normal-arm64.txt /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy
+
+CopySwiftLibs /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Frameworks --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/SystemExtensions --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Info.plist /tmp/rd02-clay-design-system/apps/mobile/build/ChinaTextbookStudy-Info.plist (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-clay-design-system/apps/mobile/build/ChinaTextbookStudy-Info.plist -producttype com.apple.product-type.application -genpkginfo /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/assetcatalog_generated_info.plist -scanforprivacyfile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyWidget.appex -scanforprivacyfile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ZIPFoundation_ZIPFoundation.bundle -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Info.plist
+
+ExtractAppIntentsMetadata (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --module-name ChinaTextbookStudy --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk --xcode-version 27A266a --platform-family iOS --deployment-target 17.0 --bundle-identifier com.example.ChinaTextbookStudy --output /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app --target-triple arm64-apple-ios17.0-simulator --binary-file /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy --dependency-file /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy_dependency_info.dat --stringsdata-file /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.SwiftFileList --metadata-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy.DependencyMetadataFileList --static-metadata-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/ChinaTextbookStudy.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/Objects-normal/arm64/ChinaTextbookStudy.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-10-20 22:06:56.966 appintentsmetadataprocessor[30821:7185274] Starting appintentsmetadataprocessor export
+2026-10-20 22:06:57.031 appintentsmetadataprocessor[30821:7185274] Extracted no relevant App Intents symbols, skipping writing output
+
+Validate /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-validationUtility /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app -shallow-bundle -infoplist-subpath Info.plist
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/SDKExplicitPrecompiledModules
+
+
+Result bundle written to path:
+	/tmp/rd02-delivery.xcresult
+
+** BUILD SUCCEEDED **
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (7 targets)
+    Target 'ChinaTextbookStudyUITests' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ChinaTextbookStudy' in project 'ChinaTextbookStudy'
+    Target 'ChinaTextbookStudyTests' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ChinaTextbookStudy' in project 'ChinaTextbookStudy'
+    Target 'ChinaTextbookStudy' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ChinaTextbookStudyWidget' in project 'ChinaTextbookStudy'
+        ➜ Explicit dependency on target 'ZIPFoundation-product' in project 'ZIPFoundation'
+    Target 'ZIPFoundation-product' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation'
+    Target 'ZIPFoundation' in project 'ZIPFoundation'
+        ➜ Explicit dependency on target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation'
+    Target 'ZIPFoundation_ZIPFoundation' in project 'ZIPFoundation' (no dependencies)
+    Target 'ChinaTextbookStudyWidget' in project 'ChinaTextbookStudy' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 60ad68e08904bb10a51675b70f36aed7
+Build description path: /tmp/rd02-landscape-derived/Build/Intermediates.noindex/XCBuildData/60ad68e08904bb10a51675b70f36aed7.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache
+    cd /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudy.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -o /tmp/rd02-landscape-derived/SDKStatCaches.noindex/iphonesimulator27.0-24A430-e829b21a6f8c9b70876ba0858053c0448dc58220667be655e1bcc261a7455254.sdkstatcache
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyWidget.appex/Info.plist /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudyWidget/Info.plist (in target 'ChinaTextbookStudyWidget' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-clay-design-system/apps/mobile/ChinaTextbookStudyWidget/Info.plist -producttype com.apple.product-type.app-extension -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyWidget.appex/Info.plist
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation.bundle/Info.plist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ZIPFoundation.build/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation-b.build/empty-ZIPFoundation_ZIPFoundation.plist (in target 'ZIPFoundation_ZIPFoundation' from project 'ZIPFoundation')
+    cd /tmp/rd02-landscape-derived/SourcePackages/checkouts/ZIPFoundation
+    builtin-infoPlistUtility /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ZIPFoundation.build/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation-b.build/empty-ZIPFoundation_ZIPFoundation.plist -producttype com.apple.product-type.bundle -expandbuildsettings -format binary -platform iphonesimulator -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ZIPFoundation_ZIPFoundation.bundle/Info.plist
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Info.plist /tmp/rd02-clay-design-system/apps/mobile/build/ChinaTextbookStudy-Info.plist (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-clay-design-system/apps/mobile/build/ChinaTextbookStudy-Info.plist -producttype com.apple.product-type.application -genpkginfo /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/assetcatalog_generated_info.plist -scanforprivacyfile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyWidget.appex -scanforprivacyfile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ZIPFoundation_ZIPFoundation.bundle -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Info.plist
+
+CopySwiftLibs /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Frameworks --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/SystemExtensions --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudy.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+Ld /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/ChinaTextbookStudyTests normal (in target 'ChinaTextbookStudyTests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/tmp/rd02-landscape-derived/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/tmp/rd02-landscape-derived/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -F/tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk/Developer/Library/Frameworks -filelist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path -Xlinker -rpath -Xlinker /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/PackageFrameworks -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -bundle_loader /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy -Xlinker -object_path_lto -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/ChinaTextbookStudy.debug.dylib -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/ChinaTextbookStudyTests
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/Info.plist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/empty-ChinaTextbookStudyTests.plist (in target 'ChinaTextbookStudyTests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/empty-ChinaTextbookStudyTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -scanforprivacyfile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/ZIPFoundation_ZIPFoundation.bundle -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/Info.plist
+
+CopySwiftLibs /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest (in target 'ChinaTextbookStudyTests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/ChinaTextbookStudyTests --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/Frameworks --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/PlugIns --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/SystemExtensions --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'ChinaTextbookStudyTests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --module-name ChinaTextbookStudyTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.0.sdk --xcode-version 27A266a --platform-family iOS --deployment-target 17.0 --bundle-identifier com.example.ChinaTextbookStudyTests --output /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest --target-triple arm64-apple-ios17.0-simulator --binary-file /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app/PlugIns/ChinaTextbookStudyTests.xctest/ChinaTextbookStudyTests --dependency-file /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests_dependency_info.dat --stringsdata-file /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests.SwiftFileList --metadata-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/ChinaTextbookStudyTests.DependencyMetadataFileList --static-metadata-file-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/ChinaTextbookStudyTests.DependencyStaticMetadataFileList --swift-const-vals-list /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyTests.build/Objects-normal/arm64/ChinaTextbookStudyTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-10-20 22:06:57.723 appintentsmetadataprocessor[30833:7185334] Starting appintentsmetadataprocessor export
+2026-10-20 22:06:57.762 appintentsmetadataprocessor[30833:7185334] Extracted no relevant App Intents symbols, skipping writing output
+
+Validate /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app (in target 'ChinaTextbookStudy' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-validationUtility /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudy.app -shallow-bundle -infoplist-subpath Info.plist
+
+ProcessInfoPlistFile /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/Info.plist /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyUITests.build/empty-ChinaTextbookStudyUITests.plist (in target 'ChinaTextbookStudyUITests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-infoPlistUtility /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyUITests.build/empty-ChinaTextbookStudyUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyUITests.build/ProductTypeInfoPlistAdditions.plist -o /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/Info.plist
+
+CopySwiftLibs /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest (in target 'ChinaTextbookStudyUITests' from project 'ChinaTextbookStudy')
+    cd /tmp/rd02-clay-design-system/apps/mobile
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/ChinaTextbookStudyUITests --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/Frameworks --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/PlugIns --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/SystemExtensions --scan-folder /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.1.266.1.CmU3vp/Metal.xctoolchain --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /tmp/rd02-landscape-derived/Build/Products/Debug-iphonesimulator/ChinaTextbookStudyUITests-Runner.app/PlugIns/ChinaTextbookStudyUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ChinaTextbookStudy.build/Debug-iphonesimulator/ChinaTextbookStudyUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /tmp/rd02-landscape-derived/SDKExplicitPrecompiledModules
+
+2026-10-20 22:07:11.521216+0800 ChinaTextbookStudy[31023:7187507] [Connection] Unable to find entitlement for KVS store
+2026-10-20 22:07:11.523216+0800 ChinaTextbookStudy[31023:7187507] [Connection] BUG IN CLIENT OF KVS: Trying to initialize NSUbiquitousKeyValueStore without a store identifier. Please specify your store identifier in the 'com.apple.developer.ubiquity-kvstore-identifier' entitlement.
+Test Suite 'Selected tests' started at 2026-10-20 22:07:12.010.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 22:07:12.011.
+Test Suite 'ClayFontTests' started at 2026-10-20 22:07:12.011.
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testAlreadyInstalledFontDoesNotStartDownload]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testAlreadyInstalledFontDoesNotStartDownload]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testBundledFontsAreRegisteredLicensedAndUnderEightMegabytes]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testBundledFontsAreRegisteredLicensedAndUnderEightMegabytes]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testDownloadCompletionPublishesReplacementWithoutRestart]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testDownloadCompletionPublishesReplacementWithoutRestart]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testOfflineFailureKeepsFallbackAndDoesNotRepeatDownload]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayFontTests testOfflineFailureKeepsFallbackAndDoesNotRepeatDownload]' passed (0.001 seconds).
+Test Suite 'ClayFontTests' passed at 2026-10-20 22:07:12.018.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.006 (0.007) seconds
+Test Suite 'ClayGradientTests' started at 2026-10-20 22:07:12.018.
+Test Case '-[ChinaTextbookStudyTests.ClayGradientTests testAllSVGGradientNamesAndSpecialGeometry]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayGradientTests testAllSVGGradientNamesAndSpecialGeometry]' passed (0.000 seconds).
+Test Suite 'ClayGradientTests' passed at 2026-10-20 22:07:12.034.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.016) seconds
+Test Suite 'ClayIconTests' started at 2026-10-20 22:07:12.034.
+Test Case '-[ChinaTextbookStudyTests.ClayIconTests testChevronsKeepBothSegmentsFromSVG]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayIconTests testChevronsKeepBothSegmentsFromSVG]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.ClayIconTests testPlayIsFilledTriangleAndSpeakerKeepsItsLeftFace]' started.
+Test Case '-[ChinaTextbookStudyTests.ClayIconTests testPlayIsFilledTriangleAndSpeakerKeepsItsLeftFace]' passed (0.001 seconds).
+Test Suite 'ClayIconTests' passed at 2026-10-20 22:07:12.036.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds
+Test Suite 'StageLayoutTests' started at 2026-10-20 22:07:12.036.
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testCenterAnchorRespectsAsymmetricSafeArea]' started.
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testCenterAnchorRespectsAsymmetricSafeArea]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testFourLandscapeViewportsAndSafeAreaAnchors]' started.
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testFourLandscapeViewportsAndSafeAreaAnchors]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testSceneBottomAndSideExtension]' started.
+Test Case '-[ChinaTextbookStudyTests.StageLayoutTests testSceneBottomAndSideExtension]' passed (0.001 seconds).
+Test Suite 'StageLayoutTests' passed at 2026-10-20 22:07:12.039.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' passed at 2026-10-20 22:07:12.039.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.010 (0.029) seconds
+Test Suite 'Selected tests' passed at 2026-10-20 22:07:12.040.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 0.010 (0.029) seconds
+2026-10-20 22:07:15.340660+0800 ChinaTextbookStudyUITests-Runner[31055:7188159] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-20 22:07:16.651.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 22:07:16.652.
+Test Suite 'ClayGalleryUITests' started at 2026-10-20 22:07:16.652.
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testAnchorsStepStatesCallbackAndGalleryPages]' started.
+    t =     0.00s Start Test at 2026-10-20 22:07:16.652
+    t =     0.33s Set Up
+    t =     0.33s Setting device orientation to Landscape Left
+    t =     0.33s     Device orientation changed to Landscape Left
+    t =     0.36s     Wait for com.apple.springboard to idle
+    t =     0.38s Open com.example.ChinaTextbookStudy
+    t =     0.38s     Launch com.example.ChinaTextbookStudy
+2026-10-20 22:07:17.384 xcodebuild[30559:7184927] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 22:07:17.384 xcodebuild[30559:7184927] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     0.94s         Interface orientation changed to Landscape Right
+    t =     0.95s         Setting up automation session
+    t =     1.59s         Wait for com.example.ChinaTextbookStudy to idle
+    t =     3.01s Waiting 15.0s for "clay-gallery-entry" Button to exist
+    t =     4.08s     Checking `Expect predicate `existsNoRetry == 1` for object "clay-gallery-entry" Button`
+    t =     4.08s         Checking existence of `"clay-gallery-entry" Button`
+    t =     4.19s Press "clay-gallery-entry" Button for 1.0 seconds
+    t =     4.19s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     4.19s     Find the "clay-gallery-entry" Button
+    t =     4.22s     Check for interrupting elements affecting "clay-gallery-entry" Button
+    t =     4.25s     Synthesize event
+    t =     5.59s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     5.59s Waiting 5.0s for "stage-top-leading" Button to exist
+    t =     6.67s     Checking `Expect predicate `existsNoRetry == 1` for object "stage-top-leading" Button`
+    t =     6.68s         Checking existence of `"stage-top-leading" Button`
+    t =     6.71s Find the "clay-stage-metrics" StaticText
+    t =     6.72s Find the "stage-top-leading" Button
+    t =     6.74s Find the "stage-top-trailing" Button
+    t =     6.75s Find the "stage-bottom-leading" Button
+    t =     6.77s Find the "stage-bottom-trailing" Button
+    t =     6.78s Find the Target Application 'com.example.ChinaTextbookStudy'
+    t =     6.79s Find the "clay-steps-0" Button
+    t =     6.80s Find the "clay-steps-1" Button
+    t =     6.81s Find the "clay-steps-2" Button
+    t =     6.99s Added attachment named 'rd02-01-components'
+    t =     6.99s Tap "clay-steps-2" Button
+    t =     6.99s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     6.99s     Find the "clay-steps-2" Button
+    t =     7.01s     Check for interrupting elements affecting "clay-steps-2" Button
+    t =     7.02s     Synthesize event
+    t =     7.32s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.32s Find the "clay-steps-2" Button
+    t =     7.33s Find the "clay-step-result" StaticText
+    t =     7.48s Added attachment named 'rd02-02-step-callback'
+    t =     7.48s Tap "stage-bottom-trailing" Button
+    t =     7.48s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.48s     Find the "stage-bottom-trailing" Button
+    t =     7.49s     Check for interrupting elements affecting "stage-bottom-trailing" Button
+    t =     7.50s     Synthesize event
+    t =     7.79s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.80s Checking existence of `"g-sky" StaticText`
+    t =     7.81s Checking existence of `"p-red" StaticText`
+    t =     7.95s Added attachment named 'rd02-03-gradients'
+    t =     7.95s Tap "stage-bottom-trailing" Button
+    t =     7.95s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.95s     Find the "stage-bottom-trailing" Button
+    t =     7.96s     Check for interrupting elements affecting "stage-bottom-trailing" Button
+    t =     7.98s     Synthesize event
+    t =     8.26s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     8.27s Checking existence of `"clay-icon-back" Button`
+    t =     8.28s Find the "clay-icon-back" Button
+    t =     8.29s Find the "clay-icon-back" Button
+    t =     8.31s Checking existence of `"clay-icon-pause" Button`
+    t =     8.31s Find the "clay-icon-pause" Button
+    t =     8.33s Find the "clay-icon-pause" Button
+    t =     8.34s Checking existence of `"clay-icon-help" Button`
+    t =     8.35s Find the "clay-icon-help" Button
+    t =     8.36s Find the "clay-icon-help" Button
+    t =     8.37s Checking existence of `"clay-icon-gu" Button`
+    t =     8.39s Find the "clay-icon-gu" Button
+    t =     8.40s Find the "clay-icon-gu" Button
+    t =     8.41s Checking existence of `"clay-icon-left" Button`
+    t =     8.42s Find the "clay-icon-left" Button
+    t =     8.43s Find the "clay-icon-left" Button
+    t =     8.44s Checking existence of `"clay-icon-right" Button`
+    t =     8.45s Find the "clay-icon-right" Button
+    t =     8.47s Find the "clay-icon-right" Button
+    t =     8.48s Checking existence of `"clay-icon-speaker" Button`
+    t =     8.49s Find the "clay-icon-speaker" Button
+    t =     8.50s Find the "clay-icon-speaker" Button
+    t =     8.51s Checking existence of `"clay-icon-mic" Button`
+    t =     8.52s Find the "clay-icon-mic" Button
+    t =     8.54s Find the "clay-icon-mic" Button
+    t =     8.55s Checking existence of `"clay-icon-redo" Button`
+    t =     8.56s Find the "clay-icon-redo" Button
+    t =     8.57s Find the "clay-icon-redo" Button
+    t =     8.58s Checking existence of `"clay-icon-play" Button`
+    t =     8.59s Find the "clay-icon-play" Button
+    t =     8.60s Find the "clay-icon-play" Button
+    t =     8.62s Checking existence of `"clay-icon-close" Button`
+    t =     8.63s Find the "clay-icon-close" Button
+    t =     8.64s Find the "clay-icon-close" Button
+    t =     8.65s Checking existence of `"clay-icon-heart" Button`
+    t =     8.66s Find the "clay-icon-heart" Button
+    t =     8.67s Find the "clay-icon-heart" Button
+    t =     8.69s Checking existence of `"clay-icon-flame" Button`
+    t =     8.70s Find the "clay-icon-flame" Button
+    t =     8.71s Find the "clay-icon-flame" Button
+    t =     8.72s Checking existence of `"clay-icon-lock" Button`
+    t =     8.73s Find the "clay-icon-lock" Button
+    t =     8.74s Find the "clay-icon-lock" Button
+    t =     8.88s Added attachment named 'rd02-04-icons-fonts'
+    t =     8.88s Find the "clay-kai-status" StaticText
+RD02_FONT_STATUS=楷体已就绪
+    t =     8.90s Tap "stage-top-leading" Button
+    t =     8.90s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     8.90s     Find the "stage-top-leading" Button
+    t =     8.91s     Check for interrupting elements affecting "stage-top-leading" Button
+    t =     8.92s     Synthesize event
+    t =     9.21s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     9.21s Waiting 5.0s for "clay-gallery-entry" Button to exist
+    t =    10.29s     Checking `Expect predicate `existsNoRetry == 1` for object "clay-gallery-entry" Button`
+    t =    10.29s         Checking existence of `"clay-gallery-entry" Button`
+    t =    10.36s Setting device orientation to Portrait
+    t =    10.36s     Device orientation changed to Portrait
+    t =    10.37s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    10.37s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testAnchorsStepStatesCallbackAndGalleryPages]' passed (10.655 seconds).
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testReduceMotionStopsGoButton]' started.
+    t =     0.00s Start Test at 2026-10-20 22:07:27.308
+    t =     0.03s Set Up
+    t =     0.03s Setting device orientation to Landscape Left
+    t =     0.03s     Device orientation changed to Landscape Left
+    t =     0.04s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     0.04s Open com.example.ChinaTextbookStudy
+    t =     0.04s     Launch com.example.ChinaTextbookStudy
+    t =     0.04s         Terminate com.example.ChinaTextbookStudy:31064
+    t =     0.18s             Interface orientation changed to Portrait
+2026-10-20 22:07:28.453 xcodebuild[30559:7184927] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 22:07:28.453 xcodebuild[30559:7184927] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.36s         Interface orientation changed to Landscape Right
+    t =     1.36s         Setting up automation session
+    t =     1.98s         Wait for com.example.ChinaTextbookStudy to idle
+    t =     3.24s Waiting 15.0s for "clay-gallery-entry" Button to exist
+    t =     4.31s     Checking `Expect predicate `existsNoRetry == 1` for object "clay-gallery-entry" Button`
+    t =     4.31s         Checking existence of `"clay-gallery-entry" Button`
+    t =     4.41s Press "clay-gallery-entry" Button for 1.0 seconds
+    t =     4.41s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     4.41s     Find the "clay-gallery-entry" Button
+    t =     4.44s     Check for interrupting elements affecting "clay-gallery-entry" Button
+    t =     4.46s     Synthesize event
+    t =     5.69s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     5.70s Waiting 5.0s for "stage-top-leading" Button to exist
+    t =     6.78s     Checking `Expect predicate `existsNoRetry == 1` for object "stage-top-leading" Button`
+    t =     6.78s         Checking existence of `"stage-top-leading" Button`
+    t =     6.81s Find the "stage-top-trailing" Button
+    t =     6.82s Tap "stage-top-trailing" Button
+    t =     6.82s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     6.83s     Find the "stage-top-trailing" Button
+    t =     6.84s     Check for interrupting elements affecting "stage-top-trailing" Button
+    t =     6.85s     Synthesize event
+    t =     7.14s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.14s Find the "clay-go" Button
+    t =     7.16s Checking existence of `"clay-go" Button`
+    t =     7.17s Find the "clay-go" Button
+    t =     8.30s Checking existence of `"clay-go" Button`
+    t =     8.31s Find the "clay-go" Button
+    t =     8.34s Added attachment named 'go-static-before'
+    t =     8.34s Added attachment named 'go-static-after'
+    t =     8.47s Added attachment named 'rd02-05-reduce-motion'
+    t =     8.47s Setting device orientation to Portrait
+    t =     8.47s     Device orientation changed to Portrait
+    t =     8.48s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     8.48s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.ClayGalleryUITests testReduceMotionStopsGoButton]' passed (8.702 seconds).
+Test Suite 'ClayGalleryUITests' passed at 2026-10-20 22:07:36.010.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 19.357 (19.359) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' passed at 2026-10-20 22:07:36.012.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 19.357 (19.360) seconds
+Test Suite 'Selected tests' passed at 2026-10-20 22:07:36.013.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 19.357 (19.362) seconds
+2026-10-20 22:07:36.370 xcodebuild[30559:7184927] [MT] IDETestOperationsObserverDebug: 38.591 elapsed -- Testing started completed.
+2026-10-20 22:07:36.370 xcodebuild[30559:7184927] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-20 22:07:36.370 xcodebuild[30559:7184927] [MT] IDETestOperationsObserverDebug: 38.591 sec, +38.591 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/rd02-delivery.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "71B3285F-65A4-43CF-8CD9-D28129ECE554",
+        "deviceName" : "RD-02 横屏 iPad A16",
+        "exportedFileName" : "82AE9422-094E-48BF-A5BE-B609148424AD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-04-icons-fonts_0_1CBAE7B8-B77A-49EC-B498-9AAB0E0BE9FE.png",
+        "timestamp" : 1792505502.192
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "71B3285F-65A4-43CF-8CD9-D28129ECE554",
+        "deviceName" : "RD-02 横屏 iPad A16",
+        "exportedFileName" : "360B5E62-4D6A-4538-BDE4-5F399C250A12.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-03-gradients_0_100D6055-48DF-4AA2-9383-9A3A16F8F6D9.png",
+        "timestamp" : 1792505500.86
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "71B3285F-65A4-43CF-8CD9-D28129ECE554",
+        "deviceName" : "RD-02 横屏 iPad A16",
+        "exportedFileName" : "79A0CE87-C7F0-4B73-9D46-2559F86B4871.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-02-step-callback_0_86C3D69B-DA29-4587-9F5E-52C5140CAE18.png",
+        "timestamp" : 1792505500.312
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "71B3285F-65A4-43CF-8CD9-D28129ECE554",
+        "deviceName" : "RD-02 横屏 iPad A16",
+        "exportedFileName" : "E5EA8285-86A4-4723-BAA2-A177FBA0AAB3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "rd02-01-components_0_A757F5B6-36AD-4A46-8969-3A11A51A523B.png",
+        "timestamp" : 1792505499.682
+      }
+    ],
+    "testIdentifier" : "ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages()",
+    "testIdentifierURL" : "test://com.apple.xcode/ChinaTextbookStudy/ChinaTextbookStudyUITests/ClayGalleryUITests/testAnchorsStepStatesCallbackAndGalleryPages"
+  }
+]

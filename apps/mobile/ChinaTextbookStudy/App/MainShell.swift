@@ -44,6 +44,18 @@ struct MainShell: View {
     }
 
     var body: some View {
+        #if DEBUG
+        if path.last == .clayGallery {
+            ClayGallery { path.removeLast() }
+        } else {
+            applicationShell
+        }
+        #else
+        applicationShell
+        #endif
+    }
+
+    private var applicationShell: some View {
         Group {
             if hSize == .regular {
                 regularLayout
@@ -311,6 +323,10 @@ struct RouteView: View {
 
     var body: some View {
         switch route {
+        #if DEBUG
+        case .clayGallery:
+            ClayGallery { path.removeLast() }
+        #endif
         case .bookList(let grade):
             BookListView(grade: grade, siteIndex: siteIndex, path: $path)
         case .bookDetail(let bookId):

@@ -1,0 +1,471 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj -scheme ChinaTextbookStudy -destination "platform=iOS Simulator,id=78A869DE-9049-44E7-A120-0FB8E605672B" -derivedDataPath /tmp/rd02-baseline-derived -parallel-testing-enabled NO "-only-testing:ChinaTextbookStudyTests/PRFixTests/testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable" "-only-testing:ChinaTextbookStudyUITests/CosmeticsUITests/testUnaffordableCosmeticIsNotGranted" "-only-testing:ChinaTextbookStudyUITests/LessonFlowUITests/testAnsweringShowsFeedbackPanel" "-only-testing:ChinaTextbookStudyUITests/LessonFlowUITests/testQuittingMidLessonAsksForConfirmation" "-only-testing:ChinaTextbookStudyUITests/ScreenshotTests/testCaptureMainScreens" -resultBundlePath /tmp/rd02-baseline-failures.xcresult CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+Fetching from https://github.com/weichsel/ZIPFoundation (cached)
+
+Creating working copy of package ‘ZIPFoundation’
+
+Checking out 0.9.20 of package ‘ZIPFoundation’
+
+
+Resolved source packages:
+  ZIPFoundation: https://github.com/weichsel/ZIPFoundation @ 0.9.20
+
+Writing result bundle at path:
+	/tmp/rd02-baseline-failures.xcresult
+
+2026-10-20 21:44:45.051700+0800 ChinaTextbookStudy[82648:7008865] [Connection] Unable to find entitlement for KVS store
+2026-10-20 21:44:45.052166+0800 ChinaTextbookStudy[82648:7008865] [Connection] BUG IN CLIENT OF KVS: Trying to initialize NSUbiquitousKeyValueStore without a store identifier. Please specify your store identifier in the 'com.apple.developer.ubiquity-kvstore-identifier' entitlement.
+2026-10-20 21:44:45.176469+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+Test Suite 'Selected tests' started at 2026-10-20 21:44:51.499.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 21:44:51.500.
+Test Suite 'PRFixTests' started at 2026-10-20 21:44:51.500.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' started.
+2026-10-20 21:44:51.559963+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:44:51.571441+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:44:51.575926+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:44:51.581996+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:44:51.583108+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+/tmp/rd02-baseline/apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift:347: error: -[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable] : XCTAssertTrue failed
+2026-10-20 21:44:51.882920+0800 ChinaTextbookStudy[82648:7008865] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' failed (0.435 seconds).
+Test Suite 'PRFixTests' failed at 2026-10-20 21:44:51.936.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.435 (0.436) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' failed at 2026-10-20 21:44:51.936.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.435 (0.436) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:44:51.936.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.435 (0.437) seconds
+2026-10-20 21:44:56.217688+0800 ChinaTextbookStudyUITests-Runner[82997:7010779] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-20 21:44:56.985.
+Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-20 21:44:56.987.
+Test Suite 'CosmeticsUITests' started at 2026-10-20 21:44:56.988.
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' started.
+    t =     0.01s Start Test at 2026-10-20 21:44:56.998
+    t =     1.43s Set Up
+    t =     1.44s Open com.example.ChinaTextbookStudy
+    t =     1.44s     Launch com.example.ChinaTextbookStudy
+2026-10-20 21:44:59.946 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 21:44:59.948 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.53s         Setting up automation session
+    t =     7.83s         Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.04s Tap "tab-shop" Button
+    t =    13.04s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.05s     Find the "tab-shop" Button
+    t =    13.52s     Check for interrupting elements affecting "tab-shop" Button
+    t =    13.96s     Synthesize event
+    t =    14.59s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    15.38s Waiting 5.0s for "商店" NavigationBar to exist
+    t =    16.45s     Checking `Expect predicate `existsNoRetry == 1` for object "商店" NavigationBar`
+    t =    16.46s         Checking existence of `"商店" NavigationBar`
+    t =    16.56s Tap "cosmetic-skin_graduate" Button
+    t =    16.56s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.57s     Find the "cosmetic-skin_graduate" Button
+    t =    16.61s     Check for interrupting elements affecting "cosmetic-skin_graduate" Button
+    t =    16.68s     Synthesize event
+    t =    17.01s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    17.16s Waiting 3.0s for "cosmetic-confirm-buy" Button to exist
+    t =    18.24s     Checking `Expect predicate `existsNoRetry == 1` for object "cosmetic-confirm-buy" Button`
+    t =    18.25s         Checking existence of `"cosmetic-confirm-buy" Button`
+    t =    18.34s Tap "cosmetic-confirm-buy" Button
+    t =    18.34s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.34s     Find the "cosmetic-confirm-buy" Button
+    t =    18.39s     Check for interrupting elements affecting "cosmetic-confirm-buy" Button
+    t =    18.47s     Synthesize event
+    t =    18.78s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    19.32s Waiting 3.0s for "cosmetic-skin_astronaut" Button to exist
+    t =    20.40s     Checking `Expect predicate `existsNoRetry == 1` for object "cosmetic-skin_astronaut" Button`
+    t =    20.40s         Checking existence of `"cosmetic-skin_astronaut" Button`
+    t =    20.48s Tap "cosmetic-skin_astronaut" Button
+    t =    20.48s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    20.49s     Find the "cosmetic-skin_astronaut" Button
+    t =    20.56s     Check for interrupting elements affecting "cosmetic-skin_astronaut" Button
+    t =    20.60s     Synthesize event
+    t =    20.66s         Failed: Failed to compute hit point for Button, {{790.0, 480.0}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame
+    t =    20.67s         Requesting snapshot of accessibility hierarchy for app with pid 83376
+    t =    21.81s     Retrying `Tap "cosmetic-skin_astronaut" Button` (attempt #2)
+    t =    21.81s         Wait for com.example.ChinaTextbookStudy to idle
+    t =    21.81s         Find the "cosmetic-skin_astronaut" Button
+    t =    21.87s         Check for interrupting elements affecting "cosmetic-skin_astronaut" Button
+    t =    21.91s         Synthesize event
+    t =    21.97s             Failed: Failed to compute hit point for Button, {{790.0, 424.6}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame
+    t =    21.97s             Requesting snapshot of accessibility hierarchy for app with pid 83376
+    t =    23.07s     Retrying `Tap "cosmetic-skin_astronaut" Button` (attempt #3)
+    t =    23.07s         Wait for com.example.ChinaTextbookStudy to idle
+    t =    23.07s         Find the "cosmetic-skin_astronaut" Button
+    t =    23.13s         Check for interrupting elements affecting "cosmetic-skin_astronaut" Button
+    t =    23.16s         Synthesize event
+    t =    23.20s             Failed: Failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame
+    t =    23.20s             Requesting snapshot of accessibility hierarchy for app with pid 83376
+    t =    23.30s Requesting snapshot of accessibility hierarchy for app with pid 83376
+<unknown>:0: error: -[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted] : Failed to failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '聪聪、宇航员头盔、500': Activation point invalid and no suggested hit points based on element frame. (Underlying Error: Activation point invalid and no suggested hit points based on element frame)
+    t =    23.46s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.CosmeticsUITests testUnaffordableCosmeticIsNotGranted]' failed (24.076 seconds).
+Test Suite 'CosmeticsUITests' failed at 2026-10-20 21:45:21.070.
+	 Executed 1 test, with 1 failure (0 unexpected) in 24.076 (24.082) seconds
+Test Suite 'LessonFlowUITests' started at 2026-10-20 21:45:21.070.
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' started.
+    t =     0.00s Start Test at 2026-10-20 21:45:21.071
+    t =     0.03s Set Up
+    t =     0.03s Open com.example.ChinaTextbookStudy
+    t =     0.03s     Launch com.example.ChinaTextbookStudy
+    t =     0.03s         Terminate com.example.ChinaTextbookStudy:83376
+2026-10-20 21:45:22.186 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 21:45:22.186 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.76s         Setting up automation session
+    t =     3.91s         Wait for com.example.ChinaTextbookStudy to idle
+    t =     7.41s Waiting 15.0s for "lesson-row-g1up-u1-kp1" Button to exist
+    t =     8.48s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-row-g1up-u1-kp1" Button`
+    t =     8.49s         Checking existence of `"lesson-row-g1up-u1-kp1" Button`
+    t =     8.87s Tap "lesson-row-g1up-u1-kp1" Button
+    t =     8.87s     Wait for com.example.ChinaTextbookStudy to idle
+    t =     8.87s     Find the "lesson-row-g1up-u1-kp1" Button
+    t =     8.93s     Check for interrupting elements affecting "lesson-row-g1up-u1-kp1" Button
+    t =     9.09s     Synthesize event
+    t =     9.44s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    10.02s Waiting 5.0s for "lesson-start" Button to exist
+    t =    11.09s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-start" Button`
+    t =    11.09s         Checking existence of `"lesson-start" Button`
+    t =    11.18s Tap "lesson-start" Button
+    t =    11.18s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    11.19s     Find the "lesson-start" Button
+    t =    11.23s     Check for interrupting elements affecting "lesson-start" Button
+    t =    11.27s     Synthesize event
+    t =    11.59s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    11.79s Checking existence of `"intro-start" Button`
+    t =    12.17s Checking existence of `"intro-next" Button`
+    t =    12.19s Checking existence of `"intro-start" Button`
+    t =    12.19s Checking existence of `"intro-next" Button`
+    t =    12.20s Tap "intro-next" Button
+    t =    12.20s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    12.21s     Find the "intro-next" Button
+    t =    12.21s     Check for interrupting elements affecting "intro-next" Button
+    t =    12.23s     Synthesize event
+    t =    12.52s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    12.62s Checking existence of `"intro-start" Button`
+    t =    12.65s Checking existence of `"intro-next" Button`
+    t =    12.67s Tap "intro-next" Button
+    t =    12.67s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    12.68s     Find the "intro-next" Button
+    t =    12.69s     Check for interrupting elements affecting "intro-next" Button
+    t =    12.75s     Synthesize event
+    t =    13.05s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.06s Checking existence of `"intro-start" Button`
+    t =    13.07s Checking existence of `"intro-next" Button`
+    t =    13.09s Tap "intro-next" Button
+    t =    13.09s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.09s     Find the "intro-next" Button
+    t =    13.10s     Check for interrupting elements affecting "intro-next" Button
+    t =    13.12s     Synthesize event
+    t =    13.41s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.41s Checking existence of `"intro-start" Button`
+    t =    13.42s Tap "intro-start" Button
+    t =    13.42s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.43s     Find the "intro-start" Button
+    t =    13.44s     Check for interrupting elements affecting "intro-start" Button
+    t =    13.45s     Synthesize event
+    t =    13.75s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    14.10s Waiting 8.0s for "检查答案" Button to exist
+    t =    15.20s     Checking `Expect predicate `existsNoRetry == 1` for object "检查答案" Button`
+    t =    15.20s         Checking existence of `"检查答案" Button`
+    t =    15.25s Waiting 3.0s for "tf-对" Button to exist
+    t =    16.32s     Checking `Expect predicate `existsNoRetry == 1` for object "tf-对" Button`
+    t =    16.33s         Checking existence of `"tf-对" Button`
+    t =    16.36s Tap "tf-对" Button
+    t =    16.36s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.36s     Find the "tf-对" Button
+    t =    16.37s     Check for interrupting elements affecting "tf-对" Button
+    t =    16.41s     Synthesize event
+    t =    16.71s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.72s Tap "检查答案" Button
+    t =    16.72s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.73s     Find the "检查答案" Button
+    t =    16.75s     Check for interrupting elements affecting "检查答案" Button
+    t =    16.88s     Synthesize event
+    t =    17.19s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    17.30s Waiting 5.0s for "继续" Button to exist
+    t =    18.37s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    18.37s         Checking existence of `"继续" Button`
+    t =    18.43s         Capturing element debug description
+    t =    19.39s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    19.39s         Checking existence of `"继续" Button`
+    t =    19.43s         Capturing element debug description
+    t =    20.39s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    20.39s         Checking existence of `"继续" Button`
+    t =    20.48s         Capturing element debug description
+    t =    21.33s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    21.33s         Checking existence of `"继续" Button`
+    t =    21.43s         Capturing element debug description
+    t =    22.30s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    22.31s         Checking existence of `"继续" Button`
+    t =    22.35s         Capturing element debug description
+    t =    22.36s     Checking existence of `"继续" Button`
+    t =    22.38s Collecting debug information to assist test failure triage
+    t =    22.38s     Requesting snapshot of accessibility hierarchy for app with pid 84219
+/tmp/rd02-baseline/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:106: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel] : XCTAssertTrue failed - feedback panel did not appear after checking a correct answer
+    t =    22.67s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testAnsweringShowsFeedbackPanel]' failed (23.429 seconds).
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' started.
+    t =     0.00s Start Test at 2026-10-20 21:45:44.505
+    t =     0.19s Set Up
+    t =     0.19s Open com.example.ChinaTextbookStudy
+    t =     0.20s     Launch com.example.ChinaTextbookStudy
+    t =     0.20s         Terminate com.example.ChinaTextbookStudy:84219
+2026-10-20 21:45:45.845 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 21:45:45.848 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     3.73s         Setting up automation session
+    t =     8.56s         Wait for com.example.ChinaTextbookStudy to idle
+    t =    11.75s Waiting 15.0s for "lesson-row-g1up-u1-kp1" Button to exist
+    t =    12.82s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-row-g1up-u1-kp1" Button`
+    t =    12.82s         Checking existence of `"lesson-row-g1up-u1-kp1" Button`
+    t =    12.99s Tap "lesson-row-g1up-u1-kp1" Button
+    t =    12.99s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    13.00s     Find the "lesson-row-g1up-u1-kp1" Button
+    t =    13.07s     Check for interrupting elements affecting "lesson-row-g1up-u1-kp1" Button
+    t =    13.14s     Synthesize event
+    t =    13.48s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    14.38s Waiting 5.0s for "lesson-start" Button to exist
+    t =    15.47s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-start" Button`
+    t =    15.48s         Checking existence of `"lesson-start" Button`
+    t =    16.20s Tap "lesson-start" Button
+    t =    16.20s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.22s     Find the "lesson-start" Button
+    t =    16.28s     Check for interrupting elements affecting "lesson-start" Button
+    t =    16.58s     Synthesize event
+    t =    16.94s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    17.43s Checking existence of `"intro-start" Button`
+    t =    18.00s Checking existence of `"intro-next" Button`
+    t =    18.01s Checking existence of `"intro-start" Button`
+    t =    18.06s Checking existence of `"intro-next" Button`
+    t =    18.08s Tap "intro-next" Button
+    t =    18.08s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.08s     Find the "intro-next" Button
+    t =    18.10s     Check for interrupting elements affecting "intro-next" Button
+    t =    18.14s     Synthesize event
+    t =    18.44s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.44s Checking existence of `"intro-start" Button`
+    t =    18.45s Checking existence of `"intro-next" Button`
+    t =    18.46s Tap "intro-next" Button
+    t =    18.46s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.47s     Find the "intro-next" Button
+    t =    18.51s     Check for interrupting elements affecting "intro-next" Button
+    t =    18.53s     Synthesize event
+    t =    18.83s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.84s Checking existence of `"intro-start" Button`
+    t =    20.45s Checking existence of `"intro-next" Button`
+    t =    20.48s Tap "intro-next" Button
+    t =    20.48s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    20.49s     Find the "intro-next" Button
+    t =    20.76s     Check for interrupting elements affecting "intro-next" Button
+    t =    20.79s     Synthesize event
+    t =    21.10s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    21.11s Checking existence of `"intro-start" Button`
+    t =    21.11s Tap "intro-start" Button
+    t =    21.11s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    21.12s     Find the "intro-start" Button
+    t =    21.15s     Check for interrupting elements affecting "intro-start" Button
+    t =    21.20s     Synthesize event
+    t =    21.50s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    22.34s Waiting 8.0s for "检查答案" Button to exist
+    t =    23.40s     Checking `Expect predicate `existsNoRetry == 1` for object "检查答案" Button`
+    t =    23.41s         Checking existence of `"检查答案" Button`
+    t =    23.50s Tap "tf-对" Button
+    t =    23.50s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    23.51s     Find the "tf-对" Button
+    t =    23.54s     Check for interrupting elements affecting "tf-对" Button
+    t =    23.59s     Synthesize event
+    t =    23.98s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    24.23s Tap "检查答案" Button
+    t =    24.23s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    24.23s     Find the "检查答案" Button
+    t =    24.25s     Check for interrupting elements affecting "检查答案" Button
+    t =    24.43s     Synthesize event
+    t =    24.75s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    25.03s Waiting 5.0s for "继续" Button to exist
+    t =    26.04s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    26.05s         Checking existence of `"继续" Button`
+    t =    26.96s         Capturing element debug description
+    t =    27.06s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    27.06s         Checking existence of `"继续" Button`
+    t =    27.09s         Capturing element debug description
+    t =    28.04s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    28.04s         Checking existence of `"继续" Button`
+    t =    28.23s         Capturing element debug description
+    t =    29.10s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    29.10s         Checking existence of `"继续" Button`
+    t =    30.37s         Capturing element debug description
+    t =    30.37s     Checking existence of `"继续" Button`
+    t =    31.13s Collecting debug information to assist test failure triage
+    t =    31.13s     Requesting snapshot of accessibility hierarchy for app with pid 84571
+/tmp/rd02-baseline/apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift:127: error: -[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation] : XCTAssertTrue failed
+    t =    31.31s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.LessonFlowUITests testQuittingMidLessonAsksForConfirmation]' failed (35.214 seconds).
+Test Suite 'LessonFlowUITests' failed at 2026-10-20 21:46:19.726.
+	 Executed 2 tests, with 2 failures (0 unexpected) in 58.643 (58.656) seconds
+Test Suite 'ScreenshotTests' started at 2026-10-20 21:46:19.727.
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' started.
+    t =     0.00s Start Test at 2026-10-20 21:46:19.730
+    t =     0.17s Set Up
+    t =     0.17s Open com.example.ChinaTextbookStudy
+    t =     0.17s     Launch com.example.ChinaTextbookStudy
+    t =     0.17s         Terminate com.example.ChinaTextbookStudy:84571
+2026-10-20 21:46:23.490 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-10-20 21:46:23.491 xcodebuild[80640:7002443] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     5.45s         Setting up automation session
+    t =    10.38s         Wait for com.example.ChinaTextbookStudy to idle
+    t =    12.67s Waiting 15.0s for "lesson-row-g1up-u1-kp1" Button to exist
+    t =    13.70s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-row-g1up-u1-kp1" Button`
+    t =    13.70s         Checking existence of `"lesson-row-g1up-u1-kp1" Button`
+    t =    14.04s Added attachment named '01-home-path'
+    t =    14.04s Tap "lesson-row-g1up-u1-kp1" Button
+    t =    14.04s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    14.04s     Find the "lesson-row-g1up-u1-kp1" Button
+    t =    14.12s     Check for interrupting elements affecting "lesson-row-g1up-u1-kp1" Button
+    t =    14.15s     Synthesize event
+    t =    14.47s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    16.25s Waiting 5.0s for "lesson-start" Button to exist
+    t =    17.31s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-start" Button`
+    t =    17.31s         Checking existence of `"lesson-start" Button`
+    t =    17.42s Added attachment named '02-start-popup'
+    t =    17.42s Tap "lesson-start" Button
+    t =    17.42s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    17.43s     Find the "lesson-start" Button
+    t =    17.54s     Check for interrupting elements affecting "lesson-start" Button
+    t =    17.59s     Synthesize event
+    t =    17.90s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    18.12s Waiting 3.0s for "intro-next" Button to exist
+    t =    19.14s     Checking `Expect predicate `existsNoRetry == 1` for object "intro-next" Button`
+    t =    19.14s         Checking existence of `"intro-next" Button`
+    t =    19.24s Added attachment named '02b-knowledge-intro'
+    t =    19.24s Checking existence of `"intro-start" Button`
+    t =    19.24s Checking existence of `"intro-next" Button`
+    t =    19.25s Checking existence of `"intro-start" Button`
+    t =    19.27s Checking existence of `"intro-next" Button`
+    t =    19.27s Tap "intro-next" Button
+    t =    19.27s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    19.27s     Find the "intro-next" Button
+    t =    19.28s     Check for interrupting elements affecting "intro-next" Button
+    t =    19.30s     Synthesize event
+    t =    19.60s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    19.61s Checking existence of `"intro-start" Button`
+    t =    19.62s Checking existence of `"intro-next" Button`
+    t =    19.63s Tap "intro-next" Button
+    t =    19.63s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    19.63s     Find the "intro-next" Button
+    t =    19.65s     Check for interrupting elements affecting "intro-next" Button
+    t =    19.69s     Synthesize event
+    t =    19.99s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    21.84s Checking existence of `"intro-start" Button`
+    t =    22.03s Checking existence of `"intro-next" Button`
+    t =    22.17s Tap "intro-next" Button
+    t =    22.17s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    22.17s     Find the "intro-next" Button
+    t =    22.20s     Check for interrupting elements affecting "intro-next" Button
+    t =    22.26s     Synthesize event
+    t =    22.59s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    22.60s Checking existence of `"intro-start" Button`
+    t =    22.61s Tap "intro-start" Button
+    t =    22.61s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    22.69s     Find the "intro-start" Button
+    t =    22.70s     Check for interrupting elements affecting "intro-start" Button
+    t =    22.75s     Synthesize event
+    t =    23.05s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    23.75s Waiting 8.0s for "检查答案" Button to exist
+    t =    24.84s     Checking `Expect predicate `existsNoRetry == 1` for object "检查答案" Button`
+    t =    24.84s         Checking existence of `"检查答案" Button`
+    t =    24.98s Added attachment named '03-lesson-question'
+    t =    24.98s Tap "tf-对" Button
+    t =    24.98s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    24.98s     Find the "tf-对" Button
+    t =    25.02s     Check for interrupting elements affecting "tf-对" Button
+    t =    25.05s     Synthesize event
+    t =    25.35s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    25.35s Tap "检查答案" Button
+    t =    25.35s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    25.36s     Find the "检查答案" Button
+    t =    25.37s     Check for interrupting elements affecting "检查答案" Button
+    t =    25.38s     Synthesize event
+    t =    25.67s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    25.67s Waiting 5.0s for "继续" Button to exist
+    t =    26.73s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    26.73s         Checking existence of `"继续" Button`
+    t =    26.75s         Capturing element debug description
+    t =    27.69s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    27.69s         Checking existence of `"继续" Button`
+    t =    27.71s         Capturing element debug description
+    t =    28.77s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    28.77s         Checking existence of `"继续" Button`
+    t =    28.80s         Capturing element debug description
+    t =    29.77s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    29.77s         Checking existence of `"继续" Button`
+    t =    29.79s         Capturing element debug description
+    t =    30.68s     Checking `Expect predicate `existsNoRetry == 1` for object "继续" Button`
+    t =    30.68s         Checking existence of `"继续" Button`
+    t =    30.71s         Capturing element debug description
+    t =    30.71s     Checking existence of `"继续" Button`
+    t =    30.73s Collecting debug information to assist test failure triage
+    t =    30.73s     Requesting snapshot of accessibility hierarchy for app with pid 85845
+/tmp/rd02-baseline/apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift:36: error: -[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens] : XCTAssertTrue failed
+    t =    30.81s Added attachment named '04-lesson-feedback'
+    t =    30.81s Tap "关闭" Button
+    t =    30.81s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    30.81s     Find the "关闭" Button
+    t =    30.82s     Check for interrupting elements affecting "xmark" Button
+    t =    30.84s     Synthesize event
+    t =    31.15s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    31.15s Waiting 3.0s for "lesson-quit" Button to exist
+    t =    32.22s     Checking `Expect predicate `existsNoRetry == 1` for object "lesson-quit" Button`
+    t =    32.22s         Checking existence of `"lesson-quit" Button`
+    t =    32.24s Tap "lesson-quit" Button
+    t =    32.24s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    32.24s     Find the "lesson-quit" Button
+    t =    32.26s     Check for interrupting elements affecting "lesson-quit" Button
+    t =    32.28s     Synthesize event
+    t =    32.57s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    32.95s Waiting 8.0s for "tab-review" Button to exist
+    t =    34.02s     Checking `Expect predicate `existsNoRetry == 1` for object "tab-review" Button`
+    t =    34.02s         Checking existence of `"tab-review" Button`
+    t =    34.09s Tap "tab-review" Button
+    t =    34.09s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    34.10s     Find the "tab-review" Button
+    t =    34.13s     Check for interrupting elements affecting "tab-review" Button
+    t =    34.22s     Synthesize event
+    t =    34.52s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    34.63s Waiting 4.0s for "错题本" NavigationBar to exist
+    t =    35.71s     Checking `Expect predicate `existsNoRetry == 1` for object "错题本" NavigationBar`
+    t =    35.71s         Checking existence of `"错题本" NavigationBar`
+    t =    35.95s Added attachment named '05-review'
+    t =    35.95s Tap "tab-shop" Button
+    t =    35.95s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    35.95s     Find the "tab-shop" Button
+    t =    36.10s     Check for interrupting elements affecting "tab-shop" Button
+    t =    36.20s     Synthesize event
+    t =    36.65s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    36.85s Waiting 4.0s for "商店" NavigationBar to exist
+    t =    37.93s     Checking `Expect predicate `existsNoRetry == 1` for object "商店" NavigationBar`
+    t =    37.93s         Checking existence of `"商店" NavigationBar`
+    t =    38.04s Added attachment named '06-shop'
+    t =    38.04s Tap "tab-profile" Button
+    t =    38.04s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    38.04s     Find the "tab-profile" Button
+    t =    38.08s     Check for interrupting elements affecting "tab-profile" Button
+    t =    38.12s     Synthesize event
+    t =    38.41s     Wait for com.example.ChinaTextbookStudy to idle
+    t =    38.63s Waiting 4.0s for "我的" NavigationBar to exist
+    t =    39.70s     Checking `Expect predicate `existsNoRetry == 1` for object "我的" NavigationBar`
+    t =    39.71s         Checking existence of `"我的" NavigationBar`
+    t =    39.84s Added attachment named '07-profile'
+    t =    39.84s Tear Down
+Test Case '-[ChinaTextbookStudyUITests.ScreenshotTests testCaptureMainScreens]' failed (40.225 seconds).
+Test Suite 'ScreenshotTests' failed at 2026-10-20 21:46:59.956.
+	 Executed 1 test, with 1 failure (0 unexpected) in 40.225 (40.229) seconds
+Test Suite 'ChinaTextbookStudyUITests.xctest' failed at 2026-10-20 21:46:59.957.
+	 Executed 4 tests, with 4 failures (0 unexpected) in 122.944 (122.970) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:46:59.959.
+	 Executed 4 tests, with 4 failures (0 unexpected) in 122.944 (122.974) seconds
+** BUILD INTERRUPTED **
