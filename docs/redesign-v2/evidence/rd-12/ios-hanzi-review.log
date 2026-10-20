@@ -1,0 +1,43 @@
+** BUILD SUCCEEDED **
+
+Test Suite 'Selected tests' started at 2026-10-20 22:53:01.274.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 22:53:01.275.
+Test Suite 'HanziDecodingTests' started at 2026-10-20 22:53:01.275.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testAllSeedCharactersDecodeAndMergeSharedStrokes]' started.
+RD-12：实际 seed 中 100 个字卡全部解码并合并共享笔顺。
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testAllSeedCharactersDecodeAndMergeSharedStrokes]' passed (2.204 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testCorruptStrokeFileAndMissingLicenseDegradeToEmpty]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testCorruptStrokeFileAndMissingLicenseDegradeToEmpty]' passed (2.157 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingMalformedOrUnsafeRequestsReturnNil]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingMalformedOrUnsafeRequestsReturnNil]' passed (2.152 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingStrokeFileKeepsCharacterWithEmptyStrokes]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testMissingStrokeFileKeepsCharacterWithEmptyStrokes]' passed (2.159 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testUnknownSceneKeepsCharacterAndSharedStrokes]' started.
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testUnknownSceneKeepsCharacterAndSharedStrokes]' passed (2.108 seconds).
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testWithoutRecordingsRegistersTextAndStartsSystemTTS]' started.
+2026-10-20 22:53:14.077257+0800 ChinaTextbookStudy[2559:7436033] [plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0x6000002e7f80> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+RD-12：无任何试点录音，山/拼音/组词/字源均可回退，已启动系统 TTS 队列。
+2026-10-20 22:53:14.254499+0800 ChinaTextbookStudy[2559:7436300] [asset] Failed to get sandbox extensions
+2026-10-20 22:53:14.288526+0800 ChinaTextbookStudy[2559:7436300] [catalog] Query for com.apple.MobileAsset.VoiceServicesVocalizerVoice failed: 2
+2026-10-20 22:53:14.288762+0800 ChinaTextbookStudy[2559:7436305] [catalog] Query for com.apple.MobileAsset.VoiceServicesVocalizerVoice failed: 2
+2026-10-20 22:53:14.290761+0800 ChinaTextbookStudy[2559:7436300] [asset] #FactoryInstall Unable to query results, error: 5
+2026-10-20 22:53:14.290868+0800 ChinaTextbookStudy[2559:7436305] [asset] #FactoryInstall Unable to query results, error: 5
+Test Case '-[ChinaTextbookStudyTests.HanziDecodingTests testWithoutRecordingsRegistersTextAndStartsSystemTTS]' passed (2.260 seconds).
+Test Suite 'HanziDecodingTests' passed at 2026-10-20 22:53:14.317.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 13.041 (13.042) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' passed at 2026-10-20 22:53:14.317.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 13.041 (13.043) seconds
+Test Suite 'Selected tests' passed at 2026-10-20 22:53:14.318.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 13.041 (13.043) seconds
+2026-10-20 22:53:14.319348+0800 ChinaTextbookStudy[2559:7436305] [catalog] Query for com.apple.MobileAsset.VoiceServices.GryphonVoice failed: 2
+2026-10-20 22:53:14.319714+0800 ChinaTextbookStudy[2559:7436300] [catalog] Query for com.apple.MobileAsset.VoiceServices.GryphonVoice failed: 2
+2026-10-20 22:53:14.616 xcodebuild[1877:7432932] [MT] IDETestOperationsObserverDebug: 23.967 elapsed -- Testing started completed.
+2026-10-20 22:53:14.616 xcodebuild[1877:7432932] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-20 22:53:14.616 xcodebuild[1877:7432932] [MT] IDETestOperationsObserverDebug: 23.967 sec, +23.967 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/rd12-review-hanzi.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

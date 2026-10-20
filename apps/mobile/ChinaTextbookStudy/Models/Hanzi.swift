@@ -39,11 +39,22 @@ struct HanziWord: Codable {
     let status: HanziReviewStatus
 }
 
+struct HanziOriginForm: Codable {
+    enum Script: String, Codable {
+        case jiaguwen, jinwen, xiaozhuan
+    }
+
+    let script: Script
+    let svgPath: String
+    let source: String
+    let license: String
+}
+
 struct HanziOrigin: Codable {
     let kind: String
     let explanation: String
-    /// D6：v1 仅接受空数组，不引入古文字图形。
-    let forms: [String]
+    /// 预留字形格式；D6：v1 不分发古文字字形，数据保持空数组。
+    let forms: [HanziOriginForm]
     let source: String
     let license: String
     let status: HanziReviewStatus
@@ -109,5 +120,29 @@ struct HanziCharacter: Codable {
         case char, status, pinyin, pinyinAlternates, strokeCount, strokeNames
         case radical, structure, words, scene, sceneCaption, origin, distractors
         case audio, source, license, unihan, reviewNotes
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        char = try container.decode(String.self, forKey: .char)
+        status = try container.decode(HanziReviewStatus.self, forKey: .status)
+        pinyin = try container.decode(String.self, forKey: .pinyin)
+        pinyinAlternates = try container.decode([String].self, forKey: .pinyinAlternates)
+        strokeCount = try container.decode(Int.self, forKey: .strokeCount)
+        strokeNames = try container.decode([String].self, forKey: .strokeNames)
+        radical = try container.decode(String.self, forKey: .radical)
+        structure = try container.decode(String.self, forKey: .structure)
+        words = try container.decode([HanziWord].self, forKey: .words)
+        // 新场景只降级为无场景，仍保留字卡及后续合并的笔顺。
+        let sceneID = try container.decodeIfPresent(String.self, forKey: .scene)
+        scene = sceneID.flatMap(HanziScene.init(rawValue:))
+        sceneCaption = try container.decodeIfPresent(String.self, forKey: .sceneCaption)
+        origin = try container.decodeIfPresent(HanziOrigin.self, forKey: .origin)
+        distractors = try container.decode(HanziDistractors.self, forKey: .distractors)
+        audio = try container.decode(HanziAudio.self, forKey: .audio)
+        source = try container.decode(String.self, forKey: .source)
+        license = try container.decode(String.self, forKey: .license)
+        unihan = try container.decode(HanziUnihan.self, forKey: .unihan)
+        reviewNotes = try container.decode([String].self, forKey: .reviewNotes)
     }
 }

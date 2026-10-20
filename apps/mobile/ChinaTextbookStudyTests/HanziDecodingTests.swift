@@ -50,6 +50,24 @@ final class HanziDecodingTests: XCTestCase {
         print("RD-12：实际 seed 中 100 个字卡全部解码并合并共享笔顺。")
     }
 
+    func testUnknownSceneKeepsCharacterAndSharedStrokes() throws {
+        let original = try XCTUnwrap(loader.loadHanziChar(bookId: "chinese-g1up", char: "山"))
+        XCTAssertEqual(original.scene, .mountains)
+        let file = loader.sandboxDataRoot.appendingPathComponent("hanzi/chinese-g1up/chars/5c71.json")
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: file)) as? [String: Any])
+        object["scene"] = "future-scene"
+        try JSONSerialization.data(withJSONObject: object).write(to: file)
+
+        let character = try XCTUnwrap(loader.loadHanziChar(bookId: "chinese-g1up", char: "山"))
+        XCTAssertNil(character.scene)
+        XCTAssertEqual(character.char, original.char)
+        XCTAssertEqual(character.pinyin, original.pinyin)
+        XCTAssertEqual(character.sceneCaption, original.sceneCaption)
+        XCTAssertEqual(character.origin?.explanation, original.origin?.explanation)
+        XCTAssertEqual(character.strokes.count, character.strokeCount)
+        XCTAssertEqual(character.strokeAttribution?.license, "Arphic Public License")
+    }
+
     func testMissingStrokeFileKeepsCharacterWithEmptyStrokes() throws {
         try FileManager.default.removeItem(at: loader.sandboxDataRoot.appendingPathComponent("hanzi/strokes/5c71.json"))
         let character = try XCTUnwrap(loader.loadHanziChar(bookId: "chinese-g1up", char: "山"))

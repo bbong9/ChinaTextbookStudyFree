@@ -32,11 +32,16 @@ export interface HanziWord {
   status: HanziReviewStatus;
 }
 
+export interface HanziOriginForm extends HanziAttribution {
+  script: "jiaguwen" | "jinwen" | "xiaozhuan";
+  svgPath: string;
+}
+
 export interface HanziOrigin extends HanziAttribution {
   kind: string;
   explanation: string;
-  /** D6：v1 不分发古文字字形。保留空数组契约供 RD-13 判断展示。 */
-  forms: never[];
+  /** 预留字形格式；D6：v1 不分发古文字字形，数据保持空数组。 */
+  forms: HanziOriginForm[];
   status: HanziReviewStatus;
 }
 
