@@ -10,10 +10,7 @@ final class LessonFlowUITests: XCTestCase {
     /// Launch in the hermetic UI-test state (no onboarding, seed book active).
     @MainActor
     private func launchApp() -> XCUIApplication {
-        let app = XCUIApplication()
-        app.launchArguments.append("-uitest")
-        app.launch()
-        return app
+        return launchShellApp()
     }
 
     /// The path *is* the home screen — the first seed lesson node must be there.
@@ -24,7 +21,6 @@ final class LessonFlowUITests: XCTestCase {
 
     @MainActor
     func testPathHomeOpensLessonViaStartPopup() throws {
-        try skipIfIPad()
         let app = launchApp()
 
         let node = firstNode(app)
@@ -54,7 +50,6 @@ final class LessonFlowUITests: XCTestCase {
     /// 「开始做题」后才见到题目；讲解看过一次后不再重复打断。
     @MainActor
     func testKnowledgeIntroShowsOnceBeforeFirstRun() throws {
-        try skipIfIPad()
         let app = launchApp()
 
         XCTAssertTrue(firstNode(app).waitForExistence(timeout: 15))
@@ -86,7 +81,6 @@ final class LessonFlowUITests: XCTestCase {
     /// Answering correctly must surface the feedback panel.
     @MainActor
     func testAnsweringShowsFeedbackPanel() throws {
-        try skipIfIPad()
         let app = launchApp()
 
         XCTAssertTrue(firstNode(app).waitForExistence(timeout: 15))
@@ -111,7 +105,6 @@ final class LessonFlowUITests: XCTestCase {
     /// 「继续学习」 on top, ghost 「退出」) before discarding progress.
     @MainActor
     func testQuittingMidLessonAsksForConfirmation() throws {
-        try skipIfIPad()
         let app = launchApp()
 
         XCTAssertTrue(firstNode(app).waitForExistence(timeout: 15))
@@ -143,7 +136,6 @@ final class LessonFlowUITests: XCTestCase {
     /// no hold-on overlay.
     @MainActor
     func testQuittingWithZeroProgressExitsDirectly() throws {
-        try skipIfIPad()
         let app = launchApp()
 
         XCTAssertTrue(firstNode(app).waitForExistence(timeout: 15))

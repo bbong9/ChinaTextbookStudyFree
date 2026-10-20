@@ -6,10 +6,7 @@ import XCTest
 final class ScreenshotTests: XCTestCase {
     @MainActor
     func testCaptureMainScreens() throws {
-        try skipIfIPad()
-        let app = XCUIApplication()
-        app.launchArguments.append("-uitest")
-        app.launch()
+        let app = launchShellApp()
 
         XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15),
                       "path home did not render")
@@ -41,20 +38,14 @@ final class ScreenshotTests: XCTestCase {
         app.buttons["关闭"].firstMatch.tap()
         XCTAssertTrue(app.buttons["lesson-quit"].firstMatch.waitForExistence(timeout: 3))
         app.buttons["lesson-quit"].firstMatch.tap()
-        XCTAssertTrue(app.buttons["tab-review"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.scrollViews["shell-legacy-routes"].waitForExistence(timeout: 8))
 
-        // Secondary tabs.
-        app.buttons["tab-review"].tap()
-        XCTAssertTrue(app.navigationBars["错题本"].waitForExistence(timeout: 4))
-        attach(name: "05-review")
-
-        app.buttons["tab-shop"].tap()
-        XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 4))
-        attach(name: "06-shop")
-
-        app.buttons["tab-profile"].tap()
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 4))
-        attach(name: "07-profile")
+        for (id, title) in [("review", "错题本"), ("shop", "商店"), ("profile", "我的")] {
+            openShellRoute(app, id)
+            assertShellTitle(app, title)
+            attach(name: "legacy-\(id)")
+            returnToShellHome(app)
+        }
     }
 
     @MainActor

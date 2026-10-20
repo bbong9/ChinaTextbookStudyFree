@@ -47,7 +47,7 @@ final class ProgressStore: ObservableObject {
             self.progress = fresh
             self.selectedGrade = 1
             self.activeBookId = "g1up"
-            self.hasCompletedOnboarding = true
+            self.hasCompletedOnboarding = !ProcessInfo.processInfo.arguments.contains("-uitest-onboarding")
             return
         }
         #endif

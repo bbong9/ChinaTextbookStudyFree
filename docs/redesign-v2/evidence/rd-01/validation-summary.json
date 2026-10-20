@@ -1,0 +1,132 @@
+{
+  "iphone16": {
+    "结果": "Passed",
+    "总数": 286,
+    "通过": 286,
+    "失败": 0,
+    "跳过": 0,
+    "设备": {
+      "architecture": "arm64",
+      "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+      "deviceName": "iPhone 16",
+      "modelName": "iPhone 16",
+      "osBuildNumber": "22G86",
+      "osVersion": "18.6",
+      "platform": "iOS Simulator"
+    },
+    "目标统计": {
+      "ChinaTextbookStudyTests": {
+        "通过": 264,
+        "失败": 0,
+        "失败测试": []
+      },
+      "ChinaTextbookStudyUITests": {
+        "通过": 22,
+        "失败": 0,
+        "失败测试": []
+      }
+    },
+    "UI测试": [
+      "ClayGalleryUITests.testAnchorsStepStatesCallbackAndGalleryPages",
+      "ClayGalleryUITests.testReduceMotionStopsGoButton",
+      "CosmeticsUITests.testBuyingCosmeticEquipsItAndPersists",
+      "CosmeticsUITests.testUnaffordableCosmeticIsNotGranted",
+      "LayoutUITests.testDarkAppearancePreferenceRenders",
+      "LayoutUITests.testGradeBrowsingAndBookSwitching",
+      "LayoutUITests.testProfileReachesAchievementsAndSettings",
+      "LayoutUITests.testProfileShowsQuestsAndWeeklyReport",
+      "LayoutUITests.testReviewEntryOpensRunnerWithMistake",
+      "LayoutUITests.testTemporaryEntrancesReachLegacyPages",
+      "LessonFlowUITests.testAnsweringShowsFeedbackPanel",
+      "LessonFlowUITests.testKnowledgeIntroShowsOnceBeforeFirstRun",
+      "LessonFlowUITests.testPathHomeOpensLessonViaStartPopup",
+      "LessonFlowUITests.testQuittingMidLessonAsksForConfirmation",
+      "LessonFlowUITests.testQuittingWithZeroProgressExitsDirectly",
+      "PetGalleryUITests.testPetsAccessoriesAndThreeRepeatableReactions",
+      "PetGalleryUITests.testReduceMotionStopsBreathingBlinkWaveAndReactions",
+      "ScreenshotTests.testCaptureMainScreens",
+      "ShellUITests.testAllFifteenPlaceholderRoutesOpenAndReturn",
+      "ShellUITests.testDebugGalleryOpensAndReturnsWithinShell",
+      "ShellUITests.testLaunchAndRotationStayLandscape",
+      "ShellUITests.testOnboardingAutomaticallyStartsFirstLessonOnce"
+    ],
+    "关键输出": [
+      "Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-21 11:20:11.327.",
+      "Test Suite 'ChinaTextbookStudyTests.xctest' passed at 2026-10-21 11:20:28.428.",
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-21 11:20:31.086.",
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' passed at 2026-10-21 11:29:40.680.",
+      "** TEST SUCCEEDED **"
+    ]
+  },
+  "se": {
+    "结果": "Passed",
+    "总数": 7,
+    "通过": 7,
+    "失败": 0,
+    "跳过": 0,
+    "设备": {
+      "architecture": "arm64",
+      "deviceId": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "deviceName": "iPhone SE (3rd gen)",
+      "modelName": "iPhone SE (3rd generation)",
+      "osBuildNumber": "22G86",
+      "osVersion": "18.6",
+      "platform": "iOS Simulator"
+    },
+    "目标统计": {
+      "ChinaTextbookStudyUITests": {
+        "通过": 7,
+        "失败": 0,
+        "失败测试": []
+      }
+    },
+    "UI测试": [
+      "LayoutUITests.testGradeBrowsingAndBookSwitching",
+      "LayoutUITests.testReviewEntryOpensRunnerWithMistake",
+      "LayoutUITests.testTemporaryEntrancesReachLegacyPages",
+      "ShellUITests.testAllFifteenPlaceholderRoutesOpenAndReturn",
+      "ShellUITests.testDebugGalleryOpensAndReturnsWithinShell",
+      "ShellUITests.testLaunchAndRotationStayLandscape",
+      "ShellUITests.testOnboardingAutomaticallyStartsFirstLessonOnce"
+    ],
+    "关键输出": [
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-21 11:31:53.119.",
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' passed at 2026-10-21 11:36:29.849.",
+      "** TEST SUCCEEDED **"
+    ]
+  },
+  "ipad": {
+    "结果": "Passed",
+    "总数": 4,
+    "通过": 4,
+    "失败": 0,
+    "跳过": 0,
+    "设备": {
+      "architecture": "arm64",
+      "deviceId": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+      "deviceName": "iPad (A16)",
+      "modelName": "iPad (A16)",
+      "osBuildNumber": "22G86",
+      "osVersion": "18.6",
+      "platform": "iOS Simulator"
+    },
+    "目标统计": {
+      "ChinaTextbookStudyUITests": {
+        "通过": 4,
+        "失败": 0,
+        "失败测试": []
+      }
+    },
+    "UI测试": [
+      "ShellUITests.testAllFifteenPlaceholderRoutesOpenAndReturn",
+      "ShellUITests.testDebugGalleryOpensAndReturnsWithinShell",
+      "ShellUITests.testLaunchAndRotationStayLandscape",
+      "ShellUITests.testOnboardingAutomaticallyStartsFirstLessonOnce"
+    ],
+    "关键输出": [
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' started at 2026-10-21 11:36:56.516.",
+      "Test Suite 'ChinaTextbookStudyUITests.xctest' passed at 2026-10-21 11:39:39.394.",
+      "** TEST SUCCEEDED **"
+    ]
+  }
+}

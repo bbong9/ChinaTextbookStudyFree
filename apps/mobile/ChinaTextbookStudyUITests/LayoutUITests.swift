@@ -1,169 +1,128 @@
 import XCTest
 
-/// Shell / layout coverage.
-/// iPhone runs exercise the compact NavigationStack + bottom tab bar;
-/// iPad runs exercise the NavigationSplitView sidebar.
+/// 旧页面仍可从横屏首页进入；保留原有功能回归，并采集 AC4 证据。
+/// RD-00 的完整可见性检查由 TestHelpers 统一提供，适配自绘页头和祖先滚动视口。
 final class LayoutUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
 
     @MainActor
-    private func launchApp(extraArgs: [String] = []) -> XCUIApplication {
-        let app = XCUIApplication()
-        app.launchArguments.append("-uitest")
-        app.launchArguments.append(contentsOf: extraArgs)
-        app.launch()
-        return app
-    }
-
-    @MainActor
-    private func attach(name: String) {
-        let att = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
-        att.name = name
-        att.lifetime = .keepAlways
-        add(att)
-    }
-
-    /// Every tab must be reachable from the bottom bar on compact width.
-    @MainActor
-    func testBottomTabBarReachesEveryTab() throws {
-        try skipIfIPad()
-        let app = launchApp()
-
-        XCTAssertTrue(app.buttons["tab-learn"].waitForExistence(timeout: 15),
-                      "bottom tab bar did not render")
-        attach(name: "shell-launch")
-
-        // Wave E1: 排行 tab（-uitest 零进度 → 未解锁引导页）。
-        app.buttons["tab-league"].tap()
-        XCTAssertTrue(app.staticTexts["排行榜还没解锁"].waitForExistence(timeout: 4),
-                      "league tab did not open the locked guide")
-
-        app.buttons["tab-review"].tap()
-        XCTAssertTrue(app.navigationBars["错题本"].waitForExistence(timeout: 4),
-                      "review tab did not open 错题本")
-
-        app.buttons["tab-shop"].tap()
-        XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 4),
-                      "shop tab did not open 商店")
-
-        app.buttons["tab-profile"].tap()
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 4),
-                      "profile tab did not open 我的")
-
-        // Back to the path.
-        app.buttons["tab-learn"].tap()
-        XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 6),
-                      "learn tab did not return to the path")
-    }
-
-    /// isHittable 对底栏后方的行也可能为真；整行进入导航栏和底栏之间才点击。
-    @MainActor
-    private func revealAndTap(_ app: XCUIApplication, _ element: XCUIElement, tries: Int = 6) {
-        let scrollView = app.scrollViews.firstMatch
-        func visibleContentFrame() -> CGRect {
-            let top = app.navigationBars.firstMatch.frame.maxY
-            let bottom = app.buttons["tab-learn"].frame.minY
-            return scrollView.frame.intersection(CGRect(
-                x: app.frame.minX, y: top, width: app.frame.width, height: max(0, bottom - top)
-            ))
+    func testTemporaryEntrancesReachLegacyPages() {
+        let app = launchShellApp()
+        for (id, title) in [("league", "排行"), ("review", "错题本"), ("shop", "商店"),
+                            ("profile", "我的"), ("achievements", "成就墙")] {
+            openShellRoute(app, id)
+            assertShellTitle(app, title)
+            XCTAssertTrue(app.buttons["shell-back"].isHittable)
+            switch id {
+            case "league":
+                XCTAssertTrue(app.staticTexts["排行榜还没解锁"].exists)
+            case "review":
+                XCTAssertTrue(app.staticTexts["还没有错题"].exists)
+            case "shop":
+                revealAndTap(app, app.buttons["cosmetic-skin_graduate"])
+                revealAndTap(app, app.buttons["cosmetic-confirm-buy"])
+                XCTAssertTrue(app.buttons["cosmetic-skin_graduate"].label.contains("使用中"))
+            case "profile":
+                revealAndTap(app, app.buttons["修改昵称"])
+                XCTAssertTrue(app.textFields["rename-field"].waitForExistence(timeout: 4))
+                app.textFields["rename-field"].typeText("\n")
+                revealAndTap(app, app.buttons["rename-cancel"], scrollView: app.scrollViews["rename-scroll"])
+            default:
+                XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH '已解锁'")).firstMatch.exists)
+            }
+            attachScreenshot("rd-01-legacy-\(id)")
+            returnToShellHome(app)
         }
-        func fullyVisible() -> Bool {
-            visibleContentFrame().contains(element.frame) && element.isHittable
-        }
-        var attempts = 0
-        while !fullyVisible() && attempts < tries {
-            scrollView.swipeUp()
-            attempts += 1
-        }
-        XCTAssertTrue(fullyVisible(),
-                      "行未完全进入可见区域：row=\(element.frame), viewport=\(visibleContentFrame())")
-        element.tap()
     }
 
-    /// Profile is the entry point to both the achievement wall and settings.
+    /// 通过实际答错生成错题，验证“开始复习”在横屏下仍能点击。
     @MainActor
-    func testProfileReachesAchievementsAndSettings() throws {
-        try skipIfIPad()
-        let app = launchApp()
+    func testReviewEntryOpensRunnerWithMistake() {
+        let app = launchShellApp()
+        let firstLesson = app.buttons["lesson-row-g1up-u1-kp1"].firstMatch
+        XCTAssertTrue(firstLesson.waitForExistence(timeout: 15))
+        firstLesson.tap()
+        app.buttons["lesson-start"].tap()
+        skipLessonIntroIfPresent(app)
+        XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8))
+        app.buttons["tf-对"].firstMatch.tap() // seed 第一题答案为“错”。
+        app.buttons["检查答案"].tap()
+        XCTAssertTrue(app.buttons["知道了"].waitForExistence(timeout: 5))
+        app.buttons["关闭"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["lesson-quit"].waitForExistence(timeout: 3))
+        app.buttons["lesson-quit"].tap()
+        openShellRoute(app, "review")
+        revealAndTap(app, app.buttons["review-start"])
+        assertShellTitle(app, "错题复习")
+        revealAndTap(app, app.buttons["tf-错"].firstMatch)
+        XCTAssertTrue(app.buttons["shell-back"].isHittable)
+        attachScreenshot("rd-01-legacy-review-runner")
+        revealAndTap(app, app.buttons["检查"])
+        XCTAssertTrue(app.staticTexts["答对了！"].waitForExistence(timeout: 5))
+        revealAndTap(app, app.buttons["完成复习"])
+        XCTAssertTrue(app.staticTexts["复习完成！"].waitForExistence(timeout: 5))
+        revealAndTap(app, app.buttons["review-summary-back"], scrollView: app.scrollViews["review-summary-scroll"])
+        assertShellTitle(app, "错题本")
+        XCTAssertTrue(app.buttons["shell-back"].isHittable)
+    }
 
-        XCTAssertTrue(app.buttons["tab-profile"].waitForExistence(timeout: 15))
-        app.buttons["tab-profile"].tap()
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 4))
-
+    @MainActor
+    func testProfileReachesAchievementsAndSettings() {
+        let app = launchShellApp()
+        openShellRoute(app, "profile")
         let achievements = app.buttons.containing(NSPredicate(format: "label CONTAINS %@", "成就墙")).firstMatch
-        XCTAssertTrue(achievements.waitForExistence(timeout: 4))
         revealAndTap(app, achievements)
-        XCTAssertTrue(app.navigationBars["成就墙"].waitForExistence(timeout: 4),
-                      "profile did not navigate to 成就墙")
-        app.navigationBars.buttons.firstMatch.tap()
-
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 4))
+        assertShellTitle(app, "成就墙")
+        app.buttons["shell-back"].tap()
+        assertShellTitle(app, "我的")
         let settings = app.buttons.containing(NSPredicate(format: "label CONTAINS %@", "设置")).firstMatch
-        XCTAssertTrue(settings.waitForExistence(timeout: 4))
         revealAndTap(app, settings)
-        XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 4),
-                      "profile did not navigate to 设置")
+        assertShellTitle(app, "设置")
     }
 
-    /// Profile surfaces the daily quests and the weekly report.
     @MainActor
-    func testProfileShowsQuestsAndWeeklyReport() throws {
-        try skipIfIPad()
-        let app = launchApp()
-
-        XCTAssertTrue(app.buttons["tab-profile"].waitForExistence(timeout: 15))
-        app.buttons["tab-profile"].tap()
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 4))
-
-        XCTAssertTrue(app.staticTexts["每日任务"].waitForExistence(timeout: 4),
-                      "daily quests card missing from profile")
-        XCTAssertTrue(app.staticTexts["本周报告"].waitForExistence(timeout: 4),
-                      "weekly report card missing from profile")
-
-        // Wave D header: the join date ("加入于 yyyy年M月") must render.
-        XCTAssertTrue(app.staticTexts["profile-joined-date"].waitForExistence(timeout: 4),
-                      "joined-date line missing from profile header")
-
-        // Fresh state has no progress, so nothing is claimable yet.
-        XCTAssertEqual(app.buttons.matching(
-            NSPredicate(format: "identifier BEGINSWITH %@", "quest-claim-")
-        ).count, 0, "no quest should be claimable at zero progress")
-        attach(name: "profile-quests-report")
+    func testProfileShowsQuestsAndWeeklyReport() {
+        let app = launchShellApp()
+        openShellRoute(app, "profile")
+        assertShellTitle(app, "我的")
+        XCTAssertTrue(app.staticTexts["每日任务"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.staticTexts["本周报告"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.staticTexts["profile-joined-date"].exists)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'quest-claim-'")).count, 0)
+        attachScreenshot("profile-quests-report")
     }
 
-    /// iPad sidebar exposes the same surfaces as the iPhone tab bar.
     @MainActor
-    func testSidebarOnRegularWidth() throws {
-        let app = launchApp()
-        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 10))
+    func testGradeBrowsingAndBookSwitching() {
+        let app = launchShellApp()
+        openShellRoute(app, "grades")
+        XCTAssertTrue(app.buttons["shell-grade-2"].waitForExistence(timeout: 4))
+        app.buttons["shell-grade-2"].tap()
+        assertShellTitle(app, "2 年级")
+        XCTAssertTrue(app.buttons.containing(NSPredicate(format: "label CONTAINS '二年级'")).firstMatch.exists)
+        attachScreenshot("rd-01-legacy-grades")
+        returnToShellHome(app)
 
-        guard UIDevice.current.userInterfaceIdiom == .pad else {
-            // Compact width is covered by the tab-bar test above.
-            return
-        }
-
-        for label in ["排行", "错题本", "商店", "我的", "成就墙"] {
-            let cell = app.cells.containing(NSPredicate(format: "label CONTAINS %@", label)).firstMatch
-            XCTAssertTrue(cell.waitForExistence(timeout: 4), "sidebar row \(label) not found on iPad")
-        }
-
-        app.cells.containing(NSPredicate(format: "label CONTAINS %@", "成就墙")).firstMatch.tap()
-        XCTAssertTrue(app.navigationBars["成就墙"].waitForExistence(timeout: 4))
-        attach(name: "ipad-split-achievements")
+        let picker = app.buttons["home-book-picker"]
+        revealAndTap(app, picker)
+        XCTAssertTrue(app.buttons["book-picker-grade-2"].waitForExistence(timeout: 4))
+        app.buttons["book-picker-grade-2"].tap()
+        attachScreenshot("rd-01-legacy-book-picker")
+        let book = app.buttons["book-picker-book-g2up"]
+        revealAndTap(app, book)
+        XCTAssertTrue(app.buttons["home-book-picker"].waitForExistence(timeout: 5))
+        picker.tap()
+        XCTAssertTrue(app.buttons["book-picker-book-g2up"].waitForExistence(timeout: 4))
+        XCTAssertTrue(app.buttons["book-picker-book-g2up"].label.contains("二年级"))
+        app.buttons["book-picker-close"].tap()
     }
 
-    /// The app owns its appearance (light by default), so dark mode is driven by
-    /// our own preference key rather than the system style.
     @MainActor
-    func testDarkAppearancePreferenceRenders() throws {
-        try skipIfIPad()
-        // Launch arguments beginning with "-" set NSUserDefaults for this launch.
-        let app = launchApp(extraArgs: ["-cstf.appearance", "dark"])
-
-        XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15),
-                      "path home did not render under the dark appearance preference")
-        attach(name: "dark-mode-home")
+    func testDarkAppearancePreferenceRenders() {
+        let app = launchShellApp(extraArgs: ["-cstf.appearance", "dark"])
+        XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15))
+        attachScreenshot("dark-mode-home")
     }
 }

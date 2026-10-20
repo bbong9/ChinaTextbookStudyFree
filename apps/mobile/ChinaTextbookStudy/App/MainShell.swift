@@ -1,71 +1,37 @@
 import SwiftUI
 
-/// Size-class-aware top-level layout.
-///
-/// - **Compact** (iPhone portrait) → one NavigationStack driven by `$path`,
-///   root = HomeView.
-/// - **Regular** (iPad, iPhone Pro Max landscape) → NavigationSplitView with
-///   a persistent sidebar (grade + quick links) and a detail column that
-///   owns its own navigation stack. Mirrors the commit `bff43ed` "桌面三栏"
-///   intent for the Web side.
+/// iPhone / iPad 共用一个横屏导航栈，首页始终是唯一根页面。
 struct MainShell: View {
     @ObservedObject var progressStore: ProgressStore
     @ObservedObject var downloader: AssetDownloader
     let siteIndex: SiteIndex
 
-    @Environment(\.horizontalSizeClass) private var hSize
     @State private var path: [AppRoute] = []
-    @State private var selectedSidebar: SidebarItem? = .home
-    @State private var activeTab: AppTab = .learn
-    /// 聪聪's "我们马上开始第一课！" toast shown right after onboarding.
     @State private var showFirstLessonToast = false
-    /// 自动进第一课只允许发生一次（iosretention-3），避免任何重复推进。
     @State private var didAutoStartFirstLesson = false
 
-    enum SidebarItem: Hashable, Identifiable {
-        case home
-        case grade(Int)
-        case league
-        case review
-        case shop
-        case profile
-        case achievements
-        var id: String {
-            switch self {
-            case .home: return "home"
-            case .grade(let g): return "grade-\(g)"
-            case .league: return "league"
-            case .review: return "review"
-            case .shop: return "shop"
-            case .profile: return "profile"
-            case .achievements: return "achievements"
-            }
-        }
-    }
-
     var body: some View {
-        #if DEBUG
-        if path.last == .clayGallery {
-            ClayGallery { path.removeLast() }
-        } else {
-            applicationShell
-        }
-        #else
-        applicationShell
-        #endif
-    }
-
-    private var applicationShell: some View {
-        Group {
-            if hSize == .regular {
-                regularLayout
-            } else {
-                compactLayout
+        NavigationStack(path: $path) {
+            HomeView(
+                progressStore: progressStore,
+                downloader: downloader,
+                siteIndex: siteIndex,
+                path: $path
+            )
+            .safeAreaInset(edge: .top, spacing: 0) {
+                temporaryEntrances
             }
+            .navigationDestination(for: AppRoute.self) { route in
+                RouteView(
+                    route: route,
+                    progressStore: progressStore,
+                    downloader: downloader,
+                    siteIndex: siteIndex,
+                    path: $path
+                )
+            }
+            .toolbar(.hidden, for: .navigationBar)
         }
-        // 立刻进第一课 (ios-retention-11): the moment onboarding completes,
-        // push the learner straight into lesson one — no empty home screen
-        // between "I committed to a goal" and "I'm learning".
         .onChange(of: progressStore.hasCompletedOnboarding) { _, done in
             if done, isBrandNewLearner { startFirstLessonAfterOnboarding() }
         }
@@ -76,6 +42,62 @@ struct MainShell: View {
                     .zIndex(10)
             }
         }
+    }
+
+    /// RD-09 将入口收进地图和头像菜单；这里只保留能滚动、能点到的按钮。
+    private var temporaryEntrances: some View {
+        VStack(spacing: 0) {
+            ScrollView(.horizontal) {
+                HStack(spacing: Space.m) {
+                    entry("排行", id: "league", route: .league)
+                    entry("错题本", id: "review", route: .review)
+                    entry("商店", id: "shop", route: .shop)
+                    entry("我的", id: "profile", route: .profile)
+                    entry("成就墙", id: "achievements", route: .achievements)
+                    Menu {
+                        ForEach(1...6, id: \.self) { grade in
+                            Button("\(grade) 年级") { path.append(.bookList(grade: grade)) }
+                                .accessibilityIdentifier("shell-grade-\(grade)")
+                        }
+                    } label: {
+                        Text("按年级")
+                            .frame(minWidth: 44, minHeight: 44)
+                    }
+                    .accessibilityLabel("按年级浏览课本")
+                    .accessibilityIdentifier("shell-open-grades")
+                }
+                .padding(.horizontal, Space.m)
+            }
+            .frame(height: 44)
+            .accessibilityIdentifier("shell-legacy-routes")
+
+            ScrollView(.horizontal) {
+                HStack(spacing: Space.m) {
+                    ForEach(AppRoute.temporaryRoutes(bookId: progressStore.activeBookId ?? siteIndex.books.first?.id ?? "g1up"), id: \.self) { route in
+                        if let placeholder = route.placeholder {
+                            entry(placeholder.title, id: placeholder.id, route: route)
+                        }
+                    }
+                }
+                .padding(.horizontal, Space.m)
+            }
+            .frame(height: 44)
+            .accessibilityIdentifier("shell-new-routes")
+        }
+        .duoFont(.caption)
+        .foregroundStyle(DuoColors.ink)
+        .background(DuoColors.bg)
+    }
+
+    private func entry(_ title: String, id: String, route: AppRoute) -> some View {
+        Button { path.append(route) } label: {
+            Text(title)
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
+        .accessibilityIdentifier("shell-open-\(id)")
     }
 
     // MARK: - Post-onboarding first lesson (ios-retention-11)
@@ -104,8 +126,6 @@ struct MainShell: View {
         else { return }
 
         didAutoStartFirstLesson = true
-        activeTab = .learn
-        selectedSidebar = .home
         withAnimation(Motion.bounce) { showFirstLessonToast = true }
         // Let the onboarding fade + toast land, then push the lesson.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -133,187 +153,9 @@ struct MainShell: View {
         .accessibilityIdentifier("first-lesson-toast")
     }
 
-    /// Whether the tab bar should be hidden (immersive screens).
-    private var hideTabBar: Bool {
-        guard let last = path.last else { return false }
-        switch last {
-        case .lesson, .lessonResult, .reviewRunner, .storyReader, .passageReader, .reading,
-             .guide, .jumpTest:
-            return true
-        default:
-            return false
-        }
-    }
-
-    // MARK: - Compact (iPhone)
-
-    @ViewBuilder
-    private var compactLayout: some View {
-        NavigationStack(path: $path) {
-            compactTabRoot
-                .navigationDestination(for: AppRoute.self) { route in
-                    RouteView(
-                        route: route,
-                        progressStore: progressStore,
-                        downloader: downloader,
-                        siteIndex: siteIndex,
-                        path: $path
-                    )
-                }
-        }
-        // Attach the tab bar as a bottom inset so every child ScrollView
-        // reserves matching space — content never hides behind the bar.
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            if !hideTabBar {
-                BottomTabBar(activeTab: $activeTab, progressStore: progressStore)
-                    .transition(.move(edge: .bottom))
-            }
-        }
-        .animation(.easeInOut(duration: 0.2), value: hideTabBar)
-        .onChange(of: activeTab) { _, _ in
-            // Clear navigation stack when switching tabs.
-            path.removeAll()
-        }
-    }
-
-    @ViewBuilder
-    private var compactTabRoot: some View {
-        switch activeTab {
-        case .learn:
-            HomeView(
-                progressStore: progressStore,
-                downloader: downloader,
-                siteIndex: siteIndex,
-                path: $path
-            )
-        case .league:
-            LeagueView(progressStore: progressStore)
-        case .review:
-            ReviewView(progressStore: progressStore, path: $path)
-        case .shop:
-            ShopView(progressStore: progressStore)
-        case .profile:
-            ProfileView(progressStore: progressStore, path: $path)
-        }
-    }
-
-    // MARK: - Regular (iPad)
-
-    @ViewBuilder
-    private var regularLayout: some View {
-        NavigationSplitView {
-            sidebar
-        } detail: {
-            NavigationStack(path: $path) {
-                sidebarRootView
-                    .navigationDestination(for: AppRoute.self) { route in
-                        RouteView(
-                            route: route,
-                            progressStore: progressStore,
-                            downloader: downloader,
-                            siteIndex: siteIndex,
-                            path: $path
-                        )
-                    }
-            }
-        }
-        .navigationSplitViewStyle(.balanced)
-    }
-
-    // MARK: - Sidebar
-
-    private var sidebar: some View {
-        List(selection: $selectedSidebar) {
-            Section {
-                row(.home, label: "学习", icon: "house.fill", tint: DuoColors.primary)
-                row(.league, label: "排行", icon: "trophy.fill", tint: DuoColors.bee)
-                row(.review, label: "错题本", icon: "book.fill", tint: DuoColors.fox)
-                row(.shop, label: "商店", icon: "bag.fill", tint: DuoColors.beetle)
-                row(.profile, label: "我的", icon: "person.crop.circle.fill", tint: DuoColors.secondary)
-                row(.achievements, label: "成就墙", icon: "rosette", tint: DuoColors.beetle)
-            } header: {
-                sectionHeader("主菜单")
-            }
-            Section {
-                ForEach(1...6, id: \.self) { grade in
-                    row(.grade(grade), label: "\(grade) 年级", icon: "books.vertical.fill", tint: DuoColors.primary)
-                }
-            } header: {
-                sectionHeader("按年级")
-            }
-        }
-        // De-stock the iPad sidebar (ios-feel-14): brand surfaces instead of
-        // the system grouped-gray, heavy rounded labels instead of SF default.
-        .scrollContentBackground(.hidden)
-        .background(DuoColors.bg.ignoresSafeArea())
-        .navigationTitle("课本学习")
-        .onChange(of: selectedSidebar) { _, _ in
-            // Reset the detail-column stack when the sidebar pick changes
-            // so pushes from the previous item don't leak.
-            path.removeAll()
-        }
-    }
-
-    private func sectionHeader(_ text: String) -> some View {
-        Text(text)
-            .duoFont(.caption)
-            .tracking(1)
-            .foregroundStyle(DuoColors.inkMuted)
-    }
-
-    private func row(_ item: SidebarItem, label: String, icon: String, tint: Color) -> some View {
-        Label {
-            Text(label)
-                .duoFont(.subhead)
-                .foregroundStyle(DuoColors.ink)
-        } icon: {
-            Image(systemName: icon)
-                .font(.system(size: 17, weight: .heavy))
-                .foregroundStyle(tint)
-        }
-        .padding(.vertical, 2)
-        .tag(item)
-        .listRowBackground(
-            RoundedRectangle(cornerRadius: Radius.control)
-                .fill(selectedSidebar == item ? DuoColors.surfaceAlt : DuoColors.bg)
-                .padding(.vertical, 2)
-        )
-        .accessibilityIdentifier("sidebar-\(item.id)")
-    }
-
-    // MARK: - Detail root
-
-    @ViewBuilder
-    private var sidebarRootView: some View {
-        switch selectedSidebar ?? .home {
-        case .home:
-            HomeView(
-                progressStore: progressStore,
-                downloader: downloader,
-                siteIndex: siteIndex,
-                path: $path
-            )
-        case .grade(let grade):
-            BookListView(
-                grade: grade,
-                siteIndex: siteIndex,
-                path: $path
-            )
-        case .league:
-            LeagueView(progressStore: progressStore)
-        case .review:
-            ReviewView(progressStore: progressStore, path: $path)
-        case .shop:
-            ShopView(progressStore: progressStore)
-        case .profile:
-            ProfileView(progressStore: progressStore, path: $path)
-        case .achievements:
-            AchievementsView(progressStore: progressStore)
-        }
-    }
 }
 
-/// Extracted from RootView so both compact and regular layouts can reuse it.
+/// 统一解析全屏目的地；旧页面暂用外壳页头，RD-02 / RD-22 再替换样式。
 struct RouteView: View {
     let route: AppRoute
     @ObservedObject var progressStore: ProgressStore
@@ -322,11 +164,76 @@ struct RouteView: View {
     @Binding var path: [AppRoute]
 
     var body: some View {
+        Group {
+            if let title = route.shellTitle {
+                VStack(spacing: 0) {
+                    pageHeader(title)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .zIndex(1)
+                    destination
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .clipped()
+                }
+            } else {
+                destination
+            }
+        }
+        .background(DuoColors.bg.ignoresSafeArea())
+        .toolbar(.hidden, for: .navigationBar)
+        .navigationBarBackButtonHidden(true)
+    }
+
+    /// 显式占用页头高度，避免旧页面的固有高度把返回按钮挤到屏幕外。
+    private func pageHeader(_ title: String) -> some View {
+        HStack(spacing: Space.m) {
+            Button {
+                guard !path.isEmpty else { return }
+                path.removeLast()
+            } label: {
+                Label("返回", systemImage: "chevron.left")
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("返回上一页")
+            .accessibilityIdentifier("shell-back")
+            Text(title)
+                .duoFont(.subhead)
+                .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("shell-page-title")
+            Spacer(minLength: 0)
+            switch route {
+            case .reviewRunner, .storyReader, .passageReader:
+                MuteToggle()
+            default:
+                EmptyView()
+            }
+        }
+        .padding(.horizontal, Space.m)
+        .foregroundStyle(DuoColors.ink)
+        .background(DuoColors.bg)
+    }
+
+    @ViewBuilder
+    private var destination: some View {
         switch route {
         #if DEBUG
         case .clayGallery:
             ClayGallery { path.removeLast() }
         #endif
+        case .league:
+            LeagueView(progressStore: progressStore)
+        case .petFamily, .petHome, .petShop, .checkIn, .quests, .parentCenter,
+             .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
+             .idiomPicker, .idiomPlayer, .bedtimeStories, .readingRoom:
+            if let placeholder = route.placeholder {
+                Text("建设中")
+                    .duoFont(.heading)
+                    .foregroundStyle(DuoColors.inkMuted)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(DuoColors.bg.ignoresSafeArea())
+                    .accessibilityIdentifier("placeholder-\(placeholder.id)")
+            }
         case .bookList(let grade):
             BookListView(grade: grade, siteIndex: siteIndex, path: $path)
         case .bookDetail(let bookId):

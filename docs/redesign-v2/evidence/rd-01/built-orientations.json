@@ -1,0 +1,21 @@
+{
+  "UIRequiresFullScreen": true,
+  "UISupportedInterfaceOrientations~ipad": [
+    "UIInterfaceOrientationLandscapeLeft",
+    "UIInterfaceOrientationLandscapeRight"
+  ],
+  "UISupportedInterfaceOrientations~iphone": [
+    "UIInterfaceOrientationLandscapeLeft",
+    "UIInterfaceOrientationLandscapeRight"
+  ],
+  "UIAppFonts": [
+    "Fonts/ZCOOLKuaiLe-Regular.ttf",
+    "Fonts/Nunito-ExtraBold.ttf",
+    "Fonts/Nunito-Black.ttf"
+  ],
+  "字体文件存在": {
+    "Fonts/ZCOOLKuaiLe-Regular.ttf": true,
+    "Fonts/Nunito-ExtraBold.ttf": true,
+    "Fonts/Nunito-Black.ttf": true
+  }
+}
