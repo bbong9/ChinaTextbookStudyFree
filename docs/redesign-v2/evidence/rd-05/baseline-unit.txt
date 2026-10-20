@@ -1,0 +1,49 @@
+干净基线：eaeff4f43353cfe7aad4ff1e28ef7aa3f6a1c93d
+执行结果：1 项、1 失败；进程退出码 73。
+
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj -scheme ChinaTextbookStudy -destination "platform=iOS Simulator,id=12FA872E-6A9C-4163-91CB-1CD7AFD9FB67" CODE_SIGNING_ALLOWED=NO -derivedDataPath /private/tmp/rd05-baseline-derived-data -resultBundlePath /private/tmp/rd05-baseline-unit.xcresult -parallel-testing-enabled NO "-only-testing:ChinaTextbookStudyTests/PRFixTests/testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable" test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  ZIPFoundation: https://github.com/weichsel/ZIPFoundation @ 0.9.20
+
+Writing result bundle at path:
+	/private/tmp/rd05-baseline-unit.xcresult
+
+2026-10-20 21:45:50.356692+0800 ChinaTextbookStudy[84511:7018149] [Connection] Unable to find entitlement for KVS store
+2026-10-20 21:45:50.357677+0800 ChinaTextbookStudy[84511:7018149] [Connection] BUG IN CLIENT OF KVS: Trying to initialize NSUbiquitousKeyValueStore without a store identifier. Please specify your store identifier in the 'com.apple.developer.ubiquity-kvstore-identifier' entitlement.
+2026-10-20 21:45:50.956871+0800 ChinaTextbookStudy[84511:7019200] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-20 21:45:58.394645+0800 ChinaTextbookStudy[84511:7019211] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+Test Suite 'Selected tests' started at 2026-10-20 21:45:59.217.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 21:45:59.219.
+Test Suite 'PRFixTests' started at 2026-10-20 21:45:59.219.
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' started.
+2026-10-20 21:45:59.274789+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:45:59.841954+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:45:59.859390+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:45:59.883837+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+2026-10-20 21:45:59.888340+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+/tmp/rd05-baseline/apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift:347: error: -[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable] : XCTAssertTrue failed
+2026-10-20 21:45:59.953806+0800 ChinaTextbookStudy[84511:7018149] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+Test Case '-[ChinaTextbookStudyTests.PRFixTests testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable]' failed (0.830 seconds).
+Test Suite 'PRFixTests' failed at 2026-10-20 21:46:00.050.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.830 (0.831) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' failed at 2026-10-20 21:46:00.050.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.830 (0.831) seconds
+Test Suite 'Selected tests' failed at 2026-10-20 21:46:00.050.
+	 Executed 1 test, with 1 failure (0 unexpected) in 0.830 (0.833) seconds
+2026-10-20 21:47:22.382 xcodebuild[83182:7011247] [MT] IDETestOperationsObserverDebug: 130.073 elapsed -- Testing started completed.
+2026-10-20 21:47:22.383 xcodebuild[83182:7011247] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+
+Test session results, code coverage, and logs:
+	/tmp/rd05-baseline-unit.xcresult
+
+Failing tests:
+
+Testing started

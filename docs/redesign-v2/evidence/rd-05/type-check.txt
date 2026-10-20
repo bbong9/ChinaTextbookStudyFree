@@ -1,0 +1,11 @@
+
+> china-textbook-study-free-monorepo@0.1.0 type-check
+> npm run type-check --workspaces --if-present
+
+
+> china-study-free@0.1.0 type-check
+> tsc --noEmit
+
+
+> @cstf/core@0.1.0 type-check
+> tsc --noEmit

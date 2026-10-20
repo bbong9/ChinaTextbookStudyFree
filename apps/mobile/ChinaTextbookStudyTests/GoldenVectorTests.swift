@@ -20,6 +20,108 @@ final class GoldenVectorTests: XCTestCase {
         let chestSlot: [ChestSlotVector]
         let examXp: [ExamXpVector]
         let league: LeagueVectors
+        let level: [LevelVector]
+        let pets: PetVectors
+        let lessonTreats: [LessonTreatVector]
+        let checkInCycle: CheckInVectors
+        let studyChests: StudyChestVectors
+        let miniGame: [MiniGameVector]
+        let idiomWatch: [IdiomWatchVector]
+        let hanziXp: [HanziXpVector]
+        let readingLog: ReadingLogVectors
+    }
+
+    private struct LevelVector: Codable {
+        let totalXp: Int
+        let expInfo: Level.Info
+    }
+
+    private struct PetVectors: Codable {
+        let catalog: [Pets.Pet]
+        let unlock: [PetUnlockVector]
+        let hatch: [PetHatchVector]
+    }
+
+    private struct PetUnlockVector: Codable {
+        let id: String
+        let ctx: Pets.UnlockContext
+        let expCanUnlock: Bool
+    }
+
+    private struct PetHatchVector: Codable {
+        let owned: [String]
+        let expId: String?
+    }
+
+    private struct LessonTreatVector: Codable {
+        let stars: Int
+        let treatsFromLessonsToday: Int
+        let expTreats: Int
+    }
+
+    private struct CheckInVectors: Codable {
+        let cycle: [CheckInCycleVector]
+        let days: [CheckInTreatVector]
+    }
+
+    private struct CheckInCycleVector: Codable {
+        let effectiveStreak: Int
+        let expDay: Int
+        let expTreats: Int
+    }
+
+    private struct CheckInTreatVector: Codable {
+        let cycleDay: Int
+        let expTreats: Int
+    }
+
+    private struct StudyChestVectors: Codable {
+        let catalog: [Economy.StudyChest]
+        let claims: [StudyChestVector]
+    }
+
+    private struct StudyChestVector: Codable {
+        let minutesToday: Double
+        let claimedToday: [Int]
+        let expChests: [Economy.StudyChest]
+    }
+
+    private struct MiniGameVector: Codable {
+        let accuracy: Double
+        let rewardedRoundsToday: Int
+        let isWeekend: Bool
+        let expReward: Economy.Reward
+    }
+
+    private struct IdiomWatchVector: Codable {
+        let alreadyWatched: Bool
+        let expReward: Economy.Reward
+    }
+
+    private struct HanziXpVector: Codable {
+        let firstTryCorrect: Int
+        let wrote: Bool
+        let spoke: Bool
+        let expXp: Int
+    }
+
+    private struct ReadingLogVectors: Codable {
+        let daily: [ReadingLogVector]
+        let weekly: [WeeklyReadingVector]
+    }
+
+    private struct ReadingLogVector: Codable {
+        let minutesRead: Double
+        let loggedDateKeys: [String]
+        let now: String
+        let expReward: Economy.Reward
+    }
+
+    private struct WeeklyReadingVector: Codable {
+        let loggedDateKeys: [String]
+        let claimedWeekKeys: [String]
+        let now: String
+        let expGems: Int
     }
 
     private struct StarVector: Codable {
@@ -321,6 +423,136 @@ final class GoldenVectorTests: XCTestCase {
         XCTAssertEqual(League.tierXpRanges[.diamond]?.min, 240)
         XCTAssertEqual(League.tierXpRanges[.diamond]?.max, 1200)
         XCTAssertEqual(Economy.examXpMultiplier, 2)
+    }
+
+    // MARK: - RD-05：九个新增分组全部读取同一份 JSON
+
+    func testLevelVectors() throws {
+        for v in try loadVectors().level {
+            XCTAssertEqual(Level.levelInfo(v.totalXp), v.expInfo, "totalXp=\(v.totalXp)")
+        }
+    }
+
+    func testPetVectors() throws {
+        let v = try loadVectors().pets
+        XCTAssertEqual(Pets.pets, v.catalog, "完整目录、价格、技能和解锁条件")
+        for pet in v.catalog {
+            XCTAssertEqual(Pets.petById(pet.id), pet)
+        }
+        for item in v.unlock {
+            XCTAssertEqual(Pets.canUnlock(Pets.petById(item.id), ctx: item.ctx), item.expCanUnlock, item.id)
+        }
+        for item in v.hatch {
+            XCTAssertEqual(Pets.nextEggHatch(item.owned), item.expId, "owned=\(item.owned)")
+        }
+    }
+
+    func testLessonTreatVectors() throws {
+        for v in try loadVectors().lessonTreats {
+            XCTAssertEqual(
+                Economy.lessonTreatReward(stars: v.stars, treatsFromLessonsToday: v.treatsFromLessonsToday),
+                v.expTreats,
+                "stars=\(v.stars), received=\(v.treatsFromLessonsToday)"
+            )
+        }
+    }
+
+    func testCheckInCycleVectors() throws {
+        let v = try loadVectors().checkInCycle
+        for item in v.cycle {
+            let day = Economy.checkInCycleDay(item.effectiveStreak)
+            XCTAssertEqual(day, item.expDay, "streak=\(item.effectiveStreak)")
+            XCTAssertEqual(Economy.checkInTreats(day), item.expTreats)
+        }
+        for item in v.days {
+            XCTAssertEqual(Economy.checkInTreats(item.cycleDay), item.expTreats, "cycleDay=\(item.cycleDay)")
+        }
+    }
+
+    func testStudyChestVectors() throws {
+        let v = try loadVectors().studyChests
+        XCTAssertEqual(Economy.studyChests, v.catalog)
+        for item in v.claims {
+            XCTAssertEqual(
+                Economy.claimableStudyChests(minutesToday: item.minutesToday, claimedToday: item.claimedToday),
+                item.expChests,
+                "minutes=\(item.minutesToday), claimed=\(item.claimedToday)"
+            )
+        }
+    }
+
+    func testMiniGameVectors() throws {
+        for v in try loadVectors().miniGame {
+            XCTAssertEqual(
+                Economy.miniGameReward(
+                    accuracy: v.accuracy, rewardedRoundsToday: v.rewardedRoundsToday, isWeekend: v.isWeekend
+                ), v.expReward,
+                "accuracy=\(v.accuracy), rounds=\(v.rewardedRoundsToday), weekend=\(v.isWeekend)"
+            )
+        }
+    }
+
+    func testIdiomWatchVectors() throws {
+        for v in try loadVectors().idiomWatch {
+            XCTAssertEqual(Economy.idiomFirstWatchReward(alreadyWatched: v.alreadyWatched), v.expReward)
+        }
+    }
+
+    func testHanziXpVectors() throws {
+        for v in try loadVectors().hanziXp {
+            XCTAssertEqual(
+                Economy.hanziLessonXp(firstTryCorrect: v.firstTryCorrect, wrote: v.wrote, spoke: v.spoke),
+                v.expXp,
+                "correct=\(v.firstTryCorrect), wrote=\(v.wrote), spoke=\(v.spoke)"
+            )
+        }
+    }
+
+    /// 向量中的时间不带时区，双端都按测试进程的本地日历解析，覆盖本地午夜与周界。
+    private func readingVectorDate(_ value: String) throws -> Date {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.timeZone = .current
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return try XCTUnwrap(formatter.date(from: value))
+    }
+
+    func testReadingLogVectors() throws {
+        let v = try loadVectors().readingLog
+        for item in v.daily {
+            XCTAssertEqual(
+                Economy.readingLogReward(
+                    minutesRead: item.minutesRead, loggedDateKeys: item.loggedDateKeys,
+                    now: try readingVectorDate(item.now)
+                ), item.expReward, "now=\(item.now), logs=\(item.loggedDateKeys)"
+            )
+        }
+        for item in v.weekly {
+            XCTAssertEqual(
+                Economy.weeklyReadingChallengeReward(
+                    loggedDateKeys: item.loggedDateKeys, claimedWeekKeys: item.claimedWeekKeys,
+                    now: try readingVectorDate(item.now)
+                ), item.expGems, "now=\(item.now), logs=\(item.loggedDateKeys)"
+            )
+        }
+    }
+
+    func testEconomyV2VectorGroupsAreNotEmpty() throws {
+        let v = try loadVectors()
+        let counts = [
+            v.level.count, v.pets.catalog.count, v.pets.unlock.count, v.pets.hatch.count,
+            v.lessonTreats.count, v.checkInCycle.cycle.count, v.checkInCycle.days.count,
+            v.studyChests.catalog.count, v.studyChests.claims.count, v.miniGame.count,
+            v.idiomWatch.count, v.hanziXp.count, v.readingLog.daily.count, v.readingLog.weekly.count,
+        ]
+        XCTAssertTrue(counts.allSatisfy { $0 > 0 }, "不允许空循环冒充消费向量分组")
+    }
+
+    func testHanziReusesExistingStarsAndGems() {
+        let stars = Economy.starsFromAccuracy(5.0 / 6.0)
+        XCTAssertEqual(stars, 2)
+        XCTAssertEqual(Economy.lessonGemDrip(stars: stars, isFirstPerfect: false, crossedDailyGoal: true), 28)
     }
 
     // MARK: - Constant parity (values not exercised by a vector group)

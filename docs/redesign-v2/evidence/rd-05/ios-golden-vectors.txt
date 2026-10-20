@@ -1,0 +1,85 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project apps/mobile/ChinaTextbookStudy.xcodeproj -scheme ChinaTextbookStudy -destination "platform=iOS Simulator,id=12FA872E-6A9C-4163-91CB-1CD7AFD9FB67" CODE_SIGNING_ALLOWED=NO -derivedDataPath /private/tmp/rd05-derived-data -resultBundlePath /private/tmp/rd05-golden-tests.xcresult -parallel-testing-enabled NO "-only-testing:ChinaTextbookStudyTests/GoldenVectorTests" test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  ZIPFoundation: https://github.com/weichsel/ZIPFoundation @ 0.9.20
+
+Writing result bundle at path:
+	/private/tmp/rd05-golden-tests.xcresult
+
+2026-10-20 21:43:48.312573+0800 ChinaTextbookStudy[79593:6997521] [Connection] Unable to find entitlement for KVS store
+2026-10-20 21:43:48.380112+0800 ChinaTextbookStudy[79593:6997521] [Connection] BUG IN CLIENT OF KVS: Trying to initialize NSUbiquitousKeyValueStore without a store identifier. Please specify your store identifier in the 'com.apple.developer.ubiquity-kvstore-identifier' entitlement.
+2026-10-20 21:43:48.653746+0800 ChinaTextbookStudy[79593:6997521] [unspecified] container_create_or_lookup_app_group_path_by_app_group_identifier: client is not entitled
+Test Suite 'Selected tests' started at 2026-10-20 21:43:49.737.
+Test Suite 'ChinaTextbookStudyTests.xctest' started at 2026-10-20 21:43:49.737.
+Test Suite 'GoldenVectorTests' started at 2026-10-20 21:43:49.737.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testCheckInCycleVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testCheckInCycleVectors]' passed (0.034 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testChestSlotVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testChestSlotVectors]' passed (0.002 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testDailyRewardVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testDailyRewardVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyConstantsMatchSpec]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyConstantsMatchSpec]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyV2VectorGroupsAreNotEmpty]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testEconomyV2VectorGroupsAreNotEmpty]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testExamXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testExamXpVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testGemDripVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testGemDripVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testHanziReusesExistingStarsAndGems]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testHanziReusesExistingStarsAndGems]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testHanziXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testHanziXpVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testIdiomWatchVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testIdiomWatchVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotNameVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotNameVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueBotXpVectors]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueConstantsMatchSpec]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLeagueConstantsMatchSpec]' passed (0.000 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLessonTreatVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLessonTreatVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLevelVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testLevelVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMilestoneVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMilestoneVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMiniGameVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testMiniGameVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testPetVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testPetVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testReadingLogVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testReadingLogVectors]' passed (0.003 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testSrsReviewVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testSrsReviewVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStarVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStarVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStreakAdvanceVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStreakAdvanceVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStudyChestVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testStudyChestVectors]' passed (0.001 seconds).
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testXpVectors]' started.
+Test Case '-[ChinaTextbookStudyTests.GoldenVectorTests testXpVectors]' passed (0.001 seconds).
+Test Suite 'GoldenVectorTests' passed at 2026-10-20 21:43:49.809.
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.058 (0.072) seconds
+Test Suite 'ChinaTextbookStudyTests.xctest' passed at 2026-10-20 21:43:49.809.
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.058 (0.072) seconds
+Test Suite 'Selected tests' passed at 2026-10-20 21:43:49.809.
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.058 (0.072) seconds
+2026-10-20 21:43:50.171 xcodebuild[79381:6994958] [MT] IDETestOperationsObserverDebug: 20.576 elapsed -- Testing started completed.
+2026-10-20 21:43:50.171 xcodebuild[79381:6994958] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-20 21:43:50.171 xcodebuild[79381:6994958] [MT] IDETestOperationsObserverDebug: 20.576 sec, +20.576 sec -- end
+
+Test session results, code coverage, and logs:
+	/tmp/rd05-golden-tests.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

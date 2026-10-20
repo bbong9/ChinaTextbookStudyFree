@@ -41,6 +41,13 @@ import {
 } from "../srs";
 import { computeChestsForBook } from "../chestLogic";
 import type { PathLessonMeta, Question } from "../types";
+// 从公共入口导入，同时验证 RD-05 模块已导出。
+import {
+  PETS, STUDY_CHESTS, canUnlock, checkInCycleDay, checkInTreats,
+  claimableStudyChests, hanziLessonXp, idiomFirstWatchReward, lessonTreatReward,
+  levelInfo, miniGameReward, nextEggHatch, petById, readingLogReward,
+  weeklyReadingChallengeReward,
+} from "../index";
 
 // ============================================================
 // 黄金向量组
@@ -254,6 +261,141 @@ describe("golden vectors: chestSlot", () => {
       expect(slots.length).toBe(v.expChests);
     });
   }
+});
+
+// ============================================================
+// RD-05 黄金向量
+// ============================================================
+
+describe("golden vectors: level", () => {
+  for (const v of vectors.level) {
+    it(`累计 XP=${v.totalXp}`, () => {
+      expect(levelInfo(v.totalXp)).toEqual(v.expInfo);
+    });
+  }
+});
+
+describe("golden vectors: pets", () => {
+  it("完整目录、价格、技能和解锁条件一致", () => {
+    expect(PETS).toEqual(vectors.pets.catalog);
+    for (const pet of vectors.pets.catalog) expect(petById(pet.id)).toEqual(pet);
+  });
+  for (const v of vectors.pets.unlock) {
+    it(v.$case, () => {
+      expect(canUnlock(petById(v.id), v.ctx)).toBe(v.expCanUnlock);
+    });
+  }
+  for (const v of vectors.pets.hatch) {
+    it(`孵化 owned=${v.owned.join(",")} → ${v.expId}`, () => {
+      expect(nextEggHatch(v.owned) ?? null).toBe(v.expId);
+    });
+  }
+});
+
+describe("golden vectors: lessonTreats", () => {
+  for (const v of vectors.lessonTreats) {
+    it(`${v.stars} 星，今天已获 ${v.treatsFromLessonsToday} 块`, () => {
+      expect(lessonTreatReward(v.stars, v.treatsFromLessonsToday)).toBe(v.expTreats);
+    });
+  }
+});
+
+describe("golden vectors: checkInCycle", () => {
+  for (const v of vectors.checkInCycle.cycle) {
+    it(`连胜 ${v.effectiveStreak} 天 → 周期第 ${v.expDay} 天`, () => {
+      const day = checkInCycleDay(v.effectiveStreak);
+      expect(day).toBe(v.expDay);
+      expect(checkInTreats(day)).toBe(v.expTreats);
+    });
+  }
+  for (const v of vectors.checkInCycle.days) {
+    it(`周期日 ${v.cycleDay} 的饼干`, () => {
+      expect(checkInTreats(v.cycleDay)).toBe(v.expTreats);
+    });
+  }
+});
+
+describe("golden vectors: studyChests", () => {
+  it("完整宝箱档位和奖励一致", () => {
+    expect(STUDY_CHESTS).toEqual(vectors.studyChests.catalog);
+  });
+  for (const v of vectors.studyChests.claims) {
+    it(`${v.minutesToday} 分钟，已领 ${v.claimedToday.join(",")}`, () => {
+      expect(claimableStudyChests(v.minutesToday, v.claimedToday)).toEqual(v.expChests);
+    });
+  }
+});
+
+describe("golden vectors: miniGame", () => {
+  for (const v of vectors.miniGame) {
+    it(`正确率 ${v.accuracy}，已奖 ${v.rewardedRoundsToday} 局，周末=${v.isWeekend}`, () => {
+      expect(miniGameReward(v.accuracy, v.rewardedRoundsToday, v.isWeekend)).toEqual(v.expReward);
+    });
+  }
+});
+
+describe("golden vectors: idiomWatch", () => {
+  for (const v of vectors.idiomWatch) {
+    it(`已经完整看过=${v.alreadyWatched}`, () => {
+      expect(idiomFirstWatchReward(v.alreadyWatched)).toEqual(v.expReward);
+    });
+  }
+});
+
+describe("golden vectors: hanziXp", () => {
+  for (const v of vectors.hanziXp) {
+    it(`首答 ${v.firstTryCorrect}，写=${v.wrote}，说=${v.spoke}`, () => {
+      expect(hanziLessonXp(v.firstTryCorrect, v.wrote, v.spoke)).toBe(v.expXp);
+    });
+  }
+});
+
+describe("golden vectors: readingLog", () => {
+  for (const v of vectors.readingLog.daily) {
+    it(v.$case, () => {
+      expect(readingLogReward(v.minutesRead, v.loggedDateKeys, new Date(v.now))).toEqual(v.expReward);
+    });
+  }
+  for (const v of vectors.readingLog.weekly) {
+    it(v.$case, () => {
+      expect(weeklyReadingChallengeReward(v.loggedDateKeys, v.claimedWeekKeys, new Date(v.now))).toBe(v.expGems);
+    });
+  }
+});
+
+describe("RD-05 组合与完整性", () => {
+  it("九个新增分组与子组均非空，避免空循环冒充消费", () => {
+    for (const group of [vectors.level, vectors.pets.catalog, vectors.pets.unlock, vectors.pets.hatch,
+      vectors.lessonTreats, vectors.checkInCycle.cycle, vectors.checkInCycle.days,
+      vectors.studyChests.catalog, vectors.studyChests.claims, vectors.miniGame,
+      vectors.idiomWatch, vectors.hanziXp, vectors.readingLog.daily, vectors.readingLog.weekly]) {
+      expect(group.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("识字星级和金币继续使用原有规则", () => {
+    const stars = starsFromAccuracy(5 / 6);
+    expect(stars).toBe(2);
+    expect(lessonGemDrip({ stars, isFirstPerfect: false, crossedDailyGoal: true })).toBe(28);
+  });
+
+  it("省略小游戏周末参数时采用工作日规则", () => {
+    expect(miniGameReward(1, 0)).toEqual({ gems: 8, xp: 10 });
+  });
+
+  it("纯函数不会改动传入的领取与阅读账本", () => {
+    const owned = Object.freeze(["pet_duck"]);
+    const claimed = Object.freeze([10]);
+    const logs = Object.freeze(["2026-10-19"]);
+    nextEggHatch(owned);
+    canUnlock(petById("pet_egg"), { gems: 300, level: 1, owned, claimedStreakRewards: [] });
+    claimableStudyChests(30, claimed);
+    readingLogReward(15, logs, new Date(2026, 9, 20));
+    weeklyReadingChallengeReward(logs, [], new Date(2026, 9, 20));
+    expect(owned).toEqual(["pet_duck"]);
+    expect(claimed).toEqual([10]);
+    expect(logs).toEqual(["2026-10-19"]);
+  });
 });
 
 // ============================================================
