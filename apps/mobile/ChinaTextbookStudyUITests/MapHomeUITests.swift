@@ -166,9 +166,10 @@ final class MapHomeUITests: XCTestCase {
         XCTAssertTrue(cloud.buttons["hud-avatar"].exists)
         cloud.terminate()
         let league = launchShellApp(extraArgs: ["-uitest-map-league"])
-        XCTAssertTrue(league.buttons["league-result-continue"].waitForExistence(timeout: 20))
+        let leagueContinue = league.buttons["继续加油！"]
+        XCTAssertTrue(leagueContinue.waitForExistence(timeout: 20))
         attachScreenshot("rd09-league-result")
-        revealAndTap(league, league.buttons["league-result-continue"])
+        revealAndTap(league, leagueContinue)
         XCTAssertTrue(league.buttons["hud-avatar"].waitForExistence(timeout: 5))
     }
 
