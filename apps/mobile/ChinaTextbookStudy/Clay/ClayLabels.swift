@@ -27,12 +27,16 @@ struct OutlinedLabel: View {
 }
 
 struct StatPill: View {
-    let icon: ClayIcon
+    let icon: ClayIcon?
     let text: String
 
     var body: some View {
         HStack(spacing: 6) {
-            ClayIconView(icon: icon).frame(width: 24, height: 24)
+            if let icon {
+                ClayIconView(icon: icon).frame(width: 24, height: 24)
+            } else {
+                CoinView(x: 12, y: 12).frame(width: 24, height: 24)
+            }
             Text(text).font(ClayFont.number).foregroundStyle(ClayColor.statText)
         }
         .padding(.leading, 5).padding(.trailing, 14)
@@ -42,7 +46,7 @@ struct StatPill: View {
         .clipShape(Capsule())
         .clayShadow(.stat)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(icon.label)，\(text)")
+        .accessibilityLabel("\(icon?.label ?? "金币")，\(text)")
     }
 }
 
