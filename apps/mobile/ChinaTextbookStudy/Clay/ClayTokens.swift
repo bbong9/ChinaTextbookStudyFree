@@ -82,6 +82,10 @@ enum ClayColor {
     static let petCoral = hex(0xFF6F61), petPlatform = hex(0xF2C77D), petGrassShadow = hex(0x3E8F2A)
     static let petHappy = hex(0xFF9FB0), petFull = hex(0xFFB020), petClean = hex(0x3D8BF2)
     static let petTrack = hex(0xE9E4DC)
+    // RD-19：screens.js scrStory 的夜景与 ruby。
+    static let storyMoonCutout = hex(0x1E2C60), storyGround = hex(0x244A3E), storyPine = hex(0x1B3A30)
+    static let storyLake = hex(0x2D5DA1), storyLakeEdge = hex(0x5C8FD6), storyRipple = hex(0x9CC0F2)
+    static let storyFirefly = hex(0xFFF59A), storyPinyin = hex(0x8D6C37)
     static let white = Color.white, black = Color.black
 
     /// PET_ART 的实色与旧配饰色；渐变继续复用现有 p-* / g-* 令牌。

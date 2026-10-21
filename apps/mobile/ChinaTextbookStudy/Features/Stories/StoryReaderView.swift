@@ -1,315 +1,116 @@
 import SwiftUI
 
-/// Per-book story list — illustrated cards with completion crowns.
-struct StoryListView: View {
-    let bookId: String
-    @Binding var path: [AppRoute]
-    @ObservedObject private var progressStore = ProgressStore.shared
-
-    @State private var stories: [Story] = []
-    @State private var loadError: String?
-
-    var body: some View {
-        ScrollView {
-            if !stories.isEmpty {
-                VStack(spacing: 12) {
-                    ForEach(stories, id: \.id) { s in
-                        Button { path.append(.storyReader(bookId: bookId, storyId: s.id)) } label: {
-                            ReadingCard(
-                                title: s.title,
-                                subtitle: "第\(s.unitNumber)单元 · \(s.questions.count) 题",
-                                symbol: "book.pages.fill",
-                                tint: DuoColors.beetle,
-                                done: progressStore.isReadingCompleted(Reading.id(.story, s.id)),
-                                rewardXP: Economy.ReadingXP.storyGood,
-                                imageURL: AssetDownloader.storyImageURL(bookId: bookId, storyId: s.id, imagePath: s.image)
-                            )
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(20)
-            } else {
-                VStack(spacing: 12) {
-                    Image(systemName: "book.closed").font(.system(size: 44)).foregroundStyle(DuoColors.inkSofter)
-                    Text(loadError ?? "这本书还没有课外故事").duoFont(.subhead).foregroundStyle(DuoColors.inkMuted)
-                }
-                .padding(40)
-            }
-        }
-        .background(DuoColors.bg.ignoresSafeArea())
-        .navigationTitle("课外故事")
-        .navigationBarTitleDisplayMode(.inline)
-        .task { load() }
-    }
-
-    private func load() {
-        do { stories = (try DataLoader.shared.loadStories(bookId: bookId))?.stories ?? [] }
-        catch { loadError = (error as? LocalizedError)?.errorDescription ?? String(describing: error) }
-    }
-}
-
-/// Story reader — three phases like the web client (content-14):
-///   1. 阅读：插画 + karaoke 逐句
-///   2. 答题：逐题流（进度条 + 检查/下一题 footer）
-///   3. 结果：三星 + 正确率 + XP（accuracy ≥ 0.8 → 15，否则 5）
+/// 原故事数据、判分与 Reading 记账保留；阅读阶段替换成一句一页的绘本。
 struct StoryReaderView: View {
     let bookId: String
     let storyId: String
+    var bedtime = false
 
-    private enum Phase: Equatable { case reading, quiz, result }
-
+    private enum Phase { case reading, quiz, result, completion, goodnight }
     @State private var story: Story?
+    @State private var pinyin: [[String]]?
     @State private var phase: Phase = .reading
-    /// Gate for questionless stories: whole-story listen unlocks completion.
-    @State private var listenedWholeThing = false
-
-    // ---- Quiz state ----
+    @State private var loadFailed = false
+    @State private var narratedPages: Set<Int> = []
     @State private var qIndex = 0
     @State private var qPhase: LessonRunnerView.QuestionPhase = .answering
     @State private var currentAnswer = ""
-    @State private var isCorrect: Bool? = nil
+    @State private var isCorrect: Bool?
     @State private var correctCount = 0
     @State private var awarded = false
-
-    @ObservedObject private var audioPlayer = AudioPlayer.shared
     @ObservedObject private var progressStore = ProgressStore.shared
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    /// XP 记账 id —— 规范键 `reading:story:{storyId}`(parity-1)。
-    /// 不要再直接拿 `story.id` 当 key:那是 iOS 私有键空间,与 web 的
-    /// `story-{id}` 对不上,备份互通后进度会全部失配。
     private var storyRewardId: String { Reading.id(.story, storyId) }
 
     var body: some View {
         Group {
             if let story {
                 switch phase {
-                case .reading: readingPhase(story)
-                case .quiz:    quizPhase(story)
-                case .result:  resultPhase(story)
+                case .reading:
+                    StoryBookView(story: story, pinyin: pinyin, bedtime: bedtime,
+                                  onExit: { dismiss() }, onFinished: finishReading,
+                                  onNarratedPage: { narratedPages.insert($0) })
+                case .quiz: quizPhase(story)
+                case .result: resultPhase(story)
+                case .completion: completionPhase(story)
+                case .goodnight: goodnight
                 }
-            } else {
-                ProgressView().tint(DuoColors.primary)
-            }
+            } else if loadFailed {
+                VStack(spacing: 16) {
+                    Text("故事暂时打不开").font(ClayFont.title)
+                    ClayButton(title: "返回书架", id: "story-load-back") { dismiss() }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(ClayColor.creamTop)
+            } else { ProgressView() }
         }
-        .background(DuoColors.bg.ignoresSafeArea())
-        .navigationTitle(story?.title ?? "")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { ToolbarItem(placement: .topBarTrailing) { MuteToggle() } }
+        .environment(\.petEnvironment, PetEnvironment(progressStore: progressStore))
         .task {
             story = (try? DataLoader.shared.loadStories(bookId: bookId))?.stories.first { $0.id == storyId }
+            if let story {
+                pinyin = StoryReading.pinyin(DataLoader.shared.loadStoryPinyin(bookId: bookId)?[storyId], for: story)
+                #if DEBUG
+                if ProcessInfo.processInfo.arguments.contains("-uitest-story-no-pinyin") { pinyin = nil }
+                #endif
+            }
+            loadFailed = story == nil
         }
         .onDisappear { AudioPlayer.shared.stop() }
+        .transaction { if reduceMotion { $0.animation = nil; $0.disablesAnimations = true } }
     }
 
-    // ============================================================
-    // Phase 1 — 阅读
-    // ============================================================
-
-    private func readingPhase(_ story: Story) -> some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
-                    illustrationHeader(story)
-
-                    HStack(spacing: 10) {
-                        ReadAllButton(
-                            sentences: story.sentences,
-                            isPlaying: audioPlayer.isPlaying,
-                            onCompleted: { withAnimation(Motion.reveal) { listenedWholeThing = true } }
-                        )
-                        SlowModeBadge()
-                    }
-
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(Array(story.sentences.enumerated()), id: \.offset) { idx, s in
-                            sentenceRow(s, index: idx).id(idx)
-                        }
-                    }
-
-                    bottomAction(story)
-                }
-                .padding(20)
-            }
-            .onChange(of: audioPlayer.nowPlayingIndex) { _, idx in
-                if let idx, idx < story.sentences.count {
-                    withAnimation(Motion.reveal) { proxy.scrollTo(idx, anchor: .center) }
-                }
-            }
+    private func finishReading(_ ending: StoryPageFlow.Ending) {
+        AudioPlayer.shared.stop()
+        switch ending {
+        case .goodnight: phase = .goodnight
+        case .completion: phase = .completion
+        case .quiz:
+            qIndex = 0; currentAnswer = ""; qPhase = .answering; isCorrect = nil; correctCount = 0
+            phase = .quiz
         }
     }
 
-    /// 插画（content-8）：本地文件存在时显示，缺失时优雅降级为占位色块。
-    @ViewBuilder
-    private func illustrationHeader(_ story: Story) -> some View {
-        let url = AssetDownloader.storyImageURL(bookId: bookId, storyId: story.id, imagePath: story.image)
-        Group {
-            if let url, let ui = UIImage(contentsOfFile: url.path) {
-                Image(uiImage: ui)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 180)
-                    .clipped()
-            } else {
-                ZStack {
-                    LinearGradient(
-                        colors: [DuoColors.beetle.opacity(0.55), DuoColors.beetle],
-                        startPoint: .topLeading, endPoint: .bottomTrailing
-                    )
-                    Image(systemName: "book.pages.fill")
-                        .font(.system(size: 44, weight: .bold))
-                        .foregroundStyle(.white.opacity(0.85))
-                }
-                .frame(maxWidth: .infinity)
-                .frame(height: 120)
-            }
+    private var goodnight: some View {
+        Stage { _ in StoryNightScene().overlay(ClayColor.black.opacity(0.32)) } content: { ctx in
+            VStack(spacing: 20) {
+                Text("晚安").font(ClayFont.happy(size: 44)).foregroundStyle(ClayColor.white)
+                    .accessibilityIdentifier("story-goodnight")
+                Text("故事听完啦，做个甜甜的梦吧").font(ClayFont.body).foregroundStyle(ClayColor.white)
+                ClayButton(title: "回到书架", style: .cream, id: "story-goodnight-back") { dismiss() }
+            }.position(x: ctx.size.width / 2, y: ctx.size.height / 2)
         }
-        .clipShape(.rect(cornerRadius: Radius.card))
-        .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(DuoColors.border, lineWidth: 2) }
+        // 睡前模式没有 completeReading，也不发 XP，不改系统亮度。
     }
-
-    private func sentenceRow(_ s: PassageSentence, index: Int) -> some View {
-        let active = audioPlayer.nowPlayingIndex == index
-        return HStack(alignment: .top, spacing: 10) {
-            Text(s.text)
-                .font(.system(size: 20, weight: active ? .heavy : .regular, design: .rounded))
-                .foregroundStyle(active ? DuoColors.primary : DuoColors.ink)
-                .lineSpacing(6)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            SlowTTSButton(path: s.audio, size: 16, highlightIndex: index)
-        }
-        .padding(12)
-        .background(active ? DuoColors.primary.opacity(0.10) : Color.clear, in: .rect(cornerRadius: Radius.control))
-    }
-
-    /// Bottom of the reading phase: quiz entry, or a listen-gated completion
-    /// button for the rare story without questions (content-5).
-    @ViewBuilder
-    private func bottomAction(_ story: Story) -> some View {
-        let done = progressStore.isReadingCompleted(storyRewardId)
-        if !story.questions.isEmpty {
-            VStack(spacing: 8) {
-                Button {
-                    AudioPlayer.shared.stop()
-                    HapticEngine.shared.tap()
-                    // Reset quiz state so a retake starts clean.
-                    qIndex = 0; currentAnswer = ""; qPhase = .answering; isCorrect = nil; correctCount = 0
-                    withAnimation(Motion.reveal) { phase = .quiz }
-                } label: {
-                    Text(done ? "再答一次题" : "开始答题  \(story.questions.count) 道题")
-                }
-                .buttonStyle(ChunkyButtonStyle(.primary))
-                .accessibilityIdentifier("story-quiz-start")
-                if done {
-                    Text("已读完 ✓ 奖励只发一次，但可以再练").duoFont(.micro).foregroundStyle(DuoColors.inkMuted)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .padding(.top, 8)
-        } else {
-            // 没有音频包时「听完整个故事」永远解不开(iosretention-6):
-            // 给一条不依赖音频的出路,自己读一遍也算读完。
-            let audioReady = AudioPlayer.shared.hasAnyResolvable(story.sentences.map(\.audio))
-            let eligible = done || listenedWholeThing || !audioReady
-            VStack(spacing: 8) {
-                Button {
-                    guard !done, eligible else { return }
-                    progressStore.completeReading(id: storyRewardId, xp: Economy.ReadingXP.storyGood)
-                    HapticEngine.shared.success(); SFXEngine.shared.play(.complete)
-                } label: {
-                    Text(done ? "已读完 ✓" : "读完了  +\(Economy.ReadingXP.storyGood) XP")
-                }
-                .buttonStyle(ChunkyButtonStyle(done || !eligible ? .disabled : .primary))
-                .disabled(done || !eligible)
-                if !done && !eligible {
-                    Text("先听完整个故事，就能领奖励啦").duoFont(.micro).foregroundStyle(DuoColors.inkMuted)
-                        .frame(maxWidth: .infinity)
-                } else if !done && !audioReady {
-                    Text("音频还没下载完，去「课本」页补下载就能听啦；先自己读一遍，也能领奖励～")
-                        .duoFont(.micro).foregroundStyle(DuoColors.inkMuted)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .padding(.top, 8)
-        }
-    }
-
-    // ============================================================
-    // Phase 2 — 答题
-    // ============================================================
 
     private func quizPhase(_ story: Story) -> some View {
         let q = Self.question(from: story.questions[qIndex])
-        return VStack(spacing: 0) {
-            HStack(spacing: 14) {
-                Button {
-                    AudioPlayer.shared.stop()
-                    withAnimation(Motion.reveal) { phase = .reading }
-                } label: {
-                    Image(systemName: "chevron.left").font(.system(size: 20, weight: .black)).foregroundStyle(DuoColors.inkMuted).frame(width: 36, height: 36)
+        return LessonShell(bookId: bookId, question: q, instruction: "阅读理解", checked: qPhase == .checked) {
+            LessonHeader(progress: Double(qIndex + (qPhase == .checked ? 1 : 0)) / Double(story.questions.count),
+                         count: "\(qIndex + 1)/\(story.questions.count)") {
+                ClayIconButton(icon: .back, id: "story-quiz-back", label: "返回故事") {
+                    AudioPlayer.shared.stop(); phase = .reading
                 }
-                StyledProgressBar(
-                    progress: Double(qIndex + (qPhase == .checked ? 1 : 0)) / Double(max(story.questions.count, 1)),
-                    height: 14,
-                    trackColor: DuoColors.surfaceAlt
-                )
-                Text("\(qIndex + 1)/\(story.questions.count)").duoNumeral(.caption).foregroundStyle(DuoColors.inkMuted)
-            }
-            .padding(.horizontal, 18).padding(.top, 6).padding(.bottom, 10)
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("阅读理解").duoFont(.caption).foregroundStyle(DuoColors.beetle)
-                    HStack(alignment: .top, spacing: 8) {
-                        Text(MathText.render(q.question)).duoFont(.subhead, weight: .medium).foregroundStyle(DuoColors.ink)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        SlowTTSButton(path: q.audio?.question)
-                    }
-                    QuestionRendererView(question: q, answer: currentAnswer, phase: qPhase, isCorrect: isCorrect, onChange: { currentAnswer = $0 })
-                        .id(q.id)
-                }
-                .padding(20)
+            } trailing: { EmptyView() }
+        } answers: {
+            QuestionRendererView(question: q, answer: currentAnswer, phase: qPhase,
+                                 isCorrect: isCorrect, onChange: { currentAnswer = $0 }).id(q.id)
+        } action: {
+            ClayButton(title: "检查", id: "story-quiz-check") { check(q) }
+                .disabled(currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty)
+                .opacity(currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty ? 0.5 : 1)
+        } feedback: {
+            LessonFeedback(ok: isCorrect == true) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(isCorrect == true ? "答对了！" : "正确答案：\(MathText.render(q.answer))")
+                        .font(ClayFont.largeButton)
+                    Text(MathText.render(q.explanation)).font(ClayFont.body)
+                }.foregroundStyle(ClayColor.ink)
+            } action: {
+                ClayButton(title: qIndex + 1 >= story.questions.count ? "看结果" : "下一题", id: "story-quiz-next") { advance(story) }
             }
         }
-        .safeAreaInset(edge: .bottom) { quizFooter(story, q: q) }
-    }
-
-    @ViewBuilder
-    private func quizFooter(_ story: Story, q: Question) -> some View {
-        VStack(spacing: 0) {
-            if qPhase == .checked, let ok = isCorrect {
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(spacing: 10) {
-                        Image(systemName: ok ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundStyle(ok ? DuoColors.primary : DuoColors.danger)
-                        Text(ok ? "答对了！" : "正确答案：\(MathText.render(q.answer))")
-                            .duoFont(.caption).foregroundStyle(ok ? DuoColors.primary : DuoColors.danger)
-                        Spacer()
-                    }
-                    if !q.explanation.isEmpty {
-                        HStack(alignment: .top, spacing: 8) {
-                            Text(MathText.render(q.explanation)).duoFont(.caption).foregroundStyle(DuoColors.inkMuted)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            SlowTTSButton(path: q.audio?.explanation, size: 14)
-                        }
-                    }
-                }
-                .padding(.horizontal, 20).padding(.top, 12)
-            }
-            Button {
-                qPhase == .answering ? check(q) : advance(story)
-            } label: {
-                Text(qPhase == .answering ? "检查" : (qIndex + 1 >= story.questions.count ? "看结果" : "下一题"))
-            }
-            .buttonStyle(ChunkyButtonStyle(qPhase == .answering && currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty ? .disabled : .primary))
-            .disabled(qPhase == .answering && currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty)
-            .padding(.horizontal, 20).padding(.bottom, 32).padding(.top, 12)
-        }
-        .background(DuoColors.bg)
     }
 
     private func check(_ q: Question) {
@@ -324,26 +125,20 @@ struct StoryReaderView: View {
     }
 
     private func advance(_ story: Story) {
+        AudioPlayer.shared.stop()
         SFXEngine.shared.play(.progressTick); HapticEngine.shared.tap()
         if qIndex + 1 < story.questions.count {
             withAnimation(.easeInOut(duration: 0.2)) {
                 qIndex += 1; currentAnswer = ""; isCorrect = nil; qPhase = .answering
             }
-        } else {
-            withAnimation(Motion.reveal) { phase = .result }
-        }
+        } else { withAnimation(Motion.reveal) { phase = .result } }
     }
-
-    // ============================================================
-    // Phase 3 — 结果
-    // ============================================================
 
     private func accuracy(_ story: Story) -> Double {
         guard !story.questions.isEmpty else { return 1 }
         return Double(correctCount) / Double(story.questions.count)
     }
 
-    /// 三星标准与 web 一致：≥95% 三星，≥75% 两星，其余一星。
     private func stars(_ story: Story) -> Int {
         let a = accuracy(story)
         return a >= 0.95 ? 3 : (a >= 0.75 ? 2 : 1)
@@ -353,33 +148,19 @@ struct StoryReaderView: View {
         let acc = accuracy(story)
         let xp = Economy.storyQuizXp(accuracy: acc)
         let alreadyDone = progressStore.isReadingCompleted(storyRewardId)
-        return VStack(spacing: 18) {
-            Spacer()
-            PetView(mood: acc >= Economy.ReadingXP.goodThreshold ? .proud : .think, size: 110, reactTo: .levelup)
+        return LessonInterlude(bookId: bookId, title: acc >= Economy.ReadingXP.goodThreshold ? "读得真棒！" : "读完啦！",
+                               subtitle: "答对 \(correctCount) / \(story.questions.count) 题 · 正确率 \(Int((acc * 100).rounded()))%",
+                               mood: acc >= Economy.ReadingXP.goodThreshold ? .proud : .think) {
+            ClayIconButton(icon: .back, id: "story-result-back") { dismiss() }
+        } detail: {
             StarRevealView(earnedStars: stars(story))
-            Text(acc >= Economy.ReadingXP.goodThreshold ? "读得真棒！" : "读完啦！").duoFont(.title).foregroundStyle(DuoColors.ink)
-            Text("答对 \(correctCount) / \(story.questions.count) 题 · 正确率 \(Int((acc * 100).rounded()))%")
-                .duoFont(.subhead).foregroundStyle(DuoColors.inkMuted)
-
-            HStack(spacing: 6) {
-                Image(systemName: "bolt.fill").font(.system(size: 15, weight: .heavy))
-                Text(alreadyDone && awarded == false ? "已领过奖励" : "+\(xp) XP").duoNumeral(.subhead)
-            }
-            .foregroundStyle(DuoColors.secondary)
-            .padding(.horizontal, 16).padding(.vertical, 9)
-            .background(DuoColors.secondary.opacity(0.14), in: .capsule)
-
-            Spacer()
-            Button("完成") { dismiss() }
-                .buttonStyle(ChunkyButtonStyle(.primary))
-                .padding(.horizontal, 32)
-                .accessibilityIdentifier("story-result-done")
+            Text(alreadyDone && !awarded ? "已领过奖励" : "+\(xp) XP")
+                .font(ClayFont.title).accessibilityIdentifier("story-result-xp")
+        } actions: {
+            ClayButton(title: "完成", id: "story-result-done") { dismiss() }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
         .onAppear {
-            guard !awarded else { return }
-            // completeReading 内部按 id 幂等 —— 二刷不再发 XP。
+            guard !bedtime, !awarded else { return }
             if !alreadyDone {
                 awarded = true
                 progressStore.completeReading(id: storyRewardId, xp: xp)
@@ -388,16 +169,29 @@ struct StoryReaderView: View {
         }
     }
 
+    private func completionPhase(_ story: Story) -> some View {
+        let done = progressStore.isReadingCompleted(storyRewardId)
+        let audioReady = AudioPlayer.shared.hasAnyResolvable(story.sentences.map(\.audio))
+        let eligible = done || narratedPages.count == story.sentences.count || !audioReady
+        return LessonInterlude(bookId: bookId, title: "故事读完啦", subtitle: eligible ? "把故事里的温暖带回家吧" : "先听完整个故事，就能领奖励啦") {
+            ClayIconButton(icon: .back, id: "story-completion-back") { dismiss() }
+        } detail: { EmptyView() } actions: {
+            ClayButton(title: done ? "已读完 ✓" : "读完了 +\(Economy.ReadingXP.storyGood) XP", id: "story-complete") {
+                guard !bedtime, !done, eligible else { return }
+                progressStore.completeReading(id: storyRewardId, xp: Economy.ReadingXP.storyGood)
+            }.disabled(done || !eligible)
+            ClayButton(title: "再听一遍", style: .cream, id: "story-read-again") { phase = .reading }
+        }
+    }
+
     // MARK: - Adapter
 
-    /// Adapt a StoryQuestion into the lesson Question type so the shared
-    /// renderer + grader can drive it.
     static func question(from q: StoryQuestion) -> Question {
         let type: QuestionType
         switch q.type {
         case "true_false": type = .trueFalse
-        case "choice":     type = .choice
-        default:            type = .fillBlankText
+        case "choice": type = .choice
+        default: type = .fillBlankText
         }
         return Question(
             id: q.id, type: type, score: 1, difficulty: 1, knowledgePoint: "",

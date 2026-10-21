@@ -15,5 +15,8 @@
     "check:web-experience": "tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/answer-feedback.tsx && tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/text-answer-keyboard.tsx && tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/jump-loading.ts && tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/reading-session.ts && tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/recorder-lifecycle.ts && tsx scripts/checks/theme-colors.ts",
     "check:learning-quality": "tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/weekly-learning.tsx && tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/number-sense.tsx",
     "check:visual-controls": "tsx --tsconfig scripts/checks/tsconfig.json scripts/checks/visual-controls.tsx"
+  },
+  "devDependencies": {
+    "pinyin-pro": "^3.29.5"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "baseline": "9fee6e1c275d4baae497981045924fb8fa5ef6cc",
+  "unchangedExistingEntries": 2828,
+  "changedExistingEntries": [],
+  "removedEntries": [],
+  "addedEntries": [
+    "data/story-pinyin/LICENSE.pinyin-pro",
+    "data/story-pinyin/REVIEW.md",
+    "data/story-pinyin/chinese-g1down.json",
+    "data/story-pinyin/chinese-g1up.json",
+    "data/story-pinyin/chinese-g2down.json",
+    "data/story-pinyin/chinese-g2up.json",
+    "data/story-pinyin/chinese-g3down.json",
+    "data/story-pinyin/chinese-g3up.json",
+    "data/story-pinyin/chinese-g4down.json",
+    "data/story-pinyin/chinese-g4up.json",
+    "data/story-pinyin/chinese-g5down.json",
+    "data/story-pinyin/chinese-g5up.json",
+    "data/story-pinyin/chinese-g6down.json",
+    "data/story-pinyin/chinese-g6up.json"
+  ],
+  "beforeBytes": 7672566,
+  "afterBytes": 8192995,
+  "sha256": "6bff066bdd0a9063a3cdf14c481c8bfce2974c8475696ac5d2a6778ea340413a"
+}

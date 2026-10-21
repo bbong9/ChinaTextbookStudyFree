@@ -128,6 +128,14 @@ final class DataLoader {
         return stories
     }
 
+    /// 下载数据可没有旁挂文件；缺失或损坏时隐藏拼音开关。
+    func loadStoryPinyin(bookId: String) -> StoryPinyin? {
+        guard bookId.range(of: #"^[a-z0-9]+(?:-[a-z0-9]+)*$"#, options: .regularExpression) != nil else { return nil }
+        let url = sandboxDataRoot.appendingPathComponent("story-pinyin", isDirectory: true)
+            .appendingPathComponent("\(bookId).json")
+        return try? decode(StoryPinyin.self, from: url)
+    }
+
     // MARK: - Hanzi（缺失或损坏均返回 nil；缺笔顺仍可读字卡）
 
     func loadHanziIndex(bookId: String) -> HanziIndex? {

@@ -28,8 +28,8 @@ def pack(root: Path) -> None:
         with zipfile.ZipFile(seed) as source, zipfile.ZipFile(temporary, "w", compression=zipfile.ZIP_DEFLATED,
                                                            compresslevel=9) as dest:
             for item in source.infolist():
-                # 删除旧汉字产物，避免字表缩减后 seed 留下已经移除的字。
-                if item.filename.startswith("data/hanzi/") or item.filename in additions:
+                # 删除旧汉字和拼音产物，避免内容缩减后 seed 留下已经移除的条目。
+                if item.filename.startswith(("data/hanzi/", "data/story-pinyin/")) or item.filename in additions:
                     continue
                 dest.writestr(item, source.read(item))
             for name, path in additions.items():

@@ -16,6 +16,11 @@ enum ClayFont {
     static let level = nunito(size: 11)
     static let caption = Font.custom("PingFangSC-Semibold", size: 12, relativeTo: .caption)
     static let swatch = nunito(size: 9, weight: 800)
+    static let storyRuby = nunito(size: 12, weight: 800)
+    static func story(scale: CGFloat, english: Bool) -> Font {
+        let size = max(30, 28 / max(scale, 0.001))
+        return english ? nunito(size: size, weight: 800) : .custom("PingFangSC-Semibold", fixedSize: size)
+    }
 
     static func happy(size: CGFloat) -> Font { .custom("ZCOOLKuaiLe-Regular", fixedSize: size) }
     static func nunito(size: CGFloat, weight: Int = 900) -> Font {
