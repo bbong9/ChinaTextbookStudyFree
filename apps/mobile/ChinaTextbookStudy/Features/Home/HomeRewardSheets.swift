@@ -44,6 +44,7 @@ struct DailyRewardCard: View {
 
                 Button("收下啦") { onDismiss() }
                     .buttonStyle(ChunkyButtonStyle(.primary))
+                    .accessibilityIdentifier("daily-reward-dismiss")
             }
             .padding(24)
             .frame(maxWidth: 320)
@@ -55,6 +56,7 @@ struct DailyRewardCard: View {
             .padding(28)
         }
         .onAppear { SFXEngine.shared.play(.unlock) }
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("daily-reward-card")
     }
 }
@@ -237,12 +239,14 @@ struct StreakDetailSheet: View {
                         (!freezesFull && progressStore.gems >= freezeCost) ? .secondary : .disabled
                     ))
                     .disabled(freezesFull || progressStore.gems < freezeCost)
+                    .accessibilityIdentifier("streak-buy-freeze")
                 }
 
                 Spacer(minLength: 4)
 
                 Button("知道了") { dismiss() }
                     .buttonStyle(ChunkyButtonStyle(.primary))
+                    .accessibilityIdentifier("streak-detail-dismiss")
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 24)
@@ -348,6 +352,7 @@ struct GemShopSheet: View {
 
                 Button("关闭") { dismiss() }
                     .buttonStyle(ChunkyButtonStyle(.primary))
+                    .accessibilityIdentifier("coins-detail-dismiss")
                     .padding(.top, 4)
             }
             .padding(.horizontal, 20)
@@ -400,6 +405,7 @@ struct GemShopSheet: View {
         }
         .buttonStyle(.plain)
         .disabled(!enabled)
+        .accessibilityIdentifier("coins-buy-\(icon)")
     }
 }
 
@@ -480,9 +486,11 @@ struct HeartDetailSheet: View {
                     (progressStore.hearts < ProgressStore.maxHearts && progressStore.gems >= Economy.heartRefillCost) ? .secondary : .disabled
                 ))
                 .disabled(progressStore.hearts >= ProgressStore.maxHearts || progressStore.gems < Economy.heartRefillCost)
+                .accessibilityIdentifier("hearts-buy-refill")
 
                 Button("知道了") { dismiss() }
                     .buttonStyle(ChunkyButtonStyle(.primary))
+                    .accessibilityIdentifier("hearts-detail-dismiss")
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 24)

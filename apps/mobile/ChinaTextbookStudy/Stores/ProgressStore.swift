@@ -49,9 +49,10 @@ final class ProgressStore: ObservableObject {
             // the flows under test.
             fresh.lastDailyRewardDate = SRS.todayString()
             PetScreenTestSeed.apply(to: &fresh, now: now)
+            HomeMapTestSeed.apply(to: &fresh, now: now)
             self.progress = fresh
             self.selectedGrade = 1
-            self.activeBookId = "g1up"
+            self.activeBookId = HomeMapTestSeed.value("-uitest-map-book") ?? "g1up"
             self.hasCompletedOnboarding = !ProcessInfo.processInfo.arguments.contains("-uitest-onboarding")
             return
         }
@@ -414,7 +415,7 @@ final class ProgressStore: ObservableObject {
     var streakFreezes: Int { progress.streakFreezes ?? 0 }
 
     /// A login reward claimed this launch/foreground that the UI hasn't
-    /// presented yet. HomeView shows a light card and clears it.
+    /// presented yet. The home screen shows a light card and clears it.
     @Published var pendingDailyReward: DailyRewardClaim?
 
     struct DailyRewardClaim: Equatable {

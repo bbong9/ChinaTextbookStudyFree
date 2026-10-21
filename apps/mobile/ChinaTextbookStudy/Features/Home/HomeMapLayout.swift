@@ -2,7 +2,7 @@ import SwiftUI
 
 /// 只布局 builder 的结果；不推导解锁、宝箱或挑战规则。
 struct HomeMapLayout {
-    struct Entry: Identifiable {
+    struct Entry: Identifiable, Equatable {
         let node: PathMapNode
         let number: Int
         let point: CGPoint
@@ -10,7 +10,7 @@ struct HomeMapLayout {
         /// RD-13 接入时传汉字，课本节点继续传全书序号。
         func label(character: String? = nil) -> String { character ?? String(number) }
     }
-    struct Unit: Identifiable {
+    struct Unit: Identifiable, Equatable {
         let number: Int
         let title: String
         let origin: CGFloat
@@ -25,7 +25,12 @@ struct HomeMapLayout {
             [CGPoint(x: -24, y: 300)] + entries.map(\.point) + [CGPoint(x: width + 24, y: 300)]
         }
     }
+    struct Anchor: Identifiable {
+        let id: String
+        let gap: CGFloat
+    }
     let units: [Unit]
+    let anchors: [Anchor]
     let width: CGFloat
     let current: Entry?
     let currentX: CGFloat?
@@ -52,6 +57,15 @@ struct HomeMapLayout {
             origin += width
         }
         self.units = units
+        var precedingEnd: CGFloat = 0
+        anchors = units.flatMap { unit in
+            unit.entries.map { entry in
+                let x = unit.origin + entry.point.x
+                let anchor = Anchor(id: entry.id, gap: max(0, x - precedingEnd))
+                precedingEnd = x + 1
+                return anchor
+            }
+        }
         width = max(844, origin)
         // 沿用旧地图：挑战节点不抢占主线定位，全通后定位最后一节课。
         let resolvedCurrent = nodes.first { $0.status == .current && $0.kind != .exam }

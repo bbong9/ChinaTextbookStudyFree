@@ -6,6 +6,8 @@ struct MapHomeView: View {
     let siteIndex: SiteIndex
     @Binding var path: [AppRoute]
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var seeded = false
     @State private var activeSheet: Sheet?
     @State private var showAvatarMenu = false
     @State private var showStories = false
@@ -26,7 +28,7 @@ struct MapHomeView: View {
 
     private var activeBook: Book? {
         #if DEBUG
-        if ProcessInfo.processInfo.arguments.contains("-uitest-map-empty") { return nil }
+        if HomeMapTestSeed.flag("-uitest-map-empty") { return nil }
         #endif
         if let id = progressStore.activeBookId { return siteIndex.books.first { $0.id == id } }
         let grade = progressStore.selectedGrade
@@ -71,16 +73,23 @@ struct MapHomeView: View {
                 }
             }
         }
-        .accessibilityIdentifier("home-map-screen")
+        .environment(\.clayMotionPaused, effectiveReduceMotion)
+        .environment(\.petAnimationsPaused, effectiveReduceMotion)
         .fullScreenCover(item: $activeChest) { chest in
             ChestModalView(onClaim: { gems in
                 progressStore.addGems(gems); progressStore.claimChest(chest.id)
-            }, onDismiss: { activeChest = nil; reloadOutline() })
+            }, onDismiss: { activeChest = nil; reloadOutline() }, showsCoins: true)
                 .presentationBackground(.clear)
         }
         .fullScreenCover(item: Binding(get: { progressStore.pendingLeagueResult },
             set: { if $0 == nil { progressStore.clearPendingLeagueResult() } })) { result in
-            LeagueResultView(result: result) { progressStore.clearPendingLeagueResult() }
+            GeometryReader { geometry in
+                // 原结算幕为竖排内容；横屏可滚到继续按钮，不改变结算与清除逻辑。
+                ScrollView {
+                    LeagueResultView(result: result) { progressStore.clearPendingLeagueResult() }
+                        .frame(minHeight: geometry.size.height)
+                }.background(DuoColors.bg.ignoresSafeArea())
+            }
         }
         .overlay {
             if let claim = progressStore.pendingDailyReward {
@@ -105,8 +114,12 @@ struct MapHomeView: View {
         }
         .confirmationDialog("故事绘本", isPresented: $showStories, titleVisibility: .visible) {
             if let book = activeBook {
-                if book.hasStories == true { Button("课外故事") { path.append(.stories(bookId: book.id)) } }
-                if book.hasPassages == true { Button("课文听读") { path.append(.reading(bookId: book.id)) } }
+                if book.hasStories == true {
+                    Button("课外故事") { path.append(.stories(bookId: book.id)) }.accessibilityIdentifier("home-stories")
+                }
+                if book.hasPassages == true {
+                    Button("课文听读") { path.append(.reading(bookId: book.id)) }.accessibilityIdentifier("home-reading")
+                }
             }
             Button("睡前绘本") { path.append(.bedtimeStories) }
             Button("取消", role: .cancel) {}
@@ -114,9 +127,26 @@ struct MapHomeView: View {
         .alert("小提示", isPresented: Binding(get: { hint != nil }, set: { if !$0 { hint = nil } })) {
             Button("知道了", role: .cancel) { hint = nil }
         } message: { Text(hint ?? "") }
-        .onAppear { reloadOutline() }
+        .onAppear {
+            reloadOutline()
+            #if DEBUG
+            if !seeded, HomeMapTestSeed.flag("-uitest-map-cloud") {
+                var fixture = progressStore.progress; fixture.xp = 120
+                progressStore.pendingCloudRestore = Backup.makeEnvelope(from: fixture)
+            }
+            #endif
+            seeded = true
+        }
         .onChange(of: progressStore.activeBookId) { _, _ in reloadOutline() }
         .toolbar(.hidden, for: .navigationBar)
+    }
+
+    private var effectiveReduceMotion: Bool {
+        #if DEBUG
+        return reduceMotion || HomeMapTestSeed.flag("-uitest-map-reduce-motion")
+        #else
+        return reduceMotion
+        #endif
     }
 
     private var avatarMenu: some View {
@@ -127,8 +157,8 @@ struct MapHomeView: View {
             menuEntry("错题本", id: "review", route: .review)
             menuEntry("设置", id: "settings", route: .settings)
         }
-        .padding(8).background(ClayGradient.buttonCream.view, in: RoundedRectangle(cornerRadius: ClayRadius.largeButton))
-        .clayShadow(.panel).accessibilityIdentifier("home-avatar-menu")
+        .padding(8).background { ClayGradient.buttonCream.view.clipShape(RoundedRectangle(cornerRadius: ClayRadius.largeButton)) }
+        .clayShadow(.panel)
     }
 
     private func menuEntry(_ title: String, id: String, route: AppRoute) -> some View {
@@ -144,7 +174,7 @@ struct MapHomeView: View {
                 if let loadError {
                     Text("这本书还没下载").font(ClayFont.body)
                     Text(loadError).font(ClayFont.caption)
-                    if let entry = downloader.manifest?.books.first(where: { $0.bookId == book.id }) {
+                    if let entry = downloadEntry(for: book.id) {
                         BookDownloadCard(entry: entry, downloader: downloader) { reloadOutline() }
                     }
                     Button("选择其他课本") { activeSheet = .book }
@@ -158,10 +188,23 @@ struct MapHomeView: View {
         }
         .padding(16).frame(width: min(430, stage.size.width - 140))
         .foregroundStyle(ClayColor.ink)
-        .background(ClayGradient.buttonCream.view, in: RoundedRectangle(cornerRadius: ClayRadius.card))
+        .background { ClayGradient.buttonCream.view.clipShape(RoundedRectangle(cornerRadius: ClayRadius.card)) }
         .clayShadow(.panel)
         .position(x: stage.size.width / 2, y: stage.size.height / 2)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier(activeBook == nil ? "map-empty-state" : "map-download-state")
+    }
+
+    private func downloadEntry(for bookId: String) -> ManifestEntry? {
+        if let entry = downloader.manifest?.books.first(where: { $0.bookId == bookId }) { return entry }
+        #if DEBUG
+        if HomeMapTestSeed.flag("-uitest-map-missing-book") {
+            return ManifestEntry(bookId: bookId, audioRefCount: 0,
+                data: ManifestBundle(name: "rd09-synthetic-data.zip", bytes: 1024, sha256: String(repeating: "0", count: 64)),
+                audio: ManifestBundle(name: "rd09-synthetic-audio.zip", bytes: 0, sha256: String(repeating: "0", count: 64)))
+        }
+        #endif
+        return nil
     }
 
     private func start(_ node: PathMapNode) {
@@ -208,6 +251,9 @@ struct MapHomeView: View {
         guard let book = activeBook else { outline = nil; pathNodes = []; mapLayout = HomeMapLayout(nodes: []); return }
         if progressStore.activeBookId != book.id { progressStore.setActiveBook(book.id) }
         do {
+            #if DEBUG
+            if HomeMapTestSeed.flag("-uitest-map-missing-book") { throw DataLoaderError.bookNotDownloaded(book.id) }
+            #endif
             if metasBookId != book.id || outline == nil {
                 let loaded = try DataLoader.shared.loadOutline(bookId: book.id)
                 outline = loaded

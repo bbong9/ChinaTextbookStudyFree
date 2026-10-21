@@ -10,23 +10,32 @@ struct HomeMapHorizon: View {
         ZStack(alignment: .topLeading) {
             SkyLayer()
             ForEach(-1...2, id: \.self) { tile in
-                Canvas { context, _ in
-                    let far = scenePath {
-                        $0.move(to: CGPoint(x: 0, y: 196))
-                        $0.addCurve(to: CGPoint(x: 250, y: 178), control1: CGPoint(x: 80, y: 150), control2: CGPoint(x: 170, y: 150))
-                        $0.addCurve(to: CGPoint(x: 500, y: 170), control1: CGPoint(x: 330, y: 140), control2: CGPoint(x: 420, y: 138))
-                        $0.addCurve(to: CGPoint(x: 760, y: 168), control1: CGPoint(x: 580, y: 146), control2: CGPoint(x: 680, y: 140))
-                        $0.addCurve(to: CGPoint(x: 844, y: 196), control1: CGPoint(x: 800, y: 156), control2: CGPoint(x: 830, y: 160))
-                        $0.addLines([CGPoint(x: 844, y: 390), CGPoint(x: 0, y: 390)])
-                        $0.closeSubpath()
-                    }
-                    SceneNode.shape(far, fill: .gradient(.far)).draw(in: context, accent: ClayColor.white)
-                }
-                .frame(width: 844, height: 390)
-                .drawingGroup()
+                HomeMapFarTile().equatable()
                 .offset(x: CGFloat(tile) * 844 + shift, y: size.height - 390)
             }
+            CloudView(x: 250, y: size.height - 390 + 58, scale: 0.8).offset(x: shift)
+            CloudView(x: 470, y: size.height - 390 + 34, scale: 0.6, animation: .drift2).offset(x: shift)
+            CloudView(x: 640, y: size.height - 390 + 104, scale: 0.45).offset(x: shift)
         }.accessibilityHidden(true)
+    }
+}
+
+private struct HomeMapFarTile: View, Equatable {
+    var body: some View {
+        Canvas { context, _ in
+            let far = scenePath {
+                $0.move(to: CGPoint(x: 0, y: 196))
+                $0.addCurve(to: CGPoint(x: 250, y: 178), control1: CGPoint(x: 80, y: 150), control2: CGPoint(x: 170, y: 150))
+                $0.addCurve(to: CGPoint(x: 500, y: 170), control1: CGPoint(x: 330, y: 140), control2: CGPoint(x: 420, y: 138))
+                $0.addCurve(to: CGPoint(x: 760, y: 168), control1: CGPoint(x: 580, y: 146), control2: CGPoint(x: 680, y: 140))
+                $0.addCurve(to: CGPoint(x: 844, y: 196), control1: CGPoint(x: 800, y: 156), control2: CGPoint(x: 830, y: 160))
+                $0.addLine(to: CGPoint(x: 844, y: 390)); $0.addLine(to: CGPoint(x: 0, y: 390))
+                $0.closeSubpath()
+            }
+            SceneNode.shape(far, fill: .gradient(.far)).draw(in: context, accent: ClayColor.white)
+        }
+        .frame(width: 844, height: 390)
+        .drawingGroup()
     }
 }
 
@@ -44,11 +53,17 @@ struct HomeMapMiddle: View, Equatable {
                     $0.addCurve(to: CGPoint(x: width + 200, y: 222), control1: CGPoint(x: width - 284, y: 196), control2: CGPoint(x: width - 144, y: 190))
                 }
                 var hill = ridge
-                hill.addLines([CGPoint(x: width + 200, y: 390), CGPoint(x: -200, y: 390)])
+                hill.addLine(to: CGPoint(x: width + 200, y: 390)); hill.addLine(to: CGPoint(x: -200, y: 390))
                 hill.closeSubpath()
                 SceneNode.shape(hill, fill: .gradient(.hill1)).draw(in: context, accent: ClayColor.white)
                 SceneNode.shape(ridge, stroke: .color(ClayColor.hillHighlight), width: 3, opacity: 0.7)
                     .draw(in: context, accent: ClayColor.white)
+                let foreground = scenePath {
+                    $0.move(to: CGPoint(x: -200, y: 330))
+                    $0.addCurve(to: CGPoint(x: width + 200, y: 330), control1: CGPoint(x: 240, y: 312), control2: CGPoint(x: 540, y: 306))
+                    $0.addLine(to: CGPoint(x: width + 200, y: 390)); $0.addLine(to: CGPoint(x: -200, y: 390)); $0.closeSubpath()
+                }
+                SceneNode.shape(foreground, fill: .gradient(.hill2)).draw(in: context, accent: ClayColor.white)
             }
             BushView(x: unit.isMultiple(of: 2) ? 180 : 214, y: 220, scale: 0.7)
             BushView(x: 520, y: 222, scale: 0.75)
@@ -66,7 +81,7 @@ struct HomeMapMiddle: View, Equatable {
     }
 }
 
-struct HomeMapForeground: View {
+struct HomeMapForeground: View, Equatable {
     let width: CGFloat
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -112,4 +127,10 @@ struct HomeMapTree: View {
             nodes.forEach { $0.draw(in: context, accent: ClayColor.white) }
         }.frame(width: 200, height: 320).drawingGroup().accessibilityHidden(true)
     }
+}
+
+/// 滚动只移动合成层，不重复构造静态曲线。
+struct HomeMapRoad: View, Equatable {
+    let points: [CGPoint]
+    var body: some View { PathRoad(points: points).drawingGroup() }
 }

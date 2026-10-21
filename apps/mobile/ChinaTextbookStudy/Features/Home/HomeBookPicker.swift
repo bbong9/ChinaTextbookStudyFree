@@ -64,7 +64,7 @@ struct BookPickerSheet: View {
         .padding(16).foregroundStyle(ClayColor.ink)
         .background(ClayGradient.buttonCream.view.ignoresSafeArea())
         .dynamicTypeSize(...DynamicTypeSize.xxLarge)
-        .accessibilityIdentifier("book-picker-screen")
+        .accessibilityElement(children: .contain).accessibilityIdentifier("book-picker-screen")
     }
 
     private func bookCard(_ book: Book) -> some View {

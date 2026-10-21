@@ -48,6 +48,7 @@ struct BookDownloadCard: View {
             }
             .buttonStyle(ChunkyButtonStyle(inFlight ? .disabled : .secondary))
             .disabled(inFlight)
+            .accessibilityIdentifier("book-download-\(entry.bookId)")
         }
         .padding(16)
         .background(DuoColors.surface, in: .rect(cornerRadius: Radius.card))

@@ -136,7 +136,7 @@ struct StreakDisplay {
         self.mood = studied ? .happy : Self.idleMood(for: date)
     }
 
-    /// 聪聪's mood while today is still unstudied, by hour of day:
+    /// Pet mood while today is still unstudied, by hour of day:
     /// morning calm → afternoon anxious → after 20:00 crying.
     static func idleMood(for date: Date) -> PandaMood {
         let hour = Calendar.current.component(.hour, from: date)
@@ -213,7 +213,7 @@ private extension Color {
     static let blushPink   = Color(widgetHex: 0xFF9AA8)
 }
 
-// MARK: - Mini 聪聪 (static, simplified vector drawing)
+// MARK: - Mini pet (static, simplified vector drawing)
 
 struct MiniPandaFace: View {
     var mood: PandaMood
@@ -360,7 +360,7 @@ struct StreakWidgetEntryView: View {
         return base + (entry.state.studiedToday ? "今天已经学过了。" : "今天还没学习。")
     }
 
-    // System small: flame + streak number as the hero, 聪聪 alongside.
+    // System small: flame + streak number as the hero, pet alongside.
     private var small: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top, spacing: 0) {

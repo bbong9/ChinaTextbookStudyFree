@@ -17,6 +17,8 @@ struct HomeMapHUD: View {
     let onDock: (DockIcon.Kind) -> Void
     var onDebugGallery: () -> Void = {}
 
+    @Environment(\.clayMotionPaused) private var locallyPaused
+
     private let dockKinds: [DockIcon.Kind] = [.hanzi, .math, .eng, .animal, .story, .idiom, .books]
     private var horizontalInset: CGFloat { 12 }
     var body: some View {
@@ -28,7 +30,7 @@ struct HomeMapHUD: View {
                             PetView(size: 52).allowsHitTesting(false)
                         }
                         .frame(width: 66, height: 68)
-                        .contentShape(Rectangle())
+                        .contentShape(Rectangle()).accessibilityHidden(true)
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel("头像菜单")
@@ -40,7 +42,7 @@ struct HomeMapHUD: View {
                     stat(icon: nil, text: progressStore.gems.formatted(), id: "hud-coins", label: "金币", action: onCoins)
                     stat(icon: .flame, text: "连签\(progressStore.displayStreak)天", id: "hud-streak", label: "连签", action: onStreak)
                     stat(icon: .heart, text: "\(progressStore.hearts)", id: "hud-hearts", label: "红心", action: onHearts)
-                }
+                }.fixedSize(horizontal: true, vertical: false)
                 dailyGoal.padding(.top, 7)
                 HStack(spacing: 4) {
                     topIcon(.checkin, id: "hud-checkin", action: onCheckIn)
@@ -52,7 +54,7 @@ struct HomeMapHUD: View {
                     topIcon(.shop, id: "hud-pet-shop", action: onShop)
                     topIcon(.task, id: "hud-quests", action: onQuests)
                     topIcon(.parent, id: "hud-parent", action: onParent)
-                }
+                }.fixedSize(horizontal: true, vertical: false)
             }
             Spacer(minLength: 0)
             HStack(alignment: .bottom, spacing: 12) {
@@ -66,14 +68,13 @@ struct HomeMapHUD: View {
                             }
                             .frame(maxWidth: .infinity)
                             .frame(minWidth: stage.minimumTapDimension, minHeight: stage.minimumTapDimension)
-                            .contentShape(Rectangle())
+                            .contentShape(Rectangle()).accessibilityHidden(true)
                         }
                         .buttonStyle(ClayPressStyle())
-                        .accessibilityElement(children: .ignore)
                         .accessibilityLabel(kind.label).accessibilityIdentifier("dock-\(kind.rawValue)")
                     }
                 }
-                GoButton(id: "hud-go", action: onGo)
+                GoButton(pausesAnimation: locallyPaused, id: "hud-go", action: onGo)
                     .disabled(book == nil)
             }
         }
@@ -85,7 +86,7 @@ struct HomeMapHUD: View {
     }
 
     private func stat(icon: ClayIcon?, text: String, id: String, label: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) { StatPill(icon: icon, text: text).clayHitTarget() }
+        Button(action: action) { StatPill(icon: icon, text: text).clayHitTarget().accessibilityHidden(true) }
             .buttonStyle(ClayPressStyle()).accessibilityLabel("\(label) \(text)")
             .accessibilityIdentifier(id).padding(.top, 9)
     }
@@ -124,9 +125,9 @@ struct HomeMapHUD: View {
                 OutlinedLabel(text: kind.label)
             }
             .frame(width: max(48, stage.minimumTapDimension), height: max(62, stage.minimumTapDimension))
-            .contentShape(Rectangle())
+            .contentShape(Rectangle()).accessibilityHidden(true)
         }
-        .buttonStyle(ClayPressStyle()).accessibilityElement(children: .ignore)
+        .buttonStyle(ClayPressStyle())
         .accessibilityLabel(kind.label).accessibilityIdentifier(id)
     }
 
@@ -142,8 +143,8 @@ struct HomeMapHUD: View {
                 .foregroundStyle(ClayColor.white)
             }
             .frame(width: 124, height: 50)
-            .background(ClayGradient.blue.view, in: RoundedRectangle(cornerRadius: ClayRadius.largeButton))
-            .clayShadow(.stat).clayHitTarget()
+            .background { ClayGradient.blue.view.clipShape(RoundedRectangle(cornerRadius: ClayRadius.largeButton)) }
+            .clayShadow(.stat).clayHitTarget().accessibilityHidden(true)
         }
         .buttonStyle(ClayPressStyle())
         .accessibilityLabel("换年级或换课本，\(book?.fullName ?? "没有选书")")

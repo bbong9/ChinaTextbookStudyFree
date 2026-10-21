@@ -12,15 +12,12 @@ struct MainShell: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            HomeView(
+            MapHomeView(
                 progressStore: progressStore,
                 downloader: downloader,
                 siteIndex: siteIndex,
                 path: $path
             )
-            .safeAreaInset(edge: .top, spacing: 0) {
-                temporaryEntrances
-            }
             .navigationDestination(for: AppRoute.self) { route in
                 RouteView(
                     route: route,
@@ -42,62 +39,6 @@ struct MainShell: View {
                     .zIndex(10)
             }
         }
-    }
-
-    /// RD-09 将入口收进地图和头像菜单；这里只保留能滚动、能点到的按钮。
-    private var temporaryEntrances: some View {
-        VStack(spacing: 0) {
-            ScrollView(.horizontal) {
-                HStack(spacing: Space.m) {
-                    entry("排行", id: "league", route: .league)
-                    entry("错题本", id: "review", route: .review)
-                    entry("商店", id: "shop", route: .shop)
-                    entry("我的", id: "profile", route: .profile)
-                    entry("成就墙", id: "achievements", route: .achievements)
-                    Menu {
-                        ForEach(1...6, id: \.self) { grade in
-                            Button("\(grade) 年级") { path.append(.bookList(grade: grade)) }
-                                .accessibilityIdentifier("shell-grade-\(grade)")
-                        }
-                    } label: {
-                        Text("按年级")
-                            .frame(minWidth: 44, minHeight: 44)
-                    }
-                    .accessibilityLabel("按年级浏览课本")
-                    .accessibilityIdentifier("shell-open-grades")
-                }
-                .padding(.horizontal, Space.m)
-            }
-            .frame(height: 44)
-            .accessibilityIdentifier("shell-legacy-routes")
-
-            ScrollView(.horizontal) {
-                HStack(spacing: Space.m) {
-                    ForEach(AppRoute.temporaryRoutes(bookId: progressStore.activeBookId ?? siteIndex.books.first?.id ?? "g1up"), id: \.self) { route in
-                        if let placeholder = route.placeholder {
-                            entry(placeholder.title, id: placeholder.id, route: route)
-                        }
-                    }
-                }
-                .padding(.horizontal, Space.m)
-            }
-            .frame(height: 44)
-            .accessibilityIdentifier("shell-new-routes")
-        }
-        .duoFont(.caption)
-        .foregroundStyle(DuoColors.ink)
-        .background(DuoColors.bg)
-    }
-
-    private func entry(_ title: String, id: String, route: AppRoute) -> some View {
-        Button { path.append(route) } label: {
-            Text(title)
-                .frame(minWidth: 44, minHeight: 44)
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(title)
-        .accessibilityIdentifier("shell-open-\(id)")
     }
 
     // MARK: - Post-onboarding first lesson (ios-retention-11)
@@ -229,8 +170,13 @@ struct RouteView: View {
             PetHomeView(progressStore: progressStore, path: $path)
         case .petShop:
             PetShopView(progressStore: progressStore, path: $path)
-        case .checkIn, .quests, .parentCenter,
-             .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
+        case .checkIn:
+            StreakDetailSheet(progressStore: progressStore)
+        case .quests:
+            HomeQuestsView(progressStore: progressStore, path: $path)
+        case .parentCenter:
+            SettingsView(progressStore: progressStore)
+        case .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
              .idiomPicker, .idiomPlayer, .bedtimeStories, .readingRoom:
             if let placeholder = route.placeholder {
                 Text("建设中")
