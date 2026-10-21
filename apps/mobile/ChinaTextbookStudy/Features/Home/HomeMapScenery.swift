@@ -97,6 +97,7 @@ struct HomeMapForeground: View, Equatable {
 /// scrMap 最左边的大树，树洞作为书屋地标。
 struct HomeMapTree: View {
     var body: some View {
+        let canopyOverflow: CGFloat = 96
         Canvas { context, _ in
             let trunk = scenePath {
                 $0.move(to: CGPoint(x: -40, y: 312))
@@ -124,8 +125,14 @@ struct HomeMapTree: View {
                 .shape(sceneEllipse(80, -30, 62, 62), fill: .gradient(.canopy)),
                 .shape(sceneEllipse(146, -14, 40, 40), fill: .gradient(.canopy2))
             ]
-            nodes.forEach { $0.draw(in: context, accent: ClayColor.white) }
-        }.frame(width: 200, height: 320).drawingGroup().accessibilityHidden(true)
+            var expanded = context
+            expanded.translateBy(x: 0, y: canopyOverflow)
+            nodes.forEach { $0.draw(in: expanded, accent: ClayColor.white) }
+        }
+        .frame(width: 200, height: 320 + canopyOverflow).drawingGroup()
+        .offset(y: -canopyOverflow)
+        .frame(width: 200, height: 320, alignment: .topLeading)
+        .allowsHitTesting(false).accessibilityHidden(true)
     }
 }
 
