@@ -24,14 +24,14 @@ struct XPFloaterView: View {
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: "bolt.fill")
-                .font(.system(size: 14, weight: .bold))
+                .font(ClayFont.label)
             Text("+\(amount)")
-                .font(.system(size: 16, weight: .heavy))
+                .font(ClayFont.happy(size: 20))
         }
-        .foregroundStyle(DuoColors.secondary)
+        .foregroundStyle(ClayColor.orangeDeep)
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
-        .background(DuoColors.secondary.opacity(0.15), in: .capsule)
+        .background(ClayColor.orangeDeep.opacity(0.15), in: .capsule)
         .scaleEffect(scale)
         .offset(x: offsetX, y: offsetY)
         .opacity(opacity)

@@ -11,25 +11,27 @@ struct ComboOverlayView: View {
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: "flame.fill")
-                .font(.system(size: 28))
-                .foregroundStyle(.white)
+                .font(ClayFont.title)
+                .foregroundStyle(ClayColor.white)
             Text("连击 ×\(combo)")
-                .font(.system(size: 22, weight: .heavy))
-                .foregroundStyle(.white)
+                .font(ClayFont.happy(size: 22))
+                .foregroundStyle(ClayColor.white)
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
         .background(
             LinearGradient(
-                colors: [DuoColors.bee, DuoColors.fox, DuoColors.danger],
+                colors: [ClayColor.flameCore, ClayColor.orange, ClayColor.balloonKnot],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             ),
-            in: .rect(cornerRadius: 20)
+            in: .rect(cornerRadius: ClayRadius.bubble)
         )
-        .shadow(color: Color(hex: 0xB45A00).opacity(0.4), radius: 0, x: 0, y: 8)
+        .clayShadow(.orange)
         .scaleEffect(scale)
         .opacity(opacity)
+        .accessibilityIdentifier("lesson-combo")
+        .allowsHitTesting(false)
         .onAppear {
             SFXEngine.shared.play(.combo)
             HapticEngine.shared.success()

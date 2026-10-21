@@ -62,6 +62,7 @@ final class LessonFlowUITests: XCTestCase {
         let next = app.buttons["intro-next"]
         XCTAssertTrue(start.waitForExistence(timeout: 5) || next.exists,
                       "knowledge intro did not appear before the first run")
+        attachScreenshot("rd-10-intro")
         skipLessonIntroIfPresent(app)
         XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8),
                       "intro CTA did not hand over to the question runner")
@@ -99,6 +100,10 @@ final class LessonFlowUITests: XCTestCase {
         // The feedback panel replaces the check footer with a continue CTA.
         XCTAssertTrue(app.buttons["继续"].firstMatch.waitForExistence(timeout: 5),
                       "feedback panel did not appear after checking a correct answer")
+        app.buttons["question-report-flag"].tap()
+        XCTAssertTrue(app.buttons["lesson-report-cancel"].waitForExistence(timeout: 5))
+        attachScreenshot("rd-10-report")
+        app.buttons["lesson-report-cancel"].tap()
     }
 
     /// Quitting mid-lesson must show the custom hold-on overlay (mascot +
@@ -125,6 +130,7 @@ final class LessonFlowUITests: XCTestCase {
         // The keep-learning CTA sits on top of the overlay.
         XCTAssertTrue(app.buttons["继续学习"].firstMatch.exists,
                       "keep-learning CTA missing from the quit overlay")
+        attachScreenshot("rd-10-quit")
         app.buttons["lesson-quit"].firstMatch.tap()
 
         // Back on the path.

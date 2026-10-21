@@ -4,7 +4,7 @@ import SwiftUI
 ///
 /// 多邻国 Tips 风格的分步讲解：每屏只讲一件事
 /// （core_concept / key_formula / common_mistakes / tips），
-/// 聪聪 + 气泡 + TTS 音频 + 进度点 + 最后一页「开始做题」CTA。
+/// 出战宠物 + 气泡 + TTS 音频 + 进度点 + 最后一页「开始做题」CTA。
 /// 缺字段的页自动跳过；知识点全空时直接进题目。
 struct IntroCardView: View {
     let lesson: Lesson
@@ -33,7 +33,7 @@ struct IntroCardView: View {
         if !knowledge.coreConcept.isEmpty {
             result.append(Page(
                 id: result.count, tone: .concept, title: "这是什么？",
-                icon: "book.fill", accent: DuoColors.secondary,
+                icon: "book.fill", accent: ClayColor.blueEdge,
                 mood: .think, bubble: "一起学！",
                 audioPaths: [knowledge.audio?.coreConcept],
                 titleAudio: knowledge.audio?.coreConcept
@@ -42,7 +42,7 @@ struct IntroCardView: View {
         if !knowledge.keyFormula.isEmpty {
             result.append(Page(
                 id: result.count, tone: .rule, title: "记住这个！",
-                icon: "target", accent: DuoColors.primary,
+                icon: "target", accent: ClayColor.greenEdge,
                 mood: .wave, bubble: "超级重要!",
                 audioPaths: [knowledge.audio?.keyFormula],
                 titleAudio: knowledge.audio?.keyFormula
@@ -51,7 +51,7 @@ struct IntroCardView: View {
         if !knowledge.commonMistakes.isEmpty {
             result.append(Page(
                 id: result.count, tone: .mistake, title: "小心这些坑！",
-                icon: "xmark.circle.fill", accent: DuoColors.danger,
+                icon: "xmark.circle.fill", accent: ClayColor.balloonKnot,
                 mood: .surprise, bubble: "别踩坑哦!",
                 audioPaths: knowledge.audio?.commonMistakes ?? [],
                 titleAudio: nil
@@ -60,7 +60,7 @@ struct IntroCardView: View {
         if !knowledge.tips.isEmpty {
             result.append(Page(
                 id: result.count, tone: .tip, title: "学习小妙招",
-                icon: "bolt.fill", accent: DuoColors.bee,
+                icon: "bolt.fill", accent: ClayColor.flameCore,
                 mood: .cheer, bubble: "你最棒!",
                 audioPaths: [knowledge.audio?.tips],
                 titleAudio: knowledge.audio?.tips
@@ -75,6 +75,9 @@ struct IntroCardView: View {
     @ObservedObject private var settings = SettingsStore.shared
     @ObservedObject private var audioPlayer = AudioPlayer.shared
 
+    @Environment(\.petEnvironment) private var pet
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     private var isLast: Bool { pageIdx >= pages.count - 1 }
 
     var body: some View {
@@ -87,107 +90,50 @@ struct IntroCardView: View {
                 content(pages: all, current: all[min(pageIdx, all.count - 1)])
             }
         }
-        .background(DuoColors.bg.ignoresSafeArea())
+        .transaction { if reduceMotion { $0.animation = nil; $0.disablesAnimations = true } }
         .onAppear { enterPage(all.first) }
         .onDisappear { audioPlayer.stop() }
     }
 
     @ViewBuilder
     private func content(pages all: [Page], current: Page) -> some View {
-        VStack(spacing: 0) {
-            header(pages: all, current: current)
-
-            // 单元 & 课程标题（小）
-            VStack(spacing: 2) {
-                Text("第 \(lesson.unitNumber) 单元 · \(lesson.unitTitle)")
-                    .duoFont(.micro)
-                    .tracking(1)
-                    .foregroundStyle(DuoColors.inkSofter)
-                Text(lesson.title)
-                    .duoFont(.subhead)
-                    .foregroundStyle(DuoColors.inkMuted)
-                    .lineLimit(1)
-            }
-            .padding(.top, 8)
-            .padding(.horizontal, 20)
-
-            // 主内容：单页聚焦
-            ScrollView {
-                VStack(spacing: 16) {
-                    // 吉祥物 + 气泡
-                    HStack(alignment: .bottom, spacing: 8) {
-                        PetView(mood: current.mood, size: 84, reactTo: .levelup, reactKey: mascotReactKey)
-                        SpeechBubbleView(text: current.bubble, mood: current.mood)
-                            .padding(.bottom, 14)
+        Stage(background: { _ in LessonScene(bookId: lesson.bookId) }) { ctx in
+            let width = ctx.size.width - ctx.safeArea.leading - ctx.safeArea.trailing - 32
+            VStack(spacing: 12) {
+                LessonHeader(progress: Double(pageIdx + 1) / Double(all.count), count: "\(pageIdx + 1)/\(all.count)") {
+                    ClayIconButton(icon: .back, id: "intro-exit", label: "退出课程") {
+                        HapticEngine.shared.tap()
+                        onExit()
                     }
-                    .padding(.top, 12)
-
-                    // 图标徽章
-                    ZStack {
-                        Circle()
-                            .fill(current.accent.opacity(0.15))
-                            .frame(width: 76, height: 76)
-                        Image(systemName: current.icon)
-                            .font(.system(size: 34, weight: .heavy))
-                            .foregroundStyle(current.accent)
-                    }
-
-                    // 标题 + 代表音频
-                    HStack(spacing: 10) {
-                        Text(current.title)
-                            .duoFont(.title)
-                            .foregroundStyle(DuoColors.ink)
-                        if let titleAudio = current.titleAudio {
-                            TTSButton(path: titleAudio)
+                } trailing: {
+                    Text("知识讲解").font(ClayFont.largeButton).foregroundStyle(ClayColor.creamText)
+                }
+                HStack(spacing: 24) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("第 \(lesson.unitNumber) 单元 · \(lesson.unitTitle)").font(ClayFont.caption)
+                        Text(lesson.title).font(ClayFont.body).lineLimit(1)
+                        HStack {
+                            Image(systemName: current.icon).foregroundStyle(current.accent)
+                            Text(current.title).font(ClayFont.title)
+                            if let titleAudio = current.titleAudio { TTSButton(path: titleAudio).clayHitTarget() }
                         }
+                        ScrollView { pageBody(current).frame(maxWidth: .infinity, alignment: .leading) }
+                            .accessibilityIdentifier("intro-content")
                     }
-
-                    pageBody(current)
-                        .padding(.horizontal, 24)
-                        .padding(.bottom, 24)
+                    .padding(20).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .clayLessonCard(edge: current.accent)
+                    VStack(spacing: 8) {
+                        SpeechBubble { Text("\(pet.kind.name)：\(current.bubble)") }
+                        PetView(mood: current.mood, size: 100, reactTo: .levelup, reactKey: mascotReactKey)
+                        footer(pages: all)
+                    }
+                    .frame(width: width * 0.34).frame(maxHeight: .infinity)
                 }
-                .frame(maxWidth: .infinity)
+                .foregroundStyle(ClayColor.ink)
             }
-
-            footer(pages: all)
-        }
-    }
-
-    // MARK: - 顶栏：关闭 + 进度点
-
-    private func header(pages all: [Page], current: Page) -> some View {
-        HStack(spacing: 12) {
-            Button {
-                HapticEngine.shared.tap()
-                onExit()
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 20, weight: .black))
-                    .foregroundStyle(DuoColors.inkMuted)
-                    .frame(width: 36, height: 36)
-            }
-            .accessibilityLabel("退出课程")
-
-            HStack(spacing: 6) {
-                ForEach(all) { p in
-                    Capsule()
-                        .fill(p.id <= pageIdx ? p.accent : DuoColors.surfaceAlt)
-                        .frame(width: p.id == pageIdx ? 24 : 8, height: 8)
-                        .animation(Motion.bounce, value: pageIdx)
-                }
-            }
-            .frame(maxWidth: .infinity)
-
-            Text("\(pageIdx + 1)/\(all.count)")
-                .duoNumeral(.caption)
-                .foregroundStyle(DuoColors.inkSofter)
-                .frame(width: 40, alignment: .trailing)
-        }
-        .padding(.horizontal, 18)
-        .padding(.top, 6)
-        .padding(.bottom, 8)
-        .overlay(alignment: .bottom) {
-            Rectangle().fill(DuoColors.border).frame(height: 1)
+            .padding(.top, 16).padding(.bottom, 16)
+            .frame(width: width, height: ctx.size.height - ctx.safeArea.top - ctx.safeArea.bottom)
+            .offset(x: ctx.safeArea.leading + 16, y: ctx.safeArea.top)
         }
     }
 
@@ -198,53 +144,53 @@ struct IntroCardView: View {
         switch page.tone {
         case .concept:
             Text(MathText.render(knowledge.coreConcept))
-                .duoFont(.subhead, weight: .medium)
-                .foregroundStyle(DuoColors.ink)
+                .font(ClayFont.body)
+                .foregroundStyle(ClayColor.ink)
                 .lineSpacing(6)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
         case .rule:
             Text(MathText.render(knowledge.keyFormula))
-                .duoFont(.heading)
-                .foregroundStyle(DuoColors.ink)
+                .font(ClayFont.largeButton)
+                .foregroundStyle(ClayColor.ink)
                 .lineSpacing(6)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 20)
                 .padding(.horizontal, 16)
-                .background(DuoColors.surfaceAlt, in: .rect(cornerRadius: Radius.card))
+                .background(ClayColor.creamBottom, in: .rect(cornerRadius: ClayRadius.smallButton))
                 .overlay {
-                    RoundedRectangle(cornerRadius: Radius.card)
-                        .strokeBorder(DuoColors.border, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: ClayRadius.smallButton)
+                        .strokeBorder(ClayColor.creamEdge, lineWidth: 2)
                 }
         case .mistake:
             VStack(spacing: 10) {
                 ForEach(Array(knowledge.commonMistakes.enumerated()), id: \.offset) { i, mistake in
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 18, weight: .heavy))
-                            .foregroundStyle(DuoColors.danger)
+                            .font(ClayFont.largeButton)
+                            .foregroundStyle(ClayColor.balloonKnot)
                             .padding(.top, 2)
                         Text(MathText.render(mistake))
-                            .duoFont(.body)
-                            .foregroundStyle(DuoColors.ink)
+                            .font(ClayFont.body)
+                            .foregroundStyle(ClayColor.ink)
                             .lineSpacing(4)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        TTSButton(path: mistakeAudio(at: i), size: 15)
+                        TTSButton(path: mistakeAudio(at: i), size: 15).clayHitTarget()
                     }
                     .padding(12)
-                    .background(DuoColors.danger.opacity(0.07), in: .rect(cornerRadius: Radius.card))
+                    .background(ClayColor.balloonKnot.opacity(0.07), in: .rect(cornerRadius: ClayRadius.smallButton))
                     .overlay {
-                        RoundedRectangle(cornerRadius: Radius.card)
-                            .strokeBorder(DuoColors.danger.opacity(0.25), lineWidth: 2)
+                        RoundedRectangle(cornerRadius: ClayRadius.smallButton)
+                            .strokeBorder(ClayColor.balloonKnot.opacity(0.25), lineWidth: 2)
                     }
                 }
             }
         case .tip:
             Text(MathText.render(knowledge.tips))
-                .duoFont(.subhead, weight: .medium)
-                .foregroundStyle(DuoColors.ink)
+                .font(ClayFont.body)
+                .foregroundStyle(ClayColor.ink)
                 .lineSpacing(6)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
         }
     }
 
@@ -256,31 +202,17 @@ struct IntroCardView: View {
     // MARK: - 底部：上一步 + 主按钮
 
     private func footer(pages all: [Page]) -> some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 10) {
             if pageIdx > 0 {
-                Button {
+                ClayIconButton(icon: .left, id: "intro-previous", label: "上一步") {
                     HapticEngine.shared.tap()
                     SFXEngine.shared.play(.tap)
                     withAnimation(Motion.bounce) { pageIdx -= 1 }
                     enterPage(all[pageIdx])
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 18, weight: .black))
-                        .foregroundStyle(DuoColors.inkMuted)
-                        .frame(width: 56, height: 50)
-                        .background(DuoColors.surface, in: .rect(cornerRadius: Radius.card))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: Radius.card)
-                                .strokeBorder(DuoColors.border, lineWidth: 2)
-                        }
                 }
-                .buttonStyle(.plain)
-                .accessibilityLabel("上一步")
             }
-
-            Button {
+            ClayButton(title: isLast ? "我知道了" : "下一步", id: isLast ? "intro-start" : "intro-next") {
                 if isLast {
-                    // 从「学」过渡到「练」：多层反馈。
                     SFXEngine.shared.play(.unlock)
                     HapticEngine.shared.success()
                     audioPlayer.stop()
@@ -291,18 +223,7 @@ struct IntroCardView: View {
                     withAnimation(Motion.bounce) { pageIdx += 1 }
                     enterPage(all[pageIdx])
                 }
-            } label: {
-                Text(isLast ? "开始做题" : "下一步")
             }
-            .buttonStyle(ChunkyButtonStyle(.primary))
-            .accessibilityIdentifier(isLast ? "intro-start" : "intro-next")
-        }
-        .padding(.horizontal, 20)
-        .padding(.top, 12)
-        .padding(.bottom, 28)
-        .background(DuoColors.bg)
-        .overlay(alignment: .top) {
-            Rectangle().fill(DuoColors.border).frame(height: 1)
         }
     }
 
