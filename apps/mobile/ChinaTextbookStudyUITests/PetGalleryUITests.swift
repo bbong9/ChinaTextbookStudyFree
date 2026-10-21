@@ -7,7 +7,7 @@ final class PetGalleryUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-uitest"]
         app.launch()
-        let entry = app.buttons["clay-gallery-entry"]
+        let entry = app.buttons["hud-avatar"]
         XCTAssertTrue(entry.waitForExistence(timeout: 20))
         entry.press(forDuration: 1)
         XCTAssertTrue(app.buttons["stage-top-leading"].waitForExistence(timeout: 5))

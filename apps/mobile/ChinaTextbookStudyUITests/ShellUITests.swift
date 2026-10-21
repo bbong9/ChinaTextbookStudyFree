@@ -10,7 +10,7 @@ final class ShellUITests: XCTestCase {
     @MainActor
     func testLaunchAndRotationStayLandscape() {
         let app = launchShellApp()
-        XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 15))
         let orientations: [UIDeviceOrientation] = [.landscapeLeft, .portrait, .portraitUpsideDown, .landscapeRight]
         for orientation in orientations {
             XCUIDevice.shared.orientation = orientation
@@ -28,23 +28,21 @@ final class ShellUITests: XCTestCase {
     }
 
     @MainActor
-    func testAllFifteenPlaceholderRoutesOpenAndReturn() {
+    func testMapEntrancesOpenAndReturn() {
         let app = launchShellApp()
-        let routes = ["pet-family", "pet-home", "pet-shop", "check-in", "quests", "parent-center",
-                      "hanzi-map", "hanzi-lesson", "math-train", "english-balloons", "animals",
-                      "idiom-picker", "idiom-player", "bedtime-stories", "reading-room"]
-        for id in routes {
+        for id in ["pet-family", "pet-home", "pet-shop", "quests", "parent-center",
+                   "math-train", "english-balloons", "animals", "idiom-picker", "reading-room"] {
             openShellRoute(app, id, isNew: true)
-            if ["pet-family", "pet-home", "pet-shop"].contains(id) {
+            switch id {
+            case "pet-family", "pet-home", "pet-shop":
                 XCTAssertTrue(app.descendants(matching: .any)["\(id)-screen"].firstMatch.waitForExistence(timeout: 5))
-            } else {
-                XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
+            case "quests": XCTAssertTrue(app.scrollViews["quests-screen"].waitForExistence(timeout: 5))
+            case "parent-center": assertShellTitle(app, "设置")
+            default: XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
             }
             XCTAssertTrue(app.buttons["shell-back"].isHittable)
             XCTAssertFalse(app.navigationBars.firstMatch.exists)
-            if id == "pet-family" { attachScreenshot("rd-01-placeholder-pet-family") }
-            app.buttons["shell-back"].tap()
-            XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
+            returnToShellHome(app)
         }
     }
 
@@ -52,7 +50,7 @@ final class ShellUITests: XCTestCase {
     @MainActor
     func testDebugGalleryOpensAndReturnsWithinShell() {
         let app = launchShellApp()
-        let entry = app.buttons["clay-gallery-entry"]
+        let entry = app.buttons["hud-avatar"]
         XCTAssertTrue(entry.waitForExistence(timeout: 15))
         entry.press(forDuration: 1)
         let back = app.buttons["stage-top-leading"]
@@ -61,11 +59,11 @@ final class ShellUITests: XCTestCase {
         attachScreenshot("rd-01-clay-gallery")
         back.tap()
 
-        XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
         XCTAssertTrue(entry.isHittable)
         openShellRoute(app, "pet-family", isNew: true)
         XCTAssertTrue(app.scrollViews["pet-family-scroll"].waitForExistence(timeout: 5))
-        app.buttons["shell-back"].tap()
+        returnToShellHome(app)
         XCTAssertTrue(entry.waitForExistence(timeout: 5))
     }
     #endif
@@ -86,10 +84,10 @@ final class ShellUITests: XCTestCase {
         skipLessonIntroIfPresent(app)
         XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8))
         app.buttons["关闭"].firstMatch.tap()
-        XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
         openShellRoute(app, "quests", isNew: true)
         app.buttons["shell-back"].tap()
-        XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["检查答案"].exists)
     }
 }

@@ -8,6 +8,7 @@
 #   scripts/redesign/sim-test.sh iphone16 [xcodebuild 额外参数...]
 #   scripts/redesign/sim-test.sh se   -only-testing:ChinaTextbookStudyUITests/FooTests
 #   scripts/redesign/sim-test.sh ipad -resultBundlePath /private/tmp/rd-03-ipad.xcresult
+#   scripts/redesign/sim-test.sh promax -only-testing:.../testCapture... （仅使用已有设备，不创建）
 #
 # 环境变量：
 #   DERIVED_DATA   默认 /private/tmp/<当前分支名去掉 codex/>-derived
@@ -21,7 +22,8 @@ case "${1:-}" in
   iphone16) NAME="iPhone 16";            TYPE=com.apple.CoreSimulator.SimDeviceType.iPhone-16 ;;
   se)       NAME="iPhone SE (3rd gen)";  TYPE=com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation ;;
   ipad)     NAME="iPad (A16)";           TYPE=com.apple.CoreSimulator.SimDeviceType.iPad-A16 ;;
-  *) echo "用法: $0 iphone16|se|ipad [xcodebuild 额外参数...]" >&2; exit 2 ;;
+  promax)   NAME="iPhone 16 Pro Max";    TYPE="" ;;
+  *) echo "用法: $0 iphone16|se|ipad|promax [xcodebuild 额外参数...]" >&2; exit 2 ;;
 esac
 shift
 
@@ -84,6 +86,10 @@ trap 'exit 130' INT TERM
 
 ID="$(device_id)"
 if [ -z "$ID" ]; then
+  if [ -z "$TYPE" ]; then
+    echo "没有已有的「${NAME}」，请按卡片使用加宽舞台测试替代；不会新建设备。" >&2
+    exit 2
+  fi
   echo "没有「${NAME}」，按共用名创建一台"
   ID="$(xcrun simctl create "$NAME" "$TYPE" "$RUNTIME")"
 fi
@@ -96,7 +102,7 @@ others() {
   xcrun simctl list devices booted -j | python3 -c '
 import json, subprocess, sys
 keep = sys.argv[1]
-ours = {"iPhone 16", "iPhone SE (3rd gen)", "iPad (A16)"}
+ours = {"iPhone 16", "iPhone SE (3rd gen)", "iPad (A16)", "iPhone 16 Pro Max"}
 procs = subprocess.run(["ps", "-axo", "command"], capture_output=True, text=True).stdout
 builds = [l for l in procs.splitlines() if "xcodebuild" in l and (" test" in l or "build" in l)]
 for devs in json.load(sys.stdin)["devices"].values():

@@ -5,7 +5,7 @@ final class SceneKitUITests: XCTestCase {
     @MainActor private func launchScene() -> XCUIApplication {
         XCUIDevice.shared.orientation = .landscapeLeft
         let app = XCUIApplication(); app.launchArguments = ["-uitest"]; app.launch()
-        let entry = app.buttons["clay-gallery-entry"]
+        let entry = app.buttons["hud-avatar"]
         XCTAssertTrue(entry.waitForExistence(timeout: 15)); entry.press(forDuration: 1)
         let next = app.buttons["stage-bottom-trailing"]
         XCTAssertTrue(next.waitForExistence(timeout: 5))

@@ -22,29 +22,43 @@ extension XCTestCase {
 
     @MainActor
     func openShellRoute(_ app: XCUIApplication, _ id: String, isNew: Bool = false) {
-        let button = app.buttons["shell-open-\(id)"]
-        let row = app.scrollViews[isNew ? "shell-new-routes" : "shell-legacy-routes"]
-        if !row.waitForExistence(timeout: 30) {
-            XCTFail("临时入口未出现：\(app.debugDescription)")
-            return
-        }
-        if !button.isHittable || !row.frame.contains(button.frame) {
-            for _ in 0..<12 {
-                if button.isHittable && row.frame.contains(button.frame) { break }
-                if button.exists && button.frame.midX < row.frame.minX {
-                    row.swipeRight()
-                } else {
-                    row.swipeLeft()
-                }
+        let home = app.buttons["hud-avatar"]
+        if !home.exists { returnToShellHome(app) }
+        XCTAssertTrue(home.waitForExistence(timeout: 30))
+        switch id {
+        case "profile", "achievements", "league", "review", "settings":
+            home.tap(); app.buttons["home-menu-\(id)"].tap()
+        case "pet-home", "pet-family":
+            app.buttons["landmark-pet-home"].tap()
+            if id == "pet-family" {
+                XCTAssertTrue(app.buttons["pet-home-family"].waitForExistence(timeout: 5))
+                app.buttons["pet-home-family"].tap()
             }
+        case "pet-shop": app.buttons["hud-pet-shop"].tap()
+        case "check-in": app.buttons["hud-checkin"].tap()
+        case "quests": app.buttons["hud-quests"].tap()
+        case "parent-center": app.buttons["hud-parent"].tap()
+        case "math-train": app.buttons["dock-math"].tap()
+        case "english-balloons": app.buttons["dock-eng"].tap()
+        case "animals": app.buttons["dock-animal"].tap()
+        case "idiom-picker": app.buttons["dock-idiom"].tap()
+        case "reading-room": app.buttons["dock-books"].tap()
+        case "grades": app.buttons["hud-book"].tap()
+        case "shop", "hanzi-map", "hanzi-lesson", "idiom-player", "bedtime-stories":
+            app.buttons["hud-quests"].tap()
+            if id == "shop" { app.buttons["quests-shop"].tap() }
+            else {
+                let more = app.buttons["更多玩法"]
+                revealAndTap(app, more)
+                revealAndTap(app, app.buttons["quests-\(id)"])
+            }
+        default: XCTFail("没有对应的首页入口：\(id)")
         }
-        XCTAssertTrue(button.isHittable && row.frame.contains(button.frame), "临时入口无法完整显示并点击：\(id)")
-        button.tap()
     }
 
     @MainActor
     func returnToShellHome(_ app: XCUIApplication) {
-        let home = app.scrollViews["shell-legacy-routes"]
+        let home = app.buttons["hud-avatar"]
         for _ in 0..<8 {
             if home.exists { break }
             let back = app.buttons["shell-back"]
@@ -62,7 +76,7 @@ extension XCTestCase {
             }
             XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: returned, object: app)], timeout: 5), .completed)
         }
-        XCTAssertTrue(app.scrollViews["shell-legacy-routes"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
     }
 
     @MainActor

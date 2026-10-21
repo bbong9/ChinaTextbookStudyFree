@@ -6,7 +6,7 @@ final class ClayGalleryUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-uitest"]
         app.launch()
-        let entry = app.buttons["clay-gallery-entry"]
+        let entry = app.buttons["hud-avatar"]
         XCTAssertTrue(entry.waitForExistence(timeout: 15))
         entry.press(forDuration: 1)
         XCTAssertTrue(app.buttons["stage-top-leading"].waitForExistence(timeout: 5))
@@ -63,7 +63,7 @@ final class ClayGalleryUITests: XCTestCase {
         attach("04-icons-fonts")
         print("RD02_FONT_STATUS=\(app.staticTexts["clay-kai-status"].label)")
         app.buttons["stage-top-leading"].tap()
-        XCTAssertTrue(app.buttons["clay-gallery-entry"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
     }
 
     @MainActor func testReduceMotionStopsGoButton() {

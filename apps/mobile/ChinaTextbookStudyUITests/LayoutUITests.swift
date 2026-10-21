@@ -8,7 +8,7 @@ final class LayoutUITests: XCTestCase {
     }
 
     @MainActor
-    func testTemporaryEntrancesReachLegacyPages() {
+    func testMapEntrancesReachLegacyPages() {
         let app = launchShellApp()
         for (id, title) in [("league", "排行"), ("review", "错题本"), ("shop", "商店"),
                             ("profile", "我的"), ("achievements", "成就墙")] {
@@ -106,21 +106,22 @@ final class LayoutUITests: XCTestCase {
     func testGradeBrowsingAndBookSwitching() {
         let app = launchShellApp()
         openShellRoute(app, "grades")
-        XCTAssertTrue(app.buttons["shell-grade-2"].waitForExistence(timeout: 4))
-        app.buttons["shell-grade-2"].tap()
+        XCTAssertTrue(app.buttons["book-picker-grade-2"].waitForExistence(timeout: 4))
+        app.buttons["book-picker-grade-2"].tap()
+        app.buttons["book-picker-browse-grade"].tap()
         assertShellTitle(app, "2 年级")
         XCTAssertTrue(app.buttons.containing(NSPredicate(format: "label CONTAINS '二年级'")).firstMatch.exists)
         attachScreenshot("rd-01-legacy-grades")
         returnToShellHome(app)
 
-        let picker = app.buttons["home-book-picker"]
+        let picker = app.buttons["hud-book"]
         revealAndTap(app, picker)
         XCTAssertTrue(app.buttons["book-picker-grade-2"].waitForExistence(timeout: 4))
         app.buttons["book-picker-grade-2"].tap()
         attachScreenshot("rd-01-legacy-book-picker")
         let book = app.buttons["book-picker-book-g2up"]
         revealAndTap(app, book)
-        XCTAssertTrue(app.buttons["home-book-picker"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-book"].waitForExistence(timeout: 5))
         picker.tap()
         XCTAssertTrue(app.buttons["book-picker-book-g2up"].waitForExistence(timeout: 4))
         XCTAssertTrue(app.buttons["book-picker-book-g2up"].label.contains("二年级"))
