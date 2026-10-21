@@ -96,11 +96,11 @@
 | **B 经济与宠物** | | | |
 | [RD-05](cards/RD-05-core-economy.md) | core 经济扩展(等级/宠物/饼干/时长宝箱/小游戏奖励) | — | ✅ 已合并(PR #2) |
 | [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | ✅ 已合并(PR #6) |
-| [RD-07](cards/RD-07-pet-screens.md) | 宠物家族、商店、小屋 | RD-03 RD-04 RD-06 | 待开发 |
+| [RD-07](cards/RD-07-pet-screens.md) | 宠物家族、商店、小屋 | RD-03 RD-04 RD-06 | 开发中(PR #10) |
 | [RD-08](cards/RD-08-checkin-study-time.md) | 签到与学习时长宝箱 | RD-03 RD-05 RD-06 | 待开发 |
 | **C 主线闯关** | | | |
 | [RD-09](cards/RD-09-home-map.md) | 首页闯关地图 | RD-01 RD-03 RD-04 RD-05 | 待开发 |
-| [RD-10](cards/RD-10-lesson-shell.md) | 课本关卡横屏改版(8 种题型) | RD-02 RD-03 RD-04 | 待开发 |
+| [RD-10](cards/RD-10-lesson-shell.md) | 课本关卡横屏改版(8 种题型) | RD-02 RD-03 RD-04 | ✅ 已合并(PR #9) |
 | [RD-11](cards/RD-11-result.md) | 闯关结算 | RD-05 RD-06 RD-10 | 待开发 |
 | [RD-12](cards/RD-12-hanzi-content.md) | 汉字内容包与数据管线 | — | ✅ 已合并(PR #1) |
 | [RD-13](cards/RD-13-hanzi-five-steps.md) | 识字五步关卡(玩认练写说 + 字源卡) | RD-09 RD-11 RD-12 | 待开发 |
