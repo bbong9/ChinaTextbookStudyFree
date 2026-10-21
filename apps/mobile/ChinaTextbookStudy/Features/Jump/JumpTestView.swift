@@ -304,7 +304,7 @@ struct JumpTestView: View {
 
             VStack(spacing: 18) {
                 Spacer()
-                MascotView(mood: .proud, size: 110, reactTo: .levelup)
+                PetView(mood: .proud, size: 110, reactTo: .levelup)
                 Text("跳级成功！")
                     .duoFont(.display)
                     .foregroundStyle(DuoColors.ink)
@@ -337,7 +337,7 @@ struct JumpTestView: View {
 
         return VStack(spacing: 18) {
             Spacer()
-            MascotView(mood: .sad, size: 110)
+            PetView(mood: .sad, size: 110)
             Text("还差一点点")
                 .duoFont(.title)
                 .foregroundStyle(DuoColors.ink)
@@ -435,7 +435,7 @@ struct JumpTestView: View {
                 }
 
             VStack(spacing: Space.l) {
-                MascotView(mood: .sad, size: 92)
+                PetView(mood: .sad, size: 92)
                 Text("现在退出，测试不算数哦")
                     .duoFont(.heading)
                     .foregroundStyle(DuoColors.ink)

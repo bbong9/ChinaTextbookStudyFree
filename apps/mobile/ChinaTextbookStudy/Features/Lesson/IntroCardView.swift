@@ -116,7 +116,7 @@ struct IntroCardView: View {
                 VStack(spacing: 16) {
                     // 吉祥物 + 气泡
                     HStack(alignment: .bottom, spacing: 8) {
-                        MascotView(mood: current.mood, size: 84, reactTo: .levelup, reactKey: mascotReactKey)
+                        PetView(mood: current.mood, size: 84, reactTo: .levelup, reactKey: mascotReactKey)
                         SpeechBubbleView(text: current.bubble, mood: current.mood)
                             .padding(.bottom, 14)
                     }

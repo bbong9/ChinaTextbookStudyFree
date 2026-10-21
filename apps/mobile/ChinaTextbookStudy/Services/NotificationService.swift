@@ -14,7 +14,7 @@ import UserNotifications
 ///   than nagging about a streak that is already safe.
 /// - Copy ladder (ios-retention-8): each of the 7 slots speaks differently.
 ///   Day 1 quotes the live streak, day 2 points at the mistake book, day 3
-///   聪聪 misses you, days 4–5 up the ante, day 6 announces the last call,
+///   米团 misses you, days 4–5 up the ante, day 6 announces the last call,
 ///   day 7 is a personable goodbye — then we go quiet instead of nagging
 ///   forever.
 /// - Fire time is learner-configurable (ios-retention-9): read from
@@ -67,7 +67,7 @@ final class NotificationService {
         { ctx in
             ctx.streak > 0
                 ? ("别让连胜断掉", "你已经连续学习 \(ctx.streak) 天了，今天再学一节就能保住 🔥")
-                : ("今天学一点吧", "几分钟就能完成一节小课，聪聪在等你 📚")
+                : ("今天学一点吧", "几分钟就能完成一节小课，米团在等你 📚")
         },
         { ctx in
             ctx.dueMistakes > 0
@@ -75,7 +75,7 @@ final class NotificationService {
                 : ("温故而知新", "回来复习一节小课，学过的知识才记得牢 ✏️")
         },
         { _ in
-            ("聪聪想你了", "两天没见啦，回来学一节课陪陪聪聪吧 🐼")
+            ("米团想你了", "两天没见啦，回来学一节课陪陪米团吧 🌱")
         },
         { _ in
             ("宝石在等你", "完成每日任务就能赢宝石，今天的任务还空着呢 💎")
@@ -84,10 +84,10 @@ final class NotificationService {
             ("小步也是前进", "哪怕只学 5 分钟也很棒，来做一节小课吧 ⭐")
         },
         { _ in
-            ("明天是最后一条提醒", "聪聪不想变成唠叨鬼，今天回来学一节，我们就继续每天见 📚")
+            ("明天是最后一条提醒", "米团不想变成唠叨鬼，今天回来学一节，我们就继续每天见 📚")
         },
         { _ in
-            ("聪聪先不打扰啦", "提醒好像帮不上忙，聪聪先不打扰啦，想我了随时回来 🐼")
+            ("米团先不打扰啦", "提醒好像帮不上忙，米团先不打扰啦，想我了随时回来 🌱")
         },
     ]
 

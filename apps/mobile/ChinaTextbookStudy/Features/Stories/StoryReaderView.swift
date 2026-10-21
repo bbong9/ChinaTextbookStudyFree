@@ -355,7 +355,7 @@ struct StoryReaderView: View {
         let alreadyDone = progressStore.isReadingCompleted(storyRewardId)
         return VStack(spacing: 18) {
             Spacer()
-            MascotView(mood: acc >= Economy.ReadingXP.goodThreshold ? .proud : .think, size: 110, reactTo: .levelup)
+            PetView(mood: acc >= Economy.ReadingXP.goodThreshold ? .proud : .think, size: 110, reactTo: .levelup)
             StarRevealView(earnedStars: stars(story))
             Text(acc >= Economy.ReadingXP.goodThreshold ? "读得真棒！" : "读完啦！").duoFont(.title).foregroundStyle(DuoColors.ink)
             Text("答对 \(correctCount) / \(story.questions.count) 题 · 正确率 \(Int((acc * 100).rounded()))%")

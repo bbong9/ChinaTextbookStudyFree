@@ -381,7 +381,7 @@ struct LessonRunnerView: View {
                 .padding(.bottom, 4)
 
             HStack(alignment: .center, spacing: 12) {
-                MascotView(mood: mascotMood, size: 54, reactTo: feedbackReaction, reactKey: index + 1)
+                PetView(mood: mascotMood, size: 54, reactTo: feedbackReaction, reactKey: index + 1)
 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(feedbackTitleText.isEmpty ? (ok ? "正确" : "答错了") : feedbackTitleText)
@@ -580,7 +580,7 @@ struct LessonRunnerView: View {
                 }
 
             VStack(spacing: Space.l) {
-                MascotView(mood: .sad, size: 92)
+                PetView(mood: .sad, size: 92)
 
                 Text(solvedIDs.count * 2 >= originalTotal ? "再坚持一下，快完成了！" : "确定要退出吗？")
                     .duoFont(.heading)
@@ -627,7 +627,7 @@ struct LessonRunnerView: View {
             Color.black.opacity(0.55).ignoresSafeArea()
 
             VStack(spacing: Space.l) {
-                MascotView(mood: .wave, size: 92)
+                PetView(mood: .wave, size: 92)
 
                 Text("上次学到一半哦")
                     .duoFont(.heading)

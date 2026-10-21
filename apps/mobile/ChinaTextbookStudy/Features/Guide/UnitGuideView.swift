@@ -221,7 +221,7 @@ struct UnitGuideView: View {
 
     private var emptyState: some View {
         VStack(spacing: 14) {
-            MascotView(mood: .think, size: 100)
+            PetView(mood: .think, size: 100)
             Text("这个单元还没有知识讲解")
                 .duoFont(.subhead)
                 .foregroundStyle(DuoColors.ink)

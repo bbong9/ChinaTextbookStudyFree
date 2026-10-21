@@ -64,8 +64,8 @@ struct OnboardingView: View {
     private var greetStep: some View {
         VStack(spacing: Space.l) {
             Spacer()
-            MascotView(mood: .wave, size: 150, reactTo: .correct)
-            SpeechBubbleView(text: "嗨，我是聪聪！", mood: .happy)
+            PetView(mood: .wave, size: 150, reactTo: .correct)
+            SpeechBubbleView(text: "嗨，我是米团！", mood: .happy)
             Text("欢迎来到课本学习")
                 .duoFont(.title)
                 .foregroundStyle(DuoColors.ink)
@@ -184,7 +184,7 @@ struct OnboardingView: View {
     private var goalStep: some View {
         VStack(spacing: Space.l) {
             Spacer(minLength: 8)
-            MascotView(mood: .proud, size: 110, reactTo: .levelup)
+            PetView(mood: .proud, size: 110, reactTo: .levelup)
             Text("设定每日目标")
                 .duoFont(.title)
                 .foregroundStyle(DuoColors.ink)
@@ -235,15 +235,15 @@ struct OnboardingView: View {
 
     // MARK: - Step 3 — notification soft-ask primer (ios-retention-2)
 
-    /// 聪聪 asks first; the scary system alert only appears after an explicit
+    /// 米团 asks first; the scary system alert only appears after an explicit
     /// 「好呀」. A refusal here never re-prompts — the Settings toggle remains
     /// the one place to opt in later.
     private var notifyStep: some View {
         VStack(spacing: Space.l) {
             Spacer()
-            MascotView(mood: .wave, size: 130, reactTo: .correct)
+            PetView(mood: .wave, size: 130, reactTo: .correct)
             SpeechBubbleView(text: "每天一条小提醒，帮你保住连胜 🔥", mood: .happy)
-            Text("要聪聪提醒你吗？")
+            Text("要米团提醒你吗？")
                 .duoFont(.title)
                 .foregroundStyle(DuoColors.ink)
             Text("每天最多一条，学过就不打扰，随时可以在设置里关掉")

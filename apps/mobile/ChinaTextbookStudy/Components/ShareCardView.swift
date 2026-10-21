@@ -43,13 +43,15 @@ enum ShareCard {
     }
 
     @MainActor
-    static func renderStreak(_ data: StreakData) -> UIImage? {
-        render(StreakShareCardView(data: data))
+    static func renderStreak(_ data: StreakData, pet: PetEnvironment) -> UIImage? {
+        render(StreakShareCardView(data: data)
+            .environment(\.petEnvironment, pet).environment(\.petAnimationsPaused, true))
     }
 
     @MainActor
-    static func renderBadge(_ data: BadgeData) -> UIImage? {
-        render(BadgeShareCardView(data: data))
+    static func renderBadge(_ data: BadgeData, pet: PetEnvironment) -> UIImage? {
+        render(BadgeShareCardView(data: data)
+            .environment(\.petEnvironment, pet).environment(\.petAnimationsPaused, true))
     }
 }
 
@@ -122,7 +124,7 @@ struct StreakShareCardView: View {
             )
 
             VStack(spacing: 14) {
-                MascotView(mood: .cheer, size: 96)
+                PetView(mood: .cheer, size: 96)
                     .padding(.top, 26)
 
                 HStack(alignment: .center, spacing: 8) {
@@ -193,7 +195,7 @@ struct BadgeShareCardView: View {
             )
 
             VStack(spacing: 16) {
-                MascotView(mood: .proud, size: 84)
+                PetView(mood: .proud, size: 84)
                     .padding(.top, 26)
 
                 ZStack {

@@ -26,7 +26,7 @@ struct ShopView: View {
                 }
 
                 powerUps
-                cosmeticSection("聪聪皮肤", items: Cosmetics.mascotSkins)
+                cosmeticSection("米团皮肤", items: Cosmetics.mascotSkins)
                 cosmeticSection("界面主题", items: Cosmetics.uiThemes.map(\.item))
                 cosmeticSection("课程背景", items: Cosmetics.lessonBackdrops.map(\.item))
             }
@@ -257,7 +257,7 @@ struct ShopView: View {
         let scale: CGFloat = large ? 2 : 1
         switch item.type {
         case .mascotSkin:
-            MascotView(size: 78 * scale, skin: item.id)
+            PetView(size: 78 * scale, accessory: PetAccessory(rawValue: item.id))
 
         case .uiTheme:
             if let data = Cosmetics.uiThemes.first(where: { $0.item.id == item.id })?.data {

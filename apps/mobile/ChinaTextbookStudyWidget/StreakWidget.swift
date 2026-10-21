@@ -213,7 +213,7 @@ private extension Color {
     static let blushPink   = Color(widgetHex: 0xFF9AA8)
 }
 
-// MARK: - Mini 聪聪 (static, simplified port of Components/MascotView.swift)
+// MARK: - Mini 聪聪 (static, simplified vector drawing)
 
 struct MiniPandaFace: View {
     var mood: PandaMood
@@ -423,7 +423,7 @@ struct StreakWidget: Widget {
                 }
         }
         .configurationDisplayName("连胜火苗")
-        .description("看看聪聪和你的连胜火苗，别让它熄灭哦！")
+        .description("看看你的连胜火苗，别让它熄灭哦！")
         .supportedFamilies([.systemSmall, .accessoryCircular])
     }
 }

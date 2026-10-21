@@ -244,7 +244,7 @@ struct HomeView: View {
     private var emptyState: some View {
         VStack(spacing: 16) {
             Spacer()
-            MascotView(mood: .wave, size: 120)
+            PetView(mood: .wave, size: 120)
             Text("挑一本书开始学习吧")
                 .duoFont(.heading)
                 .foregroundStyle(DuoColors.darkInk)
@@ -415,7 +415,7 @@ private struct DailyRewardCard: View {
                 .onTapGesture { onDismiss() }
 
             VStack(spacing: 14) {
-                MascotView(mood: .happy, size: 88, reactTo: .correct)
+                PetView(mood: .happy, size: 88, reactTo: .correct)
 
                 Text("每日见面礼")
                     .duoFont(.heading, weight: .black)

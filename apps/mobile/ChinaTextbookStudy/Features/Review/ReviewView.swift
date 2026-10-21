@@ -34,7 +34,7 @@ struct ReviewView: View {
 
     private func hero(due: Int, total: Int) -> some View {
         VStack(spacing: 16) {
-            MascotView(mood: due > 0 ? .think : .proud, size: 96)
+            PetView(mood: due > 0 ? .think : .proud, size: 96)
 
             if due > 0 {
                 Text("有 \(due) 道题等你复习").duoFont(.heading).foregroundStyle(DuoColors.ink)

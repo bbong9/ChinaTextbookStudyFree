@@ -29,6 +29,7 @@ struct LessonResultView: View {
     /// Reduce Motion (Wave F): skip confetti entirely when the user asked the
     /// system to calm animations down.
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.petEnvironment) private var pet
 
     @State private var acts: [Act] = []
     @State private var actIndex = 0
@@ -136,7 +137,7 @@ struct LessonResultView: View {
                 headline: "三星通关！",
                 title: result.lessonTitle,
                 subtitle: "正确率 \(Int(round(result.accuracy * 100)))% · \(result.correctCount)/\(result.questionCount) 题"
-            ))
+            ), pet: pet)
         }
     }
 
@@ -147,7 +148,7 @@ struct LessonResultView: View {
             streak: result.outcome.streakAfter,
             week: progressStore.weekXPEntries().map { (dateKey: $0.date, studied: $0.xp > 0) },
             todayIndex: progressStore.todayIndexInWeek()
-        ))
+        ), pet: pet)
     }
 
     /// Advance to the next act, with per-act entry SFX (错峰).
@@ -228,7 +229,7 @@ struct LessonResultView: View {
             Spacer()
 
             // Mascot — plays its level-up reaction once on appear.
-            MascotView(
+            PetView(
                 mood: result.stars >= 3 ? .proud : (result.stars >= 2 ? .happy : .think),
                 size: 110,
                 reactTo: .levelup
