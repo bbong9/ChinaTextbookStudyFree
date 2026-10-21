@@ -49,6 +49,10 @@
 - 截图证据:每个涉及界面的 PR,附以下三个模拟器的横屏截图:**iPhone SE (3rd gen)**、**iPhone 16**、**iPad (A16)**。放在 `docs/redesign-v2/evidence/rd-XX/`。
 - 证据只提交截图和结果摘要(测试名、通过数、关键输出几行),完整 xcodebuild / 测试日志留在本地,不要提交。
 - 每张卡在独立的 git worktree 里开发,不要用主目录。`apps/mobile/BundledMedia/audio`、`story-images` 被 gitignore,新 worktree 里从主目录软链接过来(不提交)。
+- **模拟器和磁盘**(这台 Mac 磁盘和内存都紧):
+  - **不要新建模拟器**。只用现有的三台:`iPhone 16`、`iPhone SE (3rd gen)`、`iPad (A16)`(iOS 18.6);缺哪台用 `xcrun simctl create` 建**同名**的一台,不要加卡号前缀。
+  - **串行跑**:同一时间只启动一台模拟器;先 iPhone 16 跑完测试,再依次截 SE、iPad。用完 `xcrun simctl shutdown`。
+  - DerivedData、xcresult、日志放 `/private/tmp/rd-XX-*`;PR 推送后删掉 `.xcresult` 和中间日志,卡片合并后整个删除。
 - 已知基线失败(PRFixTests、CosmeticsUITests、LessonFlowUITests、ScreenshotTests、LayoutUITests,在 eaeff4f 上可复现)等 RD-00 修复;在此之前 PR 注明「与基线一致」即可,但新增或换了失败方式的要说明。
 
 ## 2. PR 模板(Codex 每个 PR 必须照填)
@@ -85,11 +89,11 @@
 | **A 地基** | | | |
 | [RD-01](cards/RD-01-landscape-shell.md) | 横屏外壳与路由 | — | 开发中(PR #4) |
 | [RD-02](cards/RD-02-clay-design-system.md) | 黏土设计系统与舞台容器 | — | ✅ 已合并(PR #3) |
-| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | 可开工 |
-| [RD-04](cards/RD-04-pet-renderer.md) | 宠物渲染组件,替换熊猫 | RD-02 | 可开工 |
+| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | 开发中 |
+| [RD-04](cards/RD-04-pet-renderer.md) | 宠物渲染组件,替换熊猫 | RD-02 | ✅ 已合并(PR #7) |
 | **B 经济与宠物** | | | |
 | [RD-05](cards/RD-05-core-economy.md) | core 经济扩展(等级/宠物/饼干/时长宝箱/小游戏奖励) | — | ✅ 已合并(PR #2) |
-| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | 可开工 |
+| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | 修改中(PR #6) |
 | [RD-07](cards/RD-07-pet-screens.md) | 宠物家族、商店、小屋 | RD-03 RD-04 RD-06 | 待开发 |
 | [RD-08](cards/RD-08-checkin-study-time.md) | 签到与学习时长宝箱 | RD-03 RD-05 RD-06 | 待开发 |
 | **C 主线闯关** | | | |
