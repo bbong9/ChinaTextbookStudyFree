@@ -36,7 +36,7 @@ struct LessonShell<Header: View, Answers: View, Action: View, Feedback: View>: V
                 header()
                 HStack(alignment: .top, spacing: 18) {
                     LessonPromptCard(question: question, instruction: instruction, mood: mood,
-                                     reaction: reaction, reactionKey: reactionKey, slowNarration: slowNarration)
+                                     reaction: checked ? reaction : nil, reactionKey: reactionKey, slowNarration: slowNarration)
                         .frame(width: (width - 18) * 0.46)
                     VStack(spacing: 6) {
                         answers().frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
