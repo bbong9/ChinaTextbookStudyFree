@@ -24,6 +24,10 @@ final class ProgressStore: ObservableObject {
     /// Whether the first-run onboarding flow has been completed.
     @Published var hasCompletedOnboarding: Bool
 
+    /// RD-07 页面间传递货架选择；只在内存中保留，不扩展存档。
+    @Published var selectedPetShopId = "pet_fox"
+    private var completedPetAdoptions: Set<UUID> = []
+
     private static let progressFile = "progress.json"
     private static let prefsFile = "prefs.json"
 
@@ -44,6 +48,7 @@ final class ProgressStore: ObservableObject {
             // Keep UI tests deterministic: no login-reward card popping over
             // the flows under test.
             fresh.lastDailyRewardDate = SRS.todayString()
+            PetScreenTestSeed.apply(to: &fresh, now: now)
             self.progress = fresh
             self.selectedGrade = 1
             self.activeBookId = "g1up"
@@ -764,21 +769,23 @@ final class ProgressStore: ObservableObject {
 
     /// 成功返回领养的伙伴 id；失败不扣款。蛋本身永远不进入拥有列表。
     @discardableResult
-    func adopt(_ id: String, now: Date = Date()) -> String? {
-        if id == "pet_egg" { return hatchEgg(now: now) }
+    func adopt(_ id: String, requestId: UUID? = nil, now: Date = Date()) -> String? {
+        if id == "pet_egg" { return hatchEgg(requestId: requestId, now: now) }
         guard canAdopt(id) == .available, let pet = Pets.petById(id) else { return nil }
-        return commitAdoption(pet, awardedId: id, now: now)
+        return commitAdoption(pet, awardedId: id, requestId: requestId, now: now)
     }
 
     @discardableResult
-    func hatchEgg(now: Date = Date()) -> String? {
+    func hatchEgg(requestId: UUID? = nil, now: Date = Date()) -> String? {
         guard canAdopt("pet_egg") == .available,
               let egg = Pets.petById("pet_egg"), let id = Pets.nextEggHatch(ownedPets) else { return nil }
-        return commitAdoption(egg, awardedId: id, now: now)
+        return commitAdoption(egg, awardedId: id, requestId: requestId, now: now)
     }
 
-    private func commitAdoption(_ pet: Pets.Pet, awardedId: String, now: Date) -> String? {
-        guard let price = pet.price else { return nil }
+    private func commitAdoption(_ pet: Pets.Pet, awardedId: String, requestId: UUID?, now: Date) -> String? {
+        guard let price = pet.price, !ownedPets.contains(awardedId),
+              requestId.map({ !completedPetAdoptions.contains($0) }) ?? true else { return nil }
+        if let requestId { completedPetAdoptions.insert(requestId) }
         var p = progress
         p.gems = gems - price
         p.ownedPets = ownedPets + [awardedId]

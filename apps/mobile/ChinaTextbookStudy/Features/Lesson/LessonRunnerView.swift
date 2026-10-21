@@ -499,7 +499,7 @@ struct LessonRunnerView: View {
         )
         mascotMood = MascotTriggers.decideMood(ctx)
         feedbackReaction = MascotTriggers.decideReaction(ctx)
-        feedbackBubble = ok ? MascotTriggers.pickBubble(mood: mascotMood) : ""
+        feedbackBubble = ok ? MascotTriggers.pickBubble(mood: mascotMood, petName: Pets.petById(progressStore.activePet)?.name) : ""
 
         // 每次判定后立即落盘会话（ios-lesson-3）：App 被杀 / 断心退出后，
         // 下次进入同一课可从下一题无缝恢复。

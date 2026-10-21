@@ -34,8 +34,9 @@ final class CosmeticsUITests: XCTestCase {
     func testBuyingCosmeticEquipsItAndPersists() throws {
         let app = launchApp()
 
-        openShellRoute(app, "shop")
-        assertShellTitle(app, "商店")
+        openShellRoute(app, "pet-home", isNew: true)
+        XCTAssertTrue(app.buttons["pet-home-dress"].waitForExistence(timeout: 5))
+        app.buttons["pet-home-dress"].tap()
         attach(name: "01-shop-before")
 
         // The stock skin starts equipped; the graduation cap costs 80 gems.
@@ -57,19 +58,9 @@ final class CosmeticsUITests: XCTestCase {
                        "the previously equipped skin should have been unequipped")
         attach(name: "02-shop-skin-equipped")
 
-        // Buy a theme too (樱花粉, 200 gems) — repaints the brand color app-wide.
-        let theme = app.buttons["cosmetic-theme_sakura"]
-        var scrolls = 0
-        while !theme.isHittable && scrolls < 10 {
-            app.swipeUp()
-            scrolls += 1
-        }
-        XCTAssertTrue(theme.waitForExistence(timeout: 3))
-        revealAndTap(app, theme)
-        confirmPurchase(app)
-        XCTAssertTrue(theme.waitForExistence(timeout: 3))
-        XCTAssertTrue(theme.label.contains("使用中"), "buying a theme should equip it")
-        attach(name: "03-shop-theme-equipped")
+        // D8：主题、背景不再售卖；配饰购买、佩戴留在小屋。
+        XCTAssertFalse(app.buttons["cosmetic-theme_sakura"].exists)
+        app.buttons["pet-dress-close"].tap()
 
         // The equipped skin must show on the profile avatar.
         returnToShellHome(app)
@@ -77,10 +68,11 @@ final class CosmeticsUITests: XCTestCase {
         assertShellTitle(app, "我的")
         attach(name: "04-profile-themed")
 
-        // …and still be equipped when we come back to the shop.
+        // 返回小屋后配饰仍佩戴在同一只伙伴身上。
         returnToShellHome(app)
-        openShellRoute(app, "shop")
-        assertShellTitle(app, "商店")
+        openShellRoute(app, "pet-home", isNew: true)
+        XCTAssertTrue(app.buttons["pet-home-dress"].waitForExistence(timeout: 5))
+        app.buttons["pet-home-dress"].tap()
         XCTAssertTrue(app.buttons["cosmetic-skin_graduate"].label.contains("使用中"),
                       "equipped skin did not persist across page navigation")
     }
@@ -91,8 +83,9 @@ final class CosmeticsUITests: XCTestCase {
         let app = launchApp()
 
         returnToShellHome(app)
-        openShellRoute(app, "shop")
-        assertShellTitle(app, "商店")
+        openShellRoute(app, "pet-home", isNew: true)
+        XCTAssertTrue(app.buttons["pet-home-dress"].waitForExistence(timeout: 5))
+        app.buttons["pet-home-dress"].tap()
 
         // 宇航员头盔 costs 500; buy 学士帽 (80) first so the balance drops below it.
         revealAndTap(app, app.buttons["cosmetic-skin_graduate"])

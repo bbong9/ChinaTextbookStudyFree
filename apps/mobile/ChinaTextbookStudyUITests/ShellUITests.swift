@@ -35,7 +35,11 @@ final class ShellUITests: XCTestCase {
                       "idiom-picker", "idiom-player", "bedtime-stories", "reading-room"]
         for id in routes {
             openShellRoute(app, id, isNew: true)
-            XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
+            if ["pet-family", "pet-home", "pet-shop"].contains(id) {
+                XCTAssertTrue(app.descendants(matching: .any)["\(id)-screen"].firstMatch.waitForExistence(timeout: 5))
+            } else {
+                XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
+            }
             XCTAssertTrue(app.buttons["shell-back"].isHittable)
             XCTAssertFalse(app.navigationBars.firstMatch.exists)
             if id == "pet-family" { attachScreenshot("rd-01-placeholder-pet-family") }
@@ -60,7 +64,7 @@ final class ShellUITests: XCTestCase {
         XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
         XCTAssertTrue(entry.isHittable)
         openShellRoute(app, "pet-family", isNew: true)
-        XCTAssertTrue(app.staticTexts["placeholder-pet-family"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.scrollViews["pet-family-scroll"].waitForExistence(timeout: 5))
         app.buttons["shell-back"].tap()
         XCTAssertTrue(entry.waitForExistence(timeout: 5))
     }

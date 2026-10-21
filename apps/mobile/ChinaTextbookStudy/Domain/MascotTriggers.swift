@@ -27,7 +27,7 @@ enum MascotTriggers {
             if ctx.remainingHearts == 1 { return .happy }
             if ctx.combo >= 5 { return .cheer }
             // Wave F (ios-feel-16)：连击刚起步的答对偶尔来个「哇！」——
-            // 10% 概率 surprise，给聪聪多一点活人感。
+            // 10% 概率 surprise，给出战伙伴多一点活人感。
             if ctx.combo == 1, Double.random(in: 0..<1) < 0.1 { return .surprise }
             return .happy
         }
@@ -62,9 +62,10 @@ enum MascotTriggers {
         .surprise:    ["哇!", "厉害厉害!"],
     ]
 
-    static func pickBubble(mood: MascotMood) -> String {
+    static func pickBubble(mood: MascotMood, petName: String? = nil) -> String {
         let pool = bubblesByMood[mood] ?? bubblesByMood[.happy] ?? ["太棒!"]
-        return pool.randomElement() ?? "太棒!"
+        let encouragement = pool.randomElement() ?? "太棒!"
+        return petName.map { "\($0)：\(encouragement)" } ?? encouragement
     }
 
     enum BubbleTone: String, Hashable { case neutral, primary, danger }

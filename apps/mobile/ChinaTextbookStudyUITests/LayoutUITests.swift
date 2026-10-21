@@ -21,9 +21,17 @@ final class LayoutUITests: XCTestCase {
             case "review":
                 XCTAssertTrue(app.staticTexts["还没有错题"].exists)
             case "shop":
+                revealAndTap(app, app.buttons["shop-open-home"])
+                revealAndTap(app, app.buttons["pet-home-dress"])
                 revealAndTap(app, app.buttons["cosmetic-skin_graduate"])
-                revealAndTap(app, app.buttons["cosmetic-confirm-buy"])
-                XCTAssertTrue(app.buttons["cosmetic-skin_graduate"].label.contains("使用中"))
+                let confirm = app.buttons["cosmetic-confirm-buy"]
+                XCTAssertTrue(confirm.waitForExistence(timeout: 3))
+                XCTAssertTrue(confirm.isEnabled)
+                revealAndTap(app, confirm)
+                let cap = app.buttons["cosmetic-skin_graduate"]
+                let equipped = NSPredicate { _, _ in cap.label.contains("使用中") }
+                XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: equipped, object: cap)], timeout: 5), .completed)
+                app.buttons["pet-dress-close"].tap()
             case "profile":
                 revealAndTap(app, app.buttons["修改昵称"])
                 XCTAssertTrue(app.textFields["rename-field"].waitForExistence(timeout: 4))

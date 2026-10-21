@@ -223,7 +223,13 @@ struct RouteView: View {
         #endif
         case .league:
             LeagueView(progressStore: progressStore)
-        case .petFamily, .petHome, .petShop, .checkIn, .quests, .parentCenter,
+        case .petFamily:
+            PetFamilyView(progressStore: progressStore, path: $path)
+        case .petHome:
+            PetHomeView(progressStore: progressStore, path: $path)
+        case .petShop:
+            PetShopView(progressStore: progressStore, path: $path)
+        case .checkIn, .quests, .parentCenter,
              .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
              .idiomPicker, .idiomPlayer, .bedtimeStories, .readingRoom:
             if let placeholder = route.placeholder {

@@ -297,9 +297,10 @@ struct LeagueView: View {
 
 // MARK: - 周一结算幕
 
-/// 上周联赛结算的全屏庆祝幕（复用彩带 + 聪聪 + chunky 按钮的庆祝语言）。
+/// 上周联赛结算的全屏庆祝幕（复用彩带 + 出战伙伴 + chunky 按钮的庆祝语言）。
 /// 宝石已在结算时入账，这里只负责把好消息讲出来。
 struct LeagueResultView: View {
+    @Environment(\.petEnvironment) private var pet
     let result: LeagueWeekResult
     let onDismiss: () -> Void
 
@@ -386,7 +387,7 @@ struct LeagueResultView: View {
                     .accessibilityLabel("获得 \(result.gems) 宝石")
                 }
 
-                Text(subline)
+                Text("\(pet.kind.name)：\(subline)")
                     .duoFont(.body)
                     .foregroundStyle(DuoColors.inkMuted)
                     .multilineTextAlignment(.center)

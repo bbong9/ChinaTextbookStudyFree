@@ -49,8 +49,13 @@ extension XCTestCase {
             if home.exists { break }
             let back = app.buttons["shell-back"]
             guard back.exists else { break }
-            let previousTitle = app.staticTexts["shell-page-title"].label
+            let title = app.staticTexts["shell-page-title"]
+            let previousTitle = title.exists ? title.label : nil
             back.tap()
+            if previousTitle == nil {
+                _ = home.waitForExistence(timeout: 0.5)
+                continue
+            }
             let returned = NSPredicate { _, _ in
                 let heading = app.staticTexts["shell-page-title"]
                 return home.exists || (heading.exists && heading.label != previousTitle)

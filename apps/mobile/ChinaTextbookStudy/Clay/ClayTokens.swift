@@ -75,6 +75,13 @@ enum ClayColor {
     static let trainNumber = hex(0x2B3A55)
     static let iconButtonDepth = hex(0x966428)
     static let goButtonDepth = hex(0xA03C00)
+    // RD-07：screens.js 的小屋、商店和照顾状态色。
+    static let petWall = hex(0xFFE3CC), petWallDot = hex(0xFFD2B3), petSkirting = hex(0xF2B98C)
+    static let petFloorLine = hex(0xC98443), petPicture = hex(0xE6F6FF), petRug = hex(0xFFB9C6)
+    static let petBed = hex(0xD9CCFF), petBowl = hex(0x9CD2FF), petShop = hex(0xFFF1CC)
+    static let petCoral = hex(0xFF6F61), petPlatform = hex(0xF2C77D), petGrassShadow = hex(0x3E8F2A)
+    static let petHappy = hex(0xFF9FB0), petFull = hex(0xFFB020), petClean = hex(0x3D8BF2)
+    static let petTrack = hex(0xE9E4DC)
     static let white = Color.white, black = Color.black
 
     /// PET_ART 的实色与旧配饰色；渐变继续复用现有 p-* / g-* 令牌。
