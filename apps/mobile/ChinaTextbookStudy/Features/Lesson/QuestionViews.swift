@@ -202,6 +202,8 @@ private struct FillBlankQuestionView: View {
     let keyboard: UIKeyboardType
 
     @State private var shakeTrigger = 0
+    @FocusState private var textFocused: Bool
+    @Environment(\.clayStageScale) private var scale
 
     private var state: OptionCardState {
         guard phase == .checked else { return answer.isEmpty ? .default : .selected }
@@ -209,55 +211,44 @@ private struct FillBlankQuestionView: View {
     }
 
     var body: some View {
-        TextField(
-            keyboard == .default ? "在这里作答" : "输入数字",
-            text: Binding(get: { answer }, set: onChange),
-            prompt: Text(keyboard == .default ? "在这里作答" : "输入数字")
-                .foregroundStyle(DuoColors.inkSofter)
-        )
-        .keyboardType(keyboard)
-        .textInputAutocapitalization(.never)
-        .autocorrectionDisabled()
-        .font(.system(size: 20, weight: .heavy, design: .rounded))
-        .foregroundStyle(fieldForeground)
-        .padding(.horizontal, 18)
-        .padding(.vertical, 18)
-        .background(fieldBackground, in: .rect(cornerRadius: Radius.card))
-        .overlay {
-            RoundedRectangle(cornerRadius: Radius.card)
-                .strokeBorder(fieldBorder, lineWidth: state == .default ? 2 : 2.5)
-        }
-        .modifier(ShakeEffect(animatableData: CGFloat(shakeTrigger)))
-        .disabled(phase == .checked)
-        .animation(Motion.reveal, value: state)
-        .onChange(of: phase) { _, newPhase in
-            if newPhase == .checked, isCorrect == false {
-                withAnimation(.linear(duration: 0.4)) { shakeTrigger += 1 }
+        VStack(spacing: 6) {
+            Group {
+                if keyboard == .default {
+                    TextField("在这里作答", text: Binding(get: { answer }, set: onChange))
+                        .keyboardType(.default).textInputAutocapitalization(.never)
+                        .autocorrectionDisabled().focused($textFocused)
+                        .submitLabel(.done).onSubmit { textFocused = false }
+                        .font(ClayFont.body)
+                } else {
+                    Text(answer.isEmpty ? "输入数字" : answer)
+                        .font(ClayFont.happy(size: 26))
+                        .accessibilityValue(answer.isEmpty ? "尚未输入" : answer)
+                }
+            }
+            .foregroundStyle(state == .wrong ? ClayColor.balloonKnot : ClayColor.ink)
+            .padding(.horizontal, 14)
+            .frame(maxWidth: .infinity, minHeight: max(44, 44 / scale), alignment: .leading)
+            .background(ClayColor.creamTop, in: RoundedRectangle(cornerRadius: ClayRadius.smallButton))
+            .overlay {
+                RoundedRectangle(cornerRadius: ClayRadius.smallButton)
+                    .strokeBorder(state == .wrong ? ClayColor.balloonKnot : state == .correct ? ClayColor.greenEdge : ClayColor.orange, lineWidth: 3)
+            }
+            .accessibilityLabel("答案")
+            .accessibilityIdentifier("lesson-\(question.type.rawValue)-0")
+            .modifier(ShakeEffect(animatableData: CGFloat(shakeTrigger)))
+            .disabled(phase == .checked)
+            if keyboard != .default {
+                LessonNumberPad(answer: answer, idPrefix: "lesson-\(question.type.rawValue)", onChange: onChange)
+                    .disabled(phase == .checked)
             }
         }
-    }
-
-    private var fieldBackground: Color {
-        switch state {
-        case .correct: return DuoColors.primary.opacity(0.15)
-        case .wrong:   return DuoColors.danger.opacity(0.15)
-        case .selected: return DuoColors.secondary.opacity(0.10)
-        default:       return DuoColors.surface
-        }
-    }
-    private var fieldBorder: Color {
-        switch state {
-        case .correct: return DuoColors.primary
-        case .wrong:   return DuoColors.danger
-        case .selected: return DuoColors.secondary
-        default:       return DuoColors.border
-        }
-    }
-    private var fieldForeground: Color {
-        switch state {
-        case .correct: return DuoColors.primaryDark
-        case .wrong:   return DuoColors.dangerDark
-        default:       return DuoColors.ink
+        .onChange(of: phase) { _, newPhase in
+            if newPhase == .checked {
+                textFocused = false
+                if isCorrect == false {
+                    withAnimation(.linear(duration: 0.4)) { shakeTrigger += 1 }
+                }
+            }
         }
     }
 }
