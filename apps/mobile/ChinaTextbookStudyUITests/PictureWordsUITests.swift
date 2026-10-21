@@ -13,6 +13,7 @@ final class PictureWordsUITests: XCTestCase {
 
     @MainActor func testCaptureCategoriesThreeHabitatsAndAlbum() {
         let app = launch()
+        attachScreenshot("rd16-farm-overview")
         app.buttons["picture-item-sheep"].tap()
         XCTAssertEqual(app.staticTexts["picture-card-character"].label, "羊")
         XCTAssertEqual(app.staticTexts["picture-card-pinyin"].label, "yáng")

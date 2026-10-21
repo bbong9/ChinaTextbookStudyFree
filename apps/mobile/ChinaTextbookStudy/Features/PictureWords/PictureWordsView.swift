@@ -192,7 +192,8 @@ struct PictureWordsView: View {
     }
 
     private func footer(_ layout: StageLayout) -> some View {
-        ZStack {
+        let height = 64 / min(1, layout.scale)
+        return ZStack {
             Button {
                 AudioPlayer.shared.stop(); showAlbum = true
             } label: {
@@ -201,14 +202,14 @@ struct PictureWordsView: View {
                     Text("图鉴 \(progressStore.pictureWordsSeen.count) / \(PictureWords.all.count)").font(ClayFont.label)
                 }
                 .foregroundStyle(ClayColor.creamText)
-                .frame(width: 116, height: 64 / layout.scale)
+                .frame(width: 116, height: height)
                 .claySurface(.buttonCream, radius: ClayRadius.button, edge: ClayColor.creamEdge)
             }
             .buttonStyle(ClayPressStyle())
             .accessibilityLabel("打开图鉴")
             .accessibilityValue("\(progressStore.pictureWordsSeen.count) / \(PictureWords.all.count)")
             .accessibilityIdentifier("picture-album")
-            .stageAnchor(.bottomTrailing, in: layout, size: .init(width: 116, height: 64 / layout.scale))
+            .stageAnchor(.bottomTrailing, in: layout, size: .init(width: 116, height: height))
         }
     }
 
