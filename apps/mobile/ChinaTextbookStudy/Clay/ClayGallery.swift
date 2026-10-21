@@ -1,7 +1,7 @@
 #if DEBUG
 import SwiftUI
 
-/// 只展示本卡基础素材；完整场景插画由 RD-03 提供。
+/// Debug 设计系统与场景素材预览；新增卡片只追加自己的分页。
 struct ClayGallery: View {
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @ObservedObject private var kai = ClayKaiFontStore.shared
@@ -12,7 +12,7 @@ struct ClayGallery: View {
     @State private var message = "我饿啦，想吃"
     let onClose: () -> Void
 
-    private let titles = ["黏土组件", "全部渐变 · 50", "图标与字体", "宠物"]
+    private let titles = ["黏土组件", "全部渐变 · 50", "图标与字体", "宠物", "场景"]
     private var reduceMotion: Bool { systemReduceMotion || (reduceMotionOverride ?? false) }
 
     var body: some View {
@@ -26,28 +26,33 @@ struct ClayGallery: View {
         } content: { ctx in
             // 竖屏预览时 44pt 点击区会撑高三行按钮；向上借用天空，避免盖住信息区。
             // 横屏内容能放进原有 206 舞台点时，所有设计坐标保持不变。
-            let petExtraHeight = page == titles.count - 1
+            let petExtraHeight = page == 3
                 ? max(0, 3 * max(52, ctx.minimumTapDimension) + 16 - 206) : 0
             ZStack(alignment: .topLeading) {
-                TitleRibbon(title: titles[page]).position(ctx.place(x: 422, y: 40 - petExtraHeight))
-                Text("舞台 \(Int(ctx.size.width)) × \(Int(ctx.size.height)) · 第 \(page + 1)/\(titles.count) 页")
-                    .font(ClayFont.caption).foregroundStyle(ClayColor.ink)
-                    .accessibilityIdentifier("clay-stage-metrics")
-                    .accessibilityValue("\(ctx.scale),\(ctx.safeArea.top),\(ctx.safeArea.leading),\(ctx.safeArea.bottom),\(ctx.safeArea.trailing)")
-                    .position(ctx.place(x: 422, y: 73 - petExtraHeight))
-                switch page {
-                case 0: components(ctx)
-                case 1: gradients(ctx)
-                case 2: iconsAndFonts(ctx)
-                default:
-                    PetGallery()
-                        .environment(\.petAnimationsPaused, reduceMotion)
-                        .frame(width: 700, height: 206 + petExtraHeight)
-                        .position(ctx.place(x: 422, y: 197 - petExtraHeight / 2))
+                if page == 4 {
+                    ClaySceneGallery(layout: ctx)
+                } else {
+                    TitleRibbon(title: titles[page]).position(ctx.place(x: 422, y: 40 - petExtraHeight))
+                    Text("舞台 \(Int(ctx.size.width)) × \(Int(ctx.size.height)) · 第 \(page + 1)/\(titles.count) 页")
+                        .font(ClayFont.caption).foregroundStyle(ClayColor.ink)
+                        .accessibilityIdentifier("clay-stage-metrics")
+                        .accessibilityValue("\(ctx.scale),\(ctx.safeArea.top),\(ctx.safeArea.leading),\(ctx.safeArea.bottom),\(ctx.safeArea.trailing)")
+                        .position(ctx.place(x: 422, y: 73 - petExtraHeight))
+                    switch page {
+                    case 0: components(ctx)
+                    case 1: gradients(ctx)
+                    case 2: iconsAndFonts(ctx)
+                    default:
+                        PetGallery()
+                            .environment(\.petAnimationsPaused, reduceMotion)
+                            .frame(width: 700, height: 206 + petExtraHeight)
+                            .position(ctx.place(x: 422, y: 197 - petExtraHeight / 2))
+                    }
                 }
                 hud(ctx)
             }
         }
+        .environment(\.clayMotionPaused, reduceMotion)
         .preferredColorScheme(.light)
         .dynamicTypeSize(...DynamicTypeSize.xxLarge)
         .toolbar(.hidden, for: .navigationBar)
