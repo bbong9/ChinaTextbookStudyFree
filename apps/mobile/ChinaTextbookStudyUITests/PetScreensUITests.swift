@@ -170,22 +170,25 @@ final class PetScreensUITests: XCTestCase {
         revealAndTap(app, app.buttons["lesson-row-g1up-u1-kp1"].firstMatch)
         app.buttons["lesson-start"].tap()
         XCTAssertTrue(element(app, "pet-fox").waitForExistence(timeout: 5))
+        let namedBubble = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "阿橘：")).firstMatch
+        XCTAssertTrue(namedBubble.waitForExistence(timeout: 3))
         capture("switched-course")
         skipLessonIntroIfPresent(app)
-        let answers = ["错", "对", "5个", "5", "9", "5支", "7", "6颗", "3", "6", "7", "8"]
-        for (index, answer) in answers.enumerated() {
+        let answers = ["tf-错", "tf-对", "lesson-choice-2", "lesson-choice-1", "lesson-choice-3",
+                       "lesson-choice-2", "lesson-choice-2", "lesson-choice-2",
+                       "lesson-fill_blank-key-3", "lesson-fill_blank-key-6",
+                       "lesson-fill_blank-key-7", "lesson-fill_blank-key-8"]
+        for id in answers {
             let check = app.buttons["检查答案"]
             XCTAssertTrue(check.waitForExistence(timeout: 5))
-            if index < 2 { app.buttons["tf-\(answer)"].tap() }
-            else if index < 8 { tapLessonAnswer(app, app.buttons[answer].firstMatch, footer: check) }
-            else {
-                let field = app.textFields.firstMatch
-                tapLessonAnswer(app, field, footer: check)
-                field.typeText(answer)
-            }
-            revealAndTap(app, check)
+            let answer = app.buttons[id]
+            XCTAssertTrue(answer.waitForExistence(timeout: 5))
+            XCTAssertTrue(answer.isHittable)
+            answer.tap()
+            check.tap()
             XCTAssertTrue(app.buttons["继续"].firstMatch.waitForExistence(timeout: 5))
-            revealAndTap(app, app.buttons["继续"].firstMatch)
+            XCTAssertTrue(namedBubble.waitForExistence(timeout: 3))
+            app.buttons["继续"].firstMatch.tap()
         }
         XCTAssertTrue(app.buttons["result-continue"].waitForExistence(timeout: 8))
         XCTAssertTrue(element(app, "pet-fox").exists)
@@ -231,22 +234,4 @@ final class PetScreensUITests: XCTestCase {
         XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: settled, object: lastShelf)], timeout: 8), .completed)
     }
 
-    /// 旧课程的检查栏覆盖了滚动容器底部；手势从栏上方开始，避免被底栏拦截。
-    @MainActor private func tapLessonAnswer(_ app: XCUIApplication, _ answer: XCUIElement, footer: XCUIElement) {
-        XCTAssertTrue(answer.waitForExistence(timeout: 5))
-        let scroll = app.scrollViews.firstMatch
-        for _ in 0..<10 {
-            let top = scroll.frame.minY + 8
-            let bottom = min(scroll.frame.maxY, footer.frame.minY) - 8
-            let frame = answer.frame
-            if answer.isHittable && frame.minY >= top && frame.maxY <= bottom { break }
-            let start = app.coordinate(withNormalizedOffset: .zero)
-                .withOffset(CGVector(dx: scroll.frame.midX, dy: (top + bottom) / 2))
-            let distance = min(140, max(44, (bottom - top) / 2))
-            let end = start.withOffset(CGVector(dx: 0, dy: frame.minY < top ? distance : -distance))
-            start.press(forDuration: 0.05, thenDragTo: end, withVelocity: .slow, thenHoldForDuration: 0.2)
-        }
-        XCTAssertTrue(answer.isHittable)
-        answer.tap()
-    }
 }

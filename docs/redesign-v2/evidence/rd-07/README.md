@@ -2,7 +2,7 @@
 
 日期：2026-10-21。独立 worktree：`/private/tmp/rd-07-pet-screens`，分支：`codex/rd-07-pet-screens`。
 所有截图来自 iOS 18.6 共用模拟器和真实 UI 操作；不代表真机验收。单张截图缩至原始像素的 1/2；对比图和孵化拼图进一步缩放，不引入产品位图素材。
-本目录共 32 张 PNG 和一份结果摘要，约 8.61 MiB，低于 10 MB 限额。
+本目录共 32 张 PNG 和一份结果摘要，约 8.94 MiB，低于 10 MB 限额。
 
 ## 验收与截图索引
 
@@ -36,17 +36,20 @@
 ## 测试结果
 
 全部模拟器测试通过 `scripts/redesign/sim-test.sh` 全机排队执行，使用脚本默认 DerivedData，关闭并行测试和代码签名。
+本次 RD-10 rebase 后重跑 iPhone 16 全量；SE 和 iPad 的结果及截图为首轮交付证据，本轮未重跑。
 
 | 设备 | 执行范围 | 结果 |
 | --- | --- | --- |
-| iPhone 16 / iOS 18.6 | 全量单元测试与 UI 测试 | 308/308 通过（276 单测、32 UI），0 失败 |
+| iPhone 16 / iOS 18.6 | 全量单元测试与 UI 测试 | 315/315 通过（279 单测、36 UI），0 失败 |
+| iPhone 16 / iOS 18.6 | rebase 后出战跨页单项回归 | `PetScreensUITests/testSwitchFollowsHomeLessonAndResult` 1/1 通过，0 失败 |
 | iPhone SE (3rd gen) / iOS 18.6 | `PetScreensUITests/testCapturePetScreens` | 1/1 通过，0 失败 |
 | iPad (A16) / iOS 18.6 | `PetScreensUITests/testCapturePetScreens` | 1/1 通过，0 失败 |
 
 执行命令：
 
 ```sh
-scripts/redesign/sim-test.sh iphone16 -collect-test-diagnostics never -resultBundlePath /private/tmp/rd-07-full.xcresult
+scripts/redesign/sim-test.sh iphone16 -collect-test-diagnostics never -resultBundlePath /private/tmp/rd-07-rebase-full-fixed.xcresult
+scripts/redesign/sim-test.sh iphone16 -only-testing:ChinaTextbookStudyUITests/PetScreensUITests/testSwitchFollowsHomeLessonAndResult -collect-test-diagnostics never -resultBundlePath /private/tmp/rd-07-rebase-switch-fixed.xcresult
 scripts/redesign/sim-test.sh se -only-testing:ChinaTextbookStudyUITests/PetScreensUITests/testCapturePetScreens -collect-test-diagnostics never -resultBundlePath /private/tmp/rd-07-se-final.xcresult
 scripts/redesign/sim-test.sh ipad -only-testing:ChinaTextbookStudyUITests/PetScreensUITests/testCapturePetScreens -collect-test-diagnostics never -resultBundlePath /private/tmp/rd-07-ipad-final.xcresult
 ```
@@ -55,9 +58,9 @@ scripts/redesign/sim-test.sh ipad -only-testing:ChinaTextbookStudyUITests/PetScr
 
 ```text
 Test Suite 'ChinaTextbookStudyTests.xctest' passed.
-Executed 276 tests, with 0 failures (0 unexpected)
+Executed 279 tests, with 0 failures (0 unexpected)
 Test Suite 'ChinaTextbookStudyUITests.xctest' passed.
-Executed 32 tests, with 0 failures (0 unexpected)
+Executed 36 tests, with 0 failures (0 unexpected)
 ** TEST SUCCEEDED **
 ```
 
@@ -65,4 +68,11 @@ Executed 32 tests, with 0 failures (0 unexpected)
 `PetScreensUITests` 8 项覆盖三页与动作命中区、领养扣款和切换、图鉴导航、照顾及实时冷却、五状态、三次完整孵化、出战跨课程/结算和历史装扮设置。三机型截图用例断言四个照顾按钮可点击，实际命中区均 ≥44pt（容许像素舍入）。
 
 `git diff --check` 和已暂存差异检查通过。已运行 XcodeGen，生成工程不提交。主目录状态与开工快照一致，`SeedInstaller.swift` SHA-256 未变；本卡不改 `packages/core`、经济目录、存档结构、`HomeView`、`LessonResultView` 或签名配置。
-集成基线为 `ac64013`；发起 PR 前已 fetch、rebase。`codebase_memory.detect_changes` 与 Git 核对本卡源码及测试改动共 24 个文件，另附本目录的截图和结果摘要。
+集成基线为 `9b89401`（已合并 PR #9 / RD-10）；本次已 fetch、rebase。`codebase_memory.detect_changes` 与 Git 核对本卡源码及测试改动共 23 个文件，另附本目录的截图和结果摘要。
+
+## RD-10 冲突处理
+
+- `IntroCardView.swift` 与 RD-10 完全一致，气泡沿用 `\(pet.kind.name)：\(current.bubble)`。
+- `LessonRunnerView.swift` 完整保留 RD-10 布局和注释，只在 `MascotTriggers.pickBubble` 调用中传入出战宠物名；两个文件均无写死的「聪聪」或「米团」文案。
+- 出战跨页 UI 用例适配 RD-10 的选项与数字键盘，完成全部 12 题，并检查讲解和每次正确反馈都以「阿橘：」开头。课程截图来自本轮通过的出战跨页单项回归，已同步为 rebase 后的实际页面。
+- RD-10 固定回放故意在第 1、4 题答错以验证扣心；本卡回放改用这两题的正确答案（错、B），逐题验证正确反馈，未放宽宠物名断言。
