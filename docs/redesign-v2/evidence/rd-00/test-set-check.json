@@ -1,0 +1,28 @@
+{
+  "baselineCommit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+  "beforeCount": 254,
+  "afterCount": 254,
+  "sameTestIdentifiers": true,
+  "sortedTestIdentifierURLsSha256": "fa42c72b0fb0477393f07e9f1610a2600b9646462497292af32c8844e44a803c",
+  "removed": [],
+  "added": [],
+  "allAfterResultsPassed": true,
+  "afterSkipped": 0,
+  "afterExpectedFailures": 0,
+  "profileRepeatPasses": 10,
+  "integration": {
+    "baselineCommit": "edda0947d92dca45ebfe072f5e37f070b1fa2cff",
+    "totalTestCount": 281,
+    "allResultsPassed": true,
+    "skippedTests": 0,
+    "expectedFailures": 0,
+    "original254IdentifiersPreserved": true,
+    "addedCount": 27,
+    "addedSuiteCounts": {
+      "PetStateTests": 23,
+      "PetBackupTests": 4
+    },
+    "removed": [],
+    "sortedTestIdentifierURLsSha256": "33f1984be2bf87f7951ac637669eb42c67e74263782c77ef35dc7c8bf8d5d0c6"
+  }
+}

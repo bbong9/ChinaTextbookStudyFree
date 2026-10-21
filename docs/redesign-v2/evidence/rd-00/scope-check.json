@@ -1,0 +1,38 @@
+{
+  "baselineCommit": "edda0947d92dca45ebfe072f5e37f070b1fa2cff",
+  "branch": "codex/rd-00-fix-baseline-tests",
+  "changedTestFiles": [
+    "apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift",
+    "apps/mobile/ChinaTextbookStudyUITests/CosmeticsUITests.swift",
+    "apps/mobile/ChinaTextbookStudyUITests/LayoutUITests.swift",
+    "apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift",
+    "apps/mobile/ChinaTextbookStudyUITests/PetGalleryUITests.swift",
+    "apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift"
+  ],
+  "allowedProductChange": "apps/mobile/ChinaTextbookStudy/Clay/ClayGallery.swift",
+  "otherAppSourceChanges": [],
+  "protectedPathsWithNoDiff": [
+    "apps/mobile/ChinaTextbookStudyWidget",
+    "apps/mobile/project.yml",
+    "packages/core"
+  ],
+  "sourceSha256": {
+    "apps/mobile/ChinaTextbookStudy/Clay/ClayGallery.swift": "0e148546936b99585ed984d8383f80a42ae63d8cf8ffdef2a3a53212869b30a1",
+    "apps/mobile/ChinaTextbookStudyTests/PRFixTests.swift": "d647dd678ef8129b55718ef558bc9c07f7983171e24ab79d8bb1dbe178741a61",
+    "apps/mobile/ChinaTextbookStudyUITests/CosmeticsUITests.swift": "4ac275a70afb3f6db93dd888dd4bd9fdf854b62f577a34f81d9465fc4dbd063c",
+    "apps/mobile/ChinaTextbookStudyUITests/LayoutUITests.swift": "2377b7833b79040b5ccc7a274b80e9bd7247bc933e2c8cdb5b9167c05ebf0e30",
+    "apps/mobile/ChinaTextbookStudyUITests/LessonFlowUITests.swift": "fa8a1d72baaae7dea72b24e32537260849295c477d620fe7ab5e4b7d78c17f56",
+    "apps/mobile/ChinaTextbookStudyUITests/PetGalleryUITests.swift": "e4d153675fbf0ce80ce0af7a2e1318d2310a9e58e1b6437b58b9943109144c07",
+    "apps/mobile/ChinaTextbookStudyUITests/ScreenshotTests.swift": "48cba84dfb2c3956841655e81b94e9f8c11adb32a9ea84745b54440946220550"
+  },
+  "unchangedOriginalSeedInstallerSha256": "e094ba51ff0ecf27c013801eb3d18dc54cd496d2b6679e6b1ad100f89f054095",
+  "seedZipSha256": "3a290570f421a5fa609014acdd23417f9cb01020b345f64b6ead5e570e426f33",
+  "projectYmlSha256": "7e19c281a3203b2e22442c03fc98e95c5ba9a78ef58545f565a26aaf8067c2a1",
+  "comparisonBaselineCommit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+  "fixSourceIdenticalToComparison": true,
+  "cleanedGeneratedTestArtifact": {
+    "path": "output/rd-06/ios-pet-backup.json",
+    "sha256": "2d55b93d838831641c185f6027b48fd5672101dae7096ad7d4f33de105a4dea9",
+    "producer": "PetBackupTests"
+  }
+}

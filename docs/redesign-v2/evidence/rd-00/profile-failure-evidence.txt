@@ -1,0 +1,24 @@
+来源: RD-12 全量测试的原始失败附件（历史证据，非本次基线运行）
+结果包: /private/tmp/rd12-tests-ios18.xcresult
+用例: LayoutUITests/testProfileReachesAchievementsAndSettings()
+源文件: /tmp/rd12-ios-validation/apps/mobile/ChinaTextbookStudyUITests/LayoutUITests.swift:100
+失败: XCTAssertTrue failed - profile did not navigate to 设置
+设备: iPhone 16 / iOS 18.6 / 393×852pt
+UI hierarchy 附件: BA0888DE-6DEE-45F9-8461-845BC37EFCA1.txt
+
+              NavigationBar, 0x10253a1f0, {{0.0, 53.7}, {393.0, 44.0}}, identifier: '我的' <AX element pid: 42275, elementOrHash.elementID: 4382198432.129>
+                      ScrollView, 0x10253e590, {{0.0, 0.0}, {393.0, 852.0}} <AX element pid: 42275, elementOrHash.elementID: 4462963200.131>
+                          Button, 0x102d1f780, {{20.0, 769.0}, {353.0, 78.0}}, label: '设置' <AX element pid: 42275, elementOrHash.elementID: 105553169902528.181>
+                            StaticText, 0x102d205e0, {{96.0, 797.2}, {36.0, 21.7}}, label: '设置' <AX element pid: 42275, elementOrHash.elementID: 105553169907168.203>
+            Button, 0x102d21a10, {{0.0, 762.0}, {78.7, 50.0}}, identifier: 'tab-learn', label: '学习' <AX element pid: 42275, elementOrHash.elementID: 105553169847616.10>
+            Button, 0x102d23aa0, {{78.7, 762.0}, {78.7, 50.0}}, identifier: 'tab-league', label: '排行' <AX element pid: 42275, elementOrHash.elementID: 105553169904448.11>
+            Button, 0x102330210, {{157.3, 762.0}, {78.3, 50.0}}, identifier: 'tab-review', label: '错题本' <AX element pid: 42275, elementOrHash.elementID: 105553169905248.12>
+            Button, 0x10232fb70, {{235.7, 762.0}, {78.7, 50.0}}, identifier: 'tab-shop', label: '商店' <AX element pid: 42275, elementOrHash.elementID: 105553169907008.13>
+            Button, 0x10232f110, {{314.3, 762.0}, {78.7, 50.0}}, identifier: 'tab-profile', label: '我的，1 个奖励可领取' <AX element pid: 42275, elementOrHash.elementID: 105553169849056.14>
+
+Synthesized Event 81F18A64-66DB-4076-B9C2-969EA4264645: touch down/up = [(55.30000052601099, 839.1999998837709), (55.30000052601099, 839.1999998837709)]
+Synthesized Event EC3885A8-C5ED-4C04-AF70-83446B4497D3: touch down/up = [(55.30000052601099, 839.1999998837709), (55.30000052601099, 839.1999998837709)]
+
+分析: 设置行 y=769...847，与底栏 y=762...812 重叠。旧助手只检查 isHittable，
+未继续滚动；首次点击及重试均落在 (55.3, 839.2)，设置页未打开。
+当前基线本次该用例通过，不能把历史失败计入本次 5 项失败。

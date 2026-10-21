@@ -18,6 +18,7 @@ final class PetGalleryUITests: XCTestCase {
     }
 
     @MainActor func testPetsAccessoriesAndThreeRepeatableReactions() {
+        defer { XCUIDevice.shared.orientation = .portrait }
         let app = launchPets()
         attach("pets-landscape")
         XCTAssertTrue(app.descendants(matching: .any)["pet-sample-mituan-happy"].exists)
@@ -39,6 +40,7 @@ final class PetGalleryUITests: XCTestCase {
     }
 
     @MainActor func testReduceMotionStopsBreathingBlinkWaveAndReactions() {
+        defer { XCUIDevice.shared.orientation = .portrait }
         let app = launchPets()
         app.buttons["pet-section-2"].tap()
         let toggle = app.buttons["stage-top-trailing"]

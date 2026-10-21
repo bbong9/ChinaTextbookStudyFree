@@ -58,16 +58,27 @@ final class LayoutUITests: XCTestCase {
                       "learn tab did not return to the path")
     }
 
-    /// Scroll until the element can actually be tapped — the profile is long
-    /// enough that its lower rows start below the fold.
+    /// isHittable 对底栏后方的行也可能为真；整行进入导航栏和底栏之间才点击。
     @MainActor
     private func revealAndTap(_ app: XCUIApplication, _ element: XCUIElement, tries: Int = 6) {
+        let scrollView = app.scrollViews.firstMatch
+        func visibleContentFrame() -> CGRect {
+            let top = app.navigationBars.firstMatch.frame.maxY
+            let bottom = app.buttons["tab-learn"].frame.minY
+            return scrollView.frame.intersection(CGRect(
+                x: app.frame.minX, y: top, width: app.frame.width, height: max(0, bottom - top)
+            ))
+        }
+        func fullyVisible() -> Bool {
+            visibleContentFrame().contains(element.frame) && element.isHittable
+        }
         var attempts = 0
-        while !element.isHittable && attempts < tries {
-            app.swipeUp()
+        while !fullyVisible() && attempts < tries {
+            scrollView.swipeUp()
             attempts += 1
         }
-        XCTAssertTrue(element.isHittable, "could not reveal \(element) after \(tries) swipes")
+        XCTAssertTrue(fullyVisible(),
+                      "行未完全进入可见区域：row=\(element.frame), viewport=\(visibleContentFrame())")
         element.tap()
     }
 
@@ -92,11 +103,6 @@ final class LayoutUITests: XCTestCase {
         let settings = app.buttons.containing(NSPredicate(format: "label CONTAINS %@", "设置")).firstMatch
         XCTAssertTrue(settings.waitForExistence(timeout: 4))
         revealAndTap(app, settings)
-        // Wave F transitions can shift frames mid-tap; retry once if the push
-        // didn't land.
-        if !app.navigationBars["设置"].waitForExistence(timeout: 4), settings.isHittable {
-            settings.tap()
-        }
         XCTAssertTrue(app.navigationBars["设置"].waitForExistence(timeout: 4),
                       "profile did not navigate to 设置")
     }

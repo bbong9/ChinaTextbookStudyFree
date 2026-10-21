@@ -54,7 +54,7 @@
   - **不要新建模拟器**,也不要直接 `simctl boot`。脚本只用三台共用模拟器 `iPhone 16`、`iPhone SE (3rd gen)`、`iPad (A16)`(iOS 18.6),缺了它会按同名创建;跑完自动关机。
   - 脚本已关闭并行测试(并行测试会克隆出多台模拟器)。只编译不测试可以直接 `xcodebuild build`,不受限制。
   - DerivedData 默认在 `/private/tmp/<分支名>-derived`;xcresult、日志也放 `/private/tmp/rd-XX-*`。PR 推送后删掉 `.xcresult` 和中间日志,卡片合并后整个删除。
-- 已知基线失败(PRFixTests、CosmeticsUITests、LessonFlowUITests、ScreenshotTests、LayoutUITests,在 eaeff4f 上可复现)等 RD-00 修复;在此之前 PR 注明「与基线一致」即可,但新增或换了失败方式的要说明。
+- RD-00 已修复原有基线测试失败及新增的 Debug 宠物预览重叠;在 `edda094` 集成基线(已含 RD-06)上,iPhone 16 / iOS 18.6 全量 281/281 通过。前后对照、导航重复、根因和三机型截图见 [RD-00 回归证据](evidence/rd-00/README.md)。
 
 ## 2. PR 模板(Codex 每个 PR 必须照填)
 

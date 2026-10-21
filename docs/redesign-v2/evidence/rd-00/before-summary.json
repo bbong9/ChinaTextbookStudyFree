@@ -1,0 +1,73 @@
+{
+  "baselineCommit": "13120ce2cc4c2345b9e23cf9664805b0b606db2d",
+  "phase": "before",
+  "resultBundle": "/private/tmp/rd00-latest-before.xcresult",
+  "result": "Failed",
+  "totalTestCount": 254,
+  "passedTests": 248,
+  "failedTests": 6,
+  "skippedTests": 0,
+  "expectedFailures": 0,
+  "exitCode": 65,
+  "perTarget": {
+    "ChinaTextbookStudyTests": {
+      "Passed": 236,
+      "Failed": 1
+    },
+    "ChinaTextbookStudyUITests": {
+      "Passed": 12,
+      "Failed": 5
+    }
+  },
+  "testIdentifierCount": 254,
+  "sortedTestIdentifierURLsSha256": "fa42c72b0fb0477393f07e9f1610a2600b9646462497292af32c8844e44a803c",
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+    "deviceName": "iPhone 16",
+    "modelName": "iPhone 16",
+    "osBuildNumber": "22G86",
+    "osVersion": "18.6",
+    "platform": "iOS Simulator"
+  },
+  "deviceResultCounts": {
+    "passedTests": 248,
+    "failedTests": 6,
+    "skippedTests": 0,
+    "expectedFailures": 0
+  },
+  "startTime": "2026-10-21T01:42:33.206000+00:00",
+  "finishTime": "2026-10-21T01:47:58.214000+00:00",
+  "failures": [
+    {
+      "test": "PRFixTests/testImportRestoresTodayXpSoDailyGoalBonusIsNotFarmable()",
+      "target": "ChinaTextbookStudyTests",
+      "message": "XCTAssertTrue failed"
+    },
+    {
+      "test": "LessonFlowUITests/testAnsweringShowsFeedbackPanel()",
+      "target": "ChinaTextbookStudyUITests",
+      "message": "XCTAssertTrue failed - feedback panel did not appear after checking a correct answer"
+    },
+    {
+      "test": "ScreenshotTests/testCaptureMainScreens()",
+      "target": "ChinaTextbookStudyUITests",
+      "message": "XCTAssertTrue failed"
+    },
+    {
+      "test": "PetGalleryUITests/testPetsAccessoriesAndThreeRepeatableReactions()",
+      "target": "ChinaTextbookStudyUITests",
+      "message": "XCTAssertGreaterThan failed: (\"692.4063981042655\") is not greater than (\"708.3501184834123\") - 反应预览不能挤占舞台顶部信息区"
+    },
+    {
+      "test": "LessonFlowUITests/testQuittingMidLessonAsksForConfirmation()",
+      "target": "ChinaTextbookStudyUITests",
+      "message": "XCTAssertTrue failed"
+    },
+    {
+      "test": "CosmeticsUITests/testUnaffordableCosmeticIsNotGranted()",
+      "target": "ChinaTextbookStudyUITests",
+      "message": "Failed to failed to compute hit point for Button, {{790.0, 424.3}, {116.0, 158.0}}, identifier: 'cosmetic-skin_astronaut', label: '米团、宇航员头盔、500', value: 开心，宇航员头盔，动态效果开启: Activation point invalid and no suggested hit points based on element frame. (Underlying Error: Activation point invalid and no suggested hit points based on element frame)"
+    }
+  ]
+}

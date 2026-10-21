@@ -96,10 +96,10 @@ final class LessonFlowUITests: XCTestCase {
         skipLessonIntroIfPresent(app)
         XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8))
 
-        // g1up-u1-kp1 opens with a true/false question whose answer is 对.
-        let yes = app.buttons["tf-对"].firstMatch
-        XCTAssertTrue(yes.waitForExistence(timeout: 3), "true/false tile not found")
-        yes.tap()
+        // 当前 seed 首题「只数到第4个，就能说总共4个」的正确答案是「错」。
+        let correctAnswer = app.buttons["tf-错"].firstMatch
+        XCTAssertTrue(correctAnswer.waitForExistence(timeout: 3), "true/false tile not found")
+        correctAnswer.tap()
         app.buttons["检查答案"].firstMatch.tap()
 
         // The feedback panel replaces the check footer with a continue CTA.
@@ -121,8 +121,8 @@ final class LessonFlowUITests: XCTestCase {
         skipLessonIntroIfPresent(app)
         XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8))
 
-        // Answer once so there is progress worth protecting.
-        app.buttons["tf-对"].firstMatch.tap()
+        // 答对当前 seed 首题，产生需要保护的进度。
+        app.buttons["tf-错"].firstMatch.tap()
         app.buttons["检查答案"].firstMatch.tap()
         XCTAssertTrue(app.buttons["继续"].firstMatch.waitForExistence(timeout: 5))
 

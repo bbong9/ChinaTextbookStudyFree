@@ -110,7 +110,22 @@ final class CosmeticsUITests: XCTestCase {
 
         let helmet = app.buttons["cosmetic-skin_astronaut"]
         XCTAssertTrue(helmet.waitForExistence(timeout: 3))
-        helmet.tap()
+        // 宇航员是第七项，exists 不代表已滚进横向货架的可见区域。
+        // 外层是纵向商店，取包含该按钮的最内层 ScrollView 横向滚动。
+        let shelf = try XCTUnwrap(app.scrollViews.containing(
+            .button, identifier: "cosmetic-skin_astronaut"
+        ).allElementsBoundByIndex.last)
+        var scrolls = 0
+        // iOS 18.6 对完全在屏幕外的按钮查询 isHittable 也会报命中点错误。
+        while !app.frame.contains(helmet.frame) && scrolls < 6 {
+            shelf.swipeLeft()
+            scrolls += 1
+        }
+        XCTContext.runActivity(named: "宇航员位置：\(helmet.frame)，货架：\(shelf.frame)") { _ in
+            XCTAssertTrue(app.frame.contains(helmet.frame), "宇航员皮肤必须滚入屏幕")
+            XCTAssertTrue(helmet.isHittable, "宇航员皮肤必须可点击")
+            helmet.tap()
+        }
 
         // Wave F: the preview sheet still opens, but the confirm button is
         // disabled when gems are short — cancel out and nothing was granted.

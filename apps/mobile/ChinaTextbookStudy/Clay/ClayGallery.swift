@@ -24,13 +24,17 @@ struct ClayGallery: View {
                     .position(x: ctx.size.width / 2, y: ctx.size.height - 85)
             }
         } content: { ctx in
+            // 竖屏预览时 44pt 点击区会撑高三行按钮；向上借用天空，避免盖住信息区。
+            // 横屏内容能放进原有 206 舞台点时，所有设计坐标保持不变。
+            let petExtraHeight = page == titles.count - 1
+                ? max(0, 3 * max(52, ctx.minimumTapDimension) + 16 - 206) : 0
             ZStack(alignment: .topLeading) {
-                TitleRibbon(title: titles[page]).position(ctx.place(x: 422, y: 40))
+                TitleRibbon(title: titles[page]).position(ctx.place(x: 422, y: 40 - petExtraHeight))
                 Text("舞台 \(Int(ctx.size.width)) × \(Int(ctx.size.height)) · 第 \(page + 1)/\(titles.count) 页")
                     .font(ClayFont.caption).foregroundStyle(ClayColor.ink)
                     .accessibilityIdentifier("clay-stage-metrics")
                     .accessibilityValue("\(ctx.scale),\(ctx.safeArea.top),\(ctx.safeArea.leading),\(ctx.safeArea.bottom),\(ctx.safeArea.trailing)")
-                    .position(ctx.place(x: 422, y: 73))
+                    .position(ctx.place(x: 422, y: 73 - petExtraHeight))
                 switch page {
                 case 0: components(ctx)
                 case 1: gradients(ctx)
@@ -38,8 +42,8 @@ struct ClayGallery: View {
                 default:
                     PetGallery()
                         .environment(\.petAnimationsPaused, reduceMotion)
-                        .frame(width: 700, height: 206)
-                        .position(ctx.place(x: 422, y: 197))
+                        .frame(width: 700, height: 206 + petExtraHeight)
+                        .position(ctx.place(x: 422, y: 197 - petExtraHeight / 2))
                 }
                 hud(ctx)
             }

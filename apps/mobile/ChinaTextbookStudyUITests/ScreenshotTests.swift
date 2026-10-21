@@ -31,7 +31,8 @@ final class ScreenshotTests: XCTestCase {
         XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 8))
         attach(name: "03-lesson-question")
 
-        app.buttons["tf-对"].firstMatch.tap()
+        // 当前 seed 首题答案为「错」；保留正确反馈的「继续」断言。
+        app.buttons["tf-错"].firstMatch.tap()
         app.buttons["检查答案"].firstMatch.tap()
         XCTAssertTrue(app.buttons["继续"].firstMatch.waitForExistence(timeout: 5))
         attach(name: "04-lesson-feedback")

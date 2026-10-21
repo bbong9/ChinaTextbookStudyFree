@@ -1,0 +1,15 @@
+{
+  "baselineCommit": "edda0947d92dca45ebfe072f5e37f070b1fa2cff",
+  "command": "npm test",
+  "testFilesPassed": 15,
+  "testsPassed": 370,
+  "testsFailed": 0,
+  "exitCode": 0,
+  "coreTree": "17802122806ba3d0490c9ba91e1b214dba790836",
+  "packageLockSha256": "e67822fd1e1dd7537630b2cba4993aca1ebd68980ca8523f0dedd2cead1e3a42",
+  "logSha256": "afaa96f9ef428e28245126a71636fd9a77f90a51b7747269b5d394a2f65cfbc8",
+  "keyOutput": [
+    "Test Files 15 passed (15)",
+    "Tests 370 passed (370)"
+  ]
+}
