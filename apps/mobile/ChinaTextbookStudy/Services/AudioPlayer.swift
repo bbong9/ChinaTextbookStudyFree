@@ -121,6 +121,11 @@ final class AudioPlayer: NSObject, ObservableObject {
     /// to attribute a completion to *their* run (e.g. the read-all gate)
     /// compare this against the value captured when they started playback.
     @Published private(set) var currentRunId: Int = 0
+    /// 系统 TTS 的实际词范围；故事页转换为字符位置，不伪造录音时间戳。
+    @Published private(set) var speechRange: NSRange?
+    var recordingDuration: TimeInterval? { player?.duration }
+    var recordingElapsed: TimeInterval { player?.currentTime ?? 0 }
+    var recordingRate: Float { player?.rate ?? 1 }
 
     /// 慢速倍率 —— 儿童跟读友好的 0.65×。
     static let slowRate: Float = 0.65
@@ -163,6 +168,19 @@ final class AudioPlayer: NSObject, ObservableObject {
             if let text = SpeechTextIndex.shared.text(for: path) { return QueueItem(source: .speech(text), index: idx) }
             return nil
         }
+        start(items: items, rate: rate)
+    }
+
+    /// 一句绘本即使 audio 为 nil 也能用原文朗读；已有调用者的队列语义不变。
+    func play(text: String, audioPath: String?, settings: SettingsStore? = nil) {
+        guard !(settings ?? SettingsStore.shared).isMuted else { stop(); return }
+        let source: QueueItem.Source
+        if let audioPath, let url = resolve(audioPath) { source = .file(url) }
+        else { source = .speech(text) }
+        start(items: [QueueItem(source: source, index: 0)], rate: nil)
+    }
+
+    private func start(items: [QueueItem], rate: Float?) {
         registerInterruptionObserverIfNeeded()
         stop()
         // 长音频/朗读期间临时切 spokenAudio 播放会话,播完在 playNext()/stop()
@@ -191,6 +209,7 @@ final class AudioPlayer: NSObject, ObservableObject {
         isPlaying = false
         nowPlayingPath = nil
         nowPlayingIndex = nil
+        speechRange = nil
         // 中途打断也要把会话还给 SFX(critic-4)。
         AudioSessionCoordinator.shared.endSpokenAudio()
     }
@@ -282,6 +301,7 @@ final class AudioPlayer: NSObject, ObservableObject {
             return
         }
         let next = queue.removeFirst()
+        speechRange = nil
         switch next.source {
         case .file(let url):
             playFile(url, index: next.index)
@@ -325,6 +345,15 @@ final class AudioPlayer: NSObject, ObservableObject {
 }
 
 extension AudioPlayer: AVSpeechSynthesizerDelegate {
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+                                      willSpeakRangeOfSpeechString range: NSRange,
+                                      utterance: AVSpeechUtterance) {
+        let id = ObjectIdentifier(utterance)
+        Task { @MainActor in
+            guard self.currentUtteranceId == id else { return }
+            self.speechRange = range
+        }
+    }
     nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         let id = ObjectIdentifier(utterance)
         Task { @MainActor in
@@ -338,6 +367,7 @@ extension AudioPlayer: AVSpeechSynthesizerDelegate {
 extension AudioPlayer: AVAudioPlayerDelegate {
     nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         Task { @MainActor in
+            guard self.player === player else { return }
             self.playNext()
         }
     }

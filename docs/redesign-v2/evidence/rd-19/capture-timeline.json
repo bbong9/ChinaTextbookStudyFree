@@ -1,0 +1,101 @@
+{
+  "method": "模拟器真实录屏；音轨按 DEBUG 测试记录的实际播放时间对齐同源原录音合成，非设备采音。",
+  "device": "iPhone 16 / iOS 18.6",
+  "story": "chinese-g1up-s1-v2",
+  "width": 1278,
+  "height": 588,
+  "fps": 15,
+  "seconds": 50.247,
+  "videoClockCorrectionSeconds": 1.294,
+  "syncCalibration": "7 个真实翻页帧与播放日志匹配，取中位偏移校准媒体 PTS 起点。",
+  "maximumSyncResidualSeconds": 0.163,
+  "audioVolumeDb": {
+    "mean_volume": -16.9,
+    "max_volume": -1.2
+  },
+  "pageTransitionsSeconds": [
+    6.39,
+    13.734,
+    20.587,
+    25.672,
+    31.715,
+    36.387,
+    41.905
+  ],
+  "timeline": [
+    {
+      "page": 1,
+      "audio": "/audio/2b/2b18a9efd9ca97b4735a208112680f7aca4f5a47.mp3",
+      "sha256": "e767cbce54317e5256f8e9f29ba3d6445019af1ca5c333e1b1bd5923af57cc23",
+      "startSeconds": 0.7,
+      "recordingDuration": 4.104,
+      "rate": 1
+    },
+    {
+      "page": 2,
+      "audio": "/audio/07/07d3e394e7ca2d3c422c58913cd0f40b06da2732.mp3",
+      "sha256": "7bdfe2360a8b76827f6d82d965dcbb36bc931f219e25fedcaae868c06d5b61a4",
+      "startSeconds": 6.481,
+      "recordingDuration": 5.664,
+      "rate": 1
+    },
+    {
+      "page": 3,
+      "audio": "/audio/90/900833e490b6e24a30d4b813cce94279a95a4b3a.mp3",
+      "sha256": "dd63ba77889cbe0f0c9143044a970155692f46b6149b9de8f6b3082a9bc4f7b1",
+      "startSeconds": 13.83,
+      "recordingDuration": 4.896,
+      "rate": 1
+    },
+    {
+      "page": 4,
+      "audio": "/audio/df/df6135a0429f344fc5db61698e1359f1f7edbc11.mp3",
+      "sha256": "8070ba08ef8d1e19657b5c8d26b556fd62310d446393bba25e95fc9510508ca9",
+      "startSeconds": 20.424,
+      "recordingDuration": 3.504,
+      "rate": 1
+    },
+    {
+      "page": 5,
+      "audio": "/audio/b1/b131327b1fbf7badf2fe6334c7c82ed577672d0c.mp3",
+      "sha256": "ccd765cf6731df196c7482d6ae85bac3d47b0c70d526da4dbcc1f38ed901f1e2",
+      "startSeconds": 25.672,
+      "recordingDuration": 4.296,
+      "rate": 1
+    },
+    {
+      "page": 6,
+      "audio": "/audio/c9/c98e9675ab6299f03c858b7741053c92863b287a.mp3",
+      "sha256": "32fabb753b51f4da53a1e78a54eada8f214accfdda6f708ca93333ac62109509",
+      "startSeconds": 31.663,
+      "recordingDuration": 3.096,
+      "rate": 1
+    },
+    {
+      "page": 7,
+      "audio": "/audio/fb/fb56319a52be46c804b309d78dc23cff64079bde.mp3",
+      "sha256": "2e277425f8b67a89d092e41615c546226927f218ed25953f281a50e890fb0d30",
+      "startSeconds": 36.434,
+      "recordingDuration": 3.744,
+      "rate": 1
+    },
+    {
+      "page": 8,
+      "audio": "/audio/58/58a23c6429f8399f1ad60cd7fb69658ccc929dd2.mp3",
+      "sha256": "ca439bb92e870b9738ddd79aba492ec5944734391b8ae122309a5c4d2f7d0fad",
+      "startSeconds": 41.903,
+      "recordingDuration": 4.344,
+      "rate": 1
+    }
+  ],
+  "audioSegmentMeanVolumeDb": [
+    -14.9,
+    -14.5,
+    -13.5,
+    -18.1,
+    -13.9,
+    -12.8,
+    -15.1,
+    -18.0
+  ]
+}

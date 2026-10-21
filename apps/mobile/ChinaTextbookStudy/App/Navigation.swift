@@ -71,7 +71,7 @@ enum AppRoute: Hashable {
     /// 沉浸页面已有自己的退出操作，其余页面由外壳提供临时页头。
     var shellTitle: String? {
         // RD-07 三个宠物页面已有自己的舞台 HUD。
-        switch self { case .petFamily, .petHome, .petShop: return nil; default: break }
+        switch self { case .petFamily, .petHome, .petShop, .bedtimeStories, .stories, .storyReader: return nil; default: break }
         if let placeholder { return placeholder.title }
         switch self {
         case .league: return "排行"

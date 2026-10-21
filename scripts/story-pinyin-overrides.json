@@ -1,0 +1,8 @@
+[
+  { "storyId": "chinese-g1up-s1-v2", "text": "早上", "pinyin": ["zǎo", "shang"], "reason": "时间词早上的上读轻声" },
+  { "storyId": "chinese-g1up-s1-v2", "text": "乐乐", "pinyin": ["lè", "le"], "reason": "本篇重复名的后一字按儿童口语轻声" },
+  { "storyId": "chinese-g1up-s1-v2", "text": "背着书包", "pinyin": ["bēi", "zhe", "shū", "bāo"], "reason": "背负书包读一声，不是背面或背诵" },
+  { "storyId": "chinese-g1up-s1-v2", "text": "地上", "pinyin": ["dì", "shang"], "reason": "方位后缀上读轻声" },
+  { "storyId": "chinese-g1up-s1-v2", "text": "谢谢", "pinyin": ["xiè", "xie"], "reason": "日常称谢的后一字读轻声" },
+  { "text": "月亮", "pinyin": ["yuè", "liang"], "reason": "常用名词月亮的亮读轻声，对齐设计稿" }
+]

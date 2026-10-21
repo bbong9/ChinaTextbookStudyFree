@@ -197,7 +197,7 @@ final class MapHomeUITests: XCTestCase {
         XCTAssertTrue(app.buttons["dock-story"].waitForExistence(timeout: 20))
         app.buttons["dock-story"].tap()
         app.buttons["课外故事"].tap()
-        assertShellTitle(app, "故事")
+        XCTAssertTrue(app.buttons["story-book-picker"].waitForExistence(timeout: 5))
         attachScreenshot("rd09-stories")
         app.buttons["shell-back"].tap()
         app.buttons["dock-story"].tap()

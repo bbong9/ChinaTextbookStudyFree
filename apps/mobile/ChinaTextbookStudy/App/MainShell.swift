@@ -176,8 +176,10 @@ struct RouteView: View {
             HomeQuestsView(progressStore: progressStore, path: $path)
         case .parentCenter:
             SettingsView(progressStore: progressStore)
+        case .bedtimeStories:
+            StoryListView(path: $path)
         case .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
-             .idiomPicker, .idiomPlayer, .bedtimeStories, .readingRoom:
+             .idiomPicker, .idiomPlayer, .readingRoom:
             if let placeholder = route.placeholder {
                 Text("建设中")
                     .duoFont(.heading)
