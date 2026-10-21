@@ -12,6 +12,7 @@
 | 阶段 | 首答答对 | XP | 星级 | 红心 | 回放次数 |
 | --- | --- | --- | --- | --- | --- |
 | 改版前 | 10/12 | 100 | 2 | 5 → 3 | 14 |
+| 改版后 | 10/12 | 100 | 2 | 5 → 3 | 14 |
 
 原始关键输出：
 
@@ -38,6 +39,35 @@ Executed 1 test, with 0 failures
 当前打包 seed 只有七种题型，没有 `word_problem`。应用题截图仅在测试中将现有数字题的类型设为 `.wordProblem`，用于验证独立分发分支；它不代表 seed 原生提供了第八类型。
 
 `LessonShellFlowUITests` 另从真实首页进入关卡，执行固定答案、断心后复习回心并续学、英语文字键盘输入、15 题跳级测试。组件展示与完整导航流程分别记录，不作为真机或 VoiceOver 人工验收。
+
+## AC1 / AC2 截图索引
+
+| 题型 | iPhone 16 | iPhone SE (3rd gen) |
+| --- | --- | --- |
+| 选择 | [choice](iphone16-choice.png) | [choice](se-choice.png) |
+| 判断 | [trueFalse](iphone16-trueFalse.png) | [trueFalse](se-trueFalse.png) |
+| 数字填空 | [fillBlank](iphone16-fillBlank.png) | [fillBlank](se-fillBlank.png) |
+| 计算 | [calculation](iphone16-calculation.png) | [calculation](se-calculation.png) |
+| 应用题（测试投影） | [wordProblem](iphone16-wordProblem.png) | [wordProblem](se-wordProblem.png) |
+| 文字填空 | [fillBlankText](iphone16-fillBlankText.png) | [fillBlankText](se-fillBlankText.png) |
+| 连词成句 | [wordOrder](iphone16-wordOrder.png) | [wordOrder](se-wordOrder.png) |
+| 连线 | [matching](iphone16-matching.png) | [matching](se-matching.png) |
+
+- [SE 数字键盘](se-numeric-keypad.png)：13 个按钮全部可点、宽高至少 52pt、中文标签非空；通过按钮依次输入 0–9、`.`、`/` 并退格，再完成固定答案回放。
+- [SE 系统文字键盘](se-text-keyboard.png)：实际输入 `I'm Tom.`；输入框、检查按钮可点且均在键盘上方，左题干收成一行。
+- 题型展示窗口：iPhone 16 `852×393pt`、SE `667×375pt`；截图按原像素约 1/2 导出并归一化方向，逐张检查作答区完整可见。
+- [iPad (A16) 横屏](ipad-choice.png)：窗口 `1180×820pt`，同一测试一次验证全部八种题型，保留选择题作为第三设备截图。
+
+## AC4 其他场景
+
+| 场景 | 截图 | 来源 |
+| --- | --- | --- |
+| 课前讲解 | [intro](iphone16-intro.png) | 原 `testKnowledgeIntroShowsOnceBeforeFirstRun` |
+| 红心用完 | [out-of-hearts](iphone16-out-of-hearts.png) | 实际连续答错五题后的断心闸门 |
+| 连击 | [combo](iphone16-combo.png) | `testComboPresentation`，生产连击组件展示夹具 |
+| 报错 | [report](iphone16-report.png) | 原 `testAnsweringShowsFeedbackPanel` 从反馈面板打开 |
+| 退出确认 | [quit](iphone16-quit.png) | 原 `testQuittingMidLessonAsksForConfirmation` |
+| 续学恢复 | [resume](iphone16-resume.png) | 实际复习回心后重新进入同一课 |
 
 ## 逻辑边界核对
 
