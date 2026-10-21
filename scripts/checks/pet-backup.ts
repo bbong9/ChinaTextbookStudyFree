@@ -44,9 +44,10 @@ async function main() {
     petTreats: 0, treatsFromLessonsDate: "", treatsFromLessonsCount: 0,
     petCare: {}, petAccessory: { pet_future: "skin_future" }, petsMigrated: false,
   } });
+  const expectedOpaque = petFields(json(opaque.data));
   useProgressStore.getState().importBackup(opaque);
   useProgressStore.getState().toggleMute(); // 普通网页操作不能改宠物数据。
-  assert.deepEqual(petFields(json(useProgressStore.getState().exportBackup()).data), petFields(opaque.data));
+  assert.deepEqual(petFields(json(useProgressStore.getState().exportBackup()).data), expectedOpaque);
 
   useProgressStore.getState().importBackup(buildBackup({ platform: "web" }));
   assert.deepEqual(petFields(json(useProgressStore.getState().exportBackup()).data), {},
