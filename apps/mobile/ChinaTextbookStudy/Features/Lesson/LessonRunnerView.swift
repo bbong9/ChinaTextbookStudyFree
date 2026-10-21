@@ -1,15 +1,6 @@
 import SwiftUI
 
-/// Duolingo-faithful lesson runner:
-///
-/// - **Top**: [X] [green progress bar] [❤️ N]
-/// - **Instruction**: bold text like "判断对错" / "选择正确答案"
-/// - **Question**: text + TTS button
-/// - **Options**: Duolingo option cards
-/// - **Bottom**: green chunky "检查" button → colored feedback panel with mascot
-///
-/// The progress bar advances **only on correct answers**, and wrong questions are
-/// re-queued to the end so the bar always completes and mistakes get re-practiced.
+/// 横屏课本关卡；判分、队列、续学与结算由原状态机持有。
 struct LessonRunnerView: View {
     let bookId: String
     let lessonId: String
@@ -53,6 +44,7 @@ struct LessonRunnerView: View {
     @State private var showOutOfHearts = false
     @State private var wrongFlash = 0
     @State private var showLessonSettings = false
+    @State private var showKnowledge = false
     /// 课前知识讲解（content-2）：该课未完成且没看过讲解时先进分步讲解。
     @State private var showIntro = false
     /// 题目报错小旗子（Wave E2）：反馈面板 → 三选弹层。
@@ -82,19 +74,6 @@ struct LessonRunnerView: View {
     /// 单元挑战课（"{bookId}-u{n}-exam"）：XP ×2，头部亮「⚔️ 单元挑战」徽章。
     private var isExamLesson: Bool { Economy.isExamLessonId(lessonId) }
 
-    /// The equipped lesson backdrop, laid over the neutral surface at a reduced
-    /// strength so question text keeps its contrast on every backdrop.
-    @ViewBuilder
-    private var lessonBackground: some View {
-        ZStack {
-            DuoColors.bg
-            if let b = progressStore.equippedBackdropData, !b.stops.isEmpty {
-                LinearGradient(colors: b.stops, startPoint: .top, endPoint: .bottom)
-                    .opacity(b.needsOverlay ? 0.26 : 0.55)
-            }
-        }
-    }
-
     var body: some View {
         Group {
             if showIntro, let lesson, let knowledge = lesson.knowledge {
@@ -120,6 +99,8 @@ struct LessonRunnerView: View {
                 ProgressView().tint(DuoColors.primary)
             }
         }
+        .environment(\.petEnvironment, PetEnvironment(progressStore: progressStore))
+        .transaction { if reduceMotion { $0.animation = nil; $0.disablesAnimations = true } }
         .navigationBarHidden(true)
         .task { load() }
         .onDisappear { audioPlayer.stop() }
@@ -127,19 +108,21 @@ struct LessonRunnerView: View {
 
     @ViewBuilder
     private func runner(question q: Question) -> some View {
-        VStack(spacing: 0) {
+        LessonShell(bookId: bookId, question: q, instruction: instructionText(q.type),
+                    checked: phase == .checked, mood: mascotMood,
+                    reaction: feedbackReaction, reactionKey: index + 1) {
             header
-            content(q: q)
+        } answers: {
+            QuestionRendererView(question: q, answer: currentAnswer, phase: phase,
+                                 isCorrect: isCorrect, onChange: { currentAnswer = $0 })
+                .id("\(q.id)-\(index)")
+        } action: {
+            checkFooter(question: q)
+        } feedback: {
+            if phase == .checked, let ok = isCorrect { feedbackPanel(ok: ok, question: q) }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(lessonBackground.ignoresSafeArea())
-        .safeAreaInset(edge: .bottom, spacing: 0) {
-            if phase == .checked, let ok = isCorrect {
-                feedbackPanel(ok: ok, question: q)
-            } else {
-                checkFooter(question: q)
-            }
-        }
+        .onChange(of: index) { _, _ in autoNarrate(q) }
+        .onAppear { autoNarrate(q) }
         .overlay { floaters }
         .overlay { comboOverlay }
         .overlay { FullScreenFlash(color: DuoColors.danger, trigger: wrongFlash) }
@@ -147,6 +130,12 @@ struct LessonRunnerView: View {
         .overlay { if showQuitConfirm { quitConfirmOverlay } }
         .overlay { if pendingResume != nil { resumePromptOverlay } }
         .sheet(isPresented: $showLessonSettings) { lessonSettingsSheet }
+        .sheet(isPresented: $showKnowledge) {
+            if let lesson, let knowledge = lesson.knowledge {
+                IntroCardView(lesson: lesson, knowledge: knowledge,
+                              onStart: { showKnowledge = false }, onExit: { showKnowledge = false })
+            }
+        }
         .sheet(isPresented: $showReportSheet, onDismiss: { reportedKind = nil }) {
             reportSheet(question: q)
         }
@@ -155,86 +144,32 @@ struct LessonRunnerView: View {
     // MARK: - Header: [X] [progress] [❤️]
 
     private var header: some View {
-        HStack(spacing: 14) {
-            Button {
-                // 零进度（一道题都没答过）直接退出不弹挽留 —— 对齐 web。
+        LessonHeader(progress: progress, count: "\(solvedIDs.count)/\(originalTotal)") {
+            ClayIconButton(icon: .back, id: "lesson-close", label: "关闭") {
                 if phase == .checked || !solvedIDs.isEmpty || !missedIDs.isEmpty {
                     HapticEngine.shared.tap()
                     withAnimation(.easeOut(duration: 0.2)) { showQuitConfirm = true }
                 } else {
                     path.removeLast()
                 }
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 20, weight: .black))
-                    .foregroundStyle(DuoColors.inkMuted)
-                    .frame(width: 36, height: 36)
             }
-            .accessibilityLabel("关闭")
-
-            StyledProgressBar(progress: progress, height: 16, trackColor: DuoColors.surfaceAlt)
-
-            // 单元挑战徽章：双倍 XP 生效中，必须让孩子看见。
+        } trailing: {
             if isExamLesson {
-                HStack(spacing: 2) {
-                    Text("⚔️")
-                        .font(.system(size: 11))
-                    Text("×2")
-                        .font(.system(size: 13, weight: .black))
-                        .monospacedDigit()
-                }
-                .foregroundStyle(DuoColors.beetle)
-                .padding(.horizontal, 7)
-                .padding(.vertical, 4)
-                .background(DuoColors.beetle.opacity(0.16), in: .capsule)
-                .accessibilityLabel("单元挑战双倍经验")
-                .accessibilityIdentifier("exam-badge")
+                Text("⚔️ ×2").font(ClayFont.number).foregroundStyle(ClayColor.creamText)
+                    .accessibilityLabel("单元挑战双倍经验").accessibilityIdentifier("exam-badge")
             }
-
-            // Weekend ×2 XP must be visible while it applies — small honest badge.
             if Economy.isWeekend() {
-                HStack(spacing: 2) {
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: 11, weight: .heavy))
-                    Text("×2")
-                        .font(.system(size: 13, weight: .black))
-                        .monospacedDigit()
-                }
-                .foregroundStyle(DuoColors.bee)
-                .padding(.horizontal, 7)
-                .padding(.vertical, 4)
-                .background(DuoColors.bee.opacity(0.16), in: .capsule)
-                .accessibilityLabel("周末双倍经验")
+                Text("⚡ ×2").font(ClayFont.number).foregroundStyle(ClayColor.creamText)
+                    .accessibilityLabel("周末双倍经验")
             }
-
-            HStack(spacing: 3) {
-                Image(systemName: "heart.fill")
-                    .font(.system(size: 16, weight: .heavy))
-                    .foregroundStyle(progressStore.hearts > 0 ? DuoColors.danger : DuoColors.inkSofter)
-                    // Reduce Motion:value 恒定 → 永不触发 bounce。
-                    .symbolEffect(.bounce, value: reduceMotion ? 0 : progressStore.hearts)
-                Text("\(progressStore.hearts)")
-                    .duoNumeral(.body)
-                    .foregroundStyle(progressStore.hearts > 0 ? DuoColors.danger : DuoColors.inkSofter)
-            }
-            .accessibilityIdentifier("lesson-hearts")
-
-            // 课内快捷设置：音效 / 触感 / 自动朗读（ios-lesson-14）。
-            Button {
+            StatPill(icon: .heart, text: "\(progressStore.hearts)").accessibilityIdentifier("lesson-hearts")
+            LessonSymbolButton(symbol: "gearshape.fill", label: "课堂设置", id: "lesson-settings") {
                 HapticEngine.shared.tap()
                 showLessonSettings = true
-            } label: {
-                Image(systemName: "gearshape.fill")
-                    .font(.system(size: 17, weight: .heavy))
-                    .foregroundStyle(DuoColors.inkSofter)
-                    .frame(width: 32, height: 36)
             }
-            .accessibilityLabel("课堂设置")
-            .accessibilityIdentifier("lesson-settings")
+            ClayIconButton(icon: .help, id: "lesson-help", label: "知识讲解") { showKnowledge = true }
+                .disabled(lesson?.knowledge == nil)
         }
-        .padding(.horizontal, 18)
-        .padding(.top, 6)
-        .padding(.bottom, 10)
     }
 
     // MARK: - In-lesson settings sheet (ios-lesson-14)
@@ -300,41 +235,6 @@ struct LessonRunnerView: View {
         }
     }
 
-    // MARK: - Question content
-
-    private func content(q: Question) -> some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Space.xl) {
-                Text(instructionText(q.type))
-                    .duoFont(.heading)
-                    .foregroundStyle(DuoColors.ink)
-                    .padding(.top, 6)
-
-                HStack(alignment: .top, spacing: 10) {
-                    Text(MathText.render(q.question))
-                        .duoFont(.subhead, weight: .medium)
-                        .foregroundStyle(DuoColors.inkMuted)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .lineSpacing(4)
-                    TTSButton(path: q.audio?.question)
-                }
-
-                QuestionRendererView(
-                    question: q,
-                    answer: currentAnswer,
-                    phase: phase,
-                    isCorrect: isCorrect,
-                    onChange: { currentAnswer = $0 }
-                )
-                .id("\(q.id)-\(index)")
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 24)
-        }
-        .onChange(of: index) { _, _ in autoNarrate(q) }
-        .onAppear { autoNarrate(q) }
-    }
-
     // MARK: - Overlays
 
     @ViewBuilder private var floaters: some View {
@@ -370,72 +270,34 @@ struct LessonRunnerView: View {
     // MARK: - Feedback panel (mascot + accent title + big CTA)
 
     private func feedbackPanel(ok: Bool, question: Question) -> some View {
-        let accent = ok ? DuoColors.primary : DuoColors.danger
-        let surface = accent.opacity(0.12)
-
-        return VStack(alignment: .leading, spacing: 14) {
-            Rectangle()
-                .fill(DuoColors.border)
-                .frame(height: 2)
-                .frame(maxWidth: .infinity)
-                .padding(.bottom, 4)
-
-            HStack(alignment: .center, spacing: 12) {
-                PetView(mood: mascotMood, size: 54, reactTo: feedbackReaction, reactKey: index + 1)
-
-                VStack(alignment: .leading, spacing: 3) {
+        LessonFeedback(ok: ok) {
+            HStack(alignment: .top, spacing: 10) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(feedbackTitleText.isEmpty ? (ok ? "正确" : "答错了") : feedbackTitleText)
-                        .duoFont(.heading)
-                        .foregroundStyle(accent)
+                        .font(ClayFont.largeButton).foregroundStyle(ok ? ClayColor.greenEdge : ClayColor.balloonKnot)
                     if !ok {
-                        Text("正确答案：\(MathText.render(question.answer))")
-                            .duoFont(.caption)
-                            .foregroundStyle(accent)
+                        Text("正确答案：\(MathText.render(question.answer))").font(ClayFont.body)
                     } else if !feedbackBubble.isEmpty {
-                        Text(feedbackBubble)
-                            .duoFont(.caption)
-                            .foregroundStyle(accent.opacity(0.85))
+                        Text(feedbackBubble).font(ClayFont.caption)
+                    }
+                    if !question.explanation.isEmpty {
+                        HStack(alignment: .top, spacing: 8) {
+                            Text(MathText.render(question.explanation)).font(ClayFont.caption)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            TTSButton(path: question.audio?.explanation, size: 16).clayHitTarget()
+                        }
                     }
                 }
-                Spacer()
-
-                // 报错小旗子（Wave E2）：题目有误 / 答案该算对 / 音频问题。
-                Button {
+                .frame(maxWidth: .infinity, alignment: .leading)
+                LessonSymbolButton(symbol: "flag", label: "报告题目问题", id: "question-report-flag") {
                     HapticEngine.shared.tap()
                     showReportSheet = true
-                } label: {
-                    Image(systemName: "flag")
-                        .font(.system(size: 16, weight: .heavy))
-                        .foregroundStyle(accent.opacity(0.65))
-                        .frame(width: 34, height: 34)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("报告题目问题")
-                .accessibilityIdentifier("question-report-flag")
-            }
-
-            if !question.explanation.isEmpty {
-                HStack(alignment: .top, spacing: 8) {
-                    Text(MathText.render(question.explanation))
-                        .duoFont(.body)
-                        .foregroundStyle(DuoColors.inkMuted)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TTSButton(path: question.audio?.explanation, size: 16)
                 }
             }
-
-            Button { proceed(question: question) } label: { Text(ok ? "继续" : "知道了") }
-                .buttonStyle(ChunkyButtonStyle(ok ? .primary : .danger))
-                .padding(.top, 2)
+            .foregroundStyle(ClayColor.ink)
+        } action: {
+            ClayButton(title: ok ? "继续" : "知道了", id: ok ? "继续" : "知道了") { proceed(question: question) }
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 16)
-        .padding(.bottom, 36)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(surface)
-        .background(DuoColors.bg)
-        .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 
     // MARK: - Report sheet (Wave E2 小旗子)
@@ -531,14 +393,8 @@ struct LessonRunnerView: View {
 
     private func checkFooter(question: Question) -> some View {
         let empty = currentAnswer.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        return Button { check(question: question) } label: { Text("检查") }
-            .buttonStyle(ChunkyButtonStyle(empty ? .disabled : .primary))
-            .disabled(empty)
-            .accessibilityIdentifier("检查答案")
-            .padding(.horizontal, 20)
-            .padding(.bottom, 36)
-            .padding(.top, 14)
-            .background(DuoColors.bg)
+        return ClayButton(title: "检查", id: "检查答案") { check(question: question) }
+            .disabled(empty).opacity(empty ? 0.55 : 1)
     }
 
     // MARK: - Out-of-hearts gate
