@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// All 6 question type views + the dispatcher that picks one.
+/// 8 种题型共用原答案字符串接口；这里只负责横屏作答区。
 ///
 /// Each sub-view is a controlled component: the parent owns `answer` and
 /// `phase` (.answering | .checked); the child calls `onChange` with the
@@ -45,35 +45,18 @@ private struct ChoiceQuestionView: View {
     @State private var shakeTrigger = 0
 
     var body: some View {
-        VStack(spacing: 12) {
-            ForEach(Array(question.options.enumerated()), id: \.offset) { i, opt in
-                let letter = letterFor(i)
-                let isSelected = answer.uppercased() == letter
-                let state = cardState(letter: letter, isSelected: isSelected)
-
-                Button {
-                    guard phase == .answering else { return }
-                    HapticEngine.shared.tap()
-                    SFXEngine.shared.play(.tap)
-                    withAnimation(Motion.press) { onChange(letter) }
-                    if let optAudio = question.audio?.options?[safe: i] ?? nil {
-                        AudioPlayer.shared.play(path: optAudio)
-                    }
-                } label: {
-                    HStack(spacing: 12) {
-                        // 只做显示转换；判分仍走原始 opt/letter，不受影响。
-                        Text(MathText.render(opt))
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        checkMark(for: state)
-                    }
-                    .optionCard(state: state)
+        Group {
+            if question.options.count > 4 {
+                ScrollView {
+                    VStack(spacing: 8) {
+                        ForEach(question.options.indices, id: \.self) { option($0) }
+                    }.padding(4)
                 }
-                .buttonStyle(OptionCardButtonStyle(state: state))
-                .disabled(phase == .checked)
-                .modifier(ShakeEffect(animatableData: CGFloat(state == .wrong ? shakeTrigger : 0)))
-                .accessibilityAddTraits(isSelected ? .isSelected : [])
-                .accessibilityValue(optionA11yValue(for: state))
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    ForEach(question.options.indices, id: \.self) { option($0) }
+                }
+                .frame(maxHeight: .infinity, alignment: .center)
             }
         }
         .onChange(of: phase) { _, newPhase in
@@ -81,6 +64,36 @@ private struct ChoiceQuestionView: View {
                 withAnimation(.linear(duration: 0.4)) { shakeTrigger += 1 }
             }
         }
+    }
+
+    private func option(_ i: Int) -> some View {
+        let opt = question.options[i]
+        let letter = letterFor(i)
+        let isSelected = answer.uppercased() == letter
+        let state = cardState(letter: letter, isSelected: isSelected)
+        return Button {
+            guard phase == .answering else { return }
+            HapticEngine.shared.tap()
+            SFXEngine.shared.play(.tap)
+            withAnimation(Motion.press) { onChange(letter) }
+            if let optAudio = question.audio?.options?[safe: i] ?? nil {
+                AudioPlayer.shared.play(path: optAudio)
+            }
+        } label: {
+            HStack(spacing: 8) {
+                Text(MathText.render(opt)).multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                checkMark(for: state)
+            }
+            .padding(12).frame(minHeight: 74)
+        }
+        .buttonStyle(LessonOptionStyle(state: state))
+        .disabled(phase == .checked)
+        .modifier(ShakeEffect(animatableData: CGFloat(state == .wrong ? shakeTrigger : 0)))
+        .accessibilityLabel(MathText.render(opt))
+        .accessibilityIdentifier("lesson-choice-\(i)")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityValue(optionA11yValue(for: state))
     }
 
     private func cardState(letter: String, isSelected: Bool) -> OptionCardState {
@@ -111,12 +124,12 @@ private func checkMark(for state: OptionCardState) -> some View {
     switch state {
     case .correct:
         Image(systemName: "checkmark.circle.fill")
-            .font(.system(size: 22, weight: .bold))
-            .foregroundStyle(DuoColors.primary)
+            .font(ClayFont.largeButton)
+            .foregroundStyle(ClayColor.greenEdge)
     case .wrong:
         Image(systemName: "xmark.circle.fill")
-            .font(.system(size: 22, weight: .bold))
-            .foregroundStyle(DuoColors.danger)
+            .font(ClayFont.largeButton)
+            .foregroundStyle(ClayColor.balloonKnot)
     default:
         EmptyView()
     }
@@ -155,15 +168,16 @@ private struct TrueFalseQuestionView: View {
             withAnimation(Motion.press) { onChange(value) }
         } label: {
             VStack(spacing: 8) {
-                Image(systemName: icon).font(.system(size: 36))
-                Text(label).duoFont(.subhead)
+                Image(systemName: icon).font(ClayFont.happy(size: 34))
+                Text(label).font(ClayFont.title)
             }
             .frame(maxWidth: .infinity, minHeight: 110)
-            .optionCard(state: state)
+            .padding(12)
         }
-        .buttonStyle(OptionCardButtonStyle(state: state))
+        .buttonStyle(LessonOptionStyle(state: state))
         .disabled(phase == .checked)
         .modifier(ShakeEffect(animatableData: CGFloat(state == .wrong ? shakeTrigger : 0)))
+        .accessibilityLabel(label + (value == "对" ? "，正确" : "，错误"))
         .accessibilityIdentifier("tf-\(value)")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
         .accessibilityValue(optionA11yValue(for: state))
@@ -260,64 +274,44 @@ private struct WordOrderQuestionView: View {
     @Namespace private var ns
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            // Answer line — underline placeholders + picked chips that fly in.
-            ZStack(alignment: .topLeading) {
-                VStack(alignment: .leading, spacing: 36) {
-                    ForEach(0..<2, id: \.self) { _ in
-                        Rectangle()
-                            .fill(DuoColors.border)
-                            .frame(height: 2)
-                            .frame(maxWidth: .infinity)
+        VStack(alignment: .leading, spacing: 10) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(picked.isEmpty ? "点下面的词，组成句子" : "点词块可以放回去")
+                        .font(ClayFont.caption).foregroundStyle(ClayColor.creamText)
+                    FlowRow {
+                        ForEach(picked, id: \.self) { i in
+                            chip(text: question.options[i], filled: true, id: "lesson-word_order-answer-\(i)") {
+                                if phase == .answering { unpick(i) }
+                            }
+                            .matchedGeometryEffect(id: i, in: ns)
+                        }
                     }
-                }
-                .padding(.top, 32)
-                .padding(.horizontal, 4)
-
+                    if phase == .checked, !Grade.gradeAnswer(question: question, userAnswer: answer) {
+                        Text("正确的句子是：" + MathText.render(WordOrderFormat.readableAnswer(question.answer)))
+                            .font(ClayFont.body).foregroundStyle(ClayColor.greenEdge)
+                    }
+                }.padding(12).frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(minHeight: 64, maxHeight: .infinity)
+            .clayLessonCard(edge: ClayColor.cubeCurrentSide)
+            .accessibilityIdentifier("lesson-word_order-answer")
+            ScrollView {
                 FlowRow {
-                    ForEach(picked, id: \.self) { i in
-                        chip(text: question.options[i], filled: true) {
-                            if phase == .answering { unpick(i) }
+                    ForEach(question.options.indices, id: \.self) { i in
+                        if picked.contains(i) {
+                            chipGhost(text: question.options[i])
+                        } else {
+                            chip(text: question.options[i], filled: false, id: "lesson-word_order-\(i)") {
+                                if phase == .answering { pick(i) }
+                            }
+                            .matchedGeometryEffect(id: i, in: ns)
                         }
-                        .matchedGeometryEffect(id: i, in: ns)
                     }
-                }
-                .frame(minHeight: 72, alignment: .topLeading)
+                }.padding(4)
             }
-            .frame(minHeight: 120, alignment: .top)
-
-            // Shelf — unpicked chips; picked slots leave a dim ghost so the
-            // shelf doesn't reflow as tiles fly up.
-            FlowRow {
-                ForEach(question.options.indices, id: \.self) { i in
-                    if picked.contains(i) {
-                        chipGhost(text: question.options[i])
-                    } else {
-                        chip(text: question.options[i], filled: false) {
-                            if phase == .answering { pick(i) }
-                        }
-                        .matchedGeometryEffect(id: i, in: ns)
-                    }
-                }
-            }
-
-            // 答错后把正确答案拼成可读的句子展示（ios-lesson-21）：
-            // 英文词块空格连接，中文直接连接，不再露出逗号串。
-            if phase == .checked, !Grade.gradeAnswer(question: question, userAnswer: answer) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("正确的句子是：")
-                        .duoFont(.caption)
-                        .foregroundStyle(DuoColors.inkMuted)
-                    Text(MathText.render(WordOrderFormat.readableAnswer(question.answer)))
-                        .duoFont(.subhead)
-                        .foregroundStyle(DuoColors.primary)
-                        .multilineTextAlignment(.leading)
-                }
-                .padding(12)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(DuoColors.primary.opacity(0.08), in: .rect(cornerRadius: Radius.card))
-                .transition(.opacity)
-            }
+            .frame(maxHeight: .infinity)
+            .accessibilityIdentifier("lesson-word_order-shelf")
         }
         .onChange(of: picked) { _, newValue in
             let text = newValue.map { question.options[$0] }.joined(separator: ",")
@@ -334,35 +328,23 @@ private struct WordOrderQuestionView: View {
         withAnimation(Motion.reveal) { picked.removeAll { $0 == i } }
     }
 
-    private func chip(text: String, filled: Bool, action: @escaping () -> Void) -> some View {
+    private func chip(text: String, filled: Bool, id: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(MathText.render(text))
-                .duoFont(.subhead)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .foregroundStyle(filled ? DuoColors.primary : DuoColors.ink)
-                .background(DuoColors.surface, in: .capsule)
-                .overlay {
-                    Capsule().strokeBorder(filled ? DuoColors.primary : DuoColors.border, lineWidth: 2)
-                }
+            Text(MathText.render(text)).font(ClayFont.body)
+                .padding(.horizontal, 12).padding(.vertical, 8)
         }
-        // ios-feel-9：词块 3pt 底座按压（与大按钮同款手感）。
-        .buttonStyle(ChunkyChipStyle(
-            ledgeColor: filled ? DuoColors.primaryDark : DuoColors.border,
-            isCapsule: true
-        ))
+        .buttonStyle(LessonOptionStyle(state: filled ? .selected : .default))
+        .accessibilityLabel(MathText.render(text))
+        .accessibilityIdentifier(id)
+        .disabled(phase == .checked)
     }
 
     private func chipGhost(text: String) -> some View {
-        Text(MathText.render(text))
-            .duoFont(.subhead)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .foregroundStyle(.clear)
-            .background(DuoColors.surfaceAlt.opacity(0.5), in: .capsule)
-            // 底座样式给真词块加了 3pt 底边距，幽灵占位补齐防止货架抖动。
-            .padding(.bottom, 3)
+        Text(MathText.render(text)).font(ClayFont.body)
+            .padding(.horizontal, 12).padding(.vertical, 8).clayHitTarget()
+            .hidden().accessibilityHidden(true)
     }
+
 }
 
 /// wordOrder 正确答案的「人话」格式化：
@@ -401,38 +383,43 @@ private struct MatchingQuestionView: View {
     var body: some View {
         let leftItems = Array(question.options.prefix(4))
         let rightItems = Array(question.options.dropFirst(4).prefix(4))
-
-        return HStack(alignment: .top, spacing: 14) {
-            VStack(spacing: 10) {
-                ForEach(leftKeys.indices, id: \.self) { i in
-                    let key = leftKeys[i]
-                    if !matched.contains(key) {
-                        Button { if phase == .answering { tapLeft(key) } } label: {
-                            matchTile(label: leftItems[safe: i] ?? "", side: .left, key: key)
-                        }
-                        .buttonStyle(ChunkyChipStyle(ledgeColor: tileLedge(side: .left, key: key), isCapsule: false))
-                        .modifier(ShakeEffect(animatableData: CGFloat(flashWrong?.left == key ? shakeTrigger : 0)))
-                    } else {
-                        matchedGhost()
+        return ScrollView {
+            HStack(alignment: .top, spacing: 10) {
+                VStack(spacing: 4) {
+                    ForEach(leftKeys.indices, id: \.self) { i in
+                        let key = leftKeys[i]
+                        if !matched.contains(key) {
+                            Button { if phase == .answering { tapLeft(key) } } label: {
+                                matchTile(label: leftItems[safe: i] ?? "", side: .left, key: key)
+                            }
+                            .buttonStyle(LessonOptionStyle(state: activeLeft == key ? .selected : .default))
+                            .modifier(ShakeEffect(animatableData: CGFloat(flashWrong?.left == key ? shakeTrigger : 0)))
+                            .accessibilityLabel("左边，" + (leftItems[safe: i] ?? ""))
+                            .accessibilityIdentifier("lesson-matching-left-\(i)")
+                            .accessibilityValue(activeLeft == key ? "已选择" : "")
+                            .disabled(phase == .checked)
+                        } else { matchedGhost() }
                     }
                 }
-            }
-            VStack(spacing: 10) {
-                ForEach(rightKeys.indices, id: \.self) { i in
-                    let key = rightKeys[i]
-                    let ownerLeft = matched.first { matched.contains($0) && correctMap[$0] == key }
-                    if ownerLeft == nil {
-                        Button { if phase == .answering { tapRight(key) } } label: {
-                            matchTile(label: rightItems[safe: i] ?? "", side: .right, key: key)
-                        }
-                        .buttonStyle(ChunkyChipStyle(ledgeColor: tileLedge(side: .right, key: key), isCapsule: false))
-                        .modifier(ShakeEffect(animatableData: CGFloat(flashWrong?.right == key ? shakeTrigger : 0)))
-                    } else {
-                        matchedGhost()
+                VStack(spacing: 4) {
+                    ForEach(rightKeys.indices, id: \.self) { i in
+                        let key = rightKeys[i]
+                        let ownerLeft = matched.first { matched.contains($0) && correctMap[$0] == key }
+                        if ownerLeft == nil {
+                            Button { if phase == .answering { tapRight(key) } } label: {
+                                matchTile(label: rightItems[safe: i] ?? "", side: .right, key: key)
+                            }
+                            .buttonStyle(LessonOptionStyle())
+                            .modifier(ShakeEffect(animatableData: CGFloat(flashWrong?.right == key ? shakeTrigger : 0)))
+                            .accessibilityLabel("右边，" + (rightItems[safe: i] ?? ""))
+                            .accessibilityIdentifier("lesson-matching-right-\(i)")
+                            .disabled(phase == .checked)
+                        } else { matchedGhost() }
                     }
                 }
-            }
+            }.padding(4)
         }
+        .accessibilityIdentifier("lesson-matching-pairs")
     }
 
     private enum Side { case left, right }
@@ -473,48 +460,19 @@ private struct MatchingQuestionView: View {
         onChange(text)
     }
 
-    /// 方块底座颜色：跟着激活 / 错误状态换色，底座与描边一体。
-    private func tileLedge(side: Side, key: String) -> Color {
-        let isActive = side == .left && activeLeft == key
-        let isWrong = (side == .left && flashWrong?.left == key) || (side == .right && flashWrong?.right == key)
-        if isWrong { return DuoColors.dangerDark }
-        if isActive { return DuoColors.secondaryDark }
-        return DuoColors.border
-    }
-
     private func matchedGhost() -> some View {
-        RoundedRectangle(cornerRadius: Radius.card)
-            .fill(DuoColors.surfaceAlt.opacity(0.4))
-            .frame(maxWidth: .infinity)
-            .frame(height: 52)
-            .overlay {
-                Image(systemName: "checkmark")
-                    .font(.system(size: 16, weight: .heavy))
-                    .foregroundStyle(DuoColors.primary.opacity(0.6))
-            }
-            // 补齐底座样式的 3pt 底边距，两列高度保持对齐。
-            .padding(.bottom, 3)
+        Color.clear.frame(maxWidth: .infinity).frame(height: 44).clayHitTarget().accessibilityHidden(true)
     }
 
     private func matchTile(label: String, side: Side, key: String) -> some View {
-        let isActive = side == .left && activeLeft == key
         let isWrong = (side == .left && flashWrong?.left == key) || (side == .right && flashWrong?.right == key)
-        let border: Color = isWrong ? DuoColors.danger : (isActive ? DuoColors.secondary : DuoColors.border)
-        let fill: Color = isWrong ? DuoColors.danger.opacity(0.14) : (isActive ? DuoColors.secondary.opacity(0.12) : DuoColors.surface)
-        return Text(MathText.render(label))
-            .duoFont(.subhead)
-            .foregroundStyle(DuoColors.ink)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(12)
-            .frame(minHeight: 52)
-            .background(fill, in: .rect(cornerRadius: Radius.card))
-            .overlay {
-                RoundedRectangle(cornerRadius: Radius.card)
-                    .strokeBorder(border, lineWidth: isActive || isWrong ? 2.5 : 2)
-            }
-            .animation(Motion.press, value: isActive)
+        return Text(MathText.render(label)).font(ClayFont.body)
+            .foregroundStyle(isWrong ? ClayColor.balloonKnot : ClayColor.ink)
+            .multilineTextAlignment(.leading).lineLimit(2).minimumScaleFactor(0.8)
+            .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 10)
+            .frame(minHeight: 44)
     }
+
 }
 
 // MARK: - Helpers
