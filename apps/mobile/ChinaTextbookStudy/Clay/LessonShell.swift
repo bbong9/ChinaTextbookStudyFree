@@ -14,6 +14,7 @@ struct LessonShell<Header: View, Answers: View, Action: View, Feedback: View>: V
     let question: Question
     let instruction: String
     let checked: Bool
+    var slowNarration = false
     var mood: MascotMood = .happy
     var reaction: MascotReaction? = nil
     var reactionKey = 0
@@ -35,7 +36,7 @@ struct LessonShell<Header: View, Answers: View, Action: View, Feedback: View>: V
                 header()
                 HStack(alignment: .top, spacing: 18) {
                     LessonPromptCard(question: question, instruction: instruction, mood: mood,
-                                     reaction: reaction, reactionKey: reactionKey)
+                                     reaction: reaction, reactionKey: reactionKey, slowNarration: slowNarration)
                         .frame(width: (width - 18) * 0.46)
                     VStack(spacing: 6) {
                         answers().frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -104,6 +105,7 @@ struct LessonPromptCard: View {
     var mood: MascotMood = .happy
     var reaction: MascotReaction? = nil
     var reactionKey = 0
+    var slowNarration = false
     @Environment(\.lessonKeyboardVisible) private var compact
     @Environment(\.petEnvironment) private var pet
 
@@ -112,7 +114,7 @@ struct LessonPromptCard: View {
             HStack(spacing: 6) {
                 Text(MathText.render(question.question)).font(ClayFont.body).lineLimit(1)
                     .accessibilityIdentifier("lesson-prompt-summary")
-                TTSButton(path: question.audio?.question).clayHitTarget()
+                narration
             }
             .padding(12).clayLessonCard()
         } else {
@@ -121,7 +123,7 @@ struct LessonPromptCard: View {
                     HStack(spacing: 8) {
                         Text(instruction).font(ClayFont.largeButton).foregroundStyle(ClayColor.creamText)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        TTSButton(path: question.audio?.question).clayHitTarget()
+                        narration
                     }
                     ScrollView {
                         Text(MathText.render(question.question))
@@ -144,6 +146,11 @@ struct LessonPromptCard: View {
             }
         }
     }
+    @ViewBuilder private var narration: some View {
+        if slowNarration { SlowTTSButton(path: question.audio?.question).clayHitTarget() }
+        else { TTSButton(path: question.audio?.question).clayHitTarget() }
+    }
+
 }
 
 /// 内容允许内部滚动，右侧推进按钮始终留在反馈面板内。
@@ -195,6 +202,40 @@ struct LessonSymbolButton: View {
                 .clayHitTarget()
         }
         .buttonStyle(ClayPressStyle()).accessibilityLabel(label).accessibilityIdentifier(id)
+    }
+}
+
+/// 复用横屏场景与卡片的说明 / 结果展示，不承担测试和复习的结算。
+struct LessonInterlude<Leading: View, Detail: View, Actions: View>: View {
+    let bookId: String
+    let title: String
+    let subtitle: String
+    var mood: MascotMood = .happy
+    @ViewBuilder let leading: () -> Leading
+    @ViewBuilder let detail: () -> Detail
+    @ViewBuilder let actions: () -> Actions
+    var body: some View {
+        Stage(background: { _ in LessonScene(bookId: bookId) }) { ctx in
+            VStack(spacing: 10) {
+                HStack { leading(); Spacer(); Text(title).font(ClayFont.title); Spacer() }
+                HStack(spacing: 24) {
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            PetView(mood: mood, size: 84)
+                            Text(subtitle).font(ClayFont.body).multilineTextAlignment(.center)
+                            detail()
+                        }.frame(maxWidth: .infinity).padding(16)
+                    }
+                    .clayLessonCard()
+                    VStack(spacing: 10, content: actions).frame(maxWidth: .infinity)
+                }
+            }
+            .foregroundStyle(ClayColor.ink)
+            .padding(.horizontal, 20).padding(.vertical, 12)
+            .frame(width: ctx.size.width - ctx.safeArea.leading - ctx.safeArea.trailing,
+                   height: ctx.size.height - ctx.safeArea.top - ctx.safeArea.bottom)
+            .offset(x: ctx.safeArea.leading, y: ctx.safeArea.top)
+        }
     }
 }
 

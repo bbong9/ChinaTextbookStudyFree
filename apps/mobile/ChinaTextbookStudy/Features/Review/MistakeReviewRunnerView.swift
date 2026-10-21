@@ -21,6 +21,7 @@ struct MistakeReviewRunnerView: View {
     @State private var heartRewarded = false
 
     private let xpPerCorrect = 5
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         Group {
@@ -32,7 +33,9 @@ struct MistakeReviewRunnerView: View {
                 runner
             }
         }
-        .background(DuoColors.bg.ignoresSafeArea())
+        .environment(\.petEnvironment, PetEnvironment(progressStore: progressStore))
+        .transaction { if reduceMotion { $0.animation = nil; $0.disablesAnimations = true } }
+        .background(ClayColor.creamTop.ignoresSafeArea())
         .navigationTitle("错题复习")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { ToolbarItem(placement: .topBarTrailing) { MuteToggle() } }
@@ -117,69 +120,47 @@ struct MistakeReviewRunnerView: View {
     private var runner: some View {
         let entry = queue[index]
         let q = entry.question
-        return VStack(spacing: 0) {
-            HStack(spacing: 14) {
-                Button { path.removeLast() } label: {
-                    Image(systemName: "xmark").font(.system(size: 20, weight: .black)).foregroundStyle(DuoColors.inkMuted).frame(width: 36, height: 36)
-                }
-                StyledProgressBar(progress: Double(index) / Double(max(queue.count, 1)), height: 14, trackColor: DuoColors.surfaceAlt)
-                Text("\(index + 1)/\(queue.count)").duoNumeral(.caption).foregroundStyle(DuoColors.inkMuted)
+        let bookId = entry.lessonId.components(separatedBy: "-u").first ?? "g1up"
+        return LessonShell(bookId: bookId, question: q, instruction: "复习错题", checked: phase == .checked,
+                           slowNarration: true, mood: isCorrect == false ? .think : .happy) {
+            LessonHeader(progress: Double(index) / Double(max(queue.count, 1)), count: "\(index + 1)/\(queue.count)") {
+                ClayIconButton(icon: .back, id: "review-close", label: "关闭复习") { path.removeLast() }
+            } trailing: {
+                Text("错题复习").font(ClayFont.largeButton).foregroundStyle(ClayColor.creamText)
             }
-            .padding(.horizontal, 18).padding(.top, 6).padding(.bottom, 10)
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("复习错题").duoFont(.caption).foregroundStyle(DuoColors.fox)
-                    HStack(alignment: .top, spacing: 8) {
-                        Text(MathText.render(q.question)).duoFont(.subhead, weight: .medium).foregroundStyle(DuoColors.ink)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        SlowTTSButton(path: q.audio?.question)
-                    }
-                    QuestionRendererView(question: q, answer: currentAnswer, phase: phase, isCorrect: isCorrect, onChange: { currentAnswer = $0 })
-                        .id(q.id)
+        } answers: {
+            QuestionRendererView(question: q, answer: currentAnswer, phase: phase,
+                                 isCorrect: isCorrect, onChange: { currentAnswer = $0 })
+                .id(q.id)
+        } action: {
+            reviewAction(entry: entry)
+        } feedback: {
+            if phase == .checked, let ok = isCorrect {
+                LessonFeedback(ok: ok) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(ok ? "答对了！" : "正确答案：\(MathText.render(q.answer))")
+                            .font(ClayFont.largeButton).foregroundStyle(ok ? ClayColor.greenEdge : ClayColor.balloonKnot)
+                        if !q.explanation.isEmpty {
+                            HStack(alignment: .top, spacing: 8) {
+                                Text(MathText.render(q.explanation)).font(ClayFont.caption)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                SlowTTSButton(path: q.audio?.explanation, size: 14).clayHitTarget()
+                            }
+                        }
+                    }.foregroundStyle(ClayColor.ink)
+                } action: {
+                    reviewAction(entry: entry)
                 }
-                .padding(20)
             }
-        }
-        .safeAreaInset(edge: .bottom) {
-            footer(entry: entry, q: q)
         }
     }
 
-    @ViewBuilder
-    private func footer(entry: MistakeEntry, q: Question) -> some View {
-        VStack(spacing: 0) {
-            if phase == .checked, let ok = isCorrect {
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(spacing: 10) {
-                        Image(systemName: ok ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .font(.system(size: 22, weight: .bold))
-                            .foregroundStyle(ok ? DuoColors.primary : DuoColors.danger)
-                        Text(ok ? "答对了！" : "正确答案：\(MathText.render(q.answer))")
-                            .duoFont(.caption).foregroundStyle(ok ? DuoColors.primary : DuoColors.danger)
-                        Spacer()
-                    }
-                    // content-7：判题后展示解析 + 解析朗读按钮
-                    if !q.explanation.isEmpty {
-                        HStack(alignment: .top, spacing: 8) {
-                            Text(MathText.render(q.explanation)).duoFont(.caption).foregroundStyle(DuoColors.inkMuted)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            SlowTTSButton(path: q.audio?.explanation, size: 14)
-                        }
-                    }
-                }
-                .padding(.horizontal, 20).padding(.top, 12)
-            }
-            Button {
-                phase == .answering ? check(entry: entry) : advance()
-            } label: {
-                Text(phase == .answering ? "检查" : (index + 1 >= queue.count ? "完成复习" : "下一题"))
-            }
-            .buttonStyle(ChunkyButtonStyle(phase == .answering && currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty ? .disabled : .primary))
-            .disabled(phase == .answering && currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty)
-            .padding(.horizontal, 20).padding(.bottom, 32).padding(.top, 12)
+    private func reviewAction(entry: MistakeEntry) -> some View {
+        ClayButton(title: phase == .answering ? "检查" : (index + 1 >= queue.count ? "完成复习" : "下一题"),
+                   id: phase == .answering ? "检查答案" : "review-continue") {
+            phase == .answering ? check(entry: entry) : advance()
         }
-        .background(DuoColors.bg)
+        .disabled(phase == .answering && currentAnswer.trimmingCharacters(in: .whitespaces).isEmpty)
     }
 
     private func check(entry: MistakeEntry) {
