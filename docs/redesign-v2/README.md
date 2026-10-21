@@ -110,7 +110,7 @@
 | [RD-16](cards/RD-16-animals.md) | 幼儿看图识物 | RD-03 RD-04 | 待开发 |
 | [RD-17](cards/RD-17-idiom-player.md) | 成语动画:播放器 + 守株待兔 | RD-03 RD-05 | 待开发 |
 | [RD-18](cards/RD-18-idiom-picker.md) | 成语动画:选择转盘 + 另外两个成语 | RD-17 | 待开发 |
-| [RD-19](cards/RD-19-bedtime-story.md) | 睡前绘本 | RD-03 | 待开发 |
+| [RD-19](cards/RD-19-bedtime-story.md) | 睡前绘本 | RD-03 | ✅ #12 |
 | [RD-20](cards/RD-20-reading-room.md) | 课外书屋 | RD-03 RD-05 | 待开发 |
 | **E 家长与收尾** | | | |
 | [RD-21](cards/RD-21-parent-center.md) | 家长中心与家长门 | RD-02 RD-08 | 待开发 |
