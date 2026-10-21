@@ -304,7 +304,7 @@ private struct HomeMapUnitScene: View, Equatable {
         }
         .frame(width: unit.width, height: 390)
         .contentShape(Rectangle())
-        .clipped()
+        .clipShape(HomeMapUnitClip(skyExtension: max(0, stage.size.height - 390)))
         .offset(y: stage.size.height - 390)
     }
 
@@ -361,6 +361,14 @@ private struct HomeMapUnitScene: View, Equatable {
         .position(x: 160, y: 122)
     }
 
+}
+
+/// 单元横向裁切保留视差边界；增高舞台时，让原稿顶部的树冠完整伸进补出的天空。
+private struct HomeMapUnitClip: Shape {
+    let skyExtension: CGFloat
+    func path(in rect: CGRect) -> Path {
+        Path(CGRect(x: 0, y: -skyExtension, width: rect.width, height: rect.height + skyExtension))
+    }
 }
 
 private struct HomeMapParallax: ViewModifier {

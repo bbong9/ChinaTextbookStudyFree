@@ -186,7 +186,7 @@ struct MapHomeView: View {
                 ClayButton(title: "选择课本", id: "map-empty-book-picker") { activeSheet = .book }
             }
         }
-        .padding(16).frame(width: min(430, stage.size.width - 140))
+        .padding(16).frame(width: max(0, min(430, stage.size.width - 140)))
         .foregroundStyle(ClayColor.ink)
         .background { ClayGradient.buttonCream.view.clipShape(RoundedRectangle(cornerRadius: ClayRadius.card)) }
         .clayShadow(.panel)
