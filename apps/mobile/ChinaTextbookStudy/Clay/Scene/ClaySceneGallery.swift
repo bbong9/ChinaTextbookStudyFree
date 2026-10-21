@@ -86,14 +86,16 @@ struct ClaySceneGallery: View {
                     .frame(width: 1, height: 1).scaleEffect(3)
                     .position(layout.place(x: 422, y: 245))
                 Text("字块 · \(selectedCube.label)").font(ClayFont.title).foregroundStyle(ClayColor.ink)
-                    .position(layout.place(x: 422, y: 80))
+                    .position(layout.place(x: 422, y: 36))
             } else if materials {
                 materialsSample
             } else {
                 SceneMapSample(layout: layout)
             }
-            Text("场景").font(ClayFont.label).foregroundStyle(ClayColor.ink)
-                .position(layout.place(x: 422, y: 24))
+            if selectedCube == nil {
+                Text("场景").font(ClayFont.label).foregroundStyle(ClayColor.ink)
+                    .position(layout.place(x: 422, y: 24))
+            }
             controls
         }
     }

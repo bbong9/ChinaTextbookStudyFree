@@ -42,10 +42,16 @@ final class SceneKitUITests: XCTestCase {
         if toggle.value as? String != "开启" { toggle.tap() }
         for sample in ["map", "materials"] {
             app.buttons["clay-scene-\(sample)"].tap()
+            // 截图包含控件；先等点击后的按压反馈复位，再比较循环动画。
+            Thread.sleep(forTimeInterval: 0.6)
             let first = XCUIScreen.main.screenshot()
             Thread.sleep(forTimeInterval: 1.2)
             let second = XCUIScreen.main.screenshot()
-            XCTAssertEqual(pixels(first.image), pixels(second.image), "\(sample) 的循环动画应全部停止")
+            let before = pixels(first.image), after = pixels(second.image)
+            XCTAssertEqual(before.count, after.count)
+            // Canvas / drawingGroup 的 8 位合成可能产生单级舍入差；仍逐通道比较全屏。
+            XCTAssertTrue(zip(before, after).allSatisfy { abs(Int($0.0) - Int($0.1)) <= 1 },
+                          "\(sample) 的循环动画应全部停止（允许 1/255 色阶舍入）")
             for (suffix, shot) in [("before", first), ("after", second)] {
                 let attachment = XCTAttachment(screenshot: shot)
                 attachment.name = "rd03-reduced-\(sample)-\(suffix)"; attachment.lifetime = .keepAlways; add(attachment)
