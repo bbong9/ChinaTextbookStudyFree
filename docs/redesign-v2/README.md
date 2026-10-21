@@ -49,10 +49,11 @@
 - 截图证据:每个涉及界面的 PR,附以下三个模拟器的横屏截图:**iPhone SE (3rd gen)**、**iPhone 16**、**iPad (A16)**。放在 `docs/redesign-v2/evidence/rd-XX/`。
 - 证据只提交截图和结果摘要(测试名、通过数、关键输出几行),完整 xcodebuild / 测试日志留在本地,不要提交。
 - 每张卡在独立的 git worktree 里开发,不要用主目录。`apps/mobile/BundledMedia/audio`、`story-images` 被 gitignore,新 worktree 里从主目录软链接过来(不提交)。
-- **模拟器和磁盘**(这台 Mac 磁盘和内存都紧):
-  - **不要新建模拟器**。只用现有的三台:`iPhone 16`、`iPhone SE (3rd gen)`、`iPad (A16)`(iOS 18.6);缺哪台用 `xcrun simctl create` 建**同名**的一台,不要加卡号前缀。
-  - **串行跑**:同一时间只启动一台模拟器;先 iPhone 16 跑完测试,再依次截 SE、iPad。用完 `xcrun simctl shutdown`。
-  - DerivedData、xcresult、日志放 `/private/tmp/rd-XX-*`;PR 推送后删掉 `.xcresult` 和中间日志,卡片合并后整个删除。
+- **模拟器和磁盘**(这台 Mac 一次只扛得住一个模拟器测试):
+  - **所有模拟器测试必须用 `scripts/redesign/sim-test.sh` 跑**,不要直接调 `xcodebuild test`。它会全机排队:别的任务在测试时自动等待,同一时间只有一台模拟器在跑。用法:`scripts/redesign/sim-test.sh iphone16|se|ipad [xcodebuild 额外参数]`,例如 `-only-testing:...`、`-resultBundlePath ...`。
+  - **不要新建模拟器**,也不要直接 `simctl boot`。脚本只用三台共用模拟器 `iPhone 16`、`iPhone SE (3rd gen)`、`iPad (A16)`(iOS 18.6),缺了它会按同名创建;跑完自动关机。
+  - 脚本已关闭并行测试(并行测试会克隆出多台模拟器)。只编译不测试可以直接 `xcodebuild build`,不受限制。
+  - DerivedData 默认在 `/private/tmp/<分支名>-derived`;xcresult、日志也放 `/private/tmp/rd-XX-*`。PR 推送后删掉 `.xcresult` 和中间日志,卡片合并后整个删除。
 - 已知基线失败(PRFixTests、CosmeticsUITests、LessonFlowUITests、ScreenshotTests、LayoutUITests,在 eaeff4f 上可复现)等 RD-00 修复;在此之前 PR 注明「与基线一致」即可,但新增或换了失败方式的要说明。
 
 ## 2. PR 模板(Codex 每个 PR 必须照填)
