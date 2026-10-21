@@ -40,7 +40,8 @@ ln -s /Users/bbong9/Desktop/ChinaTextbookStudyFree/apps/mobile/BundledMedia/stor
 - 收尾时清理自己的 `/private/tmp/rd-XX-*` 缓存;PR 合并后删除 worktree。
 
 ## 其他
-- 只做本卡范围内的事。范围外的问题写进 PR「后续」,不要顺手改。不碰 `MainShell` / 路由 / `HomeView`,除非本卡明确要求(RD-09 在改首页)。
+- 只做本卡范围内的事。范围外的问题写进 PR「后续」,不要顺手改。不碰 `HomeView` / `MapHomeView` / 首页布局。
+- **入口接线(已确认,不用再问)**:RD-01 已在 `Navigation.swift` 预留了各新页面的路由(`.animals`、`.mathTrain`、`.bedtimeStories`、`.readingRoom` 等)。本卡**允许**在 `MainShell.swift` 的 `RouteView` 和 `Navigation.swift` 里只改**本卡自己那一个路由分支**(接上新页面、去掉它的临时页头/占位),其他路由和首页不动。
 - 新文件后运行 `cd apps/mobile && xcodegen generate`;不提交 `.xcodeproj`。
 - **不要配置任何代码签名、Team ID、Bundle ID**,不要问签名的事。编译用 `CODE_SIGNING_ALLOWED=NO`。
 - 提交信息、PR 标题和描述都用中文;PR 描述按 README 第 2 节模板,逐条对应 AC,给出证据。卡片写不清或做不到的地方,在 PR「疑问」一节写明处理方式,不要静默改范围。
