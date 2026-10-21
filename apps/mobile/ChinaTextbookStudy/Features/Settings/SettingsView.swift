@@ -32,6 +32,7 @@ struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Space.xl) {
                 appearanceSection
+                ownedDecorationsSection
                 reminderSection
                 soundSection
                 dataSection
@@ -78,6 +79,28 @@ struct SettingsView: View {
     }
 
     // MARK: - Streak reminder
+
+    /// D8：历史主题和背景保留使用权；这里仅列已拥有项，不提供购买。
+    private var ownedDecorationsSection: some View {
+        section("已拥有的装扮") {
+            Picker("界面主题", selection: Binding(
+                get: { progressStore.equippedTheme },
+                set: { if let item = Cosmetics.item(id: $0) { progressStore.equipCosmetic(item) } }
+            )) {
+                ForEach(Cosmetics.uiThemes.map(\.item).filter { progressStore.isOwned($0.id) }) { item in
+                    Text(item.name).tag(item.id)
+                }
+            }.accessibilityIdentifier("settings-owned-theme")
+            Picker("课程背景", selection: Binding(
+                get: { progressStore.equippedBackdrop },
+                set: { if let item = Cosmetics.item(id: $0) { progressStore.equipCosmetic(item) } }
+            )) {
+                ForEach(Cosmetics.lessonBackdrops.map(\.item).filter { progressStore.isOwned($0.id) }) { item in
+                    Text(item.name).tag(item.id)
+                }
+            }.accessibilityIdentifier("settings-owned-backdrop")
+        }
+    }
 
     /// The learner's chosen fire time as a Date (today's calendar day — only
     /// the hour/minute components matter to the DatePicker).

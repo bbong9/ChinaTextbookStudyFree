@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 /// 分享卡（Wave E2）—— 纯本地渲染，ImageRenderer 出图 + ShareLink 分享。
 ///
 /// 两款版式：
-///   1. 连胜卡：品牌绿底 + 聪聪 + 大火焰数字 + 本周 7 格日历 + slogan；
+///   1. 连胜卡：品牌绿底 + 出战伙伴 + 大火焰数字 + 本周 7 格日历 + slogan；
 ///   2. 成就 / 三星卡：徽章 + 课程名 / 成就名。
 ///
 /// 挂点：连胜里程碑庆祝层、结算三星幕、成就领取时刻。
@@ -105,6 +105,7 @@ struct ShareCardLink: View {
 // ============================================================
 
 struct StreakShareCardView: View {
+    @Environment(\.petEnvironment) private var pet
     let data: ShareCard.StreakData
 
     private static let weekdaySymbols = ["日", "一", "二", "三", "四", "五", "六"]
@@ -137,7 +138,7 @@ struct StreakShareCardView: View {
                         .monospacedDigit()
                 }
 
-                Text("天连胜！")
+                Text("天连胜！\(pet.kind.name)为你加油")
                     .font(.system(size: 26, weight: .heavy, design: .rounded))
                     .foregroundStyle(.white)
 

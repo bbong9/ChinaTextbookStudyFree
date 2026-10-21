@@ -116,6 +116,27 @@ final class PetStateTests: XCTestCase {
         XCTAssertEqual(store.canAdopt("pet_egg"), .soldOut)
     }
 
+    func testDoubleTapAdoptionDebitsOnlyOnce() throws {
+        let price = try XCTUnwrap(Pets.petById("pet_fox")?.price)
+        try seeded(gems: price * 3)
+        XCTAssertEqual(store.adopt("pet_fox", now: now), "pet_fox")
+        XCTAssertNil(store.adopt("pet_fox", now: now))
+        XCTAssertEqual(store.gems, price * 2)
+        XCTAssertEqual(store.ownedPets.filter { $0 == "pet_fox" }.count, 1)
+    }
+
+    func testDuplicateEggRequestDebitsOnceAndNextConfirmationHatchesNextPet() throws {
+        let price = try XCTUnwrap(Pets.petById("pet_egg")?.price)
+        try seeded(gems: price * 4)
+        let request = UUID()
+        XCTAssertEqual(store.adopt("pet_egg", requestId: request, now: now), "pet_duck")
+        XCTAssertNil(store.hatchEgg(requestId: request, now: now))
+        XCTAssertEqual(store.gems, price * 3)
+        XCTAssertFalse(store.ownedPets.contains("pet_pig"))
+        XCTAssertEqual(store.hatchEgg(requestId: UUID(), now: now), "pet_pig")
+        XCTAssertEqual(store.gems, price * 2)
+    }
+
     func testFeedWithoutTreatDoesNothing() throws {
         try seeded()
         let before = store.progress
