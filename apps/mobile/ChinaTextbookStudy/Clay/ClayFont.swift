@@ -8,6 +8,8 @@ enum ClayFont {
     static let label = Font.custom("ZCOOLKuaiLe-Regular", fixedSize: 14)
     static let number = Font.custom("Nunito-Black", fixedSize: 16)
     static let pinyin = Font.custom("Nunito-Black", fixedSize: 26)
+    static let pictureCharacterSize: CGFloat = 72
+    static let picturePinyinSize: CGFloat = 24
     static let body = Font.custom("PingFangSC-Semibold", size: 16, relativeTo: .body)
     static let largeButton = happy(size: 20)
     static let step = happy(size: 27)

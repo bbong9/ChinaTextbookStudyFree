@@ -1,0 +1,67 @@
+{
+  "data" : {
+    "activePet" : "pet_mituan",
+    "claimedAchievements" : {
+
+    },
+    "claimedChests" : {
+
+    },
+    "claimedQuests" : {
+
+    },
+    "claimedStreakRewards" : {
+
+    },
+    "completedLessons" : {
+
+    },
+    "completedReadings" : {
+
+    },
+    "dailyGoal" : 50,
+    "equipped" : {
+      "lessonBackdrop" : "backdrop_default",
+      "mascotSkin" : "skin_default",
+      "uiTheme" : "theme_default"
+    },
+    "gems" : 456,
+    "hearts" : 5,
+    "lastActiveDate" : "",
+    "lastDailyRewardDate" : "",
+    "lifetimeGems" : 456,
+    "mistakesBank" : [
+
+    ],
+    "ownedCosmetics" : {
+
+    },
+    "ownedPets" : [
+      "pet_mituan"
+    ],
+    "petAccessory" : {
+
+    },
+    "petTreats" : 0,
+    "petsMigrated" : true,
+    "pictureWordsSeen" : [
+      "duck",
+      "sheep",
+      "apple",
+      "future-word"
+    ],
+    "streak" : 0,
+    "streakFreezes" : 2,
+    "unlockedAchievements" : {
+
+    },
+    "xp" : 123,
+    "xpHistory" : {
+
+    }
+  },
+  "exportedAt" : "2026-10-21T08:00:00.000Z",
+  "platform" : "ios",
+  "schema" : "cstf-backup",
+  "version" : 1
+}

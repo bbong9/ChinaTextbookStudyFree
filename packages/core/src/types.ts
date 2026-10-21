@@ -265,6 +265,7 @@ export interface UserProgress {
   petCare?: Record<string, PetCareState>;
   petAccessory?: Record<string, string>;
   petsMigrated?: boolean;
+  pictureWordsSeen?: string[];
 }
 
 // ============================================================

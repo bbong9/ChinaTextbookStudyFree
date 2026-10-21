@@ -194,6 +194,8 @@ type PetBackupFields = Pick<BackupData,
 >;
 
 interface ProgressState extends PetBackupFields {
+  /** 网页透传 iOS 图鉴，随 persist 和备份保留。 */
+  pictureWordsSeen?: string[];
   // 核心进度
   xp: number;
   streak: number;
@@ -907,6 +909,7 @@ export const useProgressStore = create<ProgressState>()(
             petCare: s.petCare,
             petAccessory: s.petAccessory,
             petsMigrated: s.petsMigrated,
+            pictureWordsSeen: s.pictureWordsSeen,
           },
         });
       },
@@ -1003,6 +1006,7 @@ export const useProgressStore = create<ProgressState>()(
           petCare: d.petCare,
           petAccessory: d.petAccessory,
           petsMigrated: d.petsMigrated,
+          pictureWordsSeen: d.pictureWordsSeen,
           hearts,
           nextHeartAt,
           dailyGoal: Math.max(10, Math.min(500, d.dailyGoal || DEFAULT_DAILY_GOAL)),

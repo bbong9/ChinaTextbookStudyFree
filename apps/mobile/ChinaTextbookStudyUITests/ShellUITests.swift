@@ -41,6 +41,7 @@ final class ShellUITests: XCTestCase {
             case "parent-center": assertShellTitle(app, "设置")
             case "check-in": assertShellTitle(app, "签到")
             case "bedtime-stories": XCTAssertTrue(app.buttons["story-book-picker"].waitForExistence(timeout: 5))
+            case "animals": XCTAssertTrue(app.buttons["picture-item-sheep"].waitForExistence(timeout: 5))
             default: XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
             }
             XCTAssertTrue(app.buttons["shell-back"].isHittable)

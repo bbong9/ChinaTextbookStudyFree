@@ -132,6 +132,18 @@ final class ProgressStore: ObservableObject {
         }
     }
 
+    // MARK: - 看图识物（只记图鉴，不发放奖励）
+
+    var pictureWordsSeen: Set<String> { PictureWords.seen(progress.pictureWordsSeen) }
+
+    func discoverPictureWord(_ id: String) {
+        guard PictureWords.ids.contains(id), !(progress.pictureWordsSeen ?? []).contains(id) else { return }
+        var p = progress
+        p.pictureWordsSeen = (p.pictureWordsSeen ?? []) + [id]
+        progress = p
+        save()
+    }
+
     // MARK: - Mutations
 
     /// A brand-new save file: Wave B economy baseline (2 streak shields) +

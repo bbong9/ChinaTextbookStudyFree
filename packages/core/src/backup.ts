@@ -139,6 +139,8 @@ export interface BackupData {
   petCare?: Record<string, PetCareState>;
   petAccessory?: Record<string, string>;
   petsMigrated?: boolean;
+  /** RD-16：图鉴的可选透传字段，未知词条 id 也保留。 */
+  pictureWordsSeen?: string[];
 }
 
 export interface BackupEnvelope {
@@ -547,6 +549,15 @@ export function validateBackup(input: unknown): BackupValidationResult {
     ...readPetData(d, log),
   };
 
+  // 可选图鉴：坏字段不影响其他进度，未知词条 ID 原样透传。
+  if (d.pictureWordsSeen !== undefined) {
+    if (Array.isArray(d.pictureWordsSeen)) {
+      data.pictureWordsSeen = d.pictureWordsSeen.filter((id): id is string => typeof id === "string");
+      if (data.pictureWordsSeen.length !== d.pictureWordsSeen.length) {
+        log.push("data.pictureWordsSeen 非字符串条目已丢弃");
+      }
+    } else log.push("data.pictureWordsSeen 不是数组，已忽略");
+  }
   // Optional new Web evidence; old clients ignore unknown fields.
   if (d["numberSenseProgress"] !== undefined) data.numberSenseProgress = normalizeNumberProgress(d["numberSenseProgress"]);
   // 可选字段：给了才带上

@@ -178,7 +178,9 @@ struct RouteView: View {
             SettingsView(progressStore: progressStore)
         case .bedtimeStories:
             StoryListView(path: $path)
-        case .hanziMap, .hanziLesson, .mathTrain, .englishBalloons, .animals,
+        case .animals:
+            PictureWordsView(progressStore: progressStore) { path.removeLast() }
+        case .hanziMap, .hanziLesson, .mathTrain, .englishBalloons,
              .idiomPicker, .idiomPlayer, .readingRoom:
             if let placeholder = route.placeholder {
                 Text("建设中")

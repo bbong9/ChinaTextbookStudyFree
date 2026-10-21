@@ -89,6 +89,7 @@ enum Backup {
         var petCare: [String: PetCareState]?
         var petAccessory: [String: String]?
         var petsMigrated: Bool?
+        var pictureWordsSeen: [String]?
     }
 
     struct Envelope: Codable, Hashable {
@@ -263,6 +264,7 @@ enum Backup {
         data.petCare = p.petCare
         data.petAccessory = p.petAccessory
         data.petsMigrated = p.petsMigrated
+        data.pictureWordsSeen = p.pictureWordsSeen
 
         return Envelope(
             schema: schema,
@@ -406,6 +408,7 @@ enum Backup {
         p.petCare = d.petCare
         p.petAccessory = d.petAccessory
         p.petsMigrated = d.petsMigrated
+        p.pictureWordsSeen = d.pictureWordsSeen
         // 导入旧信封也走同一迁移；新信封的状态和时间戳原样保留。
         PetState.migrate(&p)
 
@@ -511,6 +514,9 @@ extension Backup.DataPayload: Decodable {
 
         leagueTier = string("leagueTier")
         leagueWeekKey = string("leagueWeekKey")
+        if let ids = try? c.decode([Lossy<String>].self, forKey: AnyKey("pictureWordsSeen")) {
+            pictureWordsSeen = ids.compactMap(\.value)
+        }
         activePet = string("activePet")
         treatsFromLessonsDate = string("treatsFromLessonsDate")
         petTreats = int("petTreats").flatMap { $0 >= 0 ? $0 : nil }

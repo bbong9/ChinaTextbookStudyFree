@@ -71,6 +71,12 @@ final class SpeechTextIndex: @unchecked Sendable {
         store(pairs)
     }
 
+    func register(_ word: PictureWord) {
+        // 中文按钮直接朗读汉字的普通话读音，不把拼音的拉丁字母当作英语拼读。
+        store([(word.nameAudio, word.char), (word.pinyinAudio, word.char),
+               (word.soundAudio, word.sound), (word.englishAudio, word.english)])
+    }
+
     private func store(_ pairs: [(String?, String)]) {
         lock.lock(); defer { lock.unlock() }
         for (path, text) in pairs {

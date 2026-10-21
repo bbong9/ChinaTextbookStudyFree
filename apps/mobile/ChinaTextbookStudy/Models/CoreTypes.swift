@@ -453,6 +453,9 @@ struct UserProgress: Codable, Hashable {
     var petCare: [String: PetCareState]?
     var petAccessory: [String: String]?
     var petsMigrated: Bool?
+
+    // RD-16：已探索词条；旧存档缺失时按空图鉴读取。
+    var pictureWordsSeen: [String]?
 }
 
 // ============================================================
