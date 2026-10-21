@@ -45,7 +45,7 @@ struct ClayIconButton: View {
                 .frame(width: size.side, height: size.side)
                 .claySurface(.buttonCream, radius: size == .regular ? ClayRadius.button : ClayRadius.smallButton,
                              edge: ClayColor.creamEdge, shadow: .icon)
-                .shadow(color: ClayColor.hex(0x966428).opacity(0.25), radius: 0, y: 3)
+                .shadow(color: ClayColor.iconButtonDepth.opacity(0.25), radius: 0, y: 3)
                 .clayHitTarget()
         }
         .buttonStyle(ClayPressStyle())
@@ -192,7 +192,7 @@ struct GoButton: View {
                 .shadow(color: ClayColor.creamText, radius: 0, y: 2)
         }
         .frame(width: 82, height: 82)
-        .claySurface(.go, radius: 41, depth: 5, edge: ClayColor.hex(0xA03C00).opacity(0.3), shadow: .go)
+        .claySurface(.go, radius: 41, depth: 5, edge: ClayColor.goButtonDepth.opacity(0.3), shadow: .go)
         .overlay { Circle().strokeBorder(ClayColor.white, lineWidth: 4) }
     }
 }

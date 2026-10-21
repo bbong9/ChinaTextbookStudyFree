@@ -11,8 +11,8 @@ final class PetGalleryUITests: XCTestCase {
         XCTAssertTrue(entry.waitForExistence(timeout: 20))
         entry.press(forDuration: 1)
         XCTAssertTrue(app.buttons["stage-top-leading"].waitForExistence(timeout: 5))
-        // 从首组向前翻一页即可到新增的宠物页。
-        app.buttons["stage-bottom-leading"].tap()
+        // 宠物保留在第四页；RD-03 在其后追加场景页。
+        for _ in 0..<3 { app.buttons["stage-bottom-trailing"].tap() }
         XCTAssertTrue(app.buttons["pet-section-0"].waitForExistence(timeout: 5))
         return app
     }
