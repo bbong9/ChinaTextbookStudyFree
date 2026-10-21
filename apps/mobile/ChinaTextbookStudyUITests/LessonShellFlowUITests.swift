@@ -101,7 +101,9 @@ final class LessonShellFlowUITests: XCTestCase {
         XCTAssertTrue(picker.waitForExistence(timeout: 15))
         picker.tap()
         revealAndTap(app, app.buttons["book-picker-grade-3"])
-        revealAndTap(app, app.buttons["book-picker-book-english-g3up"])
+        let english = app.buttons["book-picker-book-english-g3up"]
+        XCTAssertTrue(english.waitForExistence(timeout: 5))
+        english.tap()
         enterFirstLesson(app, book: "english-g3up")
         for option in [1, 2, 1, 1] {
             let button = app.buttons["lesson-choice-\(option)"]
@@ -130,18 +132,28 @@ final class LessonShellFlowUITests: XCTestCase {
         let app = launchShellApp()
         let jump = app.buttons["jump-here-u2"]
         XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15))
-        for _ in 0..<12 {
+        let map = app.scrollViews.firstMatch
+        XCTAssertTrue(map.exists)
+        for _ in 0..<30 {
             if jump.exists && jump.isHittable { break }
-            app.swipeUp()
+            map.swipeUp()
         }
-        revealAndTap(app, jump)
+        revealAndTap(app, jump, scrollView: map)
         XCTAssertTrue(app.buttons["jump-start"].waitForExistence(timeout: 5))
         app.buttons["jump-start"].tap()
         for index in 0..<15 {
             XCTAssertTrue(app.buttons["检查答案"].waitForExistence(timeout: 5))
             if app.buttons["tf-对"].exists { app.buttons["tf-对"].tap() }
             else if app.buttons["lesson-choice-0"].exists { app.buttons["lesson-choice-0"].tap() }
-            else { app.buttons["lesson-fill_blank-key-0"].tap() }
+            else if app.textFields["lesson-fill_blank_text-0"].exists {
+                let field = app.textFields["lesson-fill_blank_text-0"]
+                field.tap()
+                field.typeText("0")
+            } else {
+                let zero = app.buttons.matching(NSPredicate(format: "identifier ENDSWITH %@", "-key-0")).firstMatch
+                XCTAssertTrue(zero.waitForExistence(timeout: 5))
+                zero.tap()
+            }
             if index == 0 { attachScreenshot("rd-10-jump") }
             app.buttons["检查答案"].tap()
             XCTAssertTrue(app.buttons["jump-continue"].waitForExistence(timeout: 5))

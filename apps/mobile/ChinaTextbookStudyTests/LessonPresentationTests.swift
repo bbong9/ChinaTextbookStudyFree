@@ -4,7 +4,7 @@ import ZIPFoundation
 @testable import ChinaTextbookStudy
 
 /// 在真实模拟器窗口里承载生产 LessonShell / QuestionRendererView。
-/// 每台设备一次跑完八种展示，截图固定数据、固定减少动态效果，不改课程与路由。
+/// 每台设备一次跑完八种展示，固定数据并局部暂停装饰动画，不改课程与路由。
 @MainActor
 final class LessonPresentationTests: XCTestCase {
     func testComboPresentation() async throws {
@@ -16,7 +16,8 @@ final class LessonPresentationTests: XCTestCase {
             ZStack {
                 LessonScene(bookId: "g1up")
                 ComboOverlayView(combo: 3)
-            }.environment(\.accessibilityReduceMotion, true).statusBarHidden())
+            }.environment(\.clayMotionPaused, true)
+                .transaction { $0.disablesAnimations = true }.statusBarHidden())
         window.makeKeyAndVisible()
         defer { window.isHidden = true; previous?.makeKeyAndVisible() }
         try await Task.sleep(for: .milliseconds(250))
@@ -97,7 +98,9 @@ private struct LessonPresentationHarness: View {
         } feedback: {
             EmptyView()
         }
-        .environment(\.accessibilityReduceMotion, true)
+        .environment(\.clayMotionPaused, true)
+        .environment(\.petAnimationsPaused, true)
+        .transaction { $0.disablesAnimations = true }
         .statusBarHidden().preferredColorScheme(.light)
     }
     private var instruction: String {
