@@ -88,13 +88,14 @@
 | 卡 | 标题 | 依赖 | 状态 |
 | --- | --- | --- | --- |
 | **A 地基** | | | |
-| [RD-01](cards/RD-01-landscape-shell.md) | 横屏外壳与路由 | — | 开发中(PR #4) |
+| RD-00 | 修复基线测试失败 | — | ✅ 已合并(PR #5) |
+| [RD-01](cards/RD-01-landscape-shell.md) | 横屏外壳与路由 | — | ✅ 已合并(PR #4) |
 | [RD-02](cards/RD-02-clay-design-system.md) | 黏土设计系统与舞台容器 | — | ✅ 已合并(PR #3) |
-| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | 开发中 |
+| [RD-03](cards/RD-03-scene-kit.md) | 场景素材库 | RD-02 | ✅ 已合并(PR #8) |
 | [RD-04](cards/RD-04-pet-renderer.md) | 宠物渲染组件,替换熊猫 | RD-02 | ✅ 已合并(PR #7) |
 | **B 经济与宠物** | | | |
 | [RD-05](cards/RD-05-core-economy.md) | core 经济扩展(等级/宠物/饼干/时长宝箱/小游戏奖励) | — | ✅ 已合并(PR #2) |
-| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | 修改中(PR #6) |
+| [RD-06](cards/RD-06-pet-state.md) | 宠物存档与状态 | RD-05 | ✅ 已合并(PR #6) |
 | [RD-07](cards/RD-07-pet-screens.md) | 宠物家族、商店、小屋 | RD-03 RD-04 RD-06 | 待开发 |
 | [RD-08](cards/RD-08-checkin-study-time.md) | 签到与学习时长宝箱 | RD-03 RD-05 RD-06 | 待开发 |
 | **C 主线闯关** | | | |

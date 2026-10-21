@@ -51,7 +51,7 @@ CMD=(xcodebuild test
   "$@")
 
 if [ "${SIM_TEST_DRY_RUN:-}" = "1" ]; then
-  echo "设备: $NAME（$(device_id || true)）"
+  echo "设备: ${NAME}（$(device_id || true)）"
   echo "锁:   $LOCK"
   printf '命令:'; printf ' %q' "${CMD[@]}" -destination "platform=iOS Simulator,id=DEVICE"; echo
   exit 0
@@ -84,7 +84,7 @@ trap 'exit 130' INT TERM
 
 ID="$(device_id)"
 if [ -z "$ID" ]; then
-  echo "没有「$NAME」，按共用名创建一台"
+  echo "没有「${NAME}」，按共用名创建一台"
   ID="$(xcrun simctl create "$NAME" "$TYPE" "$RUNTIME")"
 fi
 
@@ -116,10 +116,10 @@ while :; do
   busy="$(echo "$list" | awk '$1=="busy"{$1="";$2="";sub(/^ +/,"");s=s (s?"、":"") $0} END{print s}')"
   [ -z "$busy" ] && break
   if [ $((waited % 60)) -eq 0 ]; then
-    echo "⏳ 还有旧任务在用模拟器（$busy），等它跑完… 已等 ${waited}s"
+    echo "⏳ 还有旧任务在用模拟器（${busy}），等它跑完… 已等 ${waited}s"
   fi
   sleep 10; waited=$((waited + 10))
 done
 
-echo "▶ $NAME 开始测试（$SLUG）"
+echo "▶ ${NAME} 开始测试（${SLUG}）"
 "${CMD[@]}" -destination "platform=iOS Simulator,id=$ID"
