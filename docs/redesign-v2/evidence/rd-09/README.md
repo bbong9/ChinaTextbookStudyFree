@@ -125,6 +125,8 @@ skippedTests: 0
 runtimeWarnings: []
 ```
 
+最终提交前的整段 diff 检查只发现 `HomeRewardSheets.swift` 文件尾部多余空行，已移除；没有可执行代码变化，因此未重复运行模拟器测试。
+
 全量关键输出：
 
 ```text
