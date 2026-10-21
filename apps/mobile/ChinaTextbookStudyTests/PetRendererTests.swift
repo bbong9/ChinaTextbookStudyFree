@@ -69,12 +69,15 @@ final class PetRendererTests: XCTestCase {
     }
 
     @MainActor func testEnvironmentSelectsTheActivePetAndAccessory() throws {
-        let injected = PetEnvironment(kind: .fox, accessory: .graduate)
+        let injected = PetEnvironment(kind: .fox, accessory: .graduate, mood: .sad)
         let inherited = try render(PetView(size: 180)
             .environment(\.petEnvironment, injected).environment(\.petAnimationsPaused, true))
-        let explicit = try render(PetView(kind: .fox, size: 180, accessory: .graduate)
+        let explicit = try render(PetView(kind: .fox, mood: .sad, size: 180, accessory: .graduate)
             .environment(\.petAnimationsPaused, true))
         XCTAssertEqual(inherited.pngData(), explicit.pngData())
+        let celebration = try render(PetView(mood: .cheer, size: 180)
+            .environment(\.petEnvironment, injected).environment(\.petAnimationsPaused, true))
+        XCTAssertNotEqual(celebration.pngData(), inherited.pngData(), "情境表情可覆盖照顾表情")
         let bare = try render(PetView(kind: .fox, size: 180, accessory: .noAccessory)
             .environment(\.petEnvironment, injected).environment(\.petAnimationsPaused, true))
         XCTAssertNotEqual(bare.pngData(), inherited.pngData())

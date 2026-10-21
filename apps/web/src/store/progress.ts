@@ -55,6 +55,7 @@ import {
 } from "@cstf/core/league";
 import {
   buildBackup,
+  type BackupData,
   type BackupEnvelope,
   type BackupLessonResult,
   type BackupMistake,
@@ -186,7 +187,13 @@ export interface PendingLeagueResult {
   gems: number;
 }
 
-interface ProgressState {
+// 网页只保管这些可选备份字段，不初始化、迁移或参与网页端玩法。
+type PetBackupFields = Pick<BackupData,
+  "ownedPets" | "activePet" | "petTreats" | "treatsFromLessonsDate" |
+  "treatsFromLessonsCount" | "petCare" | "petAccessory" | "petsMigrated"
+>;
+
+interface ProgressState extends PetBackupFields {
   // 核心进度
   xp: number;
   streak: number;
@@ -892,6 +899,14 @@ export const useProgressStore = create<ProgressState>()(
             numberSenseProgress: s.numberSenseProgress,
             leagueTier: s.leagueTier,
             leagueWeekKey: s.leagueWeekKey || undefined,
+            ownedPets: s.ownedPets,
+            activePet: s.activePet,
+            petTreats: s.petTreats,
+            treatsFromLessonsDate: s.treatsFromLessonsDate,
+            treatsFromLessonsCount: s.treatsFromLessonsCount,
+            petCare: s.petCare,
+            petAccessory: s.petAccessory,
+            petsMigrated: s.petsMigrated,
           },
         });
       },
@@ -979,6 +994,15 @@ export const useProgressStore = create<ProgressState>()(
           streakFreezes: Math.min(d.streakFreezes, 99),
           gems: d.gems,
           lifetimeGems: d.lifetimeGems,
+          // 原样透传；缺失时也写入 undefined，覆盖上一份备份的宠物数据。
+          ownedPets: d.ownedPets,
+          activePet: d.activePet,
+          petTreats: d.petTreats,
+          treatsFromLessonsDate: d.treatsFromLessonsDate,
+          treatsFromLessonsCount: d.treatsFromLessonsCount,
+          petCare: d.petCare,
+          petAccessory: d.petAccessory,
+          petsMigrated: d.petsMigrated,
           hearts,
           nextHeartAt,
           dailyGoal: Math.max(10, Math.min(500, d.dailyGoal || DEFAULT_DAILY_GOAL)),

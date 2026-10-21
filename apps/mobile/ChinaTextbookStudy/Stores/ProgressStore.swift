@@ -33,12 +33,12 @@ final class ProgressStore: ObservableObject {
         var hasCompletedOnboarding: Bool?
     }
 
-    init() {
+    init(now: Date = Date()) {
         #if DEBUG
         // UI tests launch with `-uitest` to get a hermetic, deterministic state:
         // no persisted progress, onboarding already done, seed book selected.
         if ProcessInfo.processInfo.arguments.contains("-uitest") {
-            var fresh = Self.freshProgress()
+            var fresh = Self.freshProgress(now: now)
             fresh.gems = 500
             fresh.hearts = Self.maxHearts
             // Keep UI tests deterministic: no login-reward card popping over
@@ -52,7 +52,8 @@ final class ProgressStore: ObservableObject {
         }
         #endif
 
-        if let restored = PersistenceService.read(UserProgress.self, from: Self.progressFile) {
+        let restored = PersistenceService.read(UserProgress.self, from: Self.progressFile)
+        if let restored {
             var p = restored
             // One-time shield migration: old saves get topped up to the new
             // 2-shield baseline; anything above 2 is kept (never confiscated),
@@ -63,7 +64,7 @@ final class ProgressStore: ObservableObject {
             }
             self.progress = p
         } else {
-            self.progress = Self.freshProgress()
+            self.progress = Self.freshProgress(now: now)
         }
         if let prefs = PersistenceService.read(Prefs.self, from: Self.prefsFile) {
             self.selectedGrade = prefs.selectedGrade
@@ -79,7 +80,7 @@ final class ProgressStore: ObservableObject {
         // migrate: historical unlocks enter the permanent ledger silently —
         // no retroactive gem payout. Only unlocks from here on pay rewards.
         var migrated = progress
-        var didMigrate = false
+        var didMigrate = restored == nil
         if migrated.unlockedAchievements == nil {
             migrated.unlockedAchievements = Achievements.latchUnlocked(
                 prevLedger: [],
@@ -108,7 +109,9 @@ final class ProgressStore: ObservableObject {
             migrated.joinedDate = earliest.map { String($0.prefix(10)) } ?? SRS.todayString()
             didMigrate = true
         }
-        if didMigrate {
+        PetState.migrate(&migrated)
+        PetState.settleCare(&migrated, now: now)
+        if didMigrate || migrated != progress {
             progress = migrated
             save()
         }
@@ -129,7 +132,7 @@ final class ProgressStore: ObservableObject {
     /// Wave D ledgers (empty claim ledger, joinedDate = today). The empty
     /// claim ledger matters: it marks the save as post-Wave-D so the launch
     /// migration never mistakes fresh unlocks for legacy auto-paid ones.
-    private static func freshProgress() -> UserProgress {
+    private static func freshProgress(now: Date = Date()) -> UserProgress {
         var p = UserProgress(
             xp: 0,
             streak: 0,
@@ -141,7 +144,9 @@ final class ProgressStore: ObservableObject {
         p.freezesMigrated = true
         p.unlockedAchievements = []
         p.claimedAchievements = []
-        p.joinedDate = SRS.todayString()
+        p.joinedDate = SRS.todayString(now: now)
+        PetState.migrate(&p)
+        PetState.settleCare(&p, now: now)
         return p
     }
 
@@ -223,6 +228,15 @@ final class ProgressStore: ObservableObject {
         p.gems = (p.gems ?? 0) + gemsGained
         p.lifetimeGems = (p.lifetimeGems ?? 0) + gemsGained
 
+        let treatsToday = p.treatsFromLessonsDate == todayKey ? max(0, p.treatsFromLessonsCount ?? 0) : 0
+        let treatsGained = Economy.lessonTreatReward(stars: stars, treatsFromLessonsToday: treatsToday)
+        p.treatsFromLessonsDate = todayKey
+        p.treatsFromLessonsCount = treatsToday + treatsGained
+        p.petTreats = max(0, p.petTreats ?? 0) + treatsGained
+        var care = p.petCare ?? [:]
+        care[activePet] = PetCare.completeLesson(careState(for: activePet, now: now), now: now)
+        p.petCare = care
+
         let newAchievements = latchAchievements(&p)
 
         progress = p
@@ -240,7 +254,8 @@ final class ProgressStore: ObservableObject {
             milestoneGems: streakAdvance.milestoneGems,
             weekendDoubled: isWeekend && xpGain > 0,
             freezesConsumed: streakAdvance.freezesConsumed,
-            examDoubled: isExam && xpGain > 0
+            examDoubled: isExam && xpGain > 0,
+            treatsGained: treatsGained
         )
     }
 
@@ -711,6 +726,123 @@ final class ProgressStore: ObservableObject {
         guard hearts < Self.maxHearts else { return false }
         guard spendGems(cost) else { return false }
         refillHearts()
+        return true
+    }
+
+    // MARK: - RD-06 宠物
+
+    var ownedPets: [String] { progress.ownedPets ?? [PetState.starterId] }
+    var activePet: String {
+        let id = progress.activePet ?? PetState.starterId
+        return ownedPets.contains(id) && id != "pet_egg" && Pets.petById(id) != nil ? id : PetState.starterId
+    }
+    var petTreats: Int { max(0, progress.petTreats ?? 0) }
+    var feedUnavailableReason: String? { petTreats == 0 ? "去闯关赚饼干" : nil }
+    var petAccessory: [String: String] { progress.petAccessory ?? [:] }
+
+    @discardableResult
+    func setActivePet(_ id: String) -> Bool {
+        guard ownedPets.contains(id), id != "pet_egg", Pets.petById(id) != nil else { return false }
+        var p = progress
+        p.activePet = id
+        progress = p
+        save()
+        return true
+    }
+
+    func canAdopt(_ id: String) -> PetAdoptionStatus {
+        guard let pet = Pets.petById(id) else { return .soldOut }
+        let ctx = Pets.UnlockContext(gems: gems, level: Level.levelInfo(progress.xp).level,
+                                     claimedStreakRewards: progress.claimedStreakRewards ?? [], owned: ownedPets)
+        if Pets.canUnlock(pet, ctx: ctx) { return .available }
+        if id != "pet_egg", ownedPets.contains(id) { return .alreadyOwned }
+        if pet.acquisition == .egg || (id == "pet_egg" && Pets.nextEggHatch(ownedPets) == nil) { return .soldOut }
+        if let required = pet.requiredLevel, ctx.level < required { return .insufficientLevel }
+        if let required = pet.requiredStreak, !ctx.claimedStreakRewards.contains(required) { return .insufficientStreak }
+        return .insufficientGems
+    }
+
+    /// 成功返回领养的伙伴 id；失败不扣款。蛋本身永远不进入拥有列表。
+    @discardableResult
+    func adopt(_ id: String, now: Date = Date()) -> String? {
+        if id == "pet_egg" { return hatchEgg(now: now) }
+        guard canAdopt(id) == .available, let pet = Pets.petById(id) else { return nil }
+        return commitAdoption(pet, awardedId: id, now: now)
+    }
+
+    @discardableResult
+    func hatchEgg(now: Date = Date()) -> String? {
+        guard canAdopt("pet_egg") == .available,
+              let egg = Pets.petById("pet_egg"), let id = Pets.nextEggHatch(ownedPets) else { return nil }
+        return commitAdoption(egg, awardedId: id, now: now)
+    }
+
+    private func commitAdoption(_ pet: Pets.Pet, awardedId: String, now: Date) -> String? {
+        guard let price = pet.price else { return nil }
+        var p = progress
+        p.gems = gems - price
+        p.ownedPets = ownedPets + [awardedId]
+        var care = p.petCare ?? [:]
+        care[awardedId] = PetCare.initial(now: now)
+        p.petCare = care
+        // 不调用会先保存扣款的 spendGems：拥有和余额只发布一次、原子落盘一次。
+        progress = p
+        save()
+        return awardedId
+    }
+
+    /// 纯读取；从持久化锚点按真实时间派生，不因读取频率改变衰减。
+    func careState(for id: String, now: Date = Date()) -> PetCareState {
+        progress.petCare?[id].map { PetCare.decay($0, now: now) } ?? PetCare.initial(now: now)
+    }
+
+    @discardableResult
+    func feed(now: Date = Date()) -> Bool {
+        guard petTreats > 0 else { return false }
+        var p = progress
+        p.petTreats = petTreats - 1
+        var care = p.petCare ?? [:]
+        care[activePet] = PetCare.feed(careState(for: activePet, now: now), now: now)
+        p.petCare = care
+        progress = p
+        save()
+        return true
+    }
+
+    @discardableResult
+    func bathe(now: Date = Date()) -> Bool {
+        guard let state = PetCare.bathe(careState(for: activePet, now: now), now: now) else { return false }
+        return saveCare(state)
+    }
+
+    @discardableResult
+    func play(now: Date = Date()) -> Bool {
+        guard let state = PetCare.play(careState(for: activePet, now: now), now: now) else { return false }
+        return saveCare(state)
+    }
+
+    private func saveCare(_ state: PetCareState) -> Bool {
+        var p = progress
+        var care = p.petCare ?? [:]
+        care[activePet] = state
+        p.petCare = care
+        progress = p
+        save()
+        return true
+    }
+
+    @discardableResult
+    func setAccessory(_ id: String?, for petId: String) -> Bool {
+        guard ownedPets.contains(petId) else { return false }
+        if let id {
+            guard ownedCosmetics.contains(id), Cosmetics.item(id: id)?.type == .mascotSkin else { return false }
+        }
+        var p = progress
+        var accessories = p.petAccessory ?? [:]
+        accessories[petId] = id
+        p.petAccessory = accessories
+        progress = p
+        save()
         return true
     }
 
@@ -1306,7 +1438,7 @@ final class ProgressStore: ObservableObject {
     /// - 真·瞬态（课程会话 / 今日任务计数）不导入；
     /// - 调用方负责导入前的「将覆盖当前进度」确认与导入后的全量刷新。
     func importBackup(_ envelope: Backup.Envelope, now: Date = Date()) {
-        let restored = Backup.userProgress(
+        var restored = Backup.userProgress(
             from: envelope,
             questionLookup: { lessonId, questionId in
                 guard let bookId = Backup.bookId(fromLessonId: lessonId),
@@ -1319,6 +1451,8 @@ final class ProgressStore: ObservableObject {
             now: now,
             today: SRS.todayString(now: now)
         )
+        // 导入旧档或缺某只宠物状态的备份时，也要立即落下计时锚点。
+        PetState.settleCare(&restored, now: now)
         progress = restored
         pendingDailyReward = nil
         save()

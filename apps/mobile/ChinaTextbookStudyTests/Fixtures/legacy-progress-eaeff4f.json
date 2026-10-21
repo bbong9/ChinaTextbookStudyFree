@@ -1,0 +1,71 @@
+{
+  "claimedAchievements" : [
+    "first-lesson"
+  ],
+  "claimedChests" : {
+    "g1up-u1-c1" : true
+  },
+  "claimedQuests" : [
+    "2026-10-19:earnXP-60"
+  ],
+  "claimedStreakRewards" : [
+    3,
+    7
+  ],
+  "completedLessons" : {
+    "g1up-u1-kp1" : {
+      "accuracy" : 1,
+      "completedAt" : "2026-10-19T08:00:00Z",
+      "lessonId" : "g1up-u1-kp1",
+      "stars" : 3
+    }
+  },
+  "completedReadings" : [
+
+  ],
+  "dailyDate" : "2026-10-19",
+  "dailyGoal" : 50,
+  "dailyLessons" : 1,
+  "dailyReadings" : 0,
+  "dailyReviews" : 0,
+  "displayName" : "旧版测试档",
+  "equippedBackdrop" : "backdrop_default",
+  "equippedMascotSkin" : "skin_graduate",
+  "equippedTheme" : "theme_default",
+  "freezesMigrated" : true,
+  "gems" : 321,
+  "hearts" : 5,
+  "joinedDate" : "2026-10-13",
+  "lastActiveDate" : "2026-10-19",
+  "lastDailyRewardDate" : "2026-10-19",
+  "lastDailyRewardStreak" : 7,
+  "lastXpDate" : "2026-10-19",
+  "leagueSalt" : "synthetic-legacy-fixture",
+  "leagueTier" : "bronze",
+  "leagueWeekKey" : "2026-10-19",
+  "lifetimeGems" : 901,
+  "mistakesBank" : [
+
+  ],
+  "ownedCosmetics" : [
+    "skin_default",
+    "skin_graduate",
+    "skin_glasses"
+  ],
+  "reports" : [
+
+  ],
+  "seenIntros" : [
+    "g1up-u1-kp1"
+  ],
+  "streak" : 7,
+  "streakFreezes" : 2,
+  "todayXp" : 60,
+  "unlockedAchievements" : [
+    "first-lesson"
+  ],
+  "xp" : 560,
+  "xpHistory" : {
+    "2026-10-19" : 60
+  }
+}

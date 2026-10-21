@@ -15,7 +15,7 @@
  *     errors 记录被丢弃或替换为默认值的字段（作为可展示的"修复日志"，可为空数组）。
  */
 
-import type { Question } from "./types";
+import type { PetCareState, Question } from "./types";
 import { DEFAULT_EQUIPPED } from "./cosmetics";
 import { MAX_HEARTS, DEFAULT_DAILY_GOAL, INITIAL_FREEZES } from "./economy";
 import { normalizeReadingMap } from "./reading";
@@ -130,6 +130,15 @@ export interface BackupData {
   /** 联赛段位 id（"bronze" 等）。宽松保留为 string，未知段位由导入端降级 */
   leagueTier?: string;
   leagueWeekKey?: string;
+  /** RD-06：可选扩展，旧客户端忽略这些字段即可。 */
+  ownedPets?: string[];
+  activePet?: string;
+  petTreats?: number;
+  treatsFromLessonsDate?: string;
+  treatsFromLessonsCount?: number;
+  petCare?: Record<string, PetCareState>;
+  petAccessory?: Record<string, string>;
+  petsMigrated?: boolean;
 }
 
 export interface BackupEnvelope {
@@ -418,6 +427,54 @@ function readEquipped(
   };
 }
 
+/** 宠物扩展字段缺失时仍保持缺失，让导入端执行一次性旧档迁移。 */
+function readPetData(d: Record<string, unknown>, log: string[]): Partial<BackupData> {
+  const data: Partial<BackupData> = {};
+  for (const key of ["activePet", "treatsFromLessonsDate"] as const) {
+    const value = readOptionalString(d, key, log);
+    if (value !== undefined) data[key] = value;
+  }
+  for (const key of ["petTreats", "treatsFromLessonsCount"] as const) {
+    const value = d[key];
+    if (value === undefined) continue;
+    if (isFiniteNumber(value) && Number.isSafeInteger(value) && value >= 0) data[key] = value;
+    else log.push(`data.${key} 不是非负整数，已忽略`);
+  }
+  if (d.ownedPets !== undefined) {
+    if (Array.isArray(d.ownedPets)) {
+      data.ownedPets = d.ownedPets.filter((id): id is string => typeof id === "string");
+      if (data.ownedPets.length !== d.ownedPets.length) log.push("data.ownedPets 非字符串条目已丢弃");
+    } else log.push("data.ownedPets 不是数组，已忽略");
+  }
+  if (d.petAccessory !== undefined) data.petAccessory = readStringRecord(d, "petAccessory", log);
+  if (d.petsMigrated !== undefined) {
+    if (typeof d.petsMigrated === "boolean") data.petsMigrated = d.petsMigrated;
+    else log.push("data.petsMigrated 不是布尔值，已忽略");
+  }
+  if (d.petCare !== undefined) {
+    data.petCare = {};
+    if (!isRecord(d.petCare)) log.push("data.petCare 不是对象，已重置为空");
+    else for (const [id, raw] of Object.entries(d.petCare)) {
+      if (!isRecord(raw) || !isFiniteNumber(raw.fullness) || !isFiniteNumber(raw.clean)
+        || !isFiniteNumber(raw.happy) || !isFiniteNumber(raw.updatedAt) || raw.updatedAt < 0) {
+        log.push(`data.petCare["${id}"] 状态非法，已丢弃`);
+        continue;
+      }
+      const state: PetCareState = {
+        fullness: Math.min(100, Math.max(0, raw.fullness)),
+        clean: Math.min(100, Math.max(0, raw.clean)),
+        happy: Math.min(100, Math.max(0, raw.happy)),
+        updatedAt: raw.updatedAt,
+      };
+      for (const key of ["lastBathAt", "lastPlayAt"] as const) {
+        if (isFiniteNumber(raw[key]) && raw[key] >= 0) state[key] = raw[key];
+      }
+      data.petCare[id] = state;
+    }
+  }
+  return data;
+}
+
 /**
  * 校验一段未知输入是否是可导入的备份信封。
  *
@@ -487,6 +544,7 @@ export function validateBackup(input: unknown): BackupValidationResult {
     ownedCosmetics: readFlagRecord(d, "ownedCosmetics", log),
     equipped: readEquipped(d, log),
     xpHistory: readNumberRecord(d, "xpHistory", log),
+    ...readPetData(d, log),
   };
 
   // Optional new Web evidence; old clients ignore unknown fields.

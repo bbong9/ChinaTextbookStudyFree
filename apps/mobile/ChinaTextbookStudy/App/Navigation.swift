@@ -46,6 +46,8 @@ struct LessonOutcome: Hashable {
     /// Whether the unit-challenge ×2 multiplier was applied to `xpGained`
     /// (Wave E1) — the result screen shows the「⚔️ 挑战双倍 ×2」badge.
     var examDoubled: Bool = false
+    /// RD-06：本次课程实际发放的饼干（达到每日上限时为 0）。
+    var treatsGained: Int = 0
     var streakIncreased: Bool { streakAfter > streakBefore }
 }
 
