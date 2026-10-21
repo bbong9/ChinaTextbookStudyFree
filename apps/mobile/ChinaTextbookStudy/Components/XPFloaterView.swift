@@ -24,7 +24,7 @@ struct XPFloaterView: View {
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: "bolt.fill")
-                .font(.system(size: 14, weight: .bold))
+                .font(ClayFont.label)
             Text("+\(amount)")
                 .font(ClayFont.happy(size: 20))
         }

@@ -43,7 +43,6 @@ struct LessonShell<Header: View, Answers: View, Action: View, Feedback: View>: V
                         if !checked { action().frame(maxWidth: .infinity, alignment: .trailing) }
                     }
                     .frame(width: (width - 18) * 0.54)
-                    .accessibilityIdentifier("lesson-answer-area")
                 }
                 .frame(maxHeight: .infinity)
             }
@@ -172,7 +171,6 @@ struct LessonFeedback<Detail: View, Action: View>: View {
         .overlay(alignment: .top) {
             Rectangle().fill(ok ? ClayColor.completed : ClayColor.balloonKnot).frame(height: 3)
         }
-        .accessibilityIdentifier("lesson-feedback")
     }
 }
 
@@ -243,6 +241,7 @@ extension View {
     func clayLessonCard(edge: Color = ClayColor.creamEdge) -> some View {
         background(ClayColor.creamTop, in: RoundedRectangle(cornerRadius: ClayRadius.card))
             .overlay { RoundedRectangle(cornerRadius: ClayRadius.card).strokeBorder(ClayColor.white, lineWidth: 4) }
+            .compositingGroup()
             .shadow(color: edge, radius: 0, y: 6)
             .clayShadow(.panel)
     }

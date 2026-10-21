@@ -167,7 +167,7 @@ struct IntroCardView: View {
                 ForEach(Array(knowledge.commonMistakes.enumerated()), id: \.offset) { i, mistake in
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 18, weight: .heavy))
+                            .font(ClayFont.largeButton)
                             .foregroundStyle(ClayColor.balloonKnot)
                             .padding(.top, 2)
                         Text(MathText.render(mistake))
@@ -175,7 +175,7 @@ struct IntroCardView: View {
                             .foregroundStyle(ClayColor.ink)
                             .lineSpacing(4)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        TTSButton(path: mistakeAudio(at: i), size: 15)
+                        TTSButton(path: mistakeAudio(at: i), size: 15).clayHitTarget()
                     }
                     .padding(12)
                     .background(ClayColor.balloonKnot.opacity(0.07), in: .rect(cornerRadius: ClayRadius.smallButton))

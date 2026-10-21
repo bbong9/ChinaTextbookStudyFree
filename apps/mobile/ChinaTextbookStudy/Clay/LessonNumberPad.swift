@@ -30,7 +30,6 @@ struct LessonNumberPad: View {
                 }
             }
         }
-        .accessibilityIdentifier("\(idPrefix)-keypad")
     }
 
     static func label(for key: String) -> String {

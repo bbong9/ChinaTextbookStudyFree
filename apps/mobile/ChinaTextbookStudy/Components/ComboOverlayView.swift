@@ -11,11 +11,11 @@ struct ComboOverlayView: View {
     var body: some View {
         VStack(spacing: 4) {
             Image(systemName: "flame.fill")
-                .font(.system(size: 28))
-                .foregroundStyle(.white)
+                .font(ClayFont.title)
+                .foregroundStyle(ClayColor.white)
             Text("连击 ×\(combo)")
                 .font(ClayFont.happy(size: 22))
-                .foregroundStyle(.white)
+                .foregroundStyle(ClayColor.white)
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 16)
@@ -27,7 +27,7 @@ struct ComboOverlayView: View {
             ),
             in: .rect(cornerRadius: ClayRadius.bubble)
         )
-        .shadow(color: ClayColor.orangeDeep.opacity(0.4), radius: 0, x: 0, y: 8)
+        .clayShadow(.orange)
         .scaleEffect(scale)
         .opacity(opacity)
         .accessibilityIdentifier("lesson-combo")
