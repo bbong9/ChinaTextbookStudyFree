@@ -32,6 +32,7 @@ final class LessonFlowUITests: XCTestCase {
         let start = app.buttons["lesson-start"]
         XCTAssertTrue(start.waitForExistence(timeout: 5),
                       "start popup did not appear after tapping a path node")
+        attachScreenshot("rd09-start-popup")
         start.tap()
 
         // Wave E2：首次进课先弹分步知识讲解，翻完才是题目。

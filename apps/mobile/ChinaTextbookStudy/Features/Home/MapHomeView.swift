@@ -121,11 +121,11 @@ struct MapHomeView: View {
                     Button("课文听读") { path.append(.reading(bookId: book.id)) }.accessibilityIdentifier("home-reading")
                 }
             }
-            Button("睡前绘本") { path.append(.bedtimeStories) }
-            Button("取消", role: .cancel) {}
+            Button("睡前绘本") { path.append(.bedtimeStories) }.accessibilityIdentifier("home-bedtime-stories")
+            Button("取消", role: .cancel) {}.accessibilityIdentifier("home-stories-cancel")
         }
         .alert("小提示", isPresented: Binding(get: { hint != nil }, set: { if !$0 { hint = nil } })) {
-            Button("知道了", role: .cancel) { hint = nil }
+            Button("知道了", role: .cancel) { hint = nil }.accessibilityIdentifier("home-hint-dismiss")
         } message: { Text(hint ?? "") }
         .onAppear {
             reloadOutline()

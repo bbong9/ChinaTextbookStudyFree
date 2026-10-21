@@ -134,10 +134,8 @@ final class LessonShellFlowUITests: XCTestCase {
         XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15))
         let map = app.scrollViews["home-map-scroll"]
         XCTAssertTrue(map.exists)
-        for _ in 0..<10 {
-            if sign.exists && sign.isHittable { break }
-            map.swipeLeft()
-        }
+        map.swipeLeft()
+        XCTAssertTrue(sign.waitForExistence(timeout: 5))
         revealAndTap(app, sign, scrollView: map)
         app.buttons["unit-jump-2"].tap()
         XCTAssertTrue(app.buttons["jump-start"].waitForExistence(timeout: 5))

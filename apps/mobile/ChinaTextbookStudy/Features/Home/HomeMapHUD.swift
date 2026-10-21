@@ -36,7 +36,7 @@ struct HomeMapHUD: View {
                     .accessibilityLabel("头像菜单")
                     .accessibilityIdentifier("hud-avatar")
                     #if DEBUG
-                    .onLongPressGesture(minimumDuration: 0.8, perform: onDebugGallery)
+                    .highPriorityGesture(LongPressGesture(minimumDuration: 0.8).onEnded { _ in onDebugGallery() })
                     .accessibilityAction(named: "打开黏土组件预览", onDebugGallery)
                     #endif
                     stat(icon: nil, text: progressStore.gems.formatted(), id: "hud-coins", label: "金币", action: onCoins)

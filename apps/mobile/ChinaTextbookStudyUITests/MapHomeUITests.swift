@@ -87,6 +87,25 @@ final class MapHomeUITests: XCTestCase {
         }
     }
 
+    @MainActor func testSceneLandmarksOpenAndReturn() {
+        let app = launchShellApp()
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 20))
+        for (id, destination) in [("landmark-pet-home", "pet-home-screen"),
+                                  ("landmark-reading-room", "placeholder-reading-room"),
+                                  ("landmark-math", "placeholder-math-train")] {
+            let landmark = app.buttons[id]
+            XCTAssertTrue(landmark.isHittable, id)
+            XCTAssertGreaterThanOrEqual(landmark.frame.width, 43.5, id)
+            XCTAssertGreaterThanOrEqual(landmark.frame.height, 43.5, id)
+            landmark.tap()
+            let arrived = app.descendants(matching: .any)[destination].firstMatch.waitForExistence(timeout: 5)
+            if !arrived { print(app.debugDescription); attachScreenshot("rd09-landmark-failure") }
+            XCTAssertTrue(arrived, id)
+            app.buttons["shell-back"].tap()
+            XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
+        }
+    }
+
     @MainActor func testLongBookScrollReturnsToCurrent() {
         let app = launchShellApp()
         XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 20))

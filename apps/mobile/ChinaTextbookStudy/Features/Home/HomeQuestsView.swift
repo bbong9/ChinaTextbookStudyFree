@@ -8,12 +8,14 @@ struct HomeQuestsView: View {
         ScrollView {
             VStack(spacing: 16) {
                 DailyQuestsCard(progressStore: progressStore, clayStyle: true)
+                    .accessibilityElement(children: .contain)
                     .accessibilityIdentifier("home-daily-quests")
                 HStack(spacing: 12) {
                     entry("错题复习", id: "quests-review", route: .review)
                     entry("装扮商店", id: "quests-shop", route: .shop)
                 }
                 WeeklyReportCard(progressStore: progressStore, clayStyle: true)
+                    .accessibilityElement(children: .contain)
                     .accessibilityIdentifier("home-weekly-report")
                 // 依赖尚未合并的 RD-01 占位目的地仍有入口，不生成新的玩法页面。
                 DisclosureGroup("更多玩法") {
@@ -26,6 +28,7 @@ struct HomeQuestsView: View {
                 }
                 .font(ClayFont.body).padding(16)
                 .background(ClayColor.creamBottom, in: RoundedRectangle(cornerRadius: ClayRadius.largeButton))
+                .accessibilityElement(children: .contain)
                 .accessibilityIdentifier("quests-more")
             }.padding(16).frame(maxWidth: 760)
                 .frame(maxWidth: .infinity)

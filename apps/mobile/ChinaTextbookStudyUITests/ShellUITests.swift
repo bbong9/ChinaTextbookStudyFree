@@ -30,14 +30,16 @@ final class ShellUITests: XCTestCase {
     @MainActor
     func testMapEntrancesOpenAndReturn() {
         let app = launchShellApp()
-        for id in ["pet-family", "pet-home", "pet-shop", "quests", "parent-center",
-                   "math-train", "english-balloons", "animals", "idiom-picker", "reading-room"] {
+        for id in ["pet-family", "pet-home", "pet-shop", "quests", "check-in", "parent-center",
+                   "math-train", "english-balloons", "animals", "idiom-picker", "reading-room",
+                   "hanzi-map", "hanzi-lesson", "idiom-player", "bedtime-stories"] {
             openShellRoute(app, id, isNew: true)
             switch id {
             case "pet-family", "pet-home", "pet-shop":
                 XCTAssertTrue(app.descendants(matching: .any)["\(id)-screen"].firstMatch.waitForExistence(timeout: 5))
             case "quests": XCTAssertTrue(app.scrollViews["quests-screen"].waitForExistence(timeout: 5))
             case "parent-center": assertShellTitle(app, "设置")
+            case "check-in": assertShellTitle(app, "签到")
             default: XCTAssertTrue(app.staticTexts["placeholder-\(id)"].waitForExistence(timeout: 5))
             }
             XCTAssertTrue(app.buttons["shell-back"].isHittable)

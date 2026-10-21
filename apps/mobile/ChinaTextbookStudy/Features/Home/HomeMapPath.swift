@@ -13,7 +13,8 @@ struct HomeMapPath: View {
     @Environment(\.accessibilityReduceMotion) private var systemReduceMotion
     @Environment(\.clayMotionPaused) private var locallyPaused
     @Environment(\.petEnvironment) private var pet
-    @State private var offset: CGFloat = 0
+    // 偏移只让视差、回当前按钮和诊断探针刷新，不订阅到整个地图节点树。
+    @State private var scrolling = HomeMapScrollState()
     @State private var selected: HomeMapLayout.Entry?
     @State private var selectedUnit: HomeMapLayout.Unit?
     @State private var lockedHint: String?
@@ -23,7 +24,8 @@ struct HomeMapPath: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            HomeMapHorizon(offset: offset, reduceMotion: reduceMotion, size: stage.size)
+            HomeMapScrollingHorizon(scrolling: scrolling, reduceMotion: reduceMotion, size: stage.size)
+                .allowsHitTesting(false)
             ScrollViewReader { proxy in
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 0) {
@@ -56,43 +58,33 @@ struct HomeMapPath: View {
                 }
                 .accessibilityIdentifier("home-map-scroll")
                 .accessibilityValue(reduceMotion ? "静态场景" : "分层视差")
-                .modifier(HomeMapScrollTracking(offset: $offset))
-                .onChange(of: offset) { _, _ in
+                .modifier(HomeMapScrollTracking { value in
+                    scrolling.offset = value
                     if selected != nil { selected = nil }
                     if selectedUnit != nil { selectedUnit = nil }
-                }
+                })
                 .onAppear { locate(proxy, animated: false) }
                 .onChange(of: layout.current?.id) { _, _ in locate(proxy, animated: true) }
                 .onChange(of: stage.size.width) { _, _ in locate(proxy, animated: false) }
                 .overlay(alignment: .trailing) {
-                    if !HomeMapLayout.currentVisible(x: layout.currentX, offset: offset, viewport: stage.size.width) {
-                        Button { locate(proxy, animated: true) } label: {
-                            Label("回到当前", systemImage: "location.fill")
-                                .font(ClayFont.label).foregroundStyle(ClayColor.ink)
-                                .padding(.horizontal, 12)
-                                .frame(minHeight: stage.minimumTapDimension)
-                                .background { ClayGradient.buttonCream.view.clipShape(Capsule()) }
-                        }
-                        .buttonStyle(ClayPressStyle())
-                        .accessibilityLabel("回到当前关卡")
-                        .accessibilityIdentifier("back-to-current")
-                        .padding(.trailing, stage.safeArea.trailing + 12)
+                    HomeMapCurrentLocator(scrolling: scrolling, currentX: layout.currentX, stage: stage) {
+                        locate(proxy, animated: true)
                     }
                 }
             }
             #if DEBUG
             if HomeMapTestSeed.flag("-uitest-map-fps") {
-                HomeMapFPSProbe(offset: offset).frame(width: 310, height: 16)
+                HomeMapScrollingFPS(scrolling: scrolling).frame(width: 310, height: 16)
                     .position(x: stage.size.width / 2, y: 90)
             }
             #endif
             if let selected {
                 startPopup(selected)
-                    .position(x: popupX(selected), y: stage.size.height - 260)
+                    .position(x: popupX(selected), y: stage.size.height - 225)
             }
             if let unit = selectedUnit {
                 unitPopup(unit)
-                    .position(x: min(stage.size.width - 140, max(140, unit.origin + 170 + offset)),
+                    .position(x: min(stage.size.width - 140, max(140, unit.origin + 170 + scrolling.offset)),
                               y: stage.size.height - 225)
             }
             if let hint = lockedHint {
@@ -119,7 +111,7 @@ struct HomeMapPath: View {
     private func popupX(_ entry: HomeMapLayout.Entry) -> CGFloat {
         let origin = layout.units.first { $0.number == entry.node.unitNumber }?.origin ?? 0
         return min(stage.size.width - 150 - stage.safeArea.trailing,
-                   max(150 + stage.safeArea.leading, origin + entry.point.x + offset))
+                   max(150 + stage.safeArea.leading, origin + entry.point.x + scrolling.offset))
     }
 
     private func tapNode(_ entry: HomeMapLayout.Entry) {
@@ -160,6 +152,7 @@ struct HomeMapPath: View {
         .foregroundStyle(ClayColor.ink)
         .background { ClayGradient.buttonCream.view.clipShape(RoundedRectangle(cornerRadius: ClayRadius.bubble)) }
         .clayShadow(.bubble)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("map-start-popup")
     }
 
@@ -177,13 +170,52 @@ private struct HomeMapOffsetKey: PreferenceKey {
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
 }
 
+private final class HomeMapScrollState: ObservableObject {
+    @Published var offset: CGFloat = 0
+}
+
+private struct HomeMapScrollingHorizon: View {
+    @ObservedObject var scrolling: HomeMapScrollState
+    let reduceMotion: Bool
+    let size: CGSize
+    var body: some View { HomeMapHorizon(offset: scrolling.offset, reduceMotion: reduceMotion, size: size) }
+}
+
+private struct HomeMapCurrentLocator: View {
+    @ObservedObject var scrolling: HomeMapScrollState
+    let currentX: CGFloat?
+    let stage: StageLayout
+    let onLocate: () -> Void
+
+    var body: some View {
+        if !HomeMapLayout.currentVisible(x: currentX, offset: scrolling.offset, viewport: stage.size.width) {
+            Button(action: onLocate) {
+                Label("回到当前", systemImage: "location.fill")
+                    .font(ClayFont.label).foregroundStyle(ClayColor.ink)
+                    .padding(.horizontal, 12).frame(minHeight: stage.minimumTapDimension)
+                    .background { ClayGradient.buttonCream.view.clipShape(Capsule()) }
+            }
+            .buttonStyle(ClayPressStyle())
+            .accessibilityLabel("回到当前关卡").accessibilityIdentifier("back-to-current")
+            .padding(.trailing, stage.safeArea.trailing + 12)
+        }
+    }
+}
+
+#if DEBUG
+private struct HomeMapScrollingFPS: View {
+    @ObservedObject var scrolling: HomeMapScrollState
+    var body: some View { HomeMapFPSProbe(offset: scrolling.offset) }
+}
+#endif
+
 private struct HomeMapScrollTracking: ViewModifier {
-    @Binding var offset: CGFloat
+    let onOffset: (CGFloat) -> Void
     @ViewBuilder func body(content: Content) -> some View {
         if #available(iOS 18.0, *) {
-            content.onScrollGeometryChange(for: CGFloat.self) { -$0.contentOffset.x } action: { _, value in offset = value }
+            content.onScrollGeometryChange(for: CGFloat.self) { -$0.contentOffset.x } action: { _, value in onOffset(value) }
         } else {
-            content.onPreferenceChange(HomeMapOffsetKey.self) { offset = $0 }
+            content.onPreferenceChange(HomeMapOffsetKey.self, perform: onOffset)
         }
     }
 }
@@ -215,6 +247,9 @@ private struct HomeMapNodeFace: View, Equatable {
                 }
             }
         }
+        .frame(width: 76, height: 80)
+        .padding(18) // 合成范围包含字块光晕和礼盒飘带，命中区仍使用节点间距。
+        .drawingGroup()
         .frame(width: max(62, minimumTapDimension), height: max(80, minimumTapDimension))
         .contentShape(Rectangle()).accessibilityHidden(true)
     }
@@ -248,11 +283,14 @@ private struct HomeMapUnitScene: View, Equatable {
         ZStack(alignment: .topLeading) {
             HomeMapMiddle(unit: unit.number, width: unit.width).equatable()
                 .modifier(HomeMapParallax(rate: 0.6, width: unit.width, paused: reduceMotion))
+                .allowsHitTesting(false)
             if unit.origin == 0 {
                 landmarks.modifier(HomeMapParallax(rate: 0.6, width: unit.width, paused: reduceMotion))
             }
-            HomeMapForeground(width: unit.width).equatable().modifier(HomeMapParallax(rate: 1.1, width: unit.width, paused: reduceMotion))
-            HomeMapRoad(points: unit.road).equatable()
+            HomeMapForeground(width: unit.width).equatable()
+                .modifier(HomeMapParallax(rate: 1.1, width: unit.width, paused: reduceMotion))
+                .allowsHitTesting(false)
+            HomeMapRoad(points: unit.road).equatable().allowsHitTesting(false)
             ForEach(unit.entries) { entry in nodeButton(entry) }
             unitSign(unit)
             if let current, current.node.status == .current,
@@ -265,6 +303,7 @@ private struct HomeMapUnitScene: View, Equatable {
             }
         }
         .frame(width: unit.width, height: 390)
+        .contentShape(Rectangle())
         .clipped()
         .offset(y: stage.size.height - 390)
     }
@@ -286,8 +325,10 @@ private struct HomeMapUnitScene: View, Equatable {
 
     private func landmark(_ title: String, id: String, at point: CGPoint,
                           width: CGFloat, height: CGFloat, action: @escaping () -> Void) -> some View {
-        Button(action: action) { Color.clear.frame(width: width, height: max(stage.minimumTapDimension, height)) }
-            .buttonStyle(.plain).contentShape(Rectangle())
+        Button(action: action) {
+            Color.clear.frame(width: width, height: max(stage.minimumTapDimension, height)).contentShape(Rectangle())
+        }
+            .buttonStyle(.plain)
             .accessibilityLabel(title).accessibilityIdentifier(id).position(point)
     }
 
