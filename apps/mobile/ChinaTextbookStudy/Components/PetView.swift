@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// 120×130 的黏土矢量宠物，size 指宽。省略 kind/accessory 时读取当前展示环境。
+/// 120×130 的黏土矢量宠物，size 指宽。省略 kind/mood/accessory 时读取当前展示环境。
 struct PetView: View {
     var kind: PetKind? = nil
-    var mood: MascotMood = .happy
+    var mood: MascotMood? = nil
     var size: CGFloat = 120
     var reactTo: MascotReaction? = nil
     var reactKey: Int = 0
@@ -24,6 +24,7 @@ struct PetView: View {
 
     private var activeKind: PetKind { kind ?? pet.kind }
     private var activeAccessory: PetAccessory { accessory ?? pet.accessory }
+    private var activeMood: MascotMood { mood ?? pet.mood }
     private var moves: Bool { !reduceMotion && !paused }
     private var request: ReactionRequest {
         .init(reaction: reactTo, key: reactKey, tap: tapKey, moves: moves)
@@ -41,7 +42,7 @@ struct PetView: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(activeKind.name)
-        .accessibilityValue("\(mood.petLabel)，\(activeAccessory.name)，\(moves ? "动态效果开启" : "动态效果已减少")")
+        .accessibilityValue("\(activeMood.petLabel)，\(activeAccessory.name)，\(moves ? "动态效果开启" : "动态效果已减少")")
         .accessibilityAddTraits(allowsTap ? .isButton : [])
         .accessibilityIdentifier("pet-\(activeKind.artKey)")
         .task(id: request) {
@@ -64,7 +65,7 @@ struct PetView: View {
                 let fit = 130 / (130 + extra)
                 ctx.translateBy(x: 60 * (1 - fit), y: extra * fit)
                 ctx.scaleBy(x: fit, y: fit)
-                PetArtwork(context: ctx).draw(activeKind, mood: mood, bloom: bloom,
+                PetArtwork(context: ctx).draw(activeKind, mood: activeMood, bloom: bloom,
                     crack: crack, blink: blink, wave: moves ? sin(phase * 7) * 12 : 0,
                     accessory: activeAccessory)
             }

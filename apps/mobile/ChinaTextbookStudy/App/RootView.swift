@@ -104,6 +104,7 @@ struct RootView: View {
         .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
             progressStore.refreshForNow()
         }
+        .environment(\.petEnvironment, PetEnvironment(progressStore: progressStore))
     }
 
     // MARK: - Global navigation bar look (ios-feel-6)

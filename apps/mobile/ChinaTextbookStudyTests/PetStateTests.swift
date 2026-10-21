@@ -273,6 +273,38 @@ final class PetStateTests: XCTestCase {
         XCTAssertEqual(store.petAccessory["pet_fox"], skin.id)
     }
 
+    func testPetEnvironmentFollowsActivePetAccessoryAndCareChanges() throws {
+        var p = store.progress
+        p.ownedPets = ["pet_mituan", "pet_fox"]
+        p.ownedCosmetics = ["skin_graduate", "skin_glasses"]
+        p.petAccessory = ["pet_mituan": "skin_graduate", "pet_fox": "skin_glasses"]
+        p.petCare = [
+            "pet_mituan": PetCare.initial(now: now),
+            "pet_fox": PetCareState(fullness: 50, clean: 50, happy: 35,
+                                     updatedAt: now.timeIntervalSince1970 * 1000),
+        ]
+        store = try boot(p)
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now),
+                       PetEnvironment(kind: .mituan, accessory: .graduate, mood: .happy))
+        XCTAssertTrue(store.setActivePet("pet_fox"))
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now),
+                       PetEnvironment(kind: .fox, accessory: .glasses, mood: .sad))
+        XCTAssertTrue(store.play(now: now))
+        XCTAssertTrue(store.setAccessory(nil, for: "pet_fox"))
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now),
+                       PetEnvironment(kind: .fox, accessory: .noAccessory, mood: .happy))
+        XCTAssertTrue(store.setActivePet("pet_mituan"))
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now).accessory, .graduate)
+    }
+
+    func testPetEnvironmentUsesElapsedCareWithoutMutatingProgress() throws {
+        try seeded(happy: 45)
+        let before = store.progress
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now).mood, .happy)
+        XCTAssertEqual(PetEnvironment(progressStore: store, now: now.addingTimeInterval(12 * 3600)).mood, .sad)
+        XCTAssertEqual(store.progress, before, "展示环境只能派生，不能重复结算或保存照顾状态")
+    }
+
     func testSixthLessonTreatIsCappedAndNextDayResetsLedger() {
         for index in 0..<6 {
             let outcome = store.completeLesson(lessonId: "g1up-u1-kp\(index)", correctCount: 4, questionCount: 5, now: now)

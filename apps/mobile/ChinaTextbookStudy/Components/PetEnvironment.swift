@@ -62,10 +62,22 @@ enum PetAccessory: String, CaseIterable, Identifiable {
     }
 }
 
-/// 临时展示环境，不读写存档。RD-06 可从父视图注入当前出战宠物与迁移后的配饰。
+/// 根视图从存档派生展示环境；页面可显式覆盖情境表情或预览配饰。
 struct PetEnvironment: Equatable {
     var kind: PetKind = .mituan
     var accessory: PetAccessory = .noAccessory
+    var mood: MascotMood = .happy
+}
+
+extension PetEnvironment {
+    @MainActor init(progressStore: ProgressStore, now: Date = Date()) {
+        let id = progressStore.activePet
+        self.init(
+            kind: PetKind(rawValue: id) ?? .mituan,
+            accessory: progressStore.petAccessory[id].flatMap(PetAccessory.init(rawValue:)) ?? .noAccessory,
+            mood: PetCare.mood(for: progressStore.careState(for: id, now: now))
+        )
+    }
 }
 
 private struct PetEnvironmentKey: EnvironmentKey { static let defaultValue = PetEnvironment() }
