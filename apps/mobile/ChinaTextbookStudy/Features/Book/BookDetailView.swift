@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// One book's learning path — snake-shaped PathMap with lesson nodes,
+/// One book's learning path — 横向地图 with lesson nodes,
 /// claimable chest slots (every 5th lesson per unit) and side entries for
 /// stories / reading.
 struct BookDetailView: View {
@@ -74,9 +74,9 @@ struct BookDetailView: View {
                     .padding(.bottom, 4)
                 }
 
-                // Snake-shaped PathMap
-                PathMapView(
-                    lessons: buildPathNodes(),
+                Stage { stage in
+                HomeMapPath(
+                    layout: HomeMapLayout(nodes: buildPathNodes()), stage: stage,
                     onTap: { node in
                         if node.kind == .chest {
                             activeChest = ActiveChest(id: node.id)
@@ -96,8 +96,12 @@ struct BookDetailView: View {
                         // 更别让点击「什么都没发生」。
                         guard hasHeartToSpend() else { return }
                         path.append(.jumpTest(bookId: bookId, unitNumber: unitNumber))
-                    }
+                    },
+                    onPetHome: { path.append(.petHome) },
+                    onReadingRoom: { path.append(.readingRoom) },
+                    onMath: { path.append(.mathTrain) }
                 )
+                }
             }
         }
         // Chest open modal — full-screen cover so the back button / tab bar
@@ -108,7 +112,7 @@ struct BookDetailView: View {
                     progressStore.addGems(gems)
                     progressStore.claimChest(chest.id)
                 },
-                onDismiss: { activeChest = nil }
+                onDismiss: { activeChest = nil }, showsCoins: true
             )
             .presentationBackground(.clear)
         }
@@ -152,7 +156,7 @@ struct BookDetailView: View {
         .buttonStyle(.plain)
     }
 
-    /// Lesson + chest nodes for the path (shared builder with the Home tab).
+    /// Lesson + chest nodes for the path (shared builder with the 首页).
     private func buildPathNodes() -> [PathMapNode] {
         PathNodeBuilder.nodes(
             bookId: bookId,

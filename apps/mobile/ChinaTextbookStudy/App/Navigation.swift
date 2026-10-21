@@ -68,14 +68,6 @@ enum AppRoute: Hashable {
         }
     }
 
-    /// 临时入口的参数只用于验证路由，不加载或生成新内容。
-    static func temporaryRoutes(bookId: String) -> [AppRoute] {
-        [.petFamily, .petHome, .petShop, .checkIn, .quests, .parentCenter,
-         .hanziMap(bookId: bookId), .hanziLesson(bookId: bookId, char: "日"),
-         .mathTrain, .englishBalloons, .animals, .idiomPicker,
-         .idiomPlayer(id: "shou-zhu-dai-tu"), .bedtimeStories, .readingRoom]
-    }
-
     /// 沉浸页面已有自己的退出操作，其余页面由外壳提供临时页头。
     var shellTitle: String? {
         // RD-07 三个宠物页面已有自己的舞台 HUD。

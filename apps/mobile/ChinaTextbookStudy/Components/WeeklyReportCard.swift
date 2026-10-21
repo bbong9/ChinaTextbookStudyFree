@@ -7,6 +7,7 @@ import SwiftUI
 /// 所以高亮一律按日期键比对 `Week.dateKey()`，**不能**用「最后一格」。
 struct WeeklyReportCard: View {
     @ObservedObject var progressStore: ProgressStore
+    var clayStyle = false
 
     private var days: [(date: String, xp: Int)] { progressStore.weekXPEntries() }
     /// 今天的日期键；柱子/星期标高亮用它比对。
@@ -63,8 +64,8 @@ struct WeeklyReportCard: View {
             }
         }
         .padding(16)
-        .background(DuoColors.surface, in: .rect(cornerRadius: Radius.card))
-        .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(DuoColors.border, lineWidth: 2) }
+        .background(clayStyle ? ClayColor.creamTop : DuoColors.surface, in: .rect(cornerRadius: clayStyle ? ClayRadius.card : Radius.card))
+        .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(clayStyle ? ClayColor.creamEdge : DuoColors.border, lineWidth: 2) }
     }
 
     @ViewBuilder

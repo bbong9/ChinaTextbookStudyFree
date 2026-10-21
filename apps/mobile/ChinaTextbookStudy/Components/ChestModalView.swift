@@ -13,6 +13,7 @@ import UIKit
 struct ChestModalView: View {
     let onClaim: (Int) -> Void  // Called with gem amount
     var onDismiss: () -> Void
+    var showsCoins = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -49,7 +50,8 @@ struct ChestModalView: View {
                     if burstFired {
                         GemBurstView(
                             count: tier == .epic ? 18 : tier == .rare ? 13 : 9,
-                            color: tier == .epic ? DuoColors.beetle : DuoColors.sea
+                            color: tier == .epic ? DuoColors.beetle : DuoColors.sea,
+                            showsCoins: showsCoins
                         )
                     }
                 }
@@ -90,10 +92,10 @@ struct ChestModalView: View {
                             }
 
                             HStack(spacing: 8) {
-                                Image(systemName: "diamond.fill")
+                                Image(systemName: showsCoins ? "star.circle.fill" : "diamond.fill")
                                     .font(.system(size: 30))
                                     .foregroundStyle(DuoColors.beetle)
-                                Text("+\(gemAmount) 宝石")
+                                Text("+\(gemAmount) \(showsCoins ? "金币" : "宝石")")
                                     .font(.title.weight(.heavy))
                                     .foregroundStyle(DuoColors.beetle)
                             }
@@ -304,6 +306,7 @@ private struct ChestFigure: View {
 private struct GemBurstView: View {
     let count: Int
     var color: Color = DuoColors.sea
+    var showsCoins = false
 
     var body: some View {
         ZStack {
@@ -313,7 +316,8 @@ private struct GemBurstView: View {
                     distance: CGFloat.random(in: 46...86),
                     size: CGFloat.random(in: 8...15),
                     delay: Double.random(in: 0...0.08),
-                    color: Bool.random() ? color : DuoColors.bee
+                    color: Bool.random() ? color : DuoColors.bee,
+                    showsCoins: showsCoins
                 )
             }
         }
@@ -327,11 +331,12 @@ private struct GemParticle: View {
     let size: CGFloat
     let delay: Double
     let color: Color
+    var showsCoins = false
 
     @State private var flown = false
 
     var body: some View {
-        Image(systemName: "diamond.fill")
+        Image(systemName: showsCoins ? "star.circle.fill" : "diamond.fill")
             .font(.system(size: size))
             .foregroundStyle(color)
             .opacity(flown ? 0 : 1)

@@ -3,6 +3,7 @@ import SwiftUI
 /// Today's three quests with live progress and a claim button per quest.
 struct DailyQuestsCard: View {
     @ObservedObject var progressStore: ProgressStore
+    var clayStyle = false
 
     private var quests: [Quest] { progressStore.todayQuests }
     private var claimableCount: Int {
@@ -31,8 +32,8 @@ struct DailyQuestsCard: View {
             }
         }
         .padding(16)
-        .background(DuoColors.surface, in: .rect(cornerRadius: Radius.card))
-        .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(DuoColors.border, lineWidth: 2) }
+        .background(clayStyle ? ClayColor.creamTop : DuoColors.surface, in: .rect(cornerRadius: clayStyle ? ClayRadius.card : Radius.card))
+        .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(clayStyle ? ClayColor.creamEdge : DuoColors.border, lineWidth: 2) }
     }
 
     @ViewBuilder
@@ -75,7 +76,7 @@ struct DailyQuestsCard: View {
     private func claimButton(_ quest: Quest, done: Bool, claimed: Bool) -> some View {
         if claimed {
             HStack(spacing: 3) {
-                Image(systemName: "diamond.fill").font(.system(size: 10, weight: .heavy))
+                Image(systemName: clayStyle ? "star.circle.fill" : "diamond.fill").font(.system(size: 10, weight: .heavy))
                 Text("\(quest.reward)").duoNumeral(.micro)
             }
             .lineLimit(1)
@@ -90,18 +91,20 @@ struct DailyQuestsCard: View {
                 }
             } label: {
                 HStack(spacing: 3) {
-                    Image(systemName: "diamond.fill").font(.system(size: 10, weight: .heavy))
+                    Image(systemName: clayStyle ? "star.circle.fill" : "diamond.fill").font(.system(size: 10, weight: .heavy))
                     Text("\(quest.reward)").duoNumeral(.micro)
                 }
                 .lineLimit(1)
                 .fixedSize()
+                .frame(minHeight: clayStyle ? 44 : nil)
             }
             .buttonStyle(ChunkySmallButtonStyle())
             .frame(width: 74)
             .accessibilityIdentifier("quest-claim-\(quest.id)")
+            .accessibilityLabel("领取\(quest.reward)金币")
         } else {
             HStack(spacing: 3) {
-                Image(systemName: "diamond.fill").font(.system(size: 10, weight: .heavy))
+                Image(systemName: clayStyle ? "star.circle.fill" : "diamond.fill").font(.system(size: 10, weight: .heavy))
                 Text("\(quest.reward)").duoNumeral(.micro)
             }
             .lineLimit(1)

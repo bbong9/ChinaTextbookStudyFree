@@ -164,7 +164,7 @@ final class PetScreensUITests: XCTestCase {
         app.buttons["pet-home-next"].tap()
         XCTAssertEqual(element(app, "pet-home-pet").label, "阿橘")
         app.buttons["shell-back"].tap()
-        XCTAssertTrue(app.scrollViews["shell-new-routes"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 5))
         // 正常路径首页在 RD-09 才新增宠物展示位，本卡保留真实现状截图。
         capture("switched-home-pending-rd09")
         revealAndTap(app, app.buttons["lesson-row-g1up-u1-kp1"].firstMatch)

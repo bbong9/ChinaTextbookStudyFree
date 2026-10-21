@@ -38,7 +38,7 @@ final class ScreenshotTests: XCTestCase {
         app.buttons["关闭"].firstMatch.tap()
         XCTAssertTrue(app.buttons["lesson-quit"].firstMatch.waitForExistence(timeout: 3))
         app.buttons["lesson-quit"].firstMatch.tap()
-        XCTAssertTrue(app.scrollViews["shell-legacy-routes"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["hud-avatar"].waitForExistence(timeout: 8))
 
         for (id, title) in [("review", "错题本"), ("shop", "商店"), ("profile", "我的")] {
             openShellRoute(app, id)

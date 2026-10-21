@@ -97,7 +97,7 @@ final class LessonShellFlowUITests: XCTestCase {
 
     @MainActor func testTextKeyboardKeepsFieldAndCheckVisible() {
         let app = launchShellApp()
-        let picker = app.buttons["home-book-picker"]
+        let picker = app.buttons["hud-book"]
         XCTAssertTrue(picker.waitForExistence(timeout: 15))
         picker.tap()
         revealAndTap(app, app.buttons["book-picker-grade-3"])
@@ -130,15 +130,14 @@ final class LessonShellFlowUITests: XCTestCase {
 
     @MainActor func testJumpTestCompletesAllFifteenQuestions() {
         let app = launchShellApp()
-        let jump = app.buttons["jump-here-u2"]
+        let sign = app.buttons["unit-sign-2"]
         XCTAssertTrue(app.buttons["lesson-row-g1up-u1-kp1"].waitForExistence(timeout: 15))
-        let map = app.scrollViews.firstMatch
+        let map = app.scrollViews["home-map-scroll"]
         XCTAssertTrue(map.exists)
-        for _ in 0..<30 {
-            if jump.exists && jump.isHittable { break }
-            map.swipeUp()
-        }
-        revealAndTap(app, jump, scrollView: map)
+        map.swipeLeft()
+        XCTAssertTrue(sign.waitForExistence(timeout: 5))
+        revealAndTap(app, sign, scrollView: map)
+        app.buttons["unit-jump-2"].tap()
         XCTAssertTrue(app.buttons["jump-start"].waitForExistence(timeout: 5))
         app.buttons["jump-start"].tap()
         for index in 0..<15 {
