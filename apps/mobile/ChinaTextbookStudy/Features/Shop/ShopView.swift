@@ -310,55 +310,57 @@ private struct CosmeticPreviewSheet: View {
     private var affordable: Bool { gems >= item.cost }
 
     var body: some View {
-        VStack(spacing: 16) {
-            Capsule()
-                .fill(Color.clear)
-                .frame(height: 4)
-                .padding(.top, 8)
+        ScrollView {
+            VStack(spacing: 16) {
+                Capsule()
+                    .fill(Color.clear)
+                    .frame(height: 4)
+                    .padding(.top, 8)
 
-            ZStack {
-                RoundedRectangle(cornerRadius: Radius.large)
-                    .fill(item.rarity.color.opacity(0.14))
-                preview()
-                    .padding(16)
-            }
-            .frame(maxWidth: 280, minHeight: 180)
-
-            VStack(spacing: 6) {
-                Text(item.name)
-                    .duoFont(.heading)
-                    .foregroundStyle(DuoColors.ink)
-                HStack(spacing: 5) {
-                    Image(systemName: "diamond.fill").font(.system(size: 15, weight: .heavy))
-                    Text("\(item.cost)").duoNumeral(.subhead)
+                ZStack {
+                    RoundedRectangle(cornerRadius: Radius.large)
+                        .fill(item.rarity.color.opacity(0.14))
+                    preview()
+                        .padding(16)
                 }
-                .foregroundStyle(affordable ? DuoColors.secondary : DuoColors.inkMuted)
-                if !affordable {
-                    Text("宝石不够，继续学习赚取更多吧")
-                        .duoFont(.caption)
-                        .foregroundStyle(DuoColors.inkMuted)
-                }
-            }
+                .frame(maxWidth: 280, minHeight: 180)
 
-            VStack(spacing: 10) {
-                Button {
-                    onConfirm()
-                } label: {
-                    HStack(spacing: 6) {
-                        Image(systemName: "diamond.fill").font(.system(size: 14, weight: .heavy))
-                        Text("确认购买  \(item.cost)")
+                VStack(spacing: 6) {
+                    Text(item.name)
+                        .duoFont(.heading)
+                        .foregroundStyle(DuoColors.ink)
+                    HStack(spacing: 5) {
+                        Image(systemName: "diamond.fill").font(.system(size: 15, weight: .heavy))
+                        Text("\(item.cost)").duoNumeral(.subhead)
+                    }
+                    .foregroundStyle(affordable ? DuoColors.secondary : DuoColors.inkMuted)
+                    if !affordable {
+                        Text("宝石不够，继续学习赚取更多吧")
+                            .duoFont(.caption)
+                            .foregroundStyle(DuoColors.inkMuted)
                     }
                 }
-                .buttonStyle(ChunkyButtonStyle(affordable ? .primary : .disabled))
-                .disabled(!affordable)
-                .accessibilityIdentifier("cosmetic-confirm-buy")
 
-                Button("再想想") { dismiss() }
-                    .buttonStyle(ChunkyButtonStyle(.ghost))
-                    .accessibilityIdentifier("cosmetic-cancel-buy")
+                VStack(spacing: 10) {
+                    Button {
+                        onConfirm()
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "diamond.fill").font(.system(size: 14, weight: .heavy))
+                            Text("确认购买  \(item.cost)")
+                        }
+                    }
+                    .buttonStyle(ChunkyButtonStyle(affordable ? .primary : .disabled))
+                    .disabled(!affordable)
+                    .accessibilityIdentifier("cosmetic-confirm-buy")
+
+                    Button("再想想") { dismiss() }
+                        .buttonStyle(ChunkyButtonStyle(.ghost))
+                        .accessibilityIdentifier("cosmetic-cancel-buy")
+                }
+                .padding(.horizontal, 24)
+                .padding(.bottom, 20)
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(DuoColors.bg.ignoresSafeArea())

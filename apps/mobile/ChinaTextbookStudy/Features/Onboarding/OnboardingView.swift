@@ -33,10 +33,10 @@ struct OnboardingView: View {
 
                 Group {
                     switch step {
-                    case 0: greetStep
+                    case 0: ScrollView { greetStep }
                     case 1: pickStep
-                    case 2: goalStep
-                    default: notifyStep
+                    case 2: ScrollView { goalStep }
+                    default: ScrollView { notifyStep }
                     }
                 }
                 .transition(.asymmetric(
@@ -77,6 +77,7 @@ struct OnboardingView: View {
             Spacer()
             Button("开始吧") { withAnimation(Motion.reveal) { step = 1 } }
                 .buttonStyle(ChunkyButtonStyle(.primary))
+                .accessibilityIdentifier("onboarding-start")
                 .padding(.horizontal, 32)
                 .padding(.bottom, 40)
         }
@@ -122,6 +123,7 @@ struct OnboardingView: View {
             }
             .buttonStyle(ChunkyButtonStyle(selectedBookId == nil ? .disabled : .primary))
             .disabled(selectedBookId == nil)
+            .accessibilityIdentifier("onboarding-next")
             .padding(.horizontal, 32)
             .padding(.bottom, 32)
         }
@@ -143,6 +145,7 @@ struct OnboardingView: View {
                 .overlay { Capsule().strokeBorder(selected ? .clear : DuoColors.border, lineWidth: 2) }
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("onboarding-grade-\(g)")
     }
 
     private func bookRow(_ book: Book) -> some View {
@@ -177,6 +180,7 @@ struct OnboardingView: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("onboarding-book-\(book.id)")
     }
 
     // MARK: - Step 2 — daily goal
@@ -231,6 +235,7 @@ struct OnboardingView: View {
             .overlay { RoundedRectangle(cornerRadius: Radius.card).strokeBorder(DuoColors.border, lineWidth: 2) }
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("onboarding-goal-\(goal.xp)")
     }
 
     // MARK: - Step 3 — notification soft-ask primer (ios-retention-2)

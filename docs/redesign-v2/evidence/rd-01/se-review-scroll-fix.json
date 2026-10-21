@@ -1,0 +1,16 @@
+{
+  "设备": "iPhone SE (3rd gen), iOS 18.6",
+  "用例": "LayoutUITests.testReviewEntryOpensRunnerWithMistake",
+  "修复前": {
+    "结果": "Failed",
+    "总数": 7,
+    "通过": 6,
+    "失败": 1,
+    "关键输出": "Failed to get matching snapshot: No matches found for Elements matching predicate '\"返回错题本\" IN identifiers' from input {(\n    Button, identifier: 'shell-back', label: '返回上一页'\n)}"
+  },
+  "原因": "横屏结算页内容高度超过可用高度，原 VStack 不能滚动，返回错题本按钮被裁切。",
+  "处理": "仅给结算内容补 ScrollView；以可用高度作为最小高度，内容较少时保留居中；PetView、奖励和返回逻辑保持不变。",
+  "回归要求": "实际答错生成错题，完成复习，滚动找到返回按钮并回到错题本。",
+  "修复后结果摘要": "se-summary.json",
+  "全量回归摘要": "iphone16-summary.json"
+}

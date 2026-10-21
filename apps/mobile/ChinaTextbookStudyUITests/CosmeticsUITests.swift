@@ -9,10 +9,7 @@ final class CosmeticsUITests: XCTestCase {
 
     @MainActor
     private func launchApp() -> XCUIApplication {
-        let app = XCUIApplication()
-        app.launchArguments.append("-uitest")   // hermetic state, 500 gems
-        app.launch()
-        return app
+        return launchShellApp()
     }
 
     @MainActor
@@ -30,17 +27,15 @@ final class CosmeticsUITests: XCTestCase {
         let confirm = app.buttons["cosmetic-confirm-buy"]
         XCTAssertTrue(confirm.waitForExistence(timeout: 3),
                       "tapping an unowned cosmetic should open the preview sheet")
-        confirm.tap()
+        revealAndTap(app, confirm)
     }
 
     @MainActor
     func testBuyingCosmeticEquipsItAndPersists() throws {
-        try skipIfIPad()
         let app = launchApp()
 
-        XCTAssertTrue(app.buttons["tab-shop"].waitForExistence(timeout: 15))
-        app.buttons["tab-shop"].tap()
-        XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 5))
+        openShellRoute(app, "shop")
+        assertShellTitle(app, "商店")
         attach(name: "01-shop-before")
 
         // The stock skin starts equipped; the graduation cap costs 80 gems.
@@ -51,7 +46,7 @@ final class CosmeticsUITests: XCTestCase {
         let cap = app.buttons["cosmetic-skin_graduate"]
         XCTAssertTrue(cap.waitForExistence(timeout: 3))
         XCTAssertFalse(cap.label.contains("使用中"), "graduation cap should not start equipped")
-        cap.tap()
+        revealAndTap(app, cap)
         confirmPurchase(app)
 
         // Buying equips it immediately.
@@ -63,76 +58,57 @@ final class CosmeticsUITests: XCTestCase {
         attach(name: "02-shop-skin-equipped")
 
         // Buy a theme too (樱花粉, 200 gems) — repaints the brand color app-wide.
-        // Self-heal: under XCUITest the app has been observed landing on the
-        // profile tab moments after a purchase (not reproducible manually);
-        // make sure we are on the shop before looking for the theme tile.
-        if !app.navigationBars["商店"].exists {
-            app.buttons["tab-shop"].tap()
-            XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 5))
-        }
         let theme = app.buttons["cosmetic-theme_sakura"]
         var scrolls = 0
-        while !theme.exists && scrolls < 6 {
+        while !theme.isHittable && scrolls < 10 {
             app.swipeUp()
             scrolls += 1
         }
         XCTAssertTrue(theme.waitForExistence(timeout: 3))
-        theme.tap()
+        revealAndTap(app, theme)
         confirmPurchase(app)
         XCTAssertTrue(theme.waitForExistence(timeout: 3))
         XCTAssertTrue(theme.label.contains("使用中"), "buying a theme should equip it")
         attach(name: "03-shop-theme-equipped")
 
         // The equipped skin must show on the profile avatar.
-        app.buttons["tab-profile"].tap()
-        XCTAssertTrue(app.navigationBars["我的"].waitForExistence(timeout: 5))
+        returnToShellHome(app)
+        openShellRoute(app, "profile")
+        assertShellTitle(app, "我的")
         attach(name: "04-profile-themed")
 
         // …and still be equipped when we come back to the shop.
-        app.buttons["tab-shop"].tap()
-        XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 5))
+        returnToShellHome(app)
+        openShellRoute(app, "shop")
+        assertShellTitle(app, "商店")
         XCTAssertTrue(app.buttons["cosmetic-skin_graduate"].label.contains("使用中"),
-                      "equipped skin did not persist across tab switches")
+                      "equipped skin did not persist across page navigation")
     }
 
     /// A cosmetic you cannot afford must not be granted.
     @MainActor
     func testUnaffordableCosmeticIsNotGranted() throws {
-        try skipIfIPad()
         let app = launchApp()
 
-        app.buttons["tab-shop"].tap()
-        XCTAssertTrue(app.navigationBars["商店"].waitForExistence(timeout: 5))
+        returnToShellHome(app)
+        openShellRoute(app, "shop")
+        assertShellTitle(app, "商店")
 
         // 宇航员头盔 costs 500; buy 学士帽 (80) first so the balance drops below it.
-        app.buttons["cosmetic-skin_graduate"].tap()
+        revealAndTap(app, app.buttons["cosmetic-skin_graduate"])
         confirmPurchase(app)
 
         let helmet = app.buttons["cosmetic-skin_astronaut"]
         XCTAssertTrue(helmet.waitForExistence(timeout: 3))
-        // 宇航员是第七项，exists 不代表已滚进横向货架的可见区域。
-        // 外层是纵向商店，取包含该按钮的最内层 ScrollView 横向滚动。
-        let shelf = try XCTUnwrap(app.scrollViews.containing(
-            .button, identifier: "cosmetic-skin_astronaut"
-        ).allElementsBoundByIndex.last)
-        var scrolls = 0
-        // iOS 18.6 对完全在屏幕外的按钮查询 isHittable 也会报命中点错误。
-        while !app.frame.contains(helmet.frame) && scrolls < 6 {
-            shelf.swipeLeft()
-            scrolls += 1
-        }
-        XCTContext.runActivity(named: "宇航员位置：\(helmet.frame)，货架：\(shelf.frame)") { _ in
-            XCTAssertTrue(app.frame.contains(helmet.frame), "宇航员皮肤必须滚入屏幕")
-            XCTAssertTrue(helmet.isHittable, "宇航员皮肤必须可点击")
-            helmet.tap()
-        }
+        // RD-00：先完整滚入货架可见区域；共享助手同时处理横屏视口。
+        revealAndTap(app, helmet)
 
         // Wave F: the preview sheet still opens, but the confirm button is
         // disabled when gems are short — cancel out and nothing was granted.
         let confirm = app.buttons["cosmetic-confirm-buy"]
         XCTAssertTrue(confirm.waitForExistence(timeout: 3))
         XCTAssertFalse(confirm.isEnabled, "confirm must be disabled when unaffordable")
-        app.buttons["cosmetic-cancel-buy"].tap()
+        revealAndTap(app, app.buttons["cosmetic-cancel-buy"])
 
         XCTAssertTrue(helmet.waitForExistence(timeout: 3))
         XCTAssertFalse(helmet.label.contains("使用中"),

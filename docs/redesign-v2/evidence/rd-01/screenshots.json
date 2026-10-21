@@ -1,0 +1,408 @@
+{
+  "ipad": [
+    {
+      "文件": "ipad-clay-gallery.png",
+      "测试": "ShellUITests/testDebugGalleryOpensAndReturnsWithinShell()",
+      "模拟器名称": "iPad (A16)",
+      "模拟器UUID": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+      "截图时间戳": 1792553937.823,
+      "原始附件": "1710D17D-6BA9-4E3F-AA94-507A99D77F02.png",
+      "原始结果包": "rd01-final-ipad.xcresult",
+      "原始像素尺寸": [
+        1640,
+        2360
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2360,
+        1640
+      ],
+      "原始SHA256": "6633b14ec1133655b9e9cb951aed5e5fc7e12e11de23f69c5e802868a4709875",
+      "归档SHA256": "625d6b330197a24542030b25f7e50576bf476dc88ac8f880d209c269e275041e"
+    },
+    {
+      "文件": "ipad-home-landscape.png",
+      "测试": "ShellUITests/testLaunchAndRotationStayLandscape()",
+      "模拟器名称": "iPad (A16)",
+      "模拟器UUID": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+      "截图时间戳": 1792553954.224,
+      "原始附件": "B53D2E7A-FBED-47D3-A080-385E443D05E8.png",
+      "原始结果包": "rd01-final-ipad.xcresult",
+      "原始像素尺寸": [
+        1640,
+        2360
+      ],
+      "原始旋转元数据": 6,
+      "规范化后的像素尺寸": [
+        2360,
+        1640
+      ],
+      "原始SHA256": "ad2ed06a17ac4fd5a0b9357920fa32bb44d3d752bcf9a2368b52924ca253e0e7",
+      "归档SHA256": "2ee46c2240f4ece59e53be0253552c329e105b222fb6c80a64ee0728e4eab9e1"
+    },
+    {
+      "文件": "ipad-onboarding-first-lesson-toast.png",
+      "测试": "ShellUITests/testOnboardingAutomaticallyStartsFirstLessonOnce()",
+      "模拟器名称": "iPad (A16)",
+      "模拟器UUID": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+      "截图时间戳": 1792553970.063,
+      "原始附件": "97B26A42-C361-49DA-A425-6B3933F3A723.png",
+      "原始结果包": "rd01-final-ipad.xcresult",
+      "原始像素尺寸": [
+        1640,
+        2360
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2360,
+        1640
+      ],
+      "原始SHA256": "9b99abd4c63a51ed6c1ee5b45adab6b87fc2e7dd69f30078d2b06db59d64bed2",
+      "归档SHA256": "64f36ddc5e65c970d4a069eb55cf96711b445daeb60a2d54753d2edd872dd9ba"
+    },
+    {
+      "文件": "ipad-placeholder-pet-family.png",
+      "测试": "ShellUITests/testAllFifteenPlaceholderRoutesOpenAndReturn()",
+      "模拟器名称": "iPad (A16)",
+      "模拟器UUID": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+      "截图时间戳": 1792553861.634,
+      "原始附件": "F32A007F-D754-4266-987B-C390FD01DE29.png",
+      "原始结果包": "rd01-final-ipad.xcresult",
+      "原始像素尺寸": [
+        1640,
+        2360
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2360,
+        1640
+      ],
+      "原始SHA256": "74fdc9ba17c7e558023472955afd940a7b58ecfcca72394aa00727f8f58fa16f",
+      "归档SHA256": "9f819f4163eb13a5bbd9bfa4e1674dd8ef61d4a9d6e87164bcf9616f762fe54f"
+    }
+  ],
+  "se": [
+    {
+      "文件": "se-clay-gallery.png",
+      "测试": "ShellUITests/testDebugGalleryOpensAndReturnsWithinShell()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553742.395,
+      "原始附件": "52D0C260-84CD-457D-AF7B-24609C8CB7CE.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "38de96a508a7029845c3b81912c37a4b53dc01b353a999504b3d63271647c0c7",
+      "归档SHA256": "963f2db5c13af1e139757a48320020cc48ce45e1be2a90a5d51e7f99ddd16a48"
+    },
+    {
+      "文件": "se-home-landscape.png",
+      "测试": "ShellUITests/testLaunchAndRotationStayLandscape()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553758.414,
+      "原始附件": "E149CA3D-E287-4A8B-84C4-0C247105AD6F.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 6,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "fbea9d88fe22dc28a6c4beb9e577c4ddf3eae3cf0bdecca91172832648cad3f2",
+      "归档SHA256": "8d4f257a36d30264f20319f59d1c6967e0f78d7c49e61588c4596625b40b954b"
+    },
+    {
+      "文件": "se-legacy-achievements.png",
+      "测试": "LayoutUITests/testTemporaryEntrancesReachLegacyPages()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553656.885,
+      "原始附件": "337FCF23-E254-4EA8-BE25-8215CC1F7F93.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "a506cafae91c7ed2d279760763c695e44ec1b0c84966a96e226053037de834d9",
+      "归档SHA256": "e189da7076284ced69b9bd9ef0ee21c06d756c3c378432c4d98ffd9a5d54c0bb"
+    },
+    {
+      "文件": "se-legacy-book-picker.png",
+      "测试": "LayoutUITests/testGradeBrowsingAndBookSwitching()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553575.872,
+      "原始附件": "92B421D7-FF82-486C-BF68-E7243662146C.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "30b4829061af370de29501a2652ef543bf4a60ccaa5c52942408a0dca2d062bb",
+      "归档SHA256": "b46a66bf51348b0ec18899d06f95560b358364e55be406a65beaa80f17550096"
+    },
+    {
+      "文件": "se-legacy-grades.png",
+      "测试": "LayoutUITests/testGradeBrowsingAndBookSwitching()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553569.268,
+      "原始附件": "93D6520F-506A-46CB-AA85-709687560EBC.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "27edf67b7a6afb74c4b5bc63de65250c314b712d5ac8b9b7e5813ef34a898105",
+      "归档SHA256": "2aa5ce62573e0c046d87d73057e283f6abe2af46b4bd80d69a57741d9717716d"
+    },
+    {
+      "文件": "se-legacy-league.png",
+      "测试": "LayoutUITests/testTemporaryEntrancesReachLegacyPages()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553615.627,
+      "原始附件": "DBB9183F-7A52-4F42-8D23-774A557567AB.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "5698dca2a267fc03124638fd56a4c423ef3b75a51f9c1c2379dff9d7e9a50361",
+      "归档SHA256": "369e7d80b74a883e45399e32011ac0931d94515790b3c62cdbb706eddff808dc"
+    },
+    {
+      "文件": "se-legacy-profile.png",
+      "测试": "LayoutUITests/testTemporaryEntrancesReachLegacyPages()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553650.726,
+      "原始附件": "99E3C610-DC6B-4526-8D39-558D5FBA7024.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "fe312c615d6225432b6329549c94e48bcdbf7dd0c16dab32b407db788ff033e4",
+      "归档SHA256": "b29a00d0662c08711740c6110a8c4c57244248ea45ebc6465c3ae716d6eeafe1"
+    },
+    {
+      "文件": "se-legacy-review-runner.png",
+      "测试": "LayoutUITests/testReviewEntryOpensRunnerWithMistake()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553600.276,
+      "原始附件": "8B3482B9-8055-48FE-B775-D5B5E7D2BE98.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "1b49679d77957fe7b9c193269b9a171ba08bd6efc2f9a3364e372965d903f87a",
+      "归档SHA256": "215a926f9194612ada49758ce08f8d5039a76505bf95f70a58c5e9ff801f1015"
+    },
+    {
+      "文件": "se-legacy-review.png",
+      "测试": "LayoutUITests/testTemporaryEntrancesReachLegacyPages()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553621.495,
+      "原始附件": "82A24ABD-795F-4AE0-BBA8-2B1E81BAD6AB.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "dd817e652c9a6d99e546e545329702eae18802c08b2d7020f590bc5ace3f288b",
+      "归档SHA256": "59e249f94a61db13168f5dc299a63497b1c78870f95501de09d84df3fccd8f71"
+    },
+    {
+      "文件": "se-legacy-shop.png",
+      "测试": "LayoutUITests/testTemporaryEntrancesReachLegacyPages()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553638.554,
+      "原始附件": "4A0C3EC6-AE6F-4D15-A98F-F6EB3486C102.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "feed759dec738993b1d5d288e0e9d82cb19a0eb85f82e6b99eda90db6f44dfc7",
+      "归档SHA256": "23cd82eac35a3daadcdaf496eb20e1b247e75ae672d057b544061adbed43bdee"
+    },
+    {
+      "文件": "se-onboarding-first-lesson-toast.png",
+      "测试": "ShellUITests/testOnboardingAutomaticallyStartsFirstLessonOnce()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553780.786,
+      "原始附件": "2FA34166-BFE1-460A-8148-EDDF69FB340E.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "6e5fa7fea76e54f6c871609e7cf28f7e1473b13d5e7710c174299e0e71c9c52d",
+      "归档SHA256": "a895520b5b87b98f1e36686cdefaff973dec5c00a0d3b862df94c8d6ab0c3137"
+    },
+    {
+      "文件": "se-placeholder-pet-family.png",
+      "测试": "ShellUITests/testAllFifteenPlaceholderRoutesOpenAndReturn()",
+      "模拟器名称": "iPhone SE (3rd gen)",
+      "模拟器UUID": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+      "截图时间戳": 1792553666.341,
+      "原始附件": "AC2E03BF-1527-48C3-91E7-020D52856813.png",
+      "原始结果包": "rd01-final-se.xcresult",
+      "原始像素尺寸": [
+        750,
+        1334
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        1334,
+        750
+      ],
+      "原始SHA256": "b35ba852c6ff7653effe545114bae6eb00b2da2658ef85d2bfd3f5f490364cc4",
+      "归档SHA256": "ff0a13db317ad2bc3a6e1a93d0fb31ccaf8dc1912058444bea74b3e4daa0ba51"
+    }
+  ],
+  "iphone16": [
+    {
+      "文件": "iphone16-clay-gallery.png",
+      "测试": "ShellUITests/testDebugGalleryOpensAndReturnsWithinShell()",
+      "模拟器名称": "iPhone 16",
+      "模拟器UUID": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+      "截图时间戳": 1792553332.805,
+      "原始附件": "97AE14AD-2356-4EF8-A45F-15AF67127A2A.png",
+      "原始结果包": "rd01-final-iphone16.xcresult",
+      "原始像素尺寸": [
+        1178,
+        2556
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2556,
+        1178
+      ],
+      "原始SHA256": "b470c6cdb1b3359d286dbbf864afaaef0d9587a8f022d2fb2baed9491505a573",
+      "归档SHA256": "ed3a203889bf088ef871a6aa6d5aa466950e9f90309a2c751bc98087648c9a96"
+    },
+    {
+      "文件": "iphone16-home-landscape.png",
+      "测试": "ShellUITests/testLaunchAndRotationStayLandscape()",
+      "模拟器名称": "iPhone 16",
+      "模拟器UUID": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+      "截图时间戳": 1792553351.491,
+      "原始附件": "D050E746-9CC5-4C52-85B4-23B687AD7ABC.png",
+      "原始结果包": "rd01-final-iphone16.xcresult",
+      "原始像素尺寸": [
+        1178,
+        2556
+      ],
+      "原始旋转元数据": 6,
+      "规范化后的像素尺寸": [
+        2556,
+        1178
+      ],
+      "原始SHA256": "7728a60f35f575024e99b62b2b767d06f133be5297abb1f4e4af9be96c31b6b4",
+      "归档SHA256": "af2b7679eca827984aafab6d13bcf6609e46ea28626aeeec476031ec4bcbd3b0"
+    },
+    {
+      "文件": "iphone16-onboarding-first-lesson-toast.png",
+      "测试": "ShellUITests/testOnboardingAutomaticallyStartsFirstLessonOnce()",
+      "模拟器名称": "iPhone 16",
+      "模拟器UUID": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+      "截图时间戳": 1792553371.252,
+      "原始附件": "A1E62FDA-4ADC-4DB5-89C1-530AD294FF1E.png",
+      "原始结果包": "rd01-final-iphone16.xcresult",
+      "原始像素尺寸": [
+        1178,
+        2556
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2556,
+        1178
+      ],
+      "原始SHA256": "2e4af87addd4a4c2837999924d7dad081d2e90e68e0bbb9881d7b098f5bc677f",
+      "归档SHA256": "35139d7c6dcf1b0b7ec0e5a82fd6cc0f1849c75a838785627b5e508556858775"
+    },
+    {
+      "文件": "iphone16-placeholder-pet-family.png",
+      "测试": "ShellUITests/testAllFifteenPlaceholderRoutesOpenAndReturn()",
+      "模拟器名称": "iPhone 16",
+      "模拟器UUID": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+      "截图时间戳": 1792553255.561,
+      "原始附件": "F9AC5709-0B26-421C-8C31-B5DA3CFF9EE9.png",
+      "原始结果包": "rd01-final-iphone16.xcresult",
+      "原始像素尺寸": [
+        1178,
+        2556
+      ],
+      "原始旋转元数据": 8,
+      "规范化后的像素尺寸": [
+        2556,
+        1178
+      ],
+      "原始SHA256": "27bbe2333ebd41d4970e9dc81d1309334c2a29606013efc53f02920cdf3be400",
+      "归档SHA256": "3df0bed83a0450fdd266547213cff0f3ba612fef5531c473d8e662cf3d6bed90"
+    }
+  ]
+}

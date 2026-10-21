@@ -327,8 +327,11 @@ private struct HomeStatsStrip: View {
                         .duoFont(.micro, weight: .heavy)
                         .foregroundStyle(.white)
                 }
+                .frame(minWidth: 44, minHeight: 44)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("换年级或换课本")
+            .accessibilityIdentifier("home-book-picker")
 
             Button { activeSheet = .streak } label: {
                 // Three honest flame states: studied today = lit orange;
@@ -941,6 +944,7 @@ private struct BookPickerSheet: View {
                                 bookCard(book)
                             }
                             .buttonStyle(.plain)
+                            .accessibilityIdentifier("book-picker-book-\(book.id)")
                         }
                         if booksForGrade.isEmpty {
                             Text("这个年级暂无课本")
@@ -990,6 +994,7 @@ private struct BookPickerSheet: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel("关闭")
+            .accessibilityIdentifier("book-picker-close")
         }
     }
 
@@ -1046,6 +1051,7 @@ private struct BookPickerSheet: View {
             .frame(width: 76, height: 45)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("book-picker-grade-\(g)")
     }
 
     @ViewBuilder

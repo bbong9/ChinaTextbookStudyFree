@@ -1,11 +1,11 @@
 import Foundation
 
-/// All push destinations used by the root NavigationStack. Adding a new screen
-/// is a one-line edit here + a `case` in `RootView.navigationDestination`.
+/// 根导航栈的全部目的地，由 MainShell 中的 RouteView 统一解析。
 enum AppRoute: Hashable {
     #if DEBUG
     case clayGallery
     #endif
+    case league
     case bookList(grade: Int)
     case bookDetail(bookId: String)
     case lesson(bookId: String, lessonId: String)
@@ -24,6 +24,79 @@ enum AppRoute: Hashable {
     case guide(bookId: String, unitNumber: Int)
     /// 跳级测试（Wave E2）：锁定单元 banner「⚡ 跳到这里」入口。
     case jumpTest(bookId: String, unitNumber: Int)
+
+    // RD-01：只接通路由，实际内容由后续开发卡替换。
+    case petFamily
+    case petHome
+    case petShop
+    case checkIn
+    case quests
+    case parentCenter
+    case hanziMap(bookId: String)
+    case hanziLesson(bookId: String, char: String)
+    case mathTrain
+    case englishBalloons
+    case animals
+    case idiomPicker
+    case idiomPlayer(id: String)
+    case bedtimeStories
+    case readingRoom
+
+    struct Placeholder {
+        let id: String
+        let title: String
+    }
+
+    var placeholder: Placeholder? {
+        switch self {
+        case .petFamily: return .init(id: "pet-family", title: "宠物家族")
+        case .petHome: return .init(id: "pet-home", title: "宠物小屋")
+        case .petShop: return .init(id: "pet-shop", title: "宠物店")
+        case .checkIn: return .init(id: "check-in", title: "签到")
+        case .quests: return .init(id: "quests", title: "任务")
+        case .parentCenter: return .init(id: "parent-center", title: "家长中心")
+        case .hanziMap: return .init(id: "hanzi-map", title: "识字地图")
+        case .hanziLesson: return .init(id: "hanzi-lesson", title: "识字关卡")
+        case .mathTrain: return .init(id: "math-train", title: "数学小火车")
+        case .englishBalloons: return .init(id: "english-balloons", title: "英语单词气球")
+        case .animals: return .init(id: "animals", title: "看图识物")
+        case .idiomPicker: return .init(id: "idiom-picker", title: "成语选择")
+        case .idiomPlayer: return .init(id: "idiom-player", title: "成语动画")
+        case .bedtimeStories: return .init(id: "bedtime-stories", title: "睡前绘本")
+        case .readingRoom: return .init(id: "reading-room", title: "课外书屋")
+        default: return nil
+        }
+    }
+
+    /// 临时入口的参数只用于验证路由，不加载或生成新内容。
+    static func temporaryRoutes(bookId: String) -> [AppRoute] {
+        [.petFamily, .petHome, .petShop, .checkIn, .quests, .parentCenter,
+         .hanziMap(bookId: bookId), .hanziLesson(bookId: bookId, char: "日"),
+         .mathTrain, .englishBalloons, .animals, .idiomPicker,
+         .idiomPlayer(id: "shou-zhu-dai-tu"), .bedtimeStories, .readingRoom]
+    }
+
+    /// 沉浸页面已有自己的退出操作，其余页面由外壳提供临时页头。
+    var shellTitle: String? {
+        if let placeholder { return placeholder.title }
+        switch self {
+        case .league: return "排行"
+        case .bookList(let grade): return "\(grade) 年级"
+        case .bookDetail: return "课本"
+        case .review: return "错题本"
+        case .reviewRunner: return "错题复习"
+        case .achievements: return "成就墙"
+        case .stories: return "故事"
+        case .storyReader: return "故事阅读"
+        case .reading: return "课文阅读"
+        case .passageReader: return "阅读"
+        case .shop: return "商店"
+        case .profile: return "我的"
+        case .settings: return "设置"
+        case .guide: return "单元知识手册"
+        default: return nil
+        }
+    }
 }
 
 /// Result of committing a finished lesson to the store — single source of

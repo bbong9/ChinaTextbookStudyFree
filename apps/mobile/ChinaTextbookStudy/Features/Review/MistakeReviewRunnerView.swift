@@ -49,49 +49,56 @@ struct MistakeReviewRunnerView: View {
     }
 
     private var summary: some View {
-        VStack(spacing: 18) {
-            PetView(mood: .proud, size: 110, reactTo: .levelup)
-            Text("复习完成！").duoFont(.title).foregroundStyle(DuoColors.ink)
-            Text("答对 \(correctCount) / \(queue.count)").duoFont(.subhead).foregroundStyle(DuoColors.inkMuted)
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 18) {
+                    PetView(mood: .proud, size: 110, reactTo: .levelup)
+                    Text("复习完成！").duoFont(.title).foregroundStyle(DuoColors.ink)
+                    Text("答对 \(correctCount) / \(queue.count)").duoFont(.subhead).foregroundStyle(DuoColors.inkMuted)
 
-            HStack(spacing: 10) {
-                HStack(spacing: 6) {
-                    Image(systemName: "bolt.fill").font(.system(size: 15, weight: .heavy))
-                    Text("+\(correctCount * xpPerCorrect) XP").duoNumeral(.subhead)
-                }
-                .foregroundStyle(DuoColors.secondary)
-                .padding(.horizontal, 16).padding(.vertical, 9)
-                .background(DuoColors.secondary.opacity(0.14), in: .capsule)
+                    HStack(spacing: 10) {
+                        HStack(spacing: 6) {
+                            Image(systemName: "bolt.fill").font(.system(size: 15, weight: .heavy))
+                            Text("+\(correctCount * xpPerCorrect) XP").duoNumeral(.subhead)
+                        }
+                        .foregroundStyle(DuoColors.secondary)
+                        .padding(.horizontal, 16).padding(.vertical, 9)
+                        .background(DuoColors.secondary.opacity(0.14), in: .capsule)
 
-                if heartRewarded {
-                    HStack(spacing: 6) {
-                        Image(systemName: "heart.fill").font(.system(size: 15, weight: .heavy))
-                        Text("+1").duoNumeral(.subhead)
+                        if heartRewarded {
+                            HStack(spacing: 6) {
+                                Image(systemName: "heart.fill").font(.system(size: 15, weight: .heavy))
+                                Text("+1").duoNumeral(.subhead)
+                            }
+                            .foregroundStyle(DuoColors.danger)
+                            .padding(.horizontal, 16).padding(.vertical, 9)
+                            .background(DuoColors.danger.opacity(0.12), in: .capsule)
+                            .accessibilityLabel("恢复一颗红心")
+                        }
                     }
-                    .foregroundStyle(DuoColors.danger)
-                    .padding(.horizontal, 16).padding(.vertical, 9)
-                    .background(DuoColors.danger.opacity(0.12), in: .capsule)
-                    .accessibilityLabel("恢复一颗红心")
+
+                    if heartRewarded {
+                        Text("坚持复习，补回一颗红心！").duoFont(.caption).foregroundStyle(DuoColors.inkMuted)
+                    }
+
+                    if graduatedCount > 0 {
+                        Text("🎓 \(graduatedCount) 道题毕业了！")
+                            .duoFont(.subhead).foregroundStyle(DuoColors.primary)
+                            .padding(.horizontal, 16).padding(.vertical, 9)
+                            .background(DuoColors.primary.opacity(0.12), in: .capsule)
+                    }
+
+                    Button("返回错题本") { path.removeLast() }
+                        .accessibilityIdentifier("review-summary-back")
+                        .buttonStyle(ChunkyButtonStyle(.primary))
+                        .padding(.horizontal, 32)
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .frame(minHeight: geometry.size.height)
             }
-
-            if heartRewarded {
-                Text("坚持复习，补回一颗红心！").duoFont(.caption).foregroundStyle(DuoColors.inkMuted)
-            }
-
-            if graduatedCount > 0 {
-                Text("🎓 \(graduatedCount) 道题毕业了！")
-                    .duoFont(.subhead).foregroundStyle(DuoColors.primary)
-                    .padding(.horizontal, 16).padding(.vertical, 9)
-                    .background(DuoColors.primary.opacity(0.12), in: .capsule)
-            }
-
-            Button("返回错题本") { path.removeLast() }
-                .buttonStyle(ChunkyButtonStyle(.primary))
-                .padding(.horizontal, 32)
+            .accessibilityIdentifier("review-summary-scroll")
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
         .onAppear {
             guard !awarded else { return }
             awarded = true

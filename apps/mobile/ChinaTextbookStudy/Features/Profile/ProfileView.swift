@@ -30,10 +30,6 @@ struct ProfileView: View {
                 settingsRow
             }
             .padding(20)
-            // The floating tab bar does not reliably inset scroll content
-            // through the NavigationStack — reserve space so the last row
-            // (settings) can always scroll fully above the bar.
-            .padding(.bottom, 84)
         }
         .background(DuoColors.bg.ignoresSafeArea())
         .navigationTitle("我的")
@@ -201,51 +197,57 @@ private struct RenameSheet: View {
     }
 
     var body: some View {
-        VStack(spacing: 18) {
-            PetView(mood: .happy, size: 72)
-                .padding(.top, 20)
+        ScrollView {
+            VStack(spacing: 18) {
+                PetView(mood: .happy, size: 72)
+                    .padding(.top, 20)
 
-            Text("给自己起个名字")
-                .duoFont(.heading)
-                .foregroundStyle(DuoColors.ink)
+                Text("给自己起个名字")
+                    .duoFont(.heading)
+                    .foregroundStyle(DuoColors.ink)
 
-            TextField("昵称", text: $draft)
-                .duoFont(.subhead)
-                .foregroundStyle(DuoColors.ink)
-                .multilineTextAlignment(.center)
-                .submitLabel(.done)
-                .focused($focused)
-                .padding(.horizontal, 16)
-                .frame(height: 54)
-                .background(DuoColors.surfaceAlt, in: .rect(cornerRadius: Radius.card))
-                .overlay {
-                    RoundedRectangle(cornerRadius: Radius.card)
-                        .strokeBorder(focused ? DuoColors.primary : DuoColors.border, lineWidth: 2)
+                TextField("昵称", text: $draft)
+                    .duoFont(.subhead)
+                    .foregroundStyle(DuoColors.ink)
+                    .multilineTextAlignment(.center)
+                    .submitLabel(.done)
+                    .focused($focused)
+                    .onSubmit { focused = false }
+                    .padding(.horizontal, 16)
+                    .frame(height: 54)
+                    .background(DuoColors.surfaceAlt, in: .rect(cornerRadius: Radius.card))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: Radius.card)
+                            .strokeBorder(focused ? DuoColors.primary : DuoColors.border, lineWidth: 2)
+                    }
+                    .padding(.horizontal, 24)
+                    .accessibilityIdentifier("rename-field")
+
+                Text("最多 12 个字，随时可以再改")
+                    .duoFont(.micro)
+                    .foregroundStyle(DuoColors.inkMuted)
+
+                Spacer(minLength: 0)
+
+                VStack(spacing: 10) {
+                    Button("保存") {
+                        onSave()
+                        dismiss()
+                    }
+                    .buttonStyle(ChunkyButtonStyle(trimmed.isEmpty ? .disabled : .primary))
+                    .disabled(trimmed.isEmpty)
+                    .accessibilityIdentifier("rename-save")
+
+                    Button("取消") { dismiss() }
+                        .buttonStyle(ChunkyButtonStyle(.ghost))
+                        .accessibilityIdentifier("rename-cancel")
                 }
                 .padding(.horizontal, 24)
-                .accessibilityIdentifier("rename-field")
-
-            Text("最多 12 个字，随时可以再改")
-                .duoFont(.micro)
-                .foregroundStyle(DuoColors.inkMuted)
-
-            Spacer(minLength: 0)
-
-            VStack(spacing: 10) {
-                Button("保存") {
-                    onSave()
-                    dismiss()
-                }
-                .buttonStyle(ChunkyButtonStyle(trimmed.isEmpty ? .disabled : .primary))
-                .disabled(trimmed.isEmpty)
-                .accessibilityIdentifier("rename-save")
-
-                Button("取消") { dismiss() }
-                    .buttonStyle(ChunkyButtonStyle(.ghost))
+                .padding(.bottom, 20)
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 20)
         }
+        .scrollDismissesKeyboard(.immediately)
+        .accessibilityIdentifier("rename-scroll")
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(DuoColors.bg.ignoresSafeArea())
         .onAppear { focused = true }
