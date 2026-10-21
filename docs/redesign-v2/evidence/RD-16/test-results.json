@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-21",
+  "sourceCommit": "e54020d4c616bb8ca3919ca821a81bcd4ca8c70e",
+  "integrationBase": "3e169664e18ae379e598e6dfaa18e74a2af39ef2",
+  "environment": "本地 iOS 18.6 模拟器；所有测试通过统一队列串行执行",
+  "final": {
+    "iPhone16": {
+      "result": "Passed",
+      "passedTests": 362,
+      "totalTestCount": 362,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "expectedFailures": 0,
+      "runtimeWarningCount": 0,
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+          "deviceName": "iPhone 16",
+          "modelName": "iPhone 16",
+          "osBuildNumber": "22G86",
+          "osVersion": "18.6",
+          "platform": "iOS Simulator"
+        }
+      ]
+    },
+    "iPhoneSE3": {
+      "result": "Passed",
+      "passedTests": 2,
+      "totalTestCount": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "expectedFailures": 0,
+      "runtimeWarningCount": 0,
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "40CF54B0-FCAC-4473-B856-31DDBA65ACC6",
+          "deviceName": "iPhone SE (3rd gen)",
+          "modelName": "iPhone SE (3rd generation)",
+          "osBuildNumber": "22G86",
+          "osVersion": "18.6",
+          "platform": "iOS Simulator"
+        }
+      ]
+    },
+    "iPadA16": {
+      "result": "Passed",
+      "passedTests": 2,
+      "totalTestCount": 2,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "expectedFailures": 0,
+      "runtimeWarningCount": 0,
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "D4C0E088-955F-4613-BDB3-88C397FB2730",
+          "deviceName": "iPad (A16)",
+          "modelName": "iPad (A16)",
+          "osBuildNumber": "22G86",
+          "osVersion": "18.6",
+          "platform": "iOS Simulator"
+        }
+      ]
+    }
+  },
+  "includedSuites": {
+    "ChinaTextbookStudyTests.xctest": {
+      "passedTests": 304,
+      "failedTests": 0
+    },
+    "GoldenVectorTests": {
+      "passedTests": 24,
+      "failedTests": 0
+    },
+    "PictureWordsTests": {
+      "passedTests": 6,
+      "failedTests": 0
+    },
+    "PictureWordsPersistenceTests": {
+      "passedTests": 3,
+      "failedTests": 0
+    },
+    "PictureWordsBackupTests": {
+      "passedTests": 3,
+      "failedTests": 0
+    },
+    "PictureWordsUITests": {
+      "passedTests": 4,
+      "failedTests": 0
+    }
+  },
+  "core": {
+    "passedTests": 374,
+    "totalTestCount": 374,
+    "failedTests": 0,
+    "testFiles": 16,
+    "goldenVectorTests": 221
+  },
+  "coreTypecheckExitCode": 0,
+  "webTypecheckExitCode": 0,
+  "webStoreBackupChecks": {
+    "passed": 5,
+    "total": 5
+  },
+  "history": {
+    "firstFull": {
+      "result": "Failed",
+      "passedTests": 348,
+      "totalTestCount": 349,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "expectedFailures": 0,
+      "runtimeWarningCount": 0,
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+          "deviceName": "iPhone 16",
+          "modelName": "iPhone 16",
+          "osBuildNumber": "22G86",
+          "osVersion": "18.6",
+          "platform": "iOS Simulator"
+        }
+      ]
+    },
+    "cloudSingleRetest": {
+      "result": "Passed",
+      "passedTests": 1,
+      "totalTestCount": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "expectedFailures": 0,
+      "runtimeWarningCount": 0,
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "59BBC4A1-B3F8-4401-8A95-0A3F70AD45E1",
+          "deviceName": "iPhone 16",
+          "modelName": "iPhone 16",
+          "osBuildNumber": "22G86",
+          "osVersion": "18.6",
+          "platform": "iOS Simulator"
+        }
+      ]
+    },
+    "failure": "首轮 cloud-restore-accept 等待 20 秒未出现；未改范围外代码，单项复测通过，根因未证实。"
+  },
+  "mainWorktreeUnchanged": true,
+  "mainWorktreeFingerprints": {
+    "diff_sha256": "c3f4333e14890f933ab23f88eaa41f40b7071387d75e17069947127bccecff8a",
+    "status_sha256": "52a32a3d10bc3dd947f82de3fe8f9ca451d2116f5f0addf14fdd7d1165e3bf39"
+  },
+  "limits": [
+    "词表为模型逐条自校，待真人内容审校",
+    "VoiceOver 听音、真机发音与幼儿使用尚未验收",
+    "计时接入待 RD-08 合并后补"
+  ]
+}
