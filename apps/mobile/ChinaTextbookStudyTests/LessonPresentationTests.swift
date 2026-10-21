@@ -16,11 +16,11 @@ final class LessonPresentationTests: XCTestCase {
             ZStack {
                 LessonScene(bookId: "g1up")
                 ComboOverlayView(combo: 3)
-            }.environment(\.clayMotionPaused, true)
+            }.ignoresSafeArea().environment(\.clayMotionPaused, true)
                 .transaction { $0.disablesAnimations = true }.statusBarHidden())
         window.makeKeyAndVisible()
         defer { window.isHidden = true; previous?.makeKeyAndVisible() }
-        try await Task.sleep(for: .milliseconds(250))
+        try await Task.sleep(for: .milliseconds(600))
         let screenshot = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
             window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
         }
